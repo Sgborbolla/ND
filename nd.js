@@ -26,12 +26,12 @@ const HEROES=[
 ];
 
 const ARCH=[
- {k:'carrilero',label:'CARRILERO',lvl:1,hp:2,sp:104,s:17,sk:'stick',teach:'el contacto hace dano'},
- {k:'doble',label:'EL DOBLE',lvl:2,hp:2,sp:128,s:16,sk:'twin',teach:'te copia el movimiento'},
- {k:'lanzador',label:'LANZADOR',lvl:3,hp:2,sp:62,s:18,sk:'arc',teach:'el suelo es peligroso'},
+ {k:'doble',label:'EL DOBLE',lvl:1,hp:2,sp:128,s:16,sk:'twin',teach:'te copia el movimiento'},
+ {k:'lanzador',label:'LANZADOR',lvl:2,hp:2,sp:62,s:18,sk:'arc',teach:'el suelo es peligroso'},
+ {k:'agresor',label:'EL AGRESOR',lvl:3,hp:3,sp:148,s:19,sk:'stick',teach:'te acosa sin parar'},
  {k:'blindado',label:'BLINDADO',lvl:4,hp:6,sp:82,s:24,sk:'block',teach:'rodealo, no lo atravieses'},
  {k:'resucitado',label:'RESUCITADO',lvl:5,hp:3,sp:112,s:18,sk:'broken',teach:'soltar tiene castigo'},
- {k:'nucleo',label:'EL NUCLEO',lvl:6,hp:9,sp:98,s:30,sk:'core',teach:'todo junto, mas rapido'}
+ {k:'mimetico',label:'EL MIMETICO',lvl:6,hp:5,sp:138,s:20,sk:'echo',teach:'copia tu forma y tus golpes'}
 ];
 
 let AC=null,sfxG=null,musG=None,nb=null;
@@ -96,12 +96,13 @@ const VOI=[
  {atk:[430,295,.21,.17,700,1500],big:[258,148,.46,.21,560,1350],die:[340,120,.45,.19,620,1300]}
 ];
 const EVO={
- carrilero:function(){vo(178,118,.17,.14,500,720);},
+ 
  doble:function(){vo(600,900,.1,.11,1100,1900);},
  lanzador:function(){vo(300,900,.23,.12,900,2100);},
  blindado:function(){if(!AC)return;osc(900,300,.12,.13,'square');nz(3,2600,900,.1,.12);},
  resucitado:function(){vo(150,68,.35,.17,340,520);},
- nucleo:function(){vo(118,56,.52,.21,260,430);}
+ nucleo:function(){vo(118,56,.52,.21,260,430);},
+ agresor:function(){vo(400,260,.14,.16,900,1400);}
 };
 const SFX={
  swing(){if(!AC)return;nz(1.1,1800,520,.12,.2);},
@@ -517,7 +518,7 @@ function update(dt){
    if(dd<48&&P.ifr===0)takeHit(e);
    continue;
   }
-  if(e.t==='lanzador'||e.t==='nucleo'){
+  if(e.t==='lanzador'||e.t==='agresor'||e.t==='nucleo'){
    const want=e.t==='nucleo'?120:190;
    if(dd>want){e.x+=(dx/dd)*e.sp*dt;e.fl=Math.sign(dx)||1;}
    else if(e.cd<=0){
