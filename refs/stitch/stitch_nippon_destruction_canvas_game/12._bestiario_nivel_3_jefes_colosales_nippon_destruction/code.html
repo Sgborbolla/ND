@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface": "#150e2b", "surface-container-lowest": "#100926", "surface-container": "#221b38", "on-tertiary-fixed": "#2d1600", "on-secondary": "#3f2e00", "surface-container-high": "#2c2543", "tertiary-container": "#c58239", "surface-bright": "#3c3554", "on-tertiary-fixed-variant": "#6a3c00", "surface-container-highest": "#37304f", "on-tertiary-container": "#412200", "secondary-fixed-dim": "#f7be00", "on-primary-fixed-variant": "#900037", "outline-variant": "#5c3f43", "secondary": "#ffe5b1", "secondary-fixed": "#ffdf99", "inverse-primary": "#bc004b", "on-surface-variant": "#e4bdc1", "surface-tint": "#ffb2bd", "secondary-container": "#fec300", "outline": "#ab888c", "tertiary-fixed": "#ffdcbe", "on-tertiary": "#4a2800", "primary-container": "#ff4e7c", "on-primary-container": "#5a001f", "on-surface": "#e8deff", "on-error": "#690005", "on-error-container": "#ffdad6", "on-primary-fixed": "#400014", "inverse-on-surface": "#332c4a", "on-secondary-container": "#6d5200", "tertiary-fixed-dim": "#ffb871", "on-secondary-fixed": "#251a00", "on-background": "#e8deff", "error-container": "#93000a", "primary": "#ffb2bd", "primary-fixed-dim": "#ffb2bd", "error": "#ffb4ab", "primary-fixed": "#ffd9de", "surface-container-low": "#1e1734", "surface-variant": "#37304f", "surface-dim": "#150e2b", "background": "#150e2b", "tertiary": "#ffb871", "on-primary": "#670025", "on-secondary-fixed-variant": "#5a4300", "inverse-surface": "#e8deff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter-desktop": "1.5rem", "gutter": "1rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "margin-tablet": "2rem", "space-md": "1rem", "margin-desktop": "3rem", "space-xl": "2.5rem", "margin": "1rem", "gutter-tablet": "1.25rem" }, "fontFamily": { "headline-md": [ "Space Grotesk" ], "body-sm": [ "Chivo" ], "body-lg": [ "Chivo" ], "display-lg": [ "Space Grotesk" ], "label-tech-lg": [ "JetBrains Mono" ], "headline-sm": [ "Space Grotesk" ], "label-tech-sm": [ "JetBrains Mono" ], "display-lg-mobile": [ "Space Grotesk" ], "label-tech-md": [ "JetBrains Mono" ], "headline-lg": [ "Space Grotesk" ], "body-md": [ "Chivo" ] }, "fontSize": { "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-tech-lg": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "500" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.05em", "fontWeight": "600" } ], "label-tech-sm": [ "9px", { "lineHeight": "12px", "letterSpacing": "0.16em", "fontWeight": "600" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "label-tech-md": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "500" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "0.02em", "fontWeight": "700" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div class="h-20 w-full px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-label-tech-sm text-label-tech-sm text-secondary-container tracking-widest uppercase">[ 日本壊滅作戦司令本部 ]</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/40">// GRID_SECTOR_07</span></div><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm uppercase font-bold tracking-wider text-primary">NIPPON DESTRUCTION</span><span class="font-label-tech-sm text-label-tech-sm px-space-xs py-0.5 bg-primary-container text-on-primary-container uppercase font-bold tracking-widest">TACTICAL-OS v4.09</span></div></div><div class="hidden xl:flex items-center gap-space-sm pl-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-lowest"><span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span><span class="font-label-tech-sm text-label-tech-sm uppercase font-bold text-primary-container tracking-widest">DEFCON-1 ENGAGED</span></div><div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-lowest"><span class="font-label-tech-sm text-label-tech-sm text-secondary-container tracking-widest uppercase">ORBITAL-SYNC: LOCK_098.42</span></div></div></div><nav class="hidden md:flex items-center gap-space-xs bg-surface-container-lowest/80 p-space-xs" data-active-classes="bg-surface-container-high text-primary font-bold"><a class="font-label-tech-md text-label-tech-md uppercase tracking-wider px-space-md py-space-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="tactical-command-grid" href="#">Command Matrix</a><a class="font-label-tech-md text-label-tech-md uppercase tracking-wider px-space-md py-space-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="heroes-archive" href="#">Hero Dossiers</a><a aria-current="page" class="uppercase tracking-wider px-space-md py-space-sm transition-colors bg-surface-container-high text-primary font-bold" data-path="tactical-bestiary" href="#">Tactical Bestiary</a><a class="font-label-tech-md text-label-tech-md uppercase tracking-wider px-space-md py-space-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="orbital-telemetry" href="#">Orbital Telemetry</a><a class="font-label-tech-md text-label-tech-md uppercase tracking-wider px-space-md py-space-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="incident-logs" href="#">Archive Logs</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex flex-col items-end"><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 uppercase">AUTH_OFFICER // S-RANK</span><span class="font-label-tech-md text-label-tech-md text-secondary uppercase font-semibold">CMDR. KATSURAGI</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="w-full bg-surface-container-lowest px-gutter-desktop py-space-md shadow-2xl flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md flex-wrap">
+<div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-container">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-label-tech-md text-label-tech-md uppercase text-primary-container tracking-widest font-bold">ALERTA CATACLISMO GLOBAL // DEFCON-1</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant/80">
+<span class="text-secondary">[ 第3種絶滅指定生命体群 ]</span>
+<span class="text-on-surface/40">/</span>
+<span>SECTOR: NEO-TOKYO METROPOLITAN CRATER</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-1.5 bg-primary-container text-on-primary-container font-label-tech-md text-label-tech-md font-bold uppercase tracking-wider flex items-center gap-space-xs shadow-lg transition-transform active:scale-95" id="klaxon-btn" onclick="toggleEmergencyKlaxon()">
+<span class="material-symbols-outlined text-[16px]" id="klaxon-icon">campaign</span>
+<span id="klaxon-label">ALARMA EVACUACIÓN SÍSMICA</span>
+</button>
+<div class="px-space-sm py-1 bg-surface-container font-label-tech-sm text-label-tech-sm text-secondary-container tracking-wider">
+        STATUS: INEVITABLE APOCALYPSE
+      </div>
+</div>
+</div>
+<div class="w-full px-gutter-desktop py-space-lg flex flex-col gap-space-xl">
+<div class="relative w-full aspect-[16/9] bg-surface-container-lowest shadow-2xl overflow-hidden group">
+<img alt="Six colossal titan extinction bosses lineup against a burning ruined cybernetic Tokyo skyline: Puerta de Acero, Colapso, Horno, Cementerio, Resonancia, Nucleo ND" class="w-full h-full object-cover object-center filter saturate-125 contrast-110" src="https://lh3.googleusercontent.com/aida/AEtjO1WcJYyqu5BCjLa2nLTpg8bBu-Owr6ijdtGrYIm4ZqEA97JgzBHLW_9jb1UIKohGMYvxp6XwmbHfoO4prm0eaPZJsJvOXogki-01qgjheXLGQBm7PfluO0JyMpjUB3R7Pfvr57sRm5PtZKt5G9dp63sic5C6D_NhRKDNcWzOOJFTA1JqFzLhf2ZI5DmG6A1tt_ODYGCQIY5OaKE79ngJEyXohcpEZNKavpikd8sFHEjbINP22HjBHIi8Ew"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/30 to-transparent pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest/60 via-transparent to-surface-container-lowest/60 pointer-events-none"></div>
+<div class="absolute top-4 left-4 flex flex-col gap-1 pointer-events-none">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 bg-surface-container-highest/90 text-primary font-label-tech-sm text-label-tech-sm uppercase font-bold tracking-widest">TACTICAL MULTI-TARGET FEED // 16:9 HD</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest/90 text-secondary font-label-tech-sm text-label-tech-sm tracking-wider">ZOOM: 1.000x ORBITAL</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 tracking-widest uppercase">RADAR LOCK: 6/6 ENTITIES IDENTIFIED</span>
+</div>
+<div class="absolute top-4 right-4 flex items-center gap-2 pointer-events-none">
+<div class="px-3 py-1 bg-surface-container-highest/90 backdrop-blur text-primary-container font-label-tech-sm text-label-tech-sm font-bold tracking-widest uppercase flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+          KINETIC THREAT: EXTREME
+        </div>
+</div>
+<div class="absolute inset-x-0 bottom-0 p-space-md grid grid-cols-6 gap-2">
+<button class="target-chip bg-surface-container-high/90 hover:bg-primary-container hover:text-on-primary-container p-2 flex flex-col items-start transition-all text-left group/btn" data-index="0" onclick="selectColossus(0)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container group-hover/btn:text-on-primary-container uppercase">01 // 鋼鉄門</span>
+<span class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface group-hover/btn:text-on-primary-container truncate w-full">PUERTA DE ACERO</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant group-hover/btn:text-on-primary-container/80">THREAT: CLASE A+</span>
+</button>
+<button class="target-chip bg-surface-container-high/90 hover:bg-primary-container hover:text-on-primary-container p-2 flex flex-col items-start transition-all text-left group/btn" data-index="1" onclick="selectColossus(1)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container group-hover/btn:text-on-primary-container uppercase">02 // 崩壊体</span>
+<span class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface group-hover/btn:text-on-primary-container truncate w-full">COLAPSO</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant group-hover/btn:text-on-primary-container/80">THREAT: EXTREMO</span>
+</button>
+<button class="target-chip bg-surface-container-high/90 hover:bg-primary-container hover:text-on-primary-container p-2 flex flex-col items-start transition-all text-left group/btn" data-index="2" onclick="selectColossus(2)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container group-hover/btn:text-on-primary-container uppercase">03 // 灼熱炉</span>
+<span class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface group-hover/btn:text-on-primary-container truncate w-full">HORNO</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant group-hover/btn:text-on-primary-container/80">THREAT: TERMONUCLEAR</span>
+</button>
+<button class="target-chip bg-surface-container-high/90 hover:bg-primary-container hover:text-on-primary-container p-2 flex flex-col items-start transition-all text-left group/btn" data-index="3" onclick="selectColossus(3)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container group-hover/btn:text-on-primary-container uppercase">04 // 巨墓標</span>
+<span class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface group-hover/btn:text-on-primary-container truncate w-full">CEMENTERIO</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant group-hover/btn:text-on-primary-container/80">THREAT: CATACUMBICO</span>
+</button>
+<button class="target-chip bg-surface-container-high/90 hover:bg-primary-container hover:text-on-primary-container p-2 flex flex-col items-start transition-all text-left group/btn" data-index="4" onclick="selectColossus(4)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container group-hover/btn:text-on-primary-container uppercase">05 // 共鳴波動</span>
+<span class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface group-hover/btn:text-on-primary-container truncate w-full">RESONANCIA</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant group-hover/btn:text-on-primary-container/80">THREAT: ANOMALÍA COGNITIVA</span>
+</button>
+<button class="target-chip bg-primary-container text-on-primary-container p-2 flex flex-col items-start transition-all text-left group/btn" data-index="5" onclick="selectColossus(5)">
+<span class="font-label-tech-sm text-label-tech-sm text-on-primary-container/70 uppercase">06 // 殲滅中枢</span>
+<span class="font-headline-sm text-headline-sm uppercase font-bold text-on-primary-container truncate w-full">NÚCLEO ND</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-primary-container/90">THREAT: ARMAGEDÓN FINAL</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<div class="bg-surface-container-low p-space-lg flex flex-col gap-space-md shadow-xl">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm bg-surface-container-lowest/40 p-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-1 bg-surface-container-highest text-secondary font-label-tech-sm text-label-tech-sm uppercase tracking-widest font-bold" id="boss-kanji">殲滅中枢 // 終末特異点</span>
+<h2 class="font-display-lg text-display-lg uppercase tracking-tight text-primary" id="boss-name">NÚCLEO ND</h2>
+</div>
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/70">ID CLASIFICACIÓN:</span>
+<span class="text-secondary font-bold" id="boss-id">ND-EXT-06-APEX</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant uppercase font-bold">INTEGRIDAD ESTRUCTURAL TITÁNICA</span>
+<span class="text-primary-container font-bold text-label-tech-md font-label-tech-md" id="boss-hp">98,500,000 / 100,000,000 HP (98.5%)</span>
+</div>
+<div class="w-full h-4 bg-surface-container-lowest overflow-hidden flex">
+<div class="h-full bg-primary-container transition-all duration-500" id="boss-hp-bar" style="width: 98.5%"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm pt-space-xs">
+<div class="bg-surface-container p-space-sm flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 uppercase">ALTURA ESTIMADA</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold" id="boss-height">485 METROS</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/50">EQUIV: 140 PISOS</span>
+</div>
+<div class="bg-surface-container p-space-sm flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 uppercase">MASA SÍSMICA</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="boss-mass">1,820,000 TONELADAS</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/50">COLAPSO LOCAL DE GRAVEDAD</span>
+</div>
+<div class="bg-surface-container p-space-sm flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 uppercase">VECTOR DE IMPACTO</span>
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold" id="boss-origin">FALLA TECTÓNICA CENTRAL</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/50">SUB-NIVEL -1,200M</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-space-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container uppercase tracking-wider font-bold">[ INFORME TÁCTICO OPERATIVO ]</span>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed" id="boss-lore">
+              Monolito cilíndrico omnipotente con un ojo hiper-energético central. Es el ancla de mando biomecánica de la invasión kaiju sobre Japón. Canaliza pulsos orbitales de energía rosa y proyecta cuatro pilares satélite móviles capaces de desintegrar batallones mecanizados enteros en segundos.
+            </p>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-lg flex flex-col gap-space-md shadow-xl">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container uppercase font-bold tracking-widest">[ DIAGNÓSTICO BALÍSTICO // ANÁLISIS DE PUNTOS DÉBILES ]</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60">SENSORES SUBOCCIPITALES</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary-container font-bold uppercase" id="weakness-title-1">OJO CICLÓPEO CENTRAL</span>
+<span class="font-label-tech-sm text-label-tech-sm px-2 py-0.5 bg-surface-container-highest text-primary">MULTI-DAÑO x3.5</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant" id="weakness-desc-1">
+                Vulnerable exclusivamente durante la fase de carga del haz oblitador ND (intervalo de 6 segundos). Artillería cuántica de 800mm debe concentrar ráfagas cinéticas directas para interrumpir la condensación del plasma.
+              </p>
+<div class="w-full bg-surface-container-lowest h-1.5 mt-2">
+<div class="bg-primary-container h-full w-3/4"></div>
+</div>
+</div>
+<div class="bg-surface-container p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-secondary font-bold uppercase" id="weakness-title-2">ARTICULACIONES DE PILARES</span>
+<span class="font-label-tech-sm text-label-tech-sm px-2 py-0.5 bg-surface-container-highest text-secondary">MULTI-DAÑO x2.0</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant" id="weakness-desc-2">
+                Los cuatro brazos estructurales anclan la masa al lecho de roca. La detonación simultánea de cargas PEM antimateria en las tres coyunturas inferiores inmoviliza temporalmente la plataforma por 45 segundos.
+              </p>
+<div class="w-full bg-surface-container-lowest h-1.5 mt-2">
+<div class="bg-secondary-container h-full w-1/2"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-lg flex flex-col gap-space-md shadow-xl">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container uppercase font-bold tracking-widest">[ MECÁNICAS DE FASES DE COMBATE SEGÚN % VIDA ]</span>
+<span class="font-label-tech-sm text-label-tech-sm text-primary uppercase font-bold">MATRIZ DINÁMICA DE SUPERVIVENCIA</span>
+</div>
+<div class="flex flex-col gap-space-sm" id="phases-container">
+<div class="bg-surface-container p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex flex-col gap-1 max-w-xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 bg-surface-container-highest text-secondary font-label-tech-sm text-label-tech-sm font-bold">FASE 1 (100% - 75% HP)</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">PROTOCOLO: ANCLAJE TECTÓNICO</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Pulsos sísmicos periódicos cada 20s. Convoca drones biológicos menores e inflige daño por temblores de magnitud 8.2 en un radio de 5km.</p>
+</div>
+<span class="font-label-tech-md text-label-tech-md text-secondary font-bold">AMENAZA: MODERADA</span>
+</div>
+<div class="bg-surface-container p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex flex-col gap-1 max-w-xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 bg-tertiary-container text-on-tertiary-container font-label-tech-sm text-label-tech-sm font-bold">FASE 2 (74% - 30% HP)</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">PROTOCOLO: HAZ DE EXTINCIÓN VERTICAL</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">El ojo superior se abre completamente. Disparo de haz continuo que traza un arco de 360 grados calcinando todo refugio terrestre sin escudos térmicos ND.</p>
+</div>
+<span class="font-label-tech-md text-label-tech-md text-tertiary font-bold">AMENAZA: SEVERA</span>
+</div>
+<div class="bg-surface-container p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex flex-col gap-1 max-w-xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm font-bold">FASE 3 (29% - 0% HP)</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">PROTOCOLO: SOBRECARGA CRÍTICA FINAL</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Autodestrucción por fisión cuántica activada con temporizador de 180 segundos. Emisión constante de radiación letal y tormenta de micro-rayos por todo el mapa de operaciones.</p>
+</div>
+<span class="font-label-tech-md text-label-tech-md text-primary font-bold">AMENAZA: EXTREMA</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<div class="bg-surface-container-low p-space-lg flex flex-col gap-space-md shadow-xl">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container uppercase font-bold tracking-widest">[ CONTRAMEDIDAS DEFCON-1 ]</span>
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<button class="w-full p-space-md bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col text-left" onclick="triggerStrike('ION_ORBITAL')">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-bold uppercase">BOMBARDEO IÓNICO ORBITAL</span>
+<span class="font-label-tech-sm text-label-tech-sm px-1.5 py-0.5 bg-primary-container text-on-primary-container font-bold">DISPONIBLE</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Impacto de lanza cinética desde Satélite Sat-04. Desactiva escudos de campo por 15 segundos.</span>
+</button>
+<button class="w-full p-space-md bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col text-left" onclick="triggerStrike('ANTIMATERIAL')">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-secondary font-bold uppercase">ESCICIÓN SÍSMICA SUBTERRÁNEA</span>
+<span class="font-label-tech-sm text-label-tech-sm px-1.5 py-0.5 bg-surface-container-highest text-secondary font-bold">RECARGANDO (84s)</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Cargas de implosión perforantes para quebrar soportes estructurales de colosos pesados.</span>
+</button>
+<button class="w-full p-space-md bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col text-left" onclick="triggerStrike('SHIELD_OVERCHARGE')">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold uppercase">CÚPULA ELECTROMAGNÉTICA</span>
+<span class="font-label-tech-sm text-label-tech-sm px-1.5 py-0.5 bg-surface-container-highest text-on-surface-variant font-bold">ACTIVO EN SECTOR 07</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Mitiga un 65% de la radiación ionizante para escuadrones terrestres.</span>
+</button>
+</div>
+<div class="p-space-sm bg-surface-container-lowest flex flex-col gap-1">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 uppercase">AUTORIZACIÓN REQUERIDA:</span>
+<span class="font-label-tech-md text-label-tech-md text-primary font-bold">COMISIÓN CONJUNTA DE DEFENSA KAIJU // TOKIO</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-lg flex flex-col gap-space-md shadow-xl">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container uppercase font-bold tracking-widest">[ ESCÁNER DE RADIACIÓN TITÁNICA ]</span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary font-bold">948.2 μSv/h</span>
+</div>
+<div class="w-full h-32 bg-surface-container-lowest p-2 flex items-end gap-1">
+<div class="flex-1 bg-surface-container-highest hover:bg-primary transition-all" style="height: 40%"></div>
+<div class="flex-1 bg-surface-container-highest hover:bg-primary transition-all" style="height: 65%"></div>
+<div class="flex-1 bg-surface-container-highest hover:bg-primary transition-all" style="height: 55%"></div>
+<div class="flex-1 bg-surface-container-highest hover:bg-primary transition-all" style="height: 80%"></div>
+<div class="flex-1 bg-secondary-container hover:bg-primary transition-all" style="height: 92%"></div>
+<div class="flex-1 bg-secondary-container hover:bg-primary transition-all" style="height: 75%"></div>
+<div class="flex-1 bg-primary-container animate-pulse" style="height: 98%"></div>
+<div class="flex-1 bg-primary-container animate-pulse" style="height: 100%"></div>
+<div class="flex-1 bg-secondary-container hover:bg-primary transition-all" style="height: 88%"></div>
+<div class="flex-1 bg-surface-container-highest hover:bg-primary transition-all" style="height: 70%"></div>
+<div class="flex-1 bg-surface-container-highest hover:bg-primary transition-all" style="height: 60%"></div>
+<div class="flex-1 bg-surface-container-highest hover:bg-primary transition-all" style="height: 45%"></div>
+</div>
+<div class="flex items-center justify-between font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span>0.00 Hz (SUB-GRAVE)</span>
+<span>PICOS EN 42.8 Hz RESONANTE</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-lg flex flex-col gap-space-sm shadow-xl">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container uppercase font-bold tracking-widest">[ TRANSMISIÓN DE COMANDO TÁCTICO ]</span>
+<div class="p-space-sm bg-surface-container-lowest font-label-tech-sm text-label-tech-sm text-on-surface-variant flex flex-col gap-2">
+<div class="flex items-center justify-between text-secondary">
+<span>CANAL GENERAL MILITAR: #009-ALPHA</span>
+<span>AUDIO VIVO</span>
+</div>
+<p class="text-on-surface leading-tight font-body-sm text-body-sm">
+              "Todos los escuadrones mecanizados de la primera línea: preparen los anclajes de vacío. Si el Núcleo ND sincroniza con Resonancia, colapsará la infraestructura de todo el distrito Kanto."
+            </p>
+<span class="text-primary-container font-bold uppercase text-right">- General Asuka T.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  const bossData = [
+    {
+      name: "PUERTA DE ACERO",
+      kanji: "鋼鉄門 // 絶対防壁巨躯",
+      id: "ND-EXT-01-GATE",
+      hp: "85,000,000 / 85,000,000 HP (100%)",
+      hpPct: "100%",
+      height: "310 METROS",
+      mass: "2,450,000 TONELADAS",
+      origin: "SUBSECTOR KOBE DOCKS",
+      lore: "Fortaleza bípeda colosal blindada con placas de acero superconductor. Sus extremidades mecánicas aplastan formaciones de tanques, y su portal pectoral proyecta radiación sísmica concentrada hacia el horizonte metropolitano.",
+      w1_title: "CONMUTADOR PECTORAL ROJO",
+      w1_desc: "El núcleo rosa central que pulsa en su chasis. Si es impactado durante la apertura de ventilación, provoca un retroceso hidráulico que aturde a la criatura por 30 segundos.",
+      w2_title: "SERVOMOTORES DE PISTONES",
+      w2_desc: "Las juntas traseras de las dos piernas monumentales. Disparos directos con ojivas perforantes APFSDS de 120mm anulan el 40% de su movilidad de avance.",
+      phases: [
+        { phase: "FASE 1 (100% - 60% HP)", code: "BARRERA DE FONDO", desc: "Avanza en línea recta aplastando defensas. Despliega escudos frontales que anulan ataques balísticos frontales.", threat: "ALTA", color: "text-secondary" },
+        { phase: "FASE 2 (59% - 20% HP)", code: "DESCARGA DE PISTÓN SÍSMICO", desc: "Golpea el suelo con ambos puños colosales provocando ondas expansivas que derriban aeronaves a baja cota.", threat: "CRÍTICA", color: "text-tertiary" },
+        { phase: "FASE 3 (19% - 0% HP)", code: "COLAPSO TÉRMICO DE PUERTA", desc: "Abre de par en par su escotilla expulsando fuego fundido y rayos dispersos en un cono frontal devastador.", threat: "MORTAL", color: "text-primary" }
+      ]
+    },
+    {
+      name: "COLAPSO",
+      kanji: "崩壊体 // 壊死骨格",
+      id: "ND-EXT-02-FALL",
+      hp: "62,000,000 / 62,000,000 HP (100%)",
+      hpPct: "100%",
+      height: "280 METROS",
+      mass: "920,000 TONELADAS",
+      origin: "RUINAS DE SHINJUKU",
+      lore: "Esqueleto humanoide grotesco compuesto por vigas de rascacielos y carne biomecánica carbonizada. Sus brazos asimétricos y cables expuestos transmiten descargas eléctricas que inutilizan toda la red energética metropolitana.",
+      w1_title: "NÚCLEO TORÁCICO DESNUDO",
+      w1_desc: "La fractura esternal revela un órgano pulsante que emite chispas carmesí. Artillería electromagnética concentrada causa daño crítico sostenido.",
+      w2_title: "HACES DE TENDONES RETORCIDOS",
+      w2_desc: "Los cables que sujetan su brazo izquierdo. Cortarlos con misiles de corte térmico anula su capacidad para invocar arcos voltaicos aéreos.",
+      phases: [
+        { phase: "FASE 1 (100% - 70% HP)", code: "TORMENTA DIELÉCTRICA", desc: "Electrifica las calles anegadas de agua calcinando escuadrones a varios kilómetros a la redonda.", threat: "SEVERA", color: "text-secondary" },
+        { phase: "FASE 2 (69% - 35% HP)", code: "DESCARGA DE ARCO VOLTAICO", desc: "Concentra un relámpago que barre el cielo derribando cazas de interceptación y drones de reconocimiento.", threat: "MUY ALTA", color: "text-tertiary" },
+        { phase: "FASE 3 (34% - 0% HP)", code: "ESTALLIDO DE PULSO ELECTROMAGNÉTICO", desc: "Desencadena una explosión PEM masiva al morir que desactiva todo vehículo electrónico en 25 km.", threat: "CATASTRÓFICA", color: "text-primary" }
+      ]
+    },
+    {
+      name: "HORNO",
+      kanji: "灼熱炉 // 暴走溶融装甲",
+      id: "ND-EXT-03-FURNACE",
+      hp: "78,000,000 / 78,000,000 HP (100%)",
+      hpPct: "100%",
+      height: "260 METROS",
+      mass: "3,100,000 TONELADAS",
+      origin: "FOSA INDUSTRIAL DE OSAKA",
+      lore: "Autómata de blindaje esférico sobrecalentado que porta un martillo fundido masivo. Opera como una caldera nuclear andante que supera los 4,500°C en su núcleo, fundiendo el asfalto y convirtiendo rascacielos en magma líquido a su paso.",
+      w1_title: "REJILLAS DE VENTILACIÓN DORSAL",
+      w1_desc: "Las tres aberturas de escape térmico en su espalda. Aplicar fluidos criogénicos directamente desencadena un choque térmico devastador.",
+      w2_title: "CABEZAL DEL MARTILLO METÁLICO",
+      w2_desc: "El punto de contacto donde almacena el calor kinético. Impactos balísticos en el pomo reducen la velocidad de sus impactos sísmicos.",
+      phases: [
+        { phase: "FASE 1 (100% - 65% HP)", code: "MAREA DE METAL LÍQUIDO", desc: "Derrite el pavimento circundante reduciendo la movilidad de los aliados un 70%.", threat: "ALTA", color: "text-secondary" },
+        { phase: "FASE 2 (64% - 25% HP)", code: "MAZAZO DE COMBUSTIÓN", desc: "El martillo desata explosiones de magma direccionales capaces de arrasar distritos enteros.", threat: "SEVERA", color: "text-tertiary" },
+        { phase: "FASE 3 (24% - 0% HP)", code: "MELTDOWN INMINENTE", desc: "El chasis entero se ilumina al rojo vivo emitiendo un aura de daño térmico ambiental continuo.", threat: "CRÍTICA", color: "text-primary" }
+      ]
+    },
+    {
+      name: "CEMENTERIO",
+      kanji: "巨墓標 // 死灰の巨塊",
+      id: "ND-EXT-04-GRAVE",
+      hp: "91,000,000 / 91,000,000 HP (100%)",
+      hpPct: "100%",
+      height: "320 METROS",
+      mass: "4,200,000 TONELADAS",
+      origin: "COLINAS DE AOYAMA",
+      lore: "Gólem titánico forjado de lápidas milenarias, panteones, mausoleos derruidos y monolitos de piedra. Su mandíbula abierta expone un abismo rocoso del que emergen nubes de ceniza radioactiva y esquirlas afiladas como cuchillas.",
+      w1_title: "MAUSOLEO CLAVE DEL HOMBRO",
+      w1_desc: "El panteón grecorromano anclado en su hombro derecho actúa como pivote de masa. Su demolición hace que pierda el equilibrio durante 12 segundos.",
+      w2_title: "FAUCE CAVERNOSA",
+      w2_desc: "La cavidad central cuando brama. Permite disparar munición explosiva termobárica directamente a su matriz interna de roca fundida.",
+      phases: [
+        { phase: "FASE 1 (100% - 75% HP)", code: "LLUVIA DE MONOLITOS", desc: "Lanza proyectiles de piedra y lápidas de 50 toneladas contra convoyes de artillería a larga distancia.", threat: "ALTA", color: "text-secondary" },
+        { phase: "FASE 2 (74% - 30% HP)", code: "NIEBLA DE CENIZAS CÁUSTICAS", desc: "Reduce la visibilidad a cero e inutiliza sensores láser y cámaras térmicas del campo.", threat: "MUY ALTA", color: "text-tertiary" },
+        { phase: "FASE 3 (29% - 0% HP)", code: "BARRICADA DE SEPULCROS", desc: "Se envuelve en una coraza rocosa que regenera 2% de vida cada 10s hasta destruir sus 4 pilares.", threat: "EXTREMA", color: "text-primary" }
+      ]
+    },
+    {
+      name: "RESONANCIA",
+      kanji: "共鳴波動 // 精神震動胎児",
+      id: "ND-EXT-05-ECHO",
+      hp: "54,000,000 / 54,000,000 HP (100%)",
+      hpPct: "100%",
+      height: "350 METROS (LEVITACIÓN)",
+      mass: "0 TONELADAS (INMATERIAL)",
+      origin: "ANOMALÍA AÉREA DE ROPPONGI",
+      lore: "Aparición silueteada de múltiples extremidades y rostros retorcidos rodeada de ondas concéntricas de sonido destructivo. No toca el suelo: flota distorsionando el espacio electromagnético y provocando hemorragias cerebrales a los pilotos cercanos.",
+      w1_title: "ANILLO DE INTERFERENCIA MAGENTA",
+      w1_desc: "Los aros sonoros que la rodean. Interrumpir los armónicos con frecuencias inversas dispersa su escudo de dispersión cuántica.",
+      w2_title: "NEXO CORPORAL ESPIRAL",
+      w2_desc: "El tronco retorcido que unifica sus figuras. Vulnerable a ataques de partículas fotónicas ultraconcentradas que fijen su forma a la tercera dimensión.",
+      phases: [
+        { phase: "FASE 1 (100% - 70% HP)", code: "DESFASADOR PSÍQUICO", desc: "Provoca alucinaciones en el radar táctico creando decenas de firmas fantasma idénticas.", threat: "SEVERA", color: "text-secondary" },
+        { phase: "FASE 2 (69% - 25% HP)", code: "ONDA DE CHOQUE ULTRASÓNICA", desc: "Ondas circulares que desgarran el blindaje y revientan cristales en un radio de 12 kilómetros.", threat: "EXTREMA", color: "text-tertiary" },
+        { phase: "FASE 3 (24% - 0% HP)", code: "SILENCIO DE LA EXTINCIÓN", desc: "Absorbe toda energía circundante preparando una detonación acústica capaz de liquidar la vida celular.", threat: "APOCALÍPTICA", color: "text-primary" }
+      ]
+    },
+    {
+      name: "NÚCLEO ND",
+      kanji: "殲滅中枢 // 終末特異点",
+      id: "ND-EXT-06-APEX",
+      hp: "98,500,000 / 100,000,000 HP (98.5%)",
+      hpPct: "98.5%",
+      height: "485 METROS",
+      mass: "1,820,000 TONELADAS",
+      origin: "FALLA TECTÓNICA CENTRAL",
+      lore: "Monolito cilíndrico omnipotente con un ojo hiper-energético central. Es el ancla de mando biomecánica de la invasión kaiju sobre Japón. Canaliza pulsos orbitales de energía rosa y proyecta cuatro pilares satélite móviles capaces de desintegrar batallones mecanizados enteros en segundos.",
+      w1_title: "OJO CICLÓPEO CENTRAL",
+      w1_desc: "Vulnerable exclusivamente durante la fase de carga del haz oblitador ND (intervalo de 6 segundos). Artillería cuántica de 800mm debe concentrar ráfagas cinéticas directas para interrumpir la condensación del plasma.",
+      w2_title: "ARTICULACIONES DE PILARES",
+      w2_desc: "Los cuatro brazos estructurales anclan la masa al lecho de roca. La detonación simultánea de cargas PEM antimateria en las tres coyunturas inferiores inmoviliza temporalmente la plataforma por 45 segundos.",
+      phases: [
+        { phase: "FASE 1 (100% - 75% HP)", code: "PROTOCOLO: ANCLAJE TECTÓNICO", desc: "Pulsos sísmicos periódicos cada 20s. Convoca drones biológicos menores e inflige daño por temblores de magnitud 8.2 en un radio de 5km.", threat: "MODERADA", color: "text-secondary" },
+        { phase: "FASE 2 (74% - 30% HP)", code: "PROTOCOLO: HAZ DE EXTINCIÓN VERTICAL", desc: "El ojo superior se abre completamente. Disparo de haz continuo que traza un arco de 360 grados calcinando todo refugio terrestre sin escudos térmicos ND.", threat: "SEVERA", color: "text-tertiary" },
+        { phase: "FASE 3 (29% - 0% HP)", code: "PROTOCOLO: SOBRECARGA CRÍTICA FINAL", desc: "Autodestrucción por fisión cuántica activada con temporizador de 180 segundos. Emisión constante de radiación letal y tormenta de micro-rayos por todo el mapa de operaciones.", threat: "EXTREMA", color: "text-primary" }
+      ]
+    }
+  ];
+
+  let audioCtx = null;
+  let klaxonActive = false;
+  let sirenInterval = null;
+
+  function initAudio() {
+    if (!audioCtx) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContext();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+
+  function playSubBassPulse() {
+    initAudio();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(48, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(24, audioCtx.currentTime + 1.2);
+
+    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start();
+    osc.stop(audioCtx.currentTime + 1.2);
+  }
+
+  function playAlarmTone() {
+    initAudio();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+    osc.frequency.linearRampToValueAtTime(680, audioCtx.currentTime + 0.4);
+    osc.frequency.linearRampToValueAtTime(320, audioCtx.currentTime + 0.8);
+
+    gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.18, audioCtx.currentTime + 0.7);
+    gain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.8);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.8);
+  }
+
+  function toggleEmergencyKlaxon() {
+    initAudio();
+    klaxonActive = !klaxonActive;
+    const btn = document.getElementById('klaxon-btn');
+    const label = document.getElementById('klaxon-label');
+    const icon = document.getElementById('klaxon-icon');
+
+    if (klaxonActive) {
+      btn.classList.remove('bg-primary-container', 'text-on-primary-container');
+      btn.classList.add('bg-secondary-container', 'text-on-secondary-container');
+      label.innerText = 'SILENCIAR ALARMA SÍSMICA';
+      icon.innerText = 'volume_up';
+      playAlarmTone();
+      playSubBassPulse();
+      sirenInterval = setInterval(() => {
+        playAlarmTone();
+        if (Math.random() > 0.4) playSubBassPulse();
+      }, 900);
+    } else {
+      btn.classList.add('bg-primary-container', 'text-on-primary-container');
+      btn.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+      label.innerText = 'ALARMA EVACUACIÓN SÍSMICA';
+      icon.innerText = 'campaign';
+      clearInterval(sirenInterval);
+    }
+  }
+
+  function selectColossus(idx) {
+    const data = bossData[idx];
+    if (!data) return;
+
+    playSubBassPulse();
+
+    document.querySelectorAll('.target-chip').forEach((chip, i) => {
+      if (i === idx) {
+        chip.className = 'target-chip bg-primary-container text-on-primary-container p-2 flex flex-col items-start transition-all text-left group/btn';
+        chip.querySelector('.text-secondary-container')?.classList.replace('text-secondary-container', 'text-on-primary-container/70');
+        chip.querySelector('.text-on-surface')?.classList.replace('text-on-surface', 'text-on-primary-container');
+        chip.querySelector('.text-on-surface-variant')?.classList.replace('text-on-surface-variant', 'text-on-primary-container/90');
+      } else {
+        chip.className = 'target-chip bg-surface-container-high/90 hover:bg-primary-container hover:text-on-primary-container p-2 flex flex-col items-start transition-all text-left group/btn';
+      }
+    });
+
+    document.getElementById('boss-name').innerText = data.name;
+    document.getElementById('boss-kanji').innerText = data.kanji;
+    document.getElementById('boss-id').innerText = data.id;
+    document.getElementById('boss-hp').innerText = data.hp;
+    document.getElementById('boss-hp-bar').style.width = data.hpPct;
+    document.getElementById('boss-height').innerText = data.height;
+    document.getElementById('boss-mass').innerText = data.mass;
+    document.getElementById('boss-origin').innerText = data.origin;
+    document.getElementById('boss-lore').innerText = data.lore;
+
+    document.getElementById('weakness-title-1').innerText = data.w1_title;
+    document.getElementById('weakness-desc-1').innerText = data.w1_desc;
+    document.getElementById('weakness-title-2').innerText = data.w2_title;
+    document.getElementById('weakness-desc-2').innerText = data.w2_desc;
+
+    const phasesWrap = document.getElementById('phases-container');
+    phasesWrap.innerHTML = data.phases.map(p => `
+      <div class="bg-surface-container p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+        <div class="flex flex-col gap-1 max-w-xl">
+          <div class="flex items-center gap-space-xs">
+            <span class="px-2 py-0.5 bg-surface-container-highest text-secondary font-label-tech-sm text-label-tech-sm font-bold">${p.phase}</span>
+            <span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">${p.code}</span>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface">${p.desc}</p>
+        </div>
+        <span class="font-label-tech-md text-label-tech-md ${p.color} font-bold">AMENAZA: ${p.threat}</span>
+      </div>
+    `).join('');
+  }
+
+  function triggerStrike(type) {
+    playSubBassPulse();
+    const origText = document.getElementById('boss-hp').innerText;
+    document.getElementById('boss-hp').innerText = "[ TRANSMITIENDO DISPARO ORBITAL // IMPACTO ESTIMADO: 3s ]";
+    setTimeout(() => {
+      playAlarmTone();
+      document.getElementById('boss-hp').innerText = origText;
+    }, 3000);
+  }
+</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-4px_24px_rgba(0,0,0,0.4)]"><div class="w-full px-gutter-desktop py-space-xl flex flex-col gap-space-lg"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md"><div class="flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs"><span class="font-label-tech-sm text-label-tech-sm text-secondary-container uppercase font-bold tracking-widest">[ 防衛省特定作戦記録室 ]</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/50">// CLASSIFIED LEVEL 5 CLEARANCE ONLY</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-2xl">Operational Directive 88-Delta: Unauthorized access, telemetry breach, or replication of anti-kaiju bio-mechanic telemetry warrants court-martial. All orbital uplinks routed through Neo-Shinjuku Defense Terminal 01.</p></div><div class="flex flex-wrap items-center gap-space-md"><div class="px-space-md py-space-sm bg-surface-container flex flex-col"><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 uppercase">SYS_LATENCY</span><span class="font-label-tech-md text-label-tech-md text-secondary font-bold">0.0024 MS // SAT_04</span></div><div class="px-space-md py-space-sm bg-surface-container flex flex-col"><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 uppercase">SURVEILLANCE CIPHER</span><span class="font-label-tech-md text-label-tech-md text-primary font-bold">AES-GCM-512-ND</span></div></div></div><div class="flex flex-col md:flex-row items-center justify-between gap-space-md pt-space-md"><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/50 uppercase tracking-widest">© 2088 NIPPON DESTRUCTION TACTICAL COMMAND. ALL STRATEGIC RIGHTS RESERVED.</span><div class="flex items-center gap-space-lg"><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer uppercase">MIL-SPEC PROTOCOLS</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer uppercase">TELEMETRY FEED SPECS</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer uppercase">SECURE TERMINAL REBOOT</span></div></div></div></footer></body></html>

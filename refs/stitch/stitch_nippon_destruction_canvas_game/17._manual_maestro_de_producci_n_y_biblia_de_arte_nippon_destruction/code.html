@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "background": "#150e2b",
+          "on-surface": "#e8deff",
+          "primary-fixed-dim": "#ffb2bd",
+          "surface-variant": "#37304f",
+          "on-tertiary-container": "#412200",
+          "on-tertiary-fixed": "#2d1600",
+          "primary": "#ffb2bd",
+          "surface": "#150e2b",
+          "surface-tint": "#ffb2bd",
+          "on-secondary": "#3f2e00",
+          "on-primary-fixed-variant": "#900037",
+          "on-primary-fixed": "#400014",
+          "on-secondary-fixed-variant": "#5a4300",
+          "inverse-on-surface": "#332c4a",
+          "on-error-container": "#ffdad6",
+          "tertiary-fixed-dim": "#ffb871",
+          "on-primary-container": "#5a001f",
+          "primary-fixed": "#ffd9de",
+          "outline-variant": "#5c3f43",
+          "surface-bright": "#3c3554",
+          "secondary-fixed-dim": "#f7be00",
+          "on-tertiary-fixed-variant": "#6a3c00",
+          "primary-container": "#ff4e7c",
+          "secondary": "#ffe5b1",
+          "surface-container-low": "#1e1734",
+          "error-container": "#93000a",
+          "tertiary-container": "#c58239",
+          "on-secondary-fixed": "#251a00",
+          "inverse-surface": "#e8deff",
+          "secondary-fixed": "#ffdf99",
+          "on-secondary-container": "#6d5200",
+          "on-background": "#e8deff",
+          "outline": "#ab888c",
+          "error": "#ffb4ab",
+          "on-error": "#690005",
+          "surface-dim": "#150e2b",
+          "surface-container": "#221b38",
+          "surface-container-high": "#2c2543",
+          "on-tertiary": "#4a2800",
+          "tertiary": "#ffb871",
+          "on-primary": "#670025",
+          "surface-container-lowest": "#100926",
+          "secondary-container": "#fec300",
+          "inverse-primary": "#bc004b",
+          "tertiary-fixed": "#ffdcbe",
+          "on-surface-variant": "#e4bdc1",
+          "surface-container-highest": "#37304f"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "gutter-tablet": "1.25rem",
+          "space-xs": "0.25rem",
+          "space-md": "1rem",
+          "gutter-desktop": "1.5rem",
+          "margin-desktop": "3rem",
+          "gutter": "1rem",
+          "margin": "1rem",
+          "space-lg": "1.5rem",
+          "margin-tablet": "2rem",
+          "space-sm": "0.5rem",
+          "space-xl": "2.5rem"
+        },
+        "fontFamily": {
+          "label-tech-md": [
+            "JetBrains Mono"
+          ],
+          "label-tech-sm": [
+            "JetBrains Mono"
+          ],
+          "headline-sm": [
+            "Space Grotesk"
+          ],
+          "body-lg": [
+            "Chivo"
+          ],
+          "display-lg": [
+            "Space Grotesk"
+          ],
+          "body-md": [
+            "Chivo"
+          ],
+          "body-sm": [
+            "Chivo"
+          ],
+          "headline-lg": [
+            "Space Grotesk"
+          ],
+          "headline-md": [
+            "Space Grotesk"
+          ],
+          "display-lg-mobile": [
+            "Space Grotesk"
+          ],
+          "label-tech-lg": [
+            "JetBrains Mono"
+          ]
+        },
+        "fontSize": {
+          "label-tech-md": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.12em",
+              "fontWeight": "500"
+            }
+          ],
+          "label-tech-sm": [
+            "9px",
+            {
+              "lineHeight": "12px",
+              "letterSpacing": "0.16em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "0.05em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-lg": [
+            "56px",
+            {
+              "lineHeight": "64px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-md": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg-mobile": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "700"
+            }
+          ],
+          "label-tech-lg": [
+            "14px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0.08em",
+              "fontWeight": "500"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"><div class="h-20 w-full px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-label-tech-sm text-label-tech-sm text-secondary tracking-widest">[ 日本崩壊 // ND-SPEC ]</span><span class="h-1.5 w-1.5 rounded-full bg-primary-container animate-pulse"></span></div><span class="font-headline-md text-headline-md uppercase tracking-wider text-on-surface font-bold">NIPPON DESTRUCTION</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">SYS.VER 2.4.9 // SISTEMA DE EXTERMINIO 2D</span></div><div class="hidden xl:flex items-center gap-space-sm pl-space-md border-l border-outline-variant/40"><div class="flex flex-col bg-surface-container px-space-sm py-space-xs border border-primary-container/40"><span class="font-label-tech-sm text-label-tech-sm text-primary-container font-bold flex items-center gap-1"><span class="inline-block w-1.5 h-1.5 bg-primary-container"></span>DEFCON-1 ACTIVE</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">LAT 35.6762° N // LONG 139.6503° E</span></div></div></div><nav class="hidden lg:flex items-center gap-space-xs overflow-x-auto py-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold"><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="command-matrix" href="#">COMMAND MATRIX</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="hero-dossiers" href="#">HERO DOSSIERS</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="tactical-bestiary" href="#">TACTICAL BESTIARY</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="combat-arena" href="#">COMBAT ARENA</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="ui-architecture" href="#">UI ARCHITECTURE</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="chromatic-lab" href="#">CHROMATIC LAB</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="promo-keyart" href="#">PROMO KEYART</a><a aria-current="page" class="px-space-sm py-1 uppercase tracking-widest transition-colors whitespace-nowrap bg-primary-container text-on-primary-container font-bold" data-path="production-manual" href="#">PRODUCTION MANUAL</a></nav><div class="flex items-center gap-space-sm shrink-0"><div class="hidden sm:flex flex-col text-right"><span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-wider">[ 葛城指令官 // S-RANK ]</span><span class="font-label-tech-md text-label-tech-md text-on-surface uppercase font-bold">CMDR. KATSURAGI</span></div><div class="relative p-0.5 border border-primary-container"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XD5TbQjPklpiny-81DovFgi78IrHV8pOy6SpMYAC2gwvM1baNqk9rUKXL60kxvNBtFY4L-DSxXD85L12bXGuVkiYXb5ZB7alTB90GC_wrgc0XpWC14PZWD7aWLupoOzq4bN5-F-nSOGX-jXU-vb9oyR_xP_Blkmfk1OpGxd2Ux7uSqScJkbHJgAsdGpEVmt4mvLtF1Xk9r9TfLaWXOw2CXQwYifyAWfkVAFG1ofjwF-VvxqfmsuZV50w"/><span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 bg-secondary border border-surface-container-lowest rounded-full"></span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- TOP TELEMETRY PROTOCOL STRIP -->
+<div class="w-full bg-surface-container-lowest px-space-lg py-space-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-primary uppercase">[ PROD_SPEC // DOC. REF #17.MANUAL-MAESTRO ]</span>
+</div>
+<span class="text-outline-variant font-label-tech-sm text-label-tech-sm">|</span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-fixed">ESTATUS: APROBACIÓN CANÓNICA NIVEL S-RANK</span>
+<span class="text-outline-variant font-label-tech-sm text-label-tech-sm hidden md:inline">|</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/80 hidden md:inline">HASH: SHA256:8F77B0C1E492AA9D</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">LEDGER REGISTRY: 17/17 CERTIFIED</span>
+<span class="px-space-xs py-0.5 bg-surface-container font-label-tech-sm text-label-tech-sm text-secondary uppercase">ND-PROD-2025</span>
+</div>
+</div>
+<!-- MASTHEAD & HERO INTEL -->
+<section class="w-full px-space-lg py-space-xl bg-surface-container-low relative overflow-hidden">
+<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute right-1/3 bottom-0 w-80 h-80 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-4xl">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-tech-md text-label-tech-md text-primary bg-primary-container/20 px-space-xs py-0.5 uppercase tracking-widest">[ 17 // 制作規範・美術聖典 ]</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">OPERATIONAL DESIGN LEDGER</span>
+</div>
+<h1 class="font-display-lg text-display-lg uppercase tracking-tight text-on-surface font-bold">
+            MANUAL MAESTRO DE PRODUCCIÓN <br class="hidden sm:inline"/>
+<span class="text-primary-container">Y BIBLIA DE ARTE</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+            Documentación canónica, estándares gráficos de 24.0 FPS estricto, paleta cuádruple de ocaso tóxico y especificación técnica de la matriz íntegra de 17 entregables de combate.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm shrink-0">
+<button class="px-space-md py-space-sm bg-primary-container hover:bg-secondary transition-colors duration-200 text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wider flex items-center justify-center gap-space-xs shadow-lg shadow-primary-container/25" id="btn-export-manifest">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">file_download</span>
+<span>EXPORTAR MANIFIESTO JSON</span>
+</button>
+<a class="px-space-md py-space-sm bg-surface-container hover:bg-surface-bright text-secondary font-label-tech-md text-label-tech-md uppercase tracking-wider flex items-center justify-center gap-space-xs" href="#matrix-section">
+<span class="material-symbols-outlined">dataset</span>
+<span>VER MATRIZ 17/17</span>
+</a>
+</div>
+</div>
+<!-- ASSET INDEX QUICK TAPE (17 DELIVERABLES PREVIEWS) -->
+<div class="w-full bg-surface-container-lowest p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-md text-label-tech-md text-secondary uppercase tracking-widest flex items-center gap-2">
+<span class="inline-block w-2 h-2 bg-secondary"></span>
+            CATÁLOGO EXPEDIENTE VISUAL [ 17 NODOS REGISTRADOS ]
+          </span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/80">LATERAL CAROUSEL // HOVER INSPECTION ACTIVE</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-space-xs overflow-x-auto pb-space-xs">
+<!-- 1 -->
+<div class="bg-surface-container p-1.5 flex flex-col gap-1 group hover:bg-surface-bright transition-colors cursor-pointer" onclick="inspectAsset(1)">
+<div class="aspect-video w-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Nippon Destruction ruined neo-Tokyo skyline at sunset with storm clouds and female silhouette katana fighter hero splash 01" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZHA8oB9dIyDRquoE_C_uW_2AFKkfUnfacTgnduFjzB5i_YYfW_7bmzKCnk7Y46R_lcfXuJ2rJlcEmaij-RxbdI3mAtVjofvxpuzUQh0yKfYb1zvM3yq0VIUdoP2sEYB-Oj6cLOMpHa7igBdXbgMxT8kWF5gg7w8Nk24rN10HJFSFN47EBFyP3MNzCmVtr1reitKY66ofO1eNhsN5zGZvveruUjOJ-BAOE8-fs5rMoVeozN0-KWDM"/>
+<span class="absolute bottom-0.5 right-0.5 font-label-tech-sm text-label-tech-sm bg-surface-container-lowest/90 px-1 text-primary">#01</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface truncate">Splash Principal</span>
+</div>
+<!-- 2 -->
+<div class="bg-surface-container p-1.5 flex flex-col gap-1 group hover:bg-surface-bright transition-colors cursor-pointer" onclick="inspectAsset(2)">
+<div class="aspect-video w-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Action mock combat scene of ninja heroine dashing through cyborg samurai and giant riot shield mech in post-apocalyptic streets" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBB5LLuSRVEF_yY-g8WT-RRnxHvFzgn_h_UNItayCZbDBABISuEoGCpJQzgG7ncB2YWjsSZmWGUgC15binoMNspOi5-oaTStXrmyb2xWXnHfiWfDOhpXjgxv00DVlIze7X-H3e609esewf_Z8YNcTPu6E4KfT2rO2KNaY_29EHnulBxibQhoArdtgudRPezHSoRpkzBaZFygnHNjq6TDxP58uawJTbH11tzhEjgY5v19A-0ldCWbw"/>
+<span class="absolute bottom-0.5 right-0.5 font-label-tech-sm text-label-tech-sm bg-surface-container-lowest/90 px-1 text-primary">#02</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface truncate">Combat Mockup</span>
+</div>
+<!-- 3 -->
+<div class="bg-surface-container p-1.5 flex flex-col gap-1 group hover:bg-surface-bright transition-colors cursor-pointer" onclick="inspectAsset(3)">
+<div class="aspect-video w-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Technical color palette swatch sheet showing four tone stormy sunset gradient and warrior silhouettes against electric lightning" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqJDFZOVd3wTUV1sF_943fVEw4igOLSffpIhjrCsAE_Qkfn-GF6dnUZ4y-_DYP-v-FwE_Znq5UC_Zb4s9sNYKBdyXo37uvEP9Bbn-vgwejhIIAxx32z1AB9t-vssyynsAbdH24MVFFRu4Bp4BuCuirkpNIrUO1qaUB5o_RAl7-TPEXuZWE-hEP8N4dcU32US0IBCfraioGyFrZwed0ph63iR7MFOcL3wfTjVB2ThBmNta2V2D9ruU"/>
+<span class="absolute bottom-0.5 right-0.5 font-label-tech-sm text-label-tech-sm bg-surface-container-lowest/90 px-1 text-primary">#03</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface truncate">Color Lab Spec</span>
+</div>
+<!-- 4 -->
+<div class="bg-surface-container p-1.5 flex flex-col gap-1 group hover:bg-surface-bright transition-colors cursor-pointer" onclick="inspectAsset(4)">
+<div class="aspect-video w-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Key visual Sol Negro featuring cyber samurai standing atop fractured skyscraper watching a toxic solar eclipse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx8Yo7k_KOiWSmh6Ibk2eAGcbckmV3H1psWmEf-E4jszospjWo2-eHZ6zo5wmu9gTLN62kf6T0qbPdR-MfZU5dENQCAaU708A-JwUEw7xrlnlqWP0gJVDFBk285rLl0OuCGQXYa1zNovO5TM6qLn48iOV1QczDnGMdJOw_vkK7yZSdH4uT9E_wdIK1vzHi48XF_z8i_fBs8E0iFcgG6Vhjd_Q2ekomDeEljaLtlksZRwh_PI-OsuM"/>
+<span class="absolute bottom-0.5 right-0.5 font-label-tech-sm text-label-tech-sm bg-surface-container-lowest/90 px-1 text-primary">#04</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface truncate">Sol Negro Art</span>
+</div>
+<!-- 5 -->
+<div class="bg-surface-container p-1.5 flex flex-col gap-1 group hover:bg-surface-bright transition-colors cursor-pointer" onclick="inspectAsset(5)">
+<div class="aspect-video w-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Hero lineup sheet of four cybernetic resistance fighters in silhouettes with glowing neon pink and amber weapon edges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwPiQbGLt7Alh2PabHv6osLuRjcsHM2pRXNA4EW7qnaTOdul_PAYoLlUHeNy4Y4zz1CKsjR2bVlsdEXIhswXMxNOpAvchWrxohSfFfFNfpMYvX9DXtC0KUPi78MNkhoAX3cadNCXA7qEW_ObRjGNzyuFBNdkAjLQMMZx-Y8QYvRpB0vTlCOD94NY3KiSIEjQ9AAJQMX1rJ_SqWY0JrdifqVXtQrz66cPP4W7EaEnrdZHVw7cdZc8Y"/>
+<span class="absolute bottom-0.5 right-0.5 font-label-tech-sm text-label-tech-sm bg-surface-container-lowest/90 px-1 text-primary">#05</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface truncate">Hero Lineup</span>
+</div>
+<!-- 6 -->
+<div class="bg-surface-container p-1.5 flex flex-col gap-1 group hover:bg-surface-bright transition-colors cursor-pointer" onclick="inspectAsset(6)">
+<div class="aspect-video w-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Hero selector tactical UI interface showing character stats hexagon radar chart and military loadout slots" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6wBoc271Uiu8XMEjgsDP56VKRRuGKy3LKeRL6jRONFFK0lnCTjR1nb-5-_z5xJ_b1XW9vuMxY3maHvpTcZll5ysp-7lrXBFAt0Jw3RbvQv9L9Zf9ywqbpzBvVl2iIFmbZ097qYjWqz6-jqCbIPTVSUVY65yuQLSJg8fzY6q4Y1f-O4A6bGXqaUMYe_3hsJpdtPRCsyZTOeoOUssYYiXh_2HNSpvqp95HnRx_9jMnCS_MZWWQaLxY"/>
+<span class="absolute bottom-0.5 right-0.5 font-label-tech-sm text-label-tech-sm bg-surface-container-lowest/90 px-1 text-primary">#06</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface truncate">Selector UI</span>
+</div>
+<!-- 7 -->
+<div class="bg-surface-container p-1.5 flex flex-col gap-1 group hover:bg-surface-bright transition-colors cursor-pointer" onclick="inspectAsset(7)">
+<div class="aspect-video w-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Tactical bestiary drone swarms and corrupted ronin bio-mechanical enemy schematics in dark purple aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQMlXilIR_WPYAxLr89V0tVjTt1Js-SE5WKEPO4uoE2WEm_520DOqyQtfcKbaxpSz-nzRE-X5Gu98WAzVayVlKzd8XwRuKcWxFMU3wx6SBnY3zBAxqbhlemZeqjGi0q76S7YRpXH1xA6ICT83UnZet9hyu8CyjT7rqEPegRSToiFehKzfjFwV9KK1TkqfWtDO83MmrAmW298BFzeSrEjCRP7GyBEhm0ustnKgVycjsshs-6Zysd4Y"/>
+<span class="absolute bottom-0.5 right-0.5 font-label-tech-sm text-label-tech-sm bg-surface-container-lowest/90 px-1 text-primary">#07</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface truncate">Bestiario Nivel 1</span>
+</div>
+<!-- 8 -->
+<div class="bg-surface-container p-1.5 flex flex-col gap-1 group hover:bg-surface-bright transition-colors cursor-pointer" onclick="inspectAsset(8)">
+<div class="aspect-video w-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Subboss showcase of armored heavy enforcer Doble and Agresor with spiked kanabo club in ruined city" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg1V8QZK1XmNbkdxIEGC8Qv5r39_sZmf6m8v83o2iL7skruDwY2Tw5Z3ouSJu0VBD-eHDsZTBvgha6zLBt5urAudFxKnkaoUUOGeUihmaN2GHD2ZOziQPYaHsfhw0nFYISq-BxuLc-VCPGwcsKHTgXh8jNRbKBnYcq-f8MggvjDo8ZAQ2Iqgg1jEqWiJUy7Zx7hXc1g24uCmJa1_bQU8vU9Ax7MWXPHc3FSj-ZunDgX26tQPBa44Q"/>
+<span class="absolute bottom-0.5 right-0.5 font-label-tech-sm text-label-tech-sm bg-surface-container-lowest/90 px-1 text-primary">#08</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface truncate">Subjefes N2</span>
+</div>
+<!-- 9 -->
+<div class="bg-surface-container p-1.5 flex flex-col gap-1 group hover:bg-surface-bright transition-colors cursor-pointer" onclick="inspectAsset(9)">
+<div class="aspect-video w-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Gigantic colossus boss El Muro walking tank mech firing toxic particle beams across Shinjuku crater" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyIs7SlVez2RnhZ-yBIo0K8pwwo87_AB1UezM-LpfLp_4jvmwNqmnFRLO-sLVnwFEx9j5gOwyPx-mABhxCMjVH0TtI_M47MAFrgtWl-xx0n2_jbEp6Rz8FqCHlB2zZUU5l1Wa9JsTU5Tl-k7wxG_Hp1YjazPM5XGRrOx01JmnnHMAgCRRYXm_b5lyMTP91NbTwTzTLhft6jqSc_-WEBs2DJWIv0tB-DR232XWzdwHTXICBhRyohYk"/>
+<span class="absolute bottom-0.5 right-0.5 font-label-tech-sm text-label-tech-sm bg-surface-container-lowest/90 px-1 text-primary">#09</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface truncate">Jefes Supremos N3</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">
+<span class="text-secondary font-bold">[ 10 - 17: ]</span>
+<span>UI Kit, Wireframes HUD, Audio STEMS, Shaders GLSL, Promo Posters A/B, Sprite Sheet Atlas, Biblia Canónica.</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-primary uppercase font-bold">100% S-RANK VERIFICADO</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 1: MASTER DESIGN BIBLE (4 PILLARS) -->
+<section class="w-full px-space-lg py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-widest">[ SECCIÓN I // 原則体系 ]</span>
+<span class="w-12 h-0.5 bg-secondary"></span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface font-bold tracking-tight">
+        BIBLIA MAESTRA DE DISEÑO Y DESARROLLO 2D
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+        Parámetros operativos inamovibles para la dirección artística, matemática de frames y síntesis acústica en el motor de combate de Nippon Destruction.
+      </p>
+</div>
+<!-- 4 TIER BENTO GRID -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- PILLAR 01: ESTÉTICA Y COLOR -->
+<div class="bg-surface-container p-space-md flex flex-col justify-between gap-space-md relative overflow-hidden">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-primary bg-primary-container/20 px-space-xs py-0.5">MOD_01</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">VISUAL_SYS</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">
+            Tactical Hazard Noir &amp; 4-Tone Sunset
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Claroscuro estricto apoyado en siluetas negras absolutas (#000000) contrapuestas a la gradiente del ocaso tóxico de cuatro escalones.
+          </p>
+<!-- Gradient Swatch Strip -->
+<div class="flex flex-col gap-1 pt-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">GRADIENTE CANÓNICO CUÁDRUPLE:</span>
+<div class="h-6 w-full rounded flex overflow-hidden shadow-inner">
+<div class="flex-1 bg-surface" title="#150E2B Nocturne Purple"></div>
+<div class="flex-1 bg-[#4a2247]" title="#4A2247 Twilit Magenta"></div>
+<div class="flex-1 bg-[#a84a38]" title="#A84A38 Burnt Oxide"></div>
+<div class="flex-1 bg-[#f0a65a]" title="#F0A65A Amber Horizon"></div>
+</div>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 text-[8px]">
+<span>#150E2B</span>
+<span>#4A2247</span>
+<span>#A84A38</span>
+<span>#F0A65A</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-xs flex flex-col gap-1 font-label-tech-sm text-label-tech-sm">
+<div class="flex justify-between text-on-surface-variant">
+<span>HAZARD ACCENT:</span>
+<span class="text-primary-container font-bold">#FF2D6F (ROSA RUPTURA)</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>WARNING ACCENT:</span>
+<span class="text-secondary-fixed font-bold">#FFC400 (AMARILLO RAYO)</span>
+</div>
+</div>
+</div>
+<!-- PILLAR 02: ANIMACIÓN 2D & FRAME-RATE -->
+<div class="bg-surface-container p-space-md flex flex-col justify-between gap-space-md relative overflow-hidden">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary bg-secondary/10 px-space-xs py-0.5">MOD_02</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">PIPELINE_2D</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">
+            Pipeline Animación: 24.0 FPS Estricto
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Keyframes cel-shading en papel digital con lineart de 1px puro. Interpolación desactivada para preservar impacto cinematográfico de anime retro.
+          </p>
+<!-- SVG Frame Timeline Chart -->
+<div class="w-full bg-surface-container-lowest p-space-xs rounded flex flex-col gap-1">
+<span class="font-label-tech-sm text-label-tech-sm text-primary">TIMING HITSTOP &amp; SMMEAR:</span>
+<svg class="w-full h-12 text-primary" viewbox="0 0 200 48">
+<line class="opacity-30" stroke="currentColor" stroke-dasharray="2,2" stroke-width="1" x1="0" x2="200" y1="24" y2="24"></line>
+<!-- Anticipation Frame (1-4) -->
+<rect fill="currentColor" fill-opacity="0.2" height="16" width="30" x="5" y="16"></rect>
+<!-- Impact Smear Frame (5-6) -->
+<rect fill="#ff4e7c" height="32" width="20" x="40" y="8"></rect>
+<!-- Hitstop Freeze (7-12) -->
+<rect fill="#fec300" height="24" width="55" x="65" y="12"></rect>
+<!-- Recovery Followthrough (13-24) -->
+<rect fill="currentColor" fill-opacity="0.3" height="12" width="70" x="125" y="18"></rect>
+</svg>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm text-on-surface-variant/80 text-[8px]">
+<span>ANTICIPACIÓN (4F)</span>
+<span class="text-primary-container">HITSTOP (16F)</span>
+<span>RECOVERY (8F)</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-xs flex flex-col gap-1 font-label-tech-sm text-label-tech-sm">
+<div class="flex justify-between text-on-surface-variant">
+<span>CEL CONTOURS:</span>
+<span class="text-on-surface font-bold">1PX SOLID BLACK #000</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>SMEAR FRAMES:</span>
+<span class="text-secondary font-bold">DYNAMIC ARC MESH</span>
+</div>
+</div>
+</div>
+<!-- PILLAR 03: FÍSICA & MOTOR COMBATE -->
+<div class="bg-surface-container p-space-md flex flex-col justify-between gap-space-md relative overflow-hidden">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-tertiary bg-tertiary/10 px-space-xs py-0.5">MOD_03</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">PHYSICS_CORE</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">
+            Motor de Combate y Telemetría
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Ventanas de desvío (Parry) de precisión submilimétrica. Ruptura de guardia en acumulación cinética y ráfaga de choque supersónica.
+          </p>
+<!-- Metrics Panel -->
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<div class="bg-surface-container-lowest p-2 flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">PARRY WINDOW</span>
+<span class="font-headline-md text-headline-md font-bold text-secondary">4 - 8 F</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60">~66.6 MS TOLERANCE</span>
+</div>
+<div class="bg-surface-container-lowest p-2 flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">DASH VELOCITY</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">34.2 m/s</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60">BURST ACCELERATION</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-xs flex flex-col gap-1 font-label-tech-sm text-label-tech-sm">
+<div class="flex justify-between text-on-surface-variant">
+<span>INPUT BUFFER:</span>
+<span class="text-on-surface font-bold">5 FRAMES FIFO QUEUE</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>COMBO DECAY:</span>
+<span class="text-tertiary font-bold">1.4S INERTIA COOLDOWN</span>
+</div>
+</div>
+</div>
+<!-- PILLAR 04: PAISAJE SONORO & PROCEDURAL AUDIO -->
+<div class="bg-surface-container p-space-md flex flex-col justify-between gap-space-md relative overflow-hidden">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-primary-container bg-primary-container/20 px-space-xs py-0.5">MOD_04</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">AUDIO_ENGINE</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">
+            Paisaje Sonoro y Audio Procedural
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Frecuencias subsónicas tácticas (40Hz a 180Hz) para descargas de impacto, mezcladas con síntesis FM analógica para tajos de plasma.
+          </p>
+<!-- Audio Waveform Diagram -->
+<div class="w-full bg-surface-container-lowest p-space-xs rounded flex flex-col gap-1">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">SPECTRUM FREQ DISTRIBUTION:</span>
+<div class="h-12 w-full flex items-end justify-between gap-1 px-1">
+<span class="w-2 bg-primary-container h-8"></span>
+<span class="w-2 bg-primary-container h-10"></span>
+<span class="w-2 bg-primary-container h-6"></span>
+<span class="w-2 bg-secondary h-4"></span>
+<span class="w-2 bg-secondary h-7"></span>
+<span class="w-2 bg-secondary h-11"></span>
+<span class="w-2 bg-tertiary h-9"></span>
+<span class="w-2 bg-tertiary h-5"></span>
+<span class="w-2 bg-tertiary h-3"></span>
+<span class="w-2 bg-on-surface-variant h-2"></span>
+<span class="w-2 bg-on-surface-variant h-4"></span>
+<span class="w-2 bg-on-surface-variant h-1"></span>
+</div>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm text-on-surface-variant/80 text-[8px]">
+<span>40Hz BASS</span>
+<span>1.2kHz PLASMA</span>
+<span>18kHz RAYO</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-xs flex flex-col gap-1 font-label-tech-sm text-label-tech-sm">
+<div class="flex justify-between text-on-surface-variant">
+<span>SPATIAL CHANNELS:</span>
+<span class="text-on-surface font-bold">7.1 SURROUND MIL-SPEC</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>DYNAMIC DUCKING:</span>
+<span class="text-secondary font-bold">-6dB ON CRITICAL PARRY</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: CANONICAL 17/17 DELIVERABLES MATRIX (INTERACTIVE REGISTRY) -->
+<section class="w-full px-space-lg py-space-xl bg-surface-container-low flex flex-col gap-space-lg" id="matrix-section">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-widest">[ SECCIÓN II // 納品物台帳 ]</span>
+<span class="w-12 h-0.5 bg-secondary"></span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface font-bold tracking-tight">
+          MATRIZ COMPLETA DE ENTREGABLES DEL PROYECTO (17/17 ASSETS)
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Inventario estricto de assets aprobados con coordenadas de atlas de texturas, hash de verificación militar y opciones de telemetría en tiempo real.
+        </p>
+</div>
+<!-- Filter Switcher -->
+<div class="flex flex-wrap items-center gap-space-xs bg-surface-container-lowest p-1 rounded">
+<button class="filter-btn px-space-sm py-1 font-label-tech-sm text-label-tech-sm uppercase bg-primary-container text-on-primary-container font-bold rounded" onclick="filterMatrix('all')">TODOS (17)</button>
+<button class="filter-btn px-space-sm py-1 font-label-tech-sm text-label-tech-sm uppercase text-on-surface-variant hover:text-on-surface rounded" onclick="filterMatrix('visual')">ARTE CLAVE (6)</button>
+<button class="filter-btn px-space-sm py-1 font-label-tech-sm text-label-tech-sm uppercase text-on-surface-variant hover:text-on-surface rounded" onclick="filterMatrix('gameplay')">COMBATE &amp; HUD (6)</button>
+<button class="filter-btn px-space-sm py-1 font-label-tech-sm text-label-tech-sm uppercase text-on-surface-variant hover:text-on-surface rounded" onclick="filterMatrix('tech')">TÉCNICOS &amp; SPEC (5)</button>
+</div>
+</div>
+<!-- DATA TABLE CONTAINER -->
+<div class="w-full bg-surface-container overflow-x-auto shadow-2xl">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest text-secondary font-label-tech-sm text-label-tech-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md">ID</th>
+<th class="py-space-sm px-space-md">DENOMINACIÓN DE ASSET</th>
+<th class="py-space-sm px-space-md">CATEGORÍA</th>
+<th class="py-space-sm px-space-md">RESOLUCIÓN / FORMATO</th>
+<th class="py-space-sm px-space-md">COORDS ATLAS / RECURSO</th>
+<th class="py-space-sm px-space-md">CHECKSUM (CRC-32)</th>
+<th class="py-space-sm px-space-md text-right">ACCIÓN</th>
+</tr>
+</thead>
+<tbody class="font-label-tech-md text-label-tech-md divide-y divide-surface-container-lowest" id="matrix-table-body">
+<!-- ITEM 01 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="visual">
+<td class="py-space-sm px-space-md text-primary font-bold">01/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+<span>SPLASH SCREEN PRINCIPAL: "CIUDAD EN LLAMAS"</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">ARTE VISUAL</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">3840x2160 UHD // EXR</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.000, V:0.000]</td>
+<td class="py-space-sm px-space-md text-secondary">0x8B44A19F</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('01', 'SPLASH CIUDAD EN LLAMAS', 'Silueta central de heroína frente a Tokio ardiendo en llamas violetas y relámpagos ámbar.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 02 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="visual">
+<td class="py-space-sm px-space-md text-primary font-bold">02/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+<span>KEY ART CANÓNICO: "SOL NEGRO DEL APOCALIPSIS"</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">ARTE VISUAL</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">3840x2160 UHD // PNG-24</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.250, V:0.000]</td>
+<td class="py-space-sm px-space-md text-secondary">0xD2417CE0</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('02', 'KEY ART SOL NEGRO', 'Eclipse total con corona radioactiva sobre ruinas de Shibuya.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 03 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="visual">
+<td class="py-space-sm px-space-md text-primary font-bold">03/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-secondary"></span>
+<span>HERO LINEUP: ESCUADRÓN ND-09</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">ARTE VISUAL</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">4096x2048 // PSD MASTER</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.500, V:0.000]</td>
+<td class="py-space-sm px-space-md text-secondary">0x55AE293B</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('03', 'HERO LINEUP', 'Rika, Kurogane, Ren y Kaede en perfiles de altura y silueta técnica.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 04 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="gameplay">
+<td class="py-space-sm px-space-md text-primary font-bold">04/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+<span>HERO SELECTOR: TERMINAL MILITAR TÁCTICA</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">COMBATE &amp; HUD</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">1920x1080 UI LAYER</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.750, V:0.000]</td>
+<td class="py-space-sm px-space-md text-secondary">0x1AC78901</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('04', 'HERO SELECTOR UI', 'Matriz de asignación de operativos con biometría y ranuras de armas.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 05 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="gameplay">
+<td class="py-space-sm px-space-md text-primary font-bold">05/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+<span>TACTICAL BESTIARY N1: HOSTILES MENORES &amp; DRONES</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">COMBATE &amp; HUD</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">2048x2048 ATLAS</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.000, V:0.250]</td>
+<td class="py-space-sm px-space-md text-secondary">0x6EF02871</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('05', 'BESTIARIO N1', 'Drones Kamikaze Tipo-9 y samuráis infectados por nano-toxinas.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 06 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="gameplay">
+<td class="py-space-sm px-space-md text-primary font-bold">06/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+<span>SUBBOSSES N2: "DOBLE" Y "AGRESOR"</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">COMBATE &amp; HUD</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">2048x2048 ATLAS</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.250, V:0.250]</td>
+<td class="py-space-sm px-space-md text-secondary">0x3BC89E23</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('06', 'SUBBOSSES N2', 'Subjefes de guardia pesada con maza de demolición y espadón gemelo.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 07 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="gameplay">
+<td class="py-space-sm px-space-md text-primary font-bold">07/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-secondary"></span>
+<span>BOSSES N3: COLOSO BLINDADO "EL MURO"</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">COMBATE &amp; HUD</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">4096x4096 ATLAS MASTER</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.500, V:0.250]</td>
+<td class="py-space-sm px-space-md text-secondary">0x7F2218AB</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('07', 'BOSS EL MURO', 'Autómata balístico de 9 metros provisto de escudo térmico y núcleo de fisión.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 08 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="gameplay">
+<td class="py-space-sm px-space-md text-primary font-bold">08/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+<span>GAMEPLAY ARENA MOCKUP: COMBATE ACTIVO</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">COMBATE &amp; HUD</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">1920x1080 RENDER COMP</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.750, V:0.250]</td>
+<td class="py-space-sm px-space-md text-secondary">0x991CDE4F</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('08', 'GAMEPLAY MOCKUP', 'Secuencia de 99 HITS con tajo curvo fucsia, barras HP y lluvia tóxica.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 09 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="tech">
+<td class="py-space-sm px-space-md text-primary font-bold">09/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-tertiary"></span>
+<span>UI ARCHITECTURE: HUD SPECIFICATION &amp; GRIDS</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">TÉCNICOS &amp; SPEC</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">VECTOR SVG + JSON TOKEN</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.000, V:0.500]</td>
+<td class="py-space-sm px-space-md text-secondary">0x2213F900</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('09', 'UI ARCHITECTURE', 'Grilla modular de 12 columnas con barras inclinadas de vida y medidores de EX.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 10 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="tech">
+<td class="py-space-sm px-space-md text-primary font-bold">10/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-tertiary"></span>
+<span>CHROMATIC LAB: TABLA COLORIMÉTRICA CALIBRADA</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">TÉCNICOS &amp; SPEC</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">ICC PROFILE DCI-P3</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.250, V:0.500]</td>
+<td class="py-space-sm px-space-md text-secondary">0xCC551029</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('10', 'CHROMATIC LAB', 'Cartas espectrales DCI-P3 para fidelidad en pantallas OLED tácticas.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 11 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="visual">
+<td class="py-space-sm px-space-md text-primary font-bold">11/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+<span>PROMO POSTER A: "SISTEMA DE EXTERMINIO 2D"</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">ARTE VISUAL</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">B1 FORMAT (707x1000mm)</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.500, V:0.500]</td>
+<td class="py-space-sm px-space-md text-secondary">0xEE4188BA</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('11', 'PROMO POSTER A', 'Póster editorial impreso con tipografía vertical Kanji y barniz ultravioleta.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 12 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="visual">
+<td class="py-space-sm px-space-md text-primary font-bold">12/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+<span>PROMO POSTER B: "OCASO EN EL MONTE FUJI"</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">ARTE VISUAL</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">B1 FORMAT (707x1000mm)</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.750, V:0.500]</td>
+<td class="py-space-sm px-space-md text-secondary">0x1198DD03</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('12', 'PROMO POSTER B', 'Silueta del Monte Fuji quebrado por una torre de transmisión de microondas.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 13 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="gameplay">
+<td class="py-space-sm px-space-md text-primary font-bold">13/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-secondary"></span>
+<span>SPRITE ATLAS: EFECTOS VFX &amp; DESTELLOS DE CORTE</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">COMBATE &amp; HUD</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">4096x4096 PNG ATLAS</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[U:0.000, V:0.750]</td>
+<td class="py-space-sm px-space-md text-secondary">0x88FE7612</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('13', 'SPRITE ATLAS VFX', '140 fotogramas de cortes circulares fucsia, impactos de chispas y humo.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 14 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="tech">
+<td class="py-space-sm px-space-md text-primary font-bold">14/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-tertiary"></span>
+<span>AUDIO STEMS: MASTER OST COMBAT SUITE</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">TÉCNICOS &amp; SPEC</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">96kHz / 24-bit FLAC</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[MULTITRACK 16CH]</td>
+<td class="py-space-sm px-space-md text-secondary">0x44B5E19A</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('14', 'AUDIO STEMS SUITE', '8 capas interactivas stem que reaccionan proceduralmente a los HP del jugador.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 15 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="tech">
+<td class="py-space-sm px-space-md text-primary font-bold">15/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-tertiary"></span>
+<span>SHADER PACK: CRT SCANLINE &amp; GLITCH DISPLACEMENT</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">TÉCNICOS &amp; SPEC</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">GLSL / HLSL SOURCE</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[GPU PIPELINE V3]</td>
+<td class="py-space-sm px-space-md text-secondary">0x5511A9EF</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('15', 'SHADER PACK GLSL', 'Simulador de máscara de fósforo Sony Trinitron con aberración cromática.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 16 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="gameplay">
+<td class="py-space-sm px-space-md text-primary font-bold">16/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-secondary"></span>
+<span>HITBOX / HURTBOX REGISTRY: TABLAS MATRICIALES</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">COMBATE &amp; HUD</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">JSON TELEMETRY</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[COLLIDER DB V4]</td>
+<td class="py-space-sm px-space-md text-secondary">0x098B227C</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-on-surface transition-colors font-label-tech-sm text-label-tech-sm uppercase" onclick="inspectModal('16', 'HITBOX MATRIX DATA', 'Polígonos 2D de colisión para las 38 animaciones canónicas de Rika.')">INSPECCIONAR</button>
+</td>
+</tr>
+<!-- ITEM 17 -->
+<tr class="matrix-row hover:bg-surface-bright/50 transition-colors" data-cat="tech">
+<td class="py-space-sm px-space-md text-primary font-bold">17/17</td>
+<td class="py-space-sm px-space-md font-bold text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-primary-container animate-ping"></span>
+<span>MANUAL MAESTRO Y BIBLIA DE ARTE (ESTE DOCUMENTO)</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">TÉCNICOS &amp; SPEC</td>
+<td class="py-space-sm px-space-md font-mono text-on-surface">HTML5 SPEC // MIL-DOC</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">[MASTER REPOSITORY]</td>
+<td class="py-space-sm px-space-md text-primary">0xFFFFFFFF</td>
+<td class="py-space-sm px-space-md text-right">
+<button class="px-space-xs py-0.5 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold" onclick="inspectModal('17', 'MANUAL MAESTRO FINAL', 'Cúspide de la documentación y compilación ejecutiva de Nippon Destruction.')">ACTIVO</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- INTEGRITY STATUS STRIP -->
+<div class="bg-surface-container-lowest p-space-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-secondary text-headline-lg">verified</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">INTEGRIDAD TOTAL DEL REPOSITORIO: 100.0% NOMINAL</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">TODOS LOS 17 ENTREGABLES HAN SIDO COMPILADOS BAJO PROTOCOLO DEFCON-1.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-sm bg-surface-container hover:bg-surface-bright text-secondary font-label-tech-md text-label-tech-md uppercase flex items-center gap-space-xs" id="btn-copy-manifest">
+<span class="material-symbols-outlined">content_copy</span>
+<span>COPIAR CHECKSUMS</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 3: MIL-SPEC TERMINAL CONSOLE & AUDIT REPORT -->
+<section class="w-full px-space-lg py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-primary uppercase tracking-widest">[ SECCIÓN III // 司令部監査端末 ]</span>
+<span class="w-12 h-0.5 bg-primary"></span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface font-bold tracking-tight">
+        CONSOLA TÁCTICA DE AUDITORÍA Y COMPILACIÓN
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+        Interacción directa con el compilador mil-spec. Ejecute rutinas de comprobación y verificación de frames en tiempo real.
+      </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md">
+<!-- CLI / TERMINAL LOG -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-container">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-surface-bright"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant ml-2">TYO-DEFCON1 // TTY_CONSOLE_V2.4</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">[ BAUD: 115200 // BUFFER OK ]</span>
+</div>
+<!-- Terminal Output Screen -->
+<div class="h-64 overflow-y-auto font-label-tech-sm text-label-tech-sm flex flex-col gap-1 text-on-surface-variant/90 pr-space-xs" id="terminal-screen">
+<div><span class="text-secondary">[08:44:01.002]</span> INIT NIPPON DESTRUCTION BUILD KERNEL...</div>
+<div><span class="text-secondary">[08:44:01.120]</span> VALIDATING 4-TONE GRADIENT PROFILE #150E2B -&gt; #F0A65A... <span class="text-primary font-bold">[PASSED]</span></div>
+<div><span class="text-secondary">[08:44:01.340]</span> CHECKING 24.0 FPS TIMELINE RESTRICTION MATRIX... <span class="text-primary font-bold">[PASSED]</span></div>
+<div><span class="text-secondary">[08:44:01.590]</span> PARSING ASSETS 01 THROUGH 17 IN ATLAS ROOT DIRECTORY...</div>
+<div><span class="text-secondary">[08:44:01.810]</span> INGESTING SHADERS: CRT_SONY_TRINITRON.GLSL ... OK</div>
+<div><span class="text-secondary">[08:44:02.040]</span> PARRY TOLERANCE CALCULATED AT 66.66ms (4-8 FRAMES) ... OK</div>
+<div><span class="text-secondary">[08:44:02.210]</span> SUBSONIC BASS FREQ 40Hz DUCKING PROFILE VERIFIED ... OK</div>
+<div class="text-primary"><span class="text-secondary">[08:44:02.400]</span> ALL 17 ARTIFACTS VERIFIED UNDER MIL-SPEC DEFCON-1 PROTOCOL.</div>
+<div class="text-on-surface font-bold">&gt; SISTEMA LISTO PARA COMPILACIÓN FINAL DE PRODUCCIÓN.</div>
+</div>
+<!-- Prompt input simulation -->
+<div class="flex items-center gap-space-xs pt-space-xs border-t border-surface-container">
+<span class="text-primary font-bold">&gt;_</span>
+<input class="w-full bg-transparent font-label-tech-md text-label-tech-md text-secondary placeholder-on-surface-variant/40 focus:outline-none" id="term-input" placeholder="Escriba un comando (ej: 'audit', 'verify', 'clear', 'export')..." type="text"/>
+<button class="px-space-sm py-1 bg-surface-container hover:bg-surface-bright text-on-surface font-label-tech-sm text-label-tech-sm uppercase" id="btn-term-run">EJECUTAR</button>
+</div>
+</div>
+<!-- AUDIT CERTIFICATE CARD -->
+<div class="bg-surface-container p-space-md flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary bg-secondary/10 px-space-xs py-0.5">S-RANK CERT</span>
+<span class="material-symbols-outlined text-primary-container">military_tech</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">
+            CERTIFICADO DE DESPLIEGUE FINAL
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Emitido por el Noveno Comando Táctico de Defensa. La obra "Nippon Destruction" cumple con los parámetros canónicos de dirección de arte 2D y pipeline de videojuegos de exterminio.
+          </p>
+<div class="bg-surface-container-lowest p-space-sm flex flex-col gap-space-xs mt-space-xs">
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant">RESPONSABLE:</span>
+<span class="text-on-surface font-bold">CMDR. KATSURAGI</span>
+</div>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant">CALIFICACIÓN:</span>
+<span class="text-secondary font-bold">S-RANK OPTIMAL</span>
+</div>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant">FECHA PROTOCOLO:</span>
+<span class="text-on-surface font-bold">2025.10.31 // 23:59 JST</span>
+</div>
+</div>
+</div>
+<button class="w-full py-space-sm bg-primary-container hover:bg-secondary hover:text-on-secondary text-on-primary-container font-headline-sm text-headline-sm uppercase transition-colors tracking-wider flex items-center justify-center gap-space-xs" onclick="triggerVerificationRipple()">
+<span class="material-symbols-outlined">gavel</span>
+<span>RATIFICAR AUDITORÍA</span>
+</button>
+</div>
+</div>
+</section>
+<!-- MODAL INSPECTOR DIALOG -->
+<div class="fixed inset-0 z-50 bg-surface-container-lowest/80 backdrop-blur-md hidden items-center justify-center p-space-md" id="inspector-modal">
+<div class="bg-surface-container max-w-xl w-full p-space-lg flex flex-col gap-space-md shadow-2xl relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-primary uppercase">[ TELEMETRÍA DE ENTREGABLE ]</span>
+<span class="px-space-xs py-0.5 bg-primary-container/20 text-primary-container font-label-tech-sm text-label-tech-sm font-bold" id="modal-asset-id">#01</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="closeModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-md text-headline-md uppercase text-on-surface font-bold" id="modal-asset-title">TITULO DEL ASSET</h4>
+<p class="font-body-md text-body-md text-on-surface-variant" id="modal-asset-desc">Descripción técnica del recurso.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-sm flex flex-col gap-1 font-label-tech-sm text-label-tech-sm">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">STATUS:</span>
+<span class="text-secondary font-bold">APPROVED FOR CANONICAL DISTRIBUTION</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">ENCODING:</span>
+<span class="text-on-surface">RAW MATRIX ASSET // S-RANK 24FPS</span>
+</div>
+</div>
+<div class="flex justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-space-xs bg-surface-bright hover:bg-surface-variant text-on-surface font-label-tech-sm text-label-tech-sm uppercase" onclick="closeModal()">CERRAR</button>
+<button class="px-space-md py-space-xs bg-primary-container hover:bg-secondary text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold" onclick="alert('Asset binario descargado a la memoria caché local.'); closeModal();">DESCARGAR DATOS</button>
+</div>
+</div>
+</div>
+<!-- INTERACTIVE SCRIPT -->
+<script>
+    function inspectModal(id, title, desc) {
+      document.getElementById('modal-asset-id').innerText = '#' + id;
+      document.getElementById('modal-asset-title').innerText = title;
+      document.getElementById('modal-asset-desc').innerText = desc;
+      const modal = document.getElementById('inspector-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('inspector-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function inspectAsset(num) {
+      const titles = [
+        "SPLASH CIUDAD EN LLAMAS",
+        "GAMEPLAY ARENA MOCKUP",
+        "COLOR LAB PALETTE SPEC",
+        "KEY ART SOL NEGRO",
+        "HERO LINEUP RESISTANCE",
+        "HERO SELECTOR UI",
+        "TACTICAL BESTIARY N1",
+        "SUBBOSSES N2 'DOBLE & AGRESOR'",
+        "BOSSES N3 'EL MURO'"
+      ];
+      const desc = "Asset visual canónico #" + num + " del pipeline de Nippon Destruction. Resuelto en cel-shading puro a 24.0 FPS con perfiles de iluminación de ocaso tóxico.";
+      inspectModal(String(num).padStart(2, '0'), titles[num - 1] || ("ASSET #" + num), desc);
+    }
+
+    function filterMatrix(category) {
+      const rows = document.querySelectorAll('.matrix-row');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold');
+        btn.classList.add('text-on-surface-variant');
+      });
+      event.target.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold');
+      event.target.classList.remove('text-on-surface-variant');
+
+      rows.forEach(row => {
+        if (category === 'all' || row.getAttribute('data-cat') === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    document.getElementById('btn-export-manifest').addEventListener('click', () => {
+      const manifest = {
+        project: "Nippon Destruction (ND)",
+        doc_type: "Manual Maestro de Producción y Biblia de Arte",
+        deliverables_count: 17,
+        status: "S-RANK_CERTIFIED",
+        fps: 24.0,
+        color_palette: ["#150E2B", "#4A2247", "#A84A38", "#F0A65A"],
+        accents: { hazard: "#FF2D6F", warning: "#FFC400", light: "#F2DCC0" },
+        assets_verified: [
+          "01. Splash 1", "02. Sol Negro", "03. Hero Lineup", "04. Hero Selector",
+          "05. Bestiary N1", "06. Subbosses N2", "07. Bosses N3", "08. Gameplay Mock",
+          "09. UI Architecture", "10. Chromatic Lab", "11. Poster A", "12. Poster B",
+          "13. Sprite Atlas", "14. Audio STEMS", "15. Shaders GLSL", "16. Hitboxes", "17. Manual Maestro"
+        ]
+      };
+      const blob = new Blob([JSON.stringify(manifest, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ND_PRODUCTION_MANIFEST_17_17.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('btn-copy-manifest').addEventListener('click', () => {
+      navigator.clipboard.writeText("ND-CRC32-COLLECTION: 0x8B44A19F, 0xD2417CE0, 0x55AE293B, 0x1AC78901, 0x6EF02871, 0x3BC89E23, 0x7F2218AB, 0x991CDE4F, 0x2213F900, 0xCC551029, 0xEE4188BA, 0x1198DD03, 0x88FE7612, 0x44B5E19A, 0x5511A9EF, 0x098B227C, 0xFFFFFFFF");
+      alert("Checksums hexadecimales copiados al portapapeles.");
+    });
+
+    function triggerVerificationRipple() {
+      const term = document.getElementById('terminal-screen');
+      const stamp = document.createElement('div');
+      stamp.className = "text-secondary font-bold";
+      stamp.innerHTML = "[AUDITORÍA CONFIRMADA] CMDR. KATSURAGI FIRMÓ EL PROTOCOLO ND-2025. CIERRE DE LEDGER EXITOSO.";
+      term.appendChild(stamp);
+      term.scrollTop = term.scrollHeight;
+      alert("Auditoría canónica ratificada. Estado de producción: SELLADO.");
+    }
+
+    const termInput = document.getElementById('term-input');
+    const termRun = document.getElementById('btn-term-run');
+    const termScreen = document.getElementById('terminal-screen');
+
+    function runCmd() {
+      const val = termInput.value.trim().toLowerCase();
+      if (!val) return;
+      const line = document.createElement('div');
+      const time = new Date().toTimeString().split(' ')[0];
+
+      if (val === 'clear') {
+        termScreen.innerHTML = '';
+        termInput.value = '';
+        return;
+      } else if (val === 'audit' || val === 'verify') {
+        line.innerHTML = `<span class="text-secondary">[${time}]</span> RE-CHECK: 17/17 ASSETS AUDITED. ALL SYSTEM SIGNATURES COMPLIANT (S-RANK).`;
+      } else if (val === 'export') {
+        document.getElementById('btn-export-manifest').click();
+        line.innerHTML = `<span class="text-secondary">[${time}]</span> JSON MANIFEST GENERATED AND STREAMED TO LOCAL STACK.`;
+      } else {
+        line.innerHTML = `<span class="text-primary-container">[${time}] COMANDO DESCONOCIDO '${val}'. INTENTE 'audit', 'verify', 'export', 'clear'.</span>`;
+      }
+      termScreen.appendChild(line);
+      termScreen.scrollTop = termScreen.scrollHeight;
+      termInput.value = '';
+    }
+
+    termRun.addEventListener('click', runCmd);
+    termInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') runCmd();
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-md"><div class="w-full px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex flex-wrap items-center gap-space-md"><div class="flex items-center gap-space-xs"><span class="inline-block w-2 h-2 bg-secondary rounded-full animate-ping"></span><span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">MIL-SPEC LATENCY: 0.0024 MS // SAT_04</span></div><span class="text-outline-variant hidden sm:inline">|</span><div class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/80 uppercase">CIPHER: AES-GCM-512-ND // NODE: TYO-SECTOR-09</div></div><div class="flex flex-wrap items-center gap-space-md"><div class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60">[ 第九戦術防衛司令部 // NIPPON DESTRUCTION ] © 2025. OPERATIONAL PROTOCOL STRICTLY ENFORCED.</div><div class="font-label-tech-sm text-label-tech-sm text-primary uppercase border border-outline-variant/50 px-space-xs py-0.5">GRID: LIVE</div></div></div></footer></body></html>

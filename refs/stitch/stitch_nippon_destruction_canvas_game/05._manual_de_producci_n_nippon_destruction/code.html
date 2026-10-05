@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#f7be00", "surface-container-lowest": "#100926", "on-surface": "#e8deff", "on-error-container": "#ffdad6", "outline": "#ab888c", "on-secondary-fixed": "#251a00", "on-primary-fixed": "#400014", "inverse-on-surface": "#332c4a", "on-tertiary": "#4a2800", "surface-variant": "#37304f", "primary-container": "#ff4e7c", "on-primary-container": "#5a001f", "on-tertiary-container": "#412200", "surface-tint": "#ffb2bd", "on-surface-variant": "#e4bdc1", "on-error": "#690005", "inverse-surface": "#e8deff", "primary-fixed-dim": "#ffb2bd", "error": "#ffb4ab", "surface-bright": "#3c3554", "surface-container-high": "#2c2543", "secondary-fixed": "#ffdf99", "on-tertiary-fixed": "#2d1600", "primary": "#ffb2bd", "on-primary": "#670025", "secondary-container": "#fec300", "background": "#150e2b", "on-tertiary-fixed-variant": "#6a3c00", "surface-container-highest": "#37304f", "on-primary-fixed-variant": "#900037", "surface-container": "#221b38", "error-container": "#93000a", "primary-fixed": "#ffd9de", "on-background": "#e8deff", "on-secondary-container": "#6d5200", "inverse-primary": "#bc004b", "tertiary": "#ffb871", "on-secondary-fixed-variant": "#5a4300", "tertiary-fixed-dim": "#ffb871", "tertiary-container": "#c58239", "tertiary-fixed": "#ffdcbe", "surface-container-low": "#1e1734", "surface-dim": "#150e2b", "surface": "#150e2b", "secondary": "#ffe5b1", "on-secondary": "#3f2e00", "outline-variant": "#5c3f43" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-tablet": "2rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "margin": "1rem", "gutter-tablet": "1.25rem", "space-xl": "2.5rem", "space-md": "1rem", "space-sm": "0.5rem", "margin-desktop": "3rem" }, "fontFamily": { "headline-lg": [ "Space Grotesk" ], "label-tech-md": [ "JetBrains Mono" ], "body-sm": [ "Chivo" ], "display-lg": [ "Space Grotesk" ], "label-tech-sm": [ "JetBrains Mono" ], "body-md": [ "Chivo" ], "headline-md": [ "Space Grotesk" ], "label-tech-lg": [ "JetBrains Mono" ], "display-lg-mobile": [ "Space Grotesk" ], "body-lg": [ "Chivo" ], "headline-sm": [ "Space Grotesk" ] }, "fontSize": { "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "0.02em", "fontWeight": "700" } ], "label-tech-md": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "500" } ], "body-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-tech-sm": [ "9px", { "lineHeight": "12px", "letterSpacing": "0.16em", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "label-tech-lg": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "500" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.05em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md"><div class="h-20 w-full px-gutter-desktop flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex flex-col"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm uppercase text-primary tracking-wider">日本崩壊 // NIPPON DESTRUCTION</span><span class="px-space-xs py-0.5 bg-primary-container/20 text-primary font-label-tech-sm text-label-tech-sm uppercase tracking-widest">MIL-SPEC ARCHIVE v2.4</span></div><div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant"><span class="text-secondary">[ZONE-0 Tokyo Extinction Basin]</span><span>GRID-REF: 35.6762° N, 139.6503° E</span></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="prologo-cinematico" href="#">01. PRÓLOGO CINEMÁTICO</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="seleccion-de-heroes" href="#">02. SELECCIÓN DE HÉROES</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="bestiario-de-amenazas" href="#">03. BESTIARIO DE AMENAZAS</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="arena-combat-hud" href="#">04. ARENA &amp; COMBAT HUD</a><a aria-current="page" class="px-space-sm py-1.5 uppercase transition-colors bg-primary-container text-on-primary-container font-semibold" data-path="manual-de-produccion" href="#">05. MANUAL DE PRODUCCIÓN</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-high"><span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span><span class="font-label-tech-sm text-label-tech-sm text-primary uppercase">ESTADO: CRÍTICO // EXTINCIÓN ND</span></div><button class="hidden lg:flex items-center gap-space-xs px-space-sm py-1 bg-secondary-container text-on-secondary-container font-label-tech-sm text-label-tech-sm uppercase font-semibold hover:bg-secondary-fixed transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">volume_up</span>ALERTA ND</button><div class="flex flex-col text-right font-label-tech-sm text-label-tech-sm text-on-surface-variant"><span class="text-secondary font-semibold">23:59:41 UTC</span><span>ND-DEFCON: LEVEL 1</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 pb-16 bg-surface"><div class="flex flex-col w-full">
+<!-- TOKENS & SYSTEM BAR -->
+<div class="w-full px-gutter-desktop py-space-sm bg-surface-container-lowest flex flex-wrap items-center justify-between gap-space-md shadow-md">
+<div class="flex items-center gap-space-md">
+<span class="px-space-xs py-0.5 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase">MIL-SPEC 05 // DOCS</span>
+<span class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-wider">MANUAL DE PRODUCCIÓN &amp; BIBLIA TÉCNICA</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant hidden md:inline">[SPEC_VER: 4.8.1-RAW // NATIVE 16:9 4K]</span>
+</div>
+<div class="flex items-center gap-space-sm font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span class="text-secondary">[PIPELINE: VECTOR CINEMATIC ANIME]</span>
+<span class="text-primary-container">DEFCON-1 LOCK</span>
+<span class="px-2 py-0.5 bg-surface-container text-secondary font-label-tech-sm text-label-tech-sm">REVISION FINAL // TOKYO-0</span>
+</div>
+</div>
+<!-- SECTION 1: MASTER KEY VISUALS PANORAMIC THEATER (16:9 VIEWPORT) -->
+<section class="w-full px-gutter-desktop py-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-widest">
+<span>[ 第五防衛書庫 ]</span>
+<span>KEY VISUAL MASTER REPOSITORY</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface tracking-tight">01. GALERÍA DE KEY VISUALS DE ALTA FIDELIDAD</h2>
+</div>
+<!-- VISUAL SELECTOR SWITCHBOARD -->
+<div class="flex items-center gap-space-xs bg-surface-container p-1 rounded-sm shadow-sm" id="view-switcher">
+<button class="px-space-md py-2 font-label-tech-sm text-label-tech-sm uppercase transition-all bg-primary-container text-on-primary-container font-semibold shadow-sm flex items-center gap-1.5" id="btn-promo" onclick="switchVisual('promo')" type="button">
+<span class="material-symbols-outlined text-[14px]">movie</span>
+          01. PÓSTER OFICIAL
+        </button>
+<button class="px-space-md py-2 font-label-tech-sm text-label-tech-sm uppercase transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-1.5" id="btn-keyart" onclick="switchVisual('keyart')" type="button">
+<span class="material-symbols-outlined text-[14px]">wb_sunny</span>
+          02. ARTE CLAVE SOL NEGRO
+        </button>
+<button class="px-space-md py-2 font-label-tech-sm text-label-tech-sm uppercase transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-1.5" id="btn-splash" onclick="switchVisual('splash')" type="button">
+<span class="material-symbols-outlined text-[14px]">subtitles</span>
+          03. TITLE CARD SPLASH
+        </button>
+</div>
+</div>
+<!-- CINEMATIC STAGE: 16:9 ASPECT CONTAINER -->
+<div class="relative w-full aspect-video max-h-[720px] bg-surface-container-lowest rounded-sm overflow-hidden shadow-xl flex items-center justify-center">
+<!-- FRAME A: PROMO LANDSCAPE -->
+<div class="absolute inset-0 w-full h-full transition-opacity duration-500 opacity-100 flex items-center justify-center" id="art-promo">
+<img alt="Widescreen Promo Poster 16:9 ND Core" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1US4T2dZwg2Dlxhp6CVrmCNm295HBUiV0RvP1-D6KHjE5ivkKglK5Y0dRIQ9BkCcqlmLmAowgXO_G4_HeqEDnMbtUJ6gShyGvtsojuIp90m2FrgOtGqhq86XO9KGw21ZFHr1ShRPyf6KcnF5e3m2QvcOf4q4Z2J5kCvyUqmzSm_PMqnCFU-C5bNJkYd2vuUchVq-kHjf6N7qphMIG_XIDfpo-0vA3hbOPU2a7Cv-MV-mbACiz5kbL1q"/>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/80 to-transparent p-space-lg flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="max-w-2xl">
+<span class="px-space-xs py-0.5 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase">ASSET ID: PROMO_LANDSCAPE_16x9</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mt-1">LOS 4 HÉROES VS NÚCLEO SUPREMO ND</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Póster cinematográfico colosal de Tokyo devastado. Contraste de silueta pura con relámpagos ámbar y ojo colosal magenta del gigante sobre la autopista derruida.</p>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container/90 backdrop-blur-md px-space-md py-space-sm rounded-sm">
+<div class="flex flex-col font-label-tech-sm text-label-tech-sm text-right">
+<span class="text-secondary font-semibold">1376 x 768 px // 1.79 AR</span>
+<span class="text-on-surface-variant">COLOR REC.2020 WIDE</span>
+</div>
+<a class="px-space-sm py-1.5 bg-primary text-on-primary font-label-tech-sm text-label-tech-sm uppercase flex items-center gap-1 hover:bg-primary-container transition-colors" href="https://lh3.googleusercontent.com/aida/AEtjO1US4T2dZwg2Dlxhp6CVrmCNm295HBUiV0RvP1-D6KHjE5ivkKglK5Y0dRIQ9BkCcqlmLmAowgXO_G4_HeqEDnMbtUJ6gShyGvtsojuIp90m2FrgOtGqhq86XO9KGw21ZFHr1ShRPyf6KcnF5e3m2QvcOf4q4Z2J5kCvyUqmzSm_PMqnCFU-C5bNJkYd2vuUchVq-kHjf6N7qphMIG_XIDfpo-0vA3hbOPU2a7Cv-MV-mbACiz5kbL1q" target="_blank">
+<span class="material-symbols-outlined text-[14px]">fullscreen</span>EXPANDIR
+            </a>
+</div>
+</div>
+</div>
+<!-- FRAME B: KEY ART SOL NEGRO -->
+<div class="absolute inset-0 w-full h-full transition-opacity duration-500 opacity-0 pointer-events-none flex items-center justify-center" id="art-keyart">
+<img alt="ND Key Art Colosal Sol Negro" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WhPzibRcgUw7u7SXDlmAnqyvoW1P4ZIhtClwsVy3jzxaj4VCNviuvzLgZfDF53roAbfj1oFDBGr7iDsu1ejg7z889QJtDM7hGKHXHlSaxIN1dsmvAjNilz4QmDSFumd3NfgROLN-Xo7Sdck4ZUR3BD9lhPf27hFz2uDZ7tdRld0SUQ3-bNWLAZ2yeyYsPuBKjaGDBbeQPJnFlILpdAIGSR8O8jWQv_uPQz5qfWLXVO13w78sGkeG05vQ"/>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/80 to-transparent p-space-lg flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="max-w-2xl">
+<span class="px-space-xs py-0.5 bg-secondary-container text-on-secondary-container font-label-tech-sm text-label-tech-sm uppercase">ASSET ID: KEYART_SOL_NEGRO_COLOSSUS</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mt-1">DISCO SOLAR OSCURO &amp; RIKA TSUKIMI</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Composición maestra de atardecer de cuatro etapas con la silueta de Rika sobre los escombros de Tokio. Haori crema pálido contra el eclipse bermellón.</p>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container/90 backdrop-blur-md px-space-md py-space-sm rounded-sm">
+<div class="flex flex-col font-label-tech-sm text-label-tech-sm text-right">
+<span class="text-secondary font-semibold">1376 x 768 px // ULTRA 2D</span>
+<span class="text-on-surface-variant">VECTOR RENDERING LEVEL A</span>
+</div>
+<a class="px-space-sm py-1.5 bg-primary text-on-primary font-label-tech-sm text-label-tech-sm uppercase flex items-center gap-1 hover:bg-primary-container transition-colors" href="https://lh3.googleusercontent.com/aida/AEtjO1WhPzibRcgUw7u7SXDlmAnqyvoW1P4ZIhtClwsVy3jzxaj4VCNviuvzLgZfDF53roAbfj1oFDBGr7iDsu1ejg7z889QJtDM7hGKHXHlSaxIN1dsmvAjNilz4QmDSFumd3NfgROLN-Xo7Sdck4ZUR3BD9lhPf27hFz2uDZ7tdRld0SUQ3-bNWLAZ2yeyYsPuBKjaGDBbeQPJnFlILpdAIGSR8O8jWQv_uPQz5qfWLXVO13w78sGkeG05vQ" target="_blank">
+<span class="material-symbols-outlined text-[14px]">fullscreen</span>EXPANDIR
+            </a>
+</div>
+</div>
+</div>
+<!-- FRAME C: TITLE CARD SPLASH -->
+<div class="absolute inset-0 w-full h-full transition-opacity duration-500 opacity-0 pointer-events-none flex items-center justify-center" id="art-splash">
+<img alt="Splash Title Card Oficial Nippon Destruction" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XD5TbQjPklpiny-81DovFgi78IrHV8pOy6SpMYAC2gwvM1baNqk9rUKXL60kxvNBtFY4L-DSxXD85L12bXGuVkiYXb5ZB7alTB90GC_wrgc0XpWC14PZWD7aWLupoOzq4bN5-F-nSOGX-jXU-vb9oyR_xP_Blkmfk1OpGxd2Ux7uSqScJkbHJgAsdGpEVmt4mvLtF1Xk9r9TfLaWXOw2CXQwYifyAWfkVAFG1ofjwF-VvxqfmsuZV50w"/>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/80 to-transparent p-space-lg flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="max-w-2xl">
+<span class="px-space-xs py-0.5 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase">ASSET ID: SPLASH_06_TITLECARD</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mt-1">LOGOTIPO OFICIAL CINEMÁTICO</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Tipografía colosal iluminada 'NIPPON DESTRUCTION' con subtítulo en Hazard Magenta. Rika victoriosa en silueta en primer plano.</p>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container/90 backdrop-blur-md px-space-md py-space-sm rounded-sm">
+<div class="flex flex-col font-label-tech-sm text-label-tech-sm text-right">
+<span class="text-secondary font-semibold">NATIVE 16:9 // MATTE OVERLAY</span>
+<span class="text-on-surface-variant">RGB CHROMATIC BLEED</span>
+</div>
+<a class="px-space-sm py-1.5 bg-primary text-on-primary font-label-tech-sm text-label-tech-sm uppercase flex items-center gap-1 hover:bg-primary-container transition-colors" href="https://lh3.googleusercontent.com/aida/AEtjO1XD5TbQjPklpiny-81DovFgi78IrHV8pOy6SpMYAC2gwvM1baNqk9rUKXL60kxvNBtFY4L-DSxXD85L12bXGuVkiYXb5ZB7alTB90GC_wrgc0XpWC14PZWD7aWLupoOzq4bN5-F-nSOGX-jXU-vb9oyR_xP_Blkmfk1OpGxd2Ux7uSqScJkbHJgAsdGpEVmt4mvLtF1Xk9r9TfLaWXOw2CXQwYifyAWfkVAFG1ofjwF-VvxqfmsuZV50w" target="_blank">
+<span class="material-symbols-outlined text-[14px]">fullscreen</span>EXPANDIR
+            </a>
+</div>
+</div>
+</div>
+<!-- OVERLAY TELEMETRY RETICLE -->
+<div class="absolute top-space-md left-space-md pointer-events-none flex flex-col gap-1 font-label-tech-sm text-label-tech-sm text-secondary drop-shadow">
+<span>CAM: VIRTUAL_ANAMORPHIC_50MM</span>
+<span class="text-on-surface-variant">COLOR_PROFILE: ND_CANONICAL_ACES</span>
+</div>
+<div class="absolute top-space-md right-space-md pointer-events-none flex items-center gap-2">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase">MASTER RENDER</span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-pulse"></span>
+</div>
+</div>
+</section>
+<!-- SECTION 2: TECHNICAL DESIGN BIBLE - CROMATIC LAB -->
+<section class="w-full px-gutter-desktop py-space-xl bg-surface-container-low flex flex-col gap-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-primary uppercase tracking-widest">
+<span>[ 色彩設計規格書 ]</span>
+<span>CANONICAL COLOR SPECIFICATION</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface tracking-tight">02. LABORATORIO INTERACTIVO DE COLOR ND</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+        La identidad visual de Nippon Destruction no utiliza paletas libres. Cada fotograma obedece de forma rígida a la degradación de cuatro etapas del cielo radiactivo, la silueta absoluta y tres acentos de iluminación electro-química.
+      </p>
+</div>
+<!-- PALETTE COMPANION CHART BANNER -->
+<div class="w-full rounded-sm overflow-hidden bg-surface-container-lowest shadow-lg flex flex-col lg:flex-row items-stretch">
+<div class="lg:w-2/5 p-space-lg flex flex-col justify-between bg-surface-container-high">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-wider">GUÍA OFICIAL DE REFERENCIA // FIG. 04</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface">DOCUMENTACIÓN GRÁFICA DE ARTE</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+            Tabla maestra de calibración para directores de arte, ilustradores de animación 2D y diseñadores de FX. Valida la coherencia de iluminación entre cinemáticas y HUD táctico.
+          </p>
+</div>
+<div class="mt-space-md pt-space-md flex flex-wrap gap-space-sm font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span class="px-2 py-1 bg-surface-container-lowest text-primary">4-TIER SKY GRADIENT</span>
+<span class="px-2 py-1 bg-surface-container-lowest text-secondary">PURE SILHOUETTE #000</span>
+<span class="px-2 py-1 bg-surface-container-lowest text-on-surface">HAZARD ACCENTS</span>
+</div>
+</div>
+<div class="lg:w-3/5 bg-surface-container-lowest relative aspect-video lg:aspect-auto min-h-[300px]">
+<img alt="Technical Color Palette Guide 16:9 ND" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WdF98rPV7x0OPbeV8XidtsQP2q247ryzCE49dwNqwd7afbuE3aTcmoaXzt4U-CtqtGHclF9s7AzDYZ7GQyxI0Y6yHjPzgSA7vtb6_sn9hHYm0EXjs1DXq5Kqf1opKYPWBDuMGOQVe30PG5sJkOhCyBWM5TUd8-8qnjamq1CD5VNMuvyz99I6JMZDg5946PZ0s5CaUGbalivTGvUHYsAlt1g27GjdcTjPfj1nvZ9uS3mjTGgMmlCd4oxg"/>
+</div>
+</div>
+<!-- A: DEGRADADO DE 4 TONOS DEL ATARDECER TORMENTOSO -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 bg-tertiary"></span>
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-wider">A. EL DEGRADADO DE 4 TONOS DEL ATARDECER TORMENTOSO</h3>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">[ATMOSPHERIC SUNSET GRADIENT: TOP TO HORIZON]</span>
+</div>
+<!-- VISUAL GRADIENT PREVIEW BAR -->
+<div class="w-full h-10 rounded-sm shadow-md flex items-center justify-between px-space-md font-label-tech-sm text-label-tech-sm uppercase font-semibold text-on-surface drop-shadow" style="background: linear-gradient(90deg, #150E2B 0%, #4A2247 33%, #A84A38 66%, #F0A65A 100%);">
+<span>ZENITH: #150E2B</span>
+<span class="hidden sm:inline">STRATOSPHERE: #4A2247</span>
+<span class="hidden md:inline">OXIDE: #A84A38</span>
+<span>HORIZON: #F0A65A</span>
+</div>
+<!-- 4 SWATCH TILES WITH LIVE COPY -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- TONE 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-sm flex flex-col justify-between gap-space-md shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">FASE 01 // CÉNIT</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">DEEP STORM</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Púrpura tormentoso espacial</span>
+</div>
+<span class="w-8 h-8 rounded-sm shadow-inner" style="background-color: #150E2B;"></span>
+</div>
+<div class="bg-surface-container-high p-space-sm rounded-sm flex items-center justify-between">
+<span class="font-label-tech-md text-label-tech-md text-primary font-semibold">#150E2B</span>
+<button class="px-space-xs py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-tech-sm text-label-tech-sm uppercase transition-colors flex items-center gap-1" onclick="copyColor('#150E2B', this)" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+<span>COPIAR</span>
+</button>
+</div>
+</div>
+<!-- TONE 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-sm flex flex-col justify-between gap-space-md shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">FASE 02 // CREPÚSCULO</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">TWILIT MAGENTA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Violeta tóxico de estratosfera</span>
+</div>
+<span class="w-8 h-8 rounded-sm shadow-inner" style="background-color: #4A2247;"></span>
+</div>
+<div class="bg-surface-container-high p-space-sm rounded-sm flex items-center justify-between">
+<span class="font-label-tech-md text-label-tech-md text-primary font-semibold">#4A2247</span>
+<button class="px-space-xs py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-tech-sm text-label-tech-sm uppercase transition-colors flex items-center gap-1" onclick="copyColor('#4A2247', this)" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+<span>COPIAR</span>
+</button>
+</div>
+</div>
+<!-- TONE 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-sm flex flex-col justify-between gap-space-md shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">FASE 03 // ÓXIDO</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">BURNT OXIDE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rojo herrumbre combustión</span>
+</div>
+<span class="w-8 h-8 rounded-sm shadow-inner" style="background-color: #A84A38;"></span>
+</div>
+<div class="bg-surface-container-high p-space-sm rounded-sm flex items-center justify-between">
+<span class="font-label-tech-md text-label-tech-md text-primary font-semibold">#A84A38</span>
+<button class="px-space-xs py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-tech-sm text-label-tech-sm uppercase transition-colors flex items-center gap-1" onclick="copyColor('#A84A38', this)" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+<span>COPIAR</span>
+</button>
+</div>
+</div>
+<!-- TONE 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-sm flex flex-col justify-between gap-space-md shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">FASE 04 // HORIZONTE</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">AMBER HORIZON</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ámbar cálido de suelo y relámpago</span>
+</div>
+<span class="w-8 h-8 rounded-sm shadow-inner" style="background-color: #F0A65A;"></span>
+</div>
+<div class="bg-surface-container-high p-space-sm rounded-sm flex items-center justify-between">
+<span class="font-label-tech-md text-label-tech-md text-primary font-semibold">#F0A65A</span>
+<button class="px-space-xs py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-tech-sm text-label-tech-sm uppercase transition-colors flex items-center gap-1" onclick="copyColor('#F0A65A', this)" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+<span>COPIAR</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- B: LA REGLA DE SILUETA PURA & ACENTOS FUNCIONALES -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- SILUETA PURA (#000000) -->
+<div class="lg:col-span-4 bg-surface-container-lowest p-space-lg rounded-sm shadow-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">[絶対シルエット] CANON FUNDAMENTAL</span>
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm">REGLA NO. 1</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mt-2">SILUETA PURA ABSOLUTA</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+            Los cuerpos de los personajes, cables caídos, escombros colosales y vigas de acero de Tokio NUNCA reciben texturizado interno de baja resolución. Son masas geométricas de negro macizo absoluto (#000000) que cortan el cielo con bordes nítidos.
+          </p>
+</div>
+<div class="mt-space-lg p-space-md bg-black rounded-sm flex items-center justify-between shadow-inner">
+<div class="flex items-center gap-space-sm">
+<div class="w-6 h-6 bg-black rounded-none shadow-md"></div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">#000000</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">PURE SOLID BLACK</span>
+</div>
+</div>
+<button class="px-space-sm py-1.5 bg-surface-container hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-tech-sm text-label-tech-sm uppercase transition-colors" onclick="copyColor('#000000', this)" type="button">
+            COPIAR HEX
+          </button>
+</div>
+</div>
+<!-- ACENTOS FUNCIONALES (MAGENTA, YELLOW, CREAM LIGHT) -->
+<div class="lg:col-span-8 bg-surface-container-high p-space-lg rounded-sm shadow-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">[機能的ハイライト] ELECTRO-LUMINESCENT ACCENTS</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">3 CANONICAL CHANNELS</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mt-2">ACENTOS FUNCIONALES DE COMBATE</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+            La iluminación puntual y los efectos de energía obedecen únicamente a 3 frecuencias cromáticas: peligro y corte cinético, telemetría y descargas de plasma, y el halo sagrado de los uniformes.
+          </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mt-space-md">
+<!-- HAZARD MAGENTA -->
+<div class="bg-surface-container-lowest p-space-md rounded-sm flex flex-col justify-between gap-space-md">
+<div>
+<div class="flex items-center justify-between">
+<span class="w-4 h-4 rounded-full" style="background-color: #ff2d6f;"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-primary">DEFCON HAZARD</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-1">HAZARD MAGENTA</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Núcleo ND, tajos de espada katana y advertencias críticas.</p>
+</div>
+<div class="bg-surface-container p-space-xs rounded-sm flex items-center justify-between">
+<span class="font-label-tech-md text-label-tech-md text-primary font-semibold">#FF2D6F</span>
+<button class="px-space-xs py-1 bg-surface-container-high text-on-surface font-label-tech-sm text-label-tech-sm uppercase hover:bg-primary hover:text-on-primary transition-colors" onclick="copyColor('#ff2d6f', this)" type="button">COPIAR</button>
+</div>
+</div>
+<!-- WARNING YELLOW -->
+<div class="bg-surface-container-lowest p-space-md rounded-sm flex flex-col justify-between gap-space-md">
+<div>
+<div class="flex items-center justify-between">
+<span class="w-4 h-4 rounded-full" style="background-color: #ffc400;"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">LIGHTNING FX</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-1">WARNING YELLOW</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Rayos climáticos, sobrecargas eléctricas de Ren y avisos.</p>
+</div>
+<div class="bg-surface-container p-space-xs rounded-sm flex items-center justify-between">
+<span class="font-label-tech-md text-label-tech-md text-secondary font-semibold">#FFC400</span>
+<button class="px-space-xs py-1 bg-surface-container-high text-on-surface font-label-tech-sm text-label-tech-sm uppercase hover:bg-secondary hover:text-on-secondary transition-colors" onclick="copyColor('#ffc400', this)" type="button">COPIAR</button>
+</div>
+</div>
+<!-- CREAM LIGHT -->
+<div class="bg-surface-container-lowest p-space-md rounded-sm flex flex-col justify-between gap-space-md">
+<div>
+<div class="flex items-center justify-between">
+<span class="w-4 h-4 rounded-full" style="background-color: #F2DCC0;"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">HAORI &amp; RIM</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-1">CREAM LIGHT</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Capa/haori de Rika al viento y contraluz de filo de siluetas.</p>
+</div>
+<div class="bg-surface-container p-space-xs rounded-sm flex items-center justify-between">
+<span class="font-label-tech-md text-label-tech-md text-on-surface font-semibold">#F2DCC0</span>
+<button class="px-space-xs py-1 bg-surface-container-high text-on-surface font-label-tech-sm text-label-tech-sm uppercase hover:bg-on-surface hover:text-surface transition-colors" onclick="copyColor('#F2DCC0', this)" type="button">COPIAR</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: REGLAS DE DIRECCIÓN DE ARTE (ART DIRECTIVE MATRIX) -->
+<section class="w-full px-gutter-desktop py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-widest">
+<span>[ 視覚演出規範 ]</span>
+<span>ART DIRECTION DOGMA</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface tracking-tight">03. REGLAS MANDATORIAS DE PRODUCCIÓN VISUAL</h2>
+</div>
+<span class="px-space-sm py-1 bg-surface-container-high text-on-surface font-label-tech-sm text-label-tech-sm">ZERO TOLERANCE: ARTE GENÉRICO DESESTIMADO</span>
+</div>
+<!-- 4 BESPOKE PILLARS -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- PILLAR 1 -->
+<div class="bg-surface-container p-space-lg rounded-sm shadow-md flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="w-10 h-10 rounded-sm bg-primary-container/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">block</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">PROHIBICIÓN ESTRICTA</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface uppercase">PROHIBIDO PIXEL ART</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Nippon Destruction rechaza el estilo retro-bit pixelado. Todo asset debe entregarse en ilustración cinemática vectorial con bordes ultra-nítidos calibrados para pantallas 4K Ultra-HD.
+          </p>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-sm font-label-tech-sm text-label-tech-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>RENDER VECTORIAL CINEMÁTICO</span>
+</div>
+</div>
+<!-- PILLAR 2 -->
+<div class="bg-surface-container p-space-lg rounded-sm shadow-md flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="w-10 h-10 rounded-sm bg-secondary-container/20 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">auto_videocam</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">PIPELINE ANIMACIÓN</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface uppercase">KEYFRAMES ANIME CINEMÁTICO</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Pacing de animación japonesa tradicional (animación a 2s y 3s con smear frames agresivos). Siluetas dinámicas con pesos exagerados en ataques y caídas de gravedad pesada.
+          </p>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-sm font-label-tech-sm text-label-tech-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>SMEARS &amp; POSE-TO-POSE ANIME</span>
+</div>
+</div>
+<!-- PILLAR 3 -->
+<div class="bg-surface-container p-space-lg rounded-sm shadow-md flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="w-10 h-10 rounded-sm bg-surface-bright text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">contrast</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">EQUILIBRIO TONAL</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface uppercase">CONTRASTE EXTREMO CHIAROSCURO</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Sin tonos grises fangosos. El primer plano se funde en negro macizo y el cielo emite la degradación luminosa completa del atardecer tormentoso. La legibilidad de combate es absoluta.
+          </p>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-sm font-label-tech-sm text-label-tech-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>100:1 RELACIÓN CONTRASTE HUD</span>
+</div>
+</div>
+<!-- PILLAR 4 -->
+<div class="bg-surface-container p-space-lg rounded-sm shadow-md flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="w-10 h-10 rounded-sm bg-primary-container/20 text-primary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">aspect_ratio</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">ENCUADRE PANORÁMICO</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface uppercase">16:9 NATIVO SIN RECORTES</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Composiciones calculadas en base anamórfica 16:9 nativa. La escala de los monstruos titánicos se enfatiza manteniendo los tercios inferiores despejados para la línea de avance 2D.
+          </p>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-sm font-label-tech-sm text-label-tech-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>SAFE FRAME REC.2020</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: EXPORT ENGINE & PRODUCTION METADATA SPEC -->
+<section class="w-full px-gutter-desktop py-space-xl bg-surface-container-low flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-widest">
+<span>[ 出力仕様書 &amp; 制作記録 ]</span>
+<span>PIPELINE ENGINE // EXPORT REPOSITORY</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface tracking-tight">04. FICHA DE PRODUCCIÓN &amp; METADATOS TÉCNICOS</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-semibold flex items-center gap-2 hover:bg-primary-fixed transition-colors shadow-md" onclick="triggerBatchExport()" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+          DESCARGAR PACK BIBLIA (.ZIP)
+        </button>
+</div>
+</div>
+<!-- METADATA & SPECS BENTO -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- TABLE DE ESPECIFICACIONES -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-sm overflow-hidden shadow-md flex flex-col">
+<div class="bg-surface-container-high px-space-md py-space-sm flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase font-semibold">TABLA DE RENDERIZADO Y EXPORTACIÓN DE ASSETS // PIPELINE UNITY/CUSTOM ENGINE</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">STATUS: LOCKED 2025</span>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-label-tech-sm text-label-tech-sm">
+<thead class="bg-surface-container text-on-surface-variant uppercase">
+<tr>
+<th class="py-2.5 px-space-md">TIPO DE ASSET</th>
+<th class="py-2.5 px-space-md">RESOLUCIÓN NATIVA</th>
+<th class="py-2.5 px-space-md">FORMATO MASTER</th>
+<th class="py-2.5 px-space-md">ESPACIO DE COLOR</th>
+<th class="py-2.5 px-space-md">ESTADO</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-on-surface">
+<tr class="bg-surface-container-lowest/50 hover:bg-surface-container transition-colors">
+<td class="py-3 px-space-md font-semibold text-primary">Key Visual 01 (Promo Landscape)</td>
+<td class="py-3 px-space-md">3840 x 2160 (4K UHD)</td>
+<td class="py-3 px-space-md font-label-tech-md text-label-tech-md">PNG 16-Bit / EXR</td>
+<td class="py-3 px-space-md">DCI-P3 Wide Gamut</td>
+<td class="py-3 px-space-md"><span class="px-2 py-0.5 bg-primary-container text-on-primary-container text-[10px]">APROBADO</span></td>
+</tr>
+<tr class="bg-surface-container-high/30 hover:bg-surface-container transition-colors">
+<td class="py-3 px-space-md font-semibold text-primary">Key Visual 02 (Key Art Sol Negro)</td>
+<td class="py-3 px-space-md">3840 x 2160 (4K UHD)</td>
+<td class="py-3 px-space-md font-label-tech-md text-label-tech-md">SVG Vectorial + TIFF</td>
+<td class="py-3 px-space-md">ACEScc Linear</td>
+<td class="py-3 px-space-md"><span class="px-2 py-0.5 bg-primary-container text-on-primary-container text-[10px]">APROBADO</span></td>
+</tr>
+<tr class="bg-surface-container-lowest/50 hover:bg-surface-container transition-colors">
+<td class="py-3 px-space-md font-semibold text-primary">Title Card Splash (Splash 06)</td>
+<td class="py-3 px-space-md">1920 x 1080 (FHD 60fps)</td>
+<td class="py-3 px-space-md font-label-tech-md text-label-tech-md">ProRes 4444 XQ</td>
+<td class="py-3 px-space-md">Rec.709 Calibrado</td>
+<td class="py-3 px-space-md"><span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px]">GOLD MASTER</span></td>
+</tr>
+<tr class="bg-surface-container-high/30 hover:bg-surface-container transition-colors">
+<td class="py-3 px-space-md font-semibold text-secondary">Character Sprites (Rika/Goro/Ren/Yui)</td>
+<td class="py-3 px-space-md">Atlases 4096 x 4096</td>
+<td class="py-3 px-space-md font-label-tech-md text-label-tech-md">Spine 2D Skeletal</td>
+<td class="py-3 px-space-md">sRGB High-Contrast</td>
+<td class="py-3 px-space-md"><span class="px-2 py-0.5 bg-primary-container text-on-primary-container text-[10px]">VERIFICADO</span></td>
+</tr>
+<tr class="bg-surface-container-lowest/50 hover:bg-surface-container transition-colors">
+<td class="py-3 px-space-md font-semibold text-secondary">HUD Combat Telemetry Assets</td>
+<td class="py-3 px-space-md">Vector Escalar Multi-DPI</td>
+<td class="py-3 px-space-md font-label-tech-md text-label-tech-md">SVG / TTF Icons</td>
+<td class="py-3 px-space-md">Linear sRGB Bloom</td>
+<td class="py-3 px-space-md"><span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px]">ACTIVO</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-md bg-surface-container-high flex flex-wrap items-center justify-between gap-space-sm text-on-surface-variant font-label-tech-sm text-label-tech-sm">
+<span>CHECKSUM MD5: 9a7b4c2d-8e1f-4029-bc3d-f7e912440182</span>
+<span>COMPILADOR: ND-STUDIO-TOOLCHAIN v3.2</span>
+</div>
+</div>
+<!-- INFORME DE INTEGRIDAD Y REGLAS DE DIRECCIÓN -->
+<div class="lg:col-span-4 bg-surface-container-high p-space-lg rounded-sm shadow-md flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">[検証ステータス] VERIFICACIÓN</span>
+<span class="w-3 h-3 rounded-full bg-primary-container animate-pulse"></span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface">DIRECTRICES PARA EQUIPOS DE VFX Y ESCENARIOS</h3>
+<div class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<div class="p-space-sm bg-surface-container-lowest rounded-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-primary block uppercase font-semibold">1. Lluvia Ácida y Ceniza Volcánica</span>
+              Capas de partículas transparentes a 15% opacidad en modo aditivo sobre el degradado del fondo, nunca sobre las siluetas de combate.
+            </div>
+<div class="p-space-sm bg-surface-container-lowest rounded-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary block uppercase font-semibold">2. Línea de Contraluz (Rim Light #F2DCC0)</span>
+              Grosor uniforme de 1.5px en el borde superior de los hombros y katanas, simulando el brillo del horizonte ámbar.
+            </div>
+<div class="p-space-sm bg-surface-container-lowest rounded-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface block uppercase font-semibold">3. Iluminación Ocular Kaiju (#FF2D6F)</span>
+              El ojo del Núcleo ND emite bloom continuo de 16px con flicker de 4Hz en fases de furia berserker.
+            </div>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md flex items-center justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant">DOCUMENTO OFICIAL FIRMADO:</span>
+<span class="text-secondary font-semibold">ARQUITECTURA DE ARTE ND // 2025</span>
+</div>
+</div>
+</div>
+</section>
+<!-- FLOATING INTERACTIVE TOAST FOR COLOR COPY -->
+<div class="fixed bottom-16 right-gutter-desktop z-50 bg-secondary-container text-on-secondary-container px-space-md py-space-sm rounded-sm shadow-xl font-label-tech-sm text-label-tech-sm uppercase font-semibold flex items-center gap-2 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="copy-toast">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span id="toast-message">CÓDIGO HEX COPIADO AL PORTAPAPELES</span>
+</div>
+<!-- CLIENT-SIDE SCRIPT FOR GALLERY SWITCHING AND COLOR COPYING -->
+<script>
+    function switchVisual(viewId) {
+      const views = {
+        promo: { el: document.getElementById('art-promo'), btn: document.getElementById('btn-promo') },
+        keyart: { el: document.getElementById('art-keyart'), btn: document.getElementById('btn-keyart') },
+        splash: { el: document.getElementById('art-splash'), btn: document.getElementById('btn-splash') }
+      };
+
+      Object.keys(views).forEach(key => {
+        const item = views[key];
+        if (key === viewId) {
+          item.el.classList.remove('opacity-0', 'pointer-events-none');
+          item.el.classList.add('opacity-100');
+          item.btn.className = "px-space-md py-2 font-label-tech-sm text-label-tech-sm uppercase transition-all bg-primary-container text-on-primary-container font-semibold shadow-sm flex items-center gap-1.5";
+        } else {
+          item.el.classList.remove('opacity-100');
+          item.el.classList.add('opacity-0', 'pointer-events-none');
+          item.btn.className = "px-space-md py-2 font-label-tech-sm text-label-tech-sm uppercase transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-1.5";
+        }
+      });
+    }
+
+    function copyColor(hexValue, btnEl) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(hexValue);
+      }
+      
+      const toast = document.getElementById('copy-toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = "COPIADO AL PORTAPAPELES: " + hexValue;
+      
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      const originalHtml = btnEl.innerHTML;
+      btnEl.innerHTML = '<span class="material-symbols-outlined text-[13px]">done</span><span>OK</span>';
+      
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+        btnEl.innerHTML = originalHtml;
+      }, 2000);
+    }
+
+    function triggerBatchExport() {
+      const toast = document.getElementById('copy-toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = "GENERANDO ARCHIVO ZIP: ND_DESIGN_BIBLE_2025.ZIP...";
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toastMsg.textContent = "DESCARGA COMPLETADA (4 ASSETS DE ALTA RESOLUCIÓN)";
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-24', 'opacity-0');
+        }, 2200);
+      }, 1500);
+    }
+  </script>
+</div></main><footer class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-lowest/95 backdrop-blur-md"><div class="h-12 w-full px-gutter-desktop flex items-center justify-between font-label-tech-sm text-label-tech-sm text-on-surface-variant"><div class="flex items-center gap-space-md"><span class="text-secondary">[MIL-SPEC TELEMETRY ACTIVE]</span><span class="hidden sm:inline">SAT-LINK: 09-OMEGA // ENCRYPTED</span><span class="hidden md:inline">THREAT LEVEL: MAXIMUM KAIJU/CYBORG</span></div><div class="hidden lg:flex items-center gap-space-sm"><span>HOTKEYS: [1-5] VISTAS</span><span>[SPACE] DETONACIÓN</span><span>[M] SILENCIAR ALERTA</span></div><div class="flex items-center gap-space-sm"><span>© 2025 NIPPON DESTRUCTION GAME STUDIO</span><span class="text-primary">// 日本崩壊</span></div></div></footer></body></html>

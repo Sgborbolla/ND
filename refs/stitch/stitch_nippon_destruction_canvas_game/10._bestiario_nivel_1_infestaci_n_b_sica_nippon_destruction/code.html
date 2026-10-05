@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface": "#150e2b", "surface-container-lowest": "#100926", "surface-container": "#221b38", "on-tertiary-fixed": "#2d1600", "on-secondary": "#3f2e00", "surface-container-high": "#2c2543", "tertiary-container": "#c58239", "surface-bright": "#3c3554", "on-tertiary-fixed-variant": "#6a3c00", "surface-container-highest": "#37304f", "on-tertiary-container": "#412200", "secondary-fixed-dim": "#f7be00", "on-primary-fixed-variant": "#900037", "outline-variant": "#5c3f43", "secondary": "#ffe5b1", "secondary-fixed": "#ffdf99", "inverse-primary": "#bc004b", "on-surface-variant": "#e4bdc1", "surface-tint": "#ffb2bd", "secondary-container": "#fec300", "outline": "#ab888c", "tertiary-fixed": "#ffdcbe", "on-tertiary": "#4a2800", "primary-container": "#ff4e7c", "on-primary-container": "#5a001f", "on-surface": "#e8deff", "on-error": "#690005", "on-error-container": "#ffdad6", "on-primary-fixed": "#400014", "inverse-on-surface": "#332c4a", "on-secondary-container": "#6d5200", "tertiary-fixed-dim": "#ffb871", "on-secondary-fixed": "#251a00", "on-background": "#e8deff", "error-container": "#93000a", "primary": "#ffb2bd", "primary-fixed-dim": "#ffb2bd", "error": "#ffb4ab", "primary-fixed": "#ffd9de", "surface-container-low": "#1e1734", "surface-variant": "#37304f", "surface-dim": "#150e2b", "background": "#150e2b", "tertiary": "#ffb871", "on-primary": "#670025", "on-secondary-fixed-variant": "#5a4300", "inverse-surface": "#e8deff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter-desktop": "1.5rem", "gutter": "1rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "margin-tablet": "2rem", "space-md": "1rem", "margin-desktop": "3rem", "space-xl": "2.5rem", "margin": "1rem", "gutter-tablet": "1.25rem" }, "fontFamily": { "headline-md": [ "Space Grotesk" ], "body-sm": [ "Chivo" ], "body-lg": [ "Chivo" ], "display-lg": [ "Space Grotesk" ], "label-tech-lg": [ "JetBrains Mono" ], "headline-sm": [ "Space Grotesk" ], "label-tech-sm": [ "JetBrains Mono" ], "display-lg-mobile": [ "Space Grotesk" ], "label-tech-md": [ "JetBrains Mono" ], "headline-lg": [ "Space Grotesk" ], "body-md": [ "Chivo" ] }, "fontSize": { "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-tech-lg": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "500" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.05em", "fontWeight": "600" } ], "label-tech-sm": [ "9px", { "lineHeight": "12px", "letterSpacing": "0.16em", "fontWeight": "600" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "label-tech-md": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "500" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "0.02em", "fontWeight": "700" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div class="h-20 w-full px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-label-tech-sm text-label-tech-sm text-secondary-container tracking-widest uppercase">[ 日本壊滅作戦司令本部 ]</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/40">// GRID_SECTOR_07</span></div><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm uppercase font-bold tracking-wider text-primary">NIPPON DESTRUCTION</span><span class="font-label-tech-sm text-label-tech-sm px-space-xs py-0.5 bg-primary-container text-on-primary-container uppercase font-bold tracking-widest">TACTICAL-OS v4.09</span></div></div><div class="hidden xl:flex items-center gap-space-sm pl-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-lowest"><span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span><span class="font-label-tech-sm text-label-tech-sm uppercase font-bold text-primary-container tracking-widest">DEFCON-1 ENGAGED</span></div><div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-lowest"><span class="font-label-tech-sm text-label-tech-sm text-secondary-container tracking-widest uppercase">ORBITAL-SYNC: LOCK_098.42</span></div></div></div><nav class="hidden md:flex items-center gap-space-xs bg-surface-container-lowest/80 p-space-xs" data-active-classes="bg-surface-container-high text-primary font-bold"><a class="font-label-tech-md text-label-tech-md uppercase tracking-wider px-space-md py-space-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="tactical-command-grid" href="#">Command Matrix</a><a class="font-label-tech-md text-label-tech-md uppercase tracking-wider px-space-md py-space-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="heroes-archive" href="#">Hero Dossiers</a><a aria-current="page" class="uppercase tracking-wider px-space-md py-space-sm transition-colors bg-surface-container-high text-primary font-bold" data-path="tactical-bestiary" href="#">Tactical Bestiary</a><a class="font-label-tech-md text-label-tech-md uppercase tracking-wider px-space-md py-space-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="orbital-telemetry" href="#">Orbital Telemetry</a><a class="font-label-tech-md text-label-tech-md uppercase tracking-wider px-space-md py-space-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="incident-logs" href="#">Archive Logs</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex flex-col items-end"><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 uppercase">AUTH_OFFICER // S-RANK</span><span class="font-label-tech-md text-label-tech-md text-secondary uppercase font-semibold">CMDR. KATSURAGI</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- TOP TELEMETRY STRIP & SUB-HEADER -->
+<section class="w-full px-gutter-desktop py-space-md bg-surface-container-lowest">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md flex-wrap">
+<div class="px-space-sm py-0.5 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm font-bold uppercase tracking-widest flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary-container animate-ping"></span>
+          INFESTATION CLASS: LVL-1
+        </div>
+<div class="font-label-tech-sm text-label-tech-sm text-secondary tracking-widest uppercase">
+          [ 生体脅威解析部隊: 侵食波長 0.884 GHZ ]
+        </div>
+<div class="hidden sm:flex font-label-tech-sm text-label-tech-sm text-on-surface-variant/60">
+          SECTOR: KYOTO-PERIMETER // TEMPLE_DISTRICT_ZERO
+        </div>
+</div>
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60">SPECIMEN INDEX:</span>
+<span class="font-label-tech-md text-label-tech-md text-primary font-bold">06 IDENTIFIED</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60">THREAT RATING:</span>
+<span class="px-space-xs py-0.5 bg-secondary-container text-on-secondary-container font-label-tech-sm text-label-tech-sm font-bold">EXTREME-LETHAL</span>
+</div>
+</div>
+</div>
+</section>
+<!-- MAIN 16:9 COMBAT INTEL VISOR -->
+<section class="w-full px-gutter-desktop pt-space-lg pb-space-xl">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container font-bold tracking-widest">[ 敵群全体観測映像 ]</span>
+<span class="font-headline-sm text-headline-sm text-primary uppercase font-bold">ORBITAL BESTIARY CHART MATRIX</span>
+</div>
+<div class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/50 uppercase">FEED // NIPPON-DESTRUCTION-OPTIC-SAT-08</div>
+</div>
+<!-- 16:9 Visor Frame -->
+<div class="relative w-full aspect-video rounded bg-surface-container-lowest overflow-hidden shadow-2xl flex items-center justify-center">
+<!-- Scanlines and HUD Graticules -->
+<div class="absolute inset-0 z-10 pointer-events-none opacity-40 bg-[repeating-linear-gradient(0deg,rgba(0,0,0,0.5)_0px,rgba(0,0,0,0.5)_1px,transparent_1px,transparent_3px)]"></div>
+<div class="absolute top-4 left-4 z-20 flex flex-col gap-space-xs font-label-tech-sm text-label-tech-sm text-primary">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span>LIVE VISUAL SYNC: HIGH-HAZARD INFESTATION</span>
+</div>
+<span class="text-on-surface-variant/70 text-label-tech-sm font-label-tech-sm">COORD: 34.9949° N, 135.7850° E // AZIMUTH: 218°</span>
+</div>
+<div class="absolute top-4 right-4 z-20 font-label-tech-sm text-label-tech-sm text-secondary bg-surface-container-lowest/80 px-space-sm py-1">
+          RECORD IDENTIFIER: https://lh3.googleusercontent.com/aida/AEtjO1VPCLHUzaKoTeZgmJSkIsUdkFZKSzaDZltFG3Xhy6pWWrWP7f6kkIYsdTaSKnAQ5kV70lOIsIBaijbQKvA-a-1BsAv8gZRNGb_ckdJt9dF-Mn0jyJGnu8T0fjYMZ3kWl4IBg0z38Jwb0D2B1FrpM5MxhBV8Aj-tiOupfPla8m0ncPR1n5O2cQXZqXmEoziW9jUSBaI5_jTmHo4CVW-gE5b_yVbeVWRZqBz_RRuhK28ETjgW1UekuelqMg
+        </div>
+<!-- Visor Reticle Overlay Center -->
+<div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
+<svg class="w-full h-full max-w-4xl max-h-[70%] opacity-20 text-primary-container" fill="none" viewbox="0 0 800 450">
+<circle cx="400" cy="225" r="140" stroke="currentColor" stroke-dasharray="4 6"></circle>
+<circle cx="400" cy="225" r="210" stroke="currentColor" stroke-dasharray="1 8"></circle>
+<line stroke="currentColor" stroke-dasharray="2 10" x1="20" x2="780" y1="225" y2="225"></line>
+<line stroke="currentColor" stroke-dasharray="2 10" x1="400" x2="400" y1="10" y2="440"></line>
+<rect height="20" stroke="currentColor" width="20" x="390" y="215"></rect>
+</svg>
+</div>
+<!-- Visor Main Asset Image: 6 Basic Enemies Chart -->
+<img alt="Tactical bestiary chart displaying 6 basic level-1 infestation enemies in front of burning Kyoto pagodas" class="w-full h-full object-cover object-center relative z-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VPCLHUzaKoTeZgmJSkIsUdkFZKSzaDZltFG3Xhy6pWWrWP7f6kkIYsdTaSKnAQ5kV70lOIsIBaijbQKvA-a-1BsAv8gZRNGb_ckdJt9dF-Mn0jyJGnu8T0fjYMZ3kWl4IBg0z38Jwb0D2B1FrpM5MxhBV8Aj-tiOupfPla8m0ncPR1n5O2cQXZqXmEoziW9jUSBaI5_jTmHo4CVW-gE5b_yVbeVWRZqBz_RRuhK28ETjgW1UekuelqMg"/>
+<!-- Bottom Warning Ticker inside Visor -->
+<div class="absolute bottom-0 inset-x-0 z-20 bg-surface-container-lowest/90 px-space-md py-space-xs flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-space-md font-label-tech-sm text-label-tech-sm">
+<span class="text-secondary-container font-bold">[ BIO-ANOMALY DETECTED ]</span>
+<span class="hidden md:inline text-on-surface-variant">N1: DOBLE // N2: LANZADOR // N3: AGRESOR // N4: BLINDADO // N5: RESUCITADO // N6: MIMETICO</span>
+</div>
+<div class="font-label-tech-sm text-label-tech-sm text-primary uppercase font-bold tracking-widest">
+            BIO-HAZARD TIER: PURPLE
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE SPECIMEN COMMAND MATRIX (6 ENEMIES) -->
+<section class="w-full px-gutter-desktop py-space-xl bg-surface-container-low">
+<div class="flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container font-bold uppercase tracking-widest">[ 6種基本侵食体 識別ファイル ]</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/40">// SPECIMEN DOSSIERS</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase font-bold tracking-wider">TACTICAL SPECIMEN ROSTER</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-lg">
+          Select an entity dossier to review combat hitboxes, hazard telegraphs, bio-silhouette footprints, and execute field damage simulations.
+        </p>
+</div>
+<!-- Quick Selector Tabs -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-space-xs">
+<button class="specimen-tab text-left p-space-sm bg-surface-container-highest transition-all" id="tab-0" onclick="selectSpecimen(0)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container block">N1 // 二重</span>
+<span class="font-headline-sm text-headline-sm text-primary block truncate font-bold">DOBLE</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant block">SPLIT WALKER</span>
+</button>
+<button class="specimen-tab text-left p-space-sm bg-surface-container transition-all" id="tab-1" onclick="selectSpecimen(1)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container block">N2 // 投擲者</span>
+<span class="font-headline-sm text-headline-sm text-on-surface block truncate font-bold">LANZADOR</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant block">ARTILLERY BEAST</span>
+</button>
+<button class="specimen-tab text-left p-space-sm bg-surface-container transition-all" id="tab-2" onclick="selectSpecimen(2)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container block">N3 // 攻撃者</span>
+<span class="font-headline-sm text-headline-sm text-on-surface block truncate font-bold">AGRESOR</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant block">RAPTOR MAULER</span>
+</button>
+<button class="specimen-tab text-left p-space-sm bg-surface-container transition-all" id="tab-3" onclick="selectSpecimen(3)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container block">N4 // 装甲者</span>
+<span class="font-headline-sm text-headline-sm text-on-surface block truncate font-bold">BLINDADO</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant block">FORTRESS TANK</span>
+</button>
+<button class="specimen-tab text-left p-space-sm bg-surface-container transition-all" id="tab-4" onclick="selectSpecimen(4)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container block">N5 // 蘇生者</span>
+<span class="font-headline-sm text-headline-sm text-on-surface block truncate font-bold">RESUCITADO</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant block">UNDEAD HORROR</span>
+</button>
+<button class="specimen-tab text-left p-space-sm bg-surface-container transition-all" id="tab-5" onclick="selectSpecimen(5)">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container block">N6 // 擬態者</span>
+<span class="font-headline-sm text-headline-sm text-on-surface block truncate font-bold">MIMETICO</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant block">SHAPE-SHIFTER</span>
+</button>
+</div>
+<!-- DOSSIER CARD ACTIVE DETAIL EXPANSION -->
+<div class="w-full bg-surface-container-lowest p-space-lg md:p-space-xl rounded shadow-2xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- Column A: Bio-Silhouette Chamber (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container uppercase font-bold tracking-widest">[ 形態解析ケージ ]</span>
+<span class="font-label-tech-sm text-label-tech-sm px-space-xs py-0.5 bg-primary-container text-on-primary-container font-bold" id="specimen-id-badge">N1 // ALPHA</span>
+</div>
+<!-- Dark Chamber with Silhouette & Hazard Rings -->
+<div class="relative w-full h-80 bg-surface-dim rounded flex items-center justify-center overflow-hidden">
+<!-- Radial Hazard Concentric Rings -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-64 h-64 rounded-full bg-primary-container/10 flex items-center justify-center animate-pulse">
+<div class="w-48 h-48 rounded-full bg-primary-container/15 flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-primary-container/20"></div>
+</div>
+</div>
+</div>
+<!-- Pure Black Silhouette Placeholder / Graphic with Glow -->
+<div class="relative z-10 flex flex-col items-center justify-center">
+<!-- SVG Pure #000 Silhouette Visualization with Hazard Rim Glow -->
+<svg class="w-48 h-56 text-[#000000] drop-shadow-[0_0_12px_rgba(255,45,111,0.65)]" fill="currentColor" id="specimen-silhouette-svg" viewbox="0 0 200 240">
+<!-- Silhouette Path dynamically swapped via JS -->
+<path d="M90 30 C 90 20, 110 20, 110 30 C 110 40, 120 45, 125 50 C 140 60, 150 90, 145 120 L 155 160 L 140 180 L 130 150 L 125 210 L 115 235 L 105 180 L 95 235 L 85 210 L 80 150 L 65 180 L 50 160 L 60 120 C 55 90, 65 60, 80 50 Z" id="specimen-svg-path"></path>
+</svg>
+</div>
+<!-- Corner Graticules -->
+<span class="absolute top-2 left-2 font-label-tech-sm text-label-tech-sm text-on-surface-variant/40 font-bold">[0,0]</span>
+<span class="absolute top-2 right-2 font-label-tech-sm text-label-tech-sm text-secondary font-bold" id="specimen-metric-height">HT: 2.45M</span>
+<span class="absolute bottom-2 left-2 font-label-tech-sm text-label-tech-sm text-primary font-bold" id="specimen-threat-code">CLASS: DEFCON-1</span>
+<span class="absolute bottom-2 right-2 font-label-tech-sm text-label-tech-sm text-on-surface-variant/40 font-bold">[200,240]</span>
+</div>
+<!-- Field Photo Placeholder for Morphological Analysis -->
+<div class="w-full h-32 rounded bg-surface-container relative overflow-hidden flex items-end p-space-sm shadow-inner">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen" data-alt="Dark macro close-up of bio-synthetic kaiju flesh tissue pulsating with glowing magenta hazard veins in a dark ruined laboratory in Neo Kyoto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiQecoo0UzFJLDp8OUrLv8VqgNcnZts0usq5O4jA3_gqsXP4KumKYUutO-dj6Y8on2g7P7S0Pd22rPWunFLdrnY4Z4kmCqC7z2EXHgf7J4agV7qDhek-UqQ9GRk8mvkzbo1alqy_Bc9egWLhTrZ5jNAeDphyUuSyaOuURAix77z75x0q6f4Ips2VAd1GCkGEDoMHqi5fqrNCLJaPQhtEkjgAbXJ4FnvNHix_-hDQKur2EvXDzDfAM"/>
+<div class="relative z-10 bg-surface-container-lowest/80 px-space-xs py-0.5 font-label-tech-sm text-label-tech-sm text-secondary">
+                HISTOLOGY BIO-SAMPLE // REPLICANT V-4
+              </div>
+</div>
+</div>
+<!-- Column B: Combat Intelligence & Hitboxes (4 cols) -->
+<div class="lg:col-span-4 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-widest" id="specimen-kanji-sub">二重 (N1) // 分裂歩行者</span>
+<h3 class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight uppercase" id="specimen-title">DOBLE (N1)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs" id="specimen-description">
+                Bicephalic bifurcated mutant infantry. Displays unstable bio-nuclear kinetic energy. Upon physical severance, both dorsal torsos split into autonomous attack vectors.
+              </p>
+</div>
+<!-- Attack Telegraph & Tactical Hazard Matrix -->
+<div class="flex flex-col gap-space-sm p-space-md bg-surface-container rounded">
+<span class="font-label-tech-sm text-label-tech-sm text-primary-container uppercase font-bold tracking-widest flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                HAZARD ATTACK TELEGRAPH (#FF2D6F)
+              </span>
+<div class="p-space-xs bg-surface-container-lowest font-label-tech-md text-label-tech-md text-on-surface font-semibold" id="specimen-telegraph">
+                [RING-BURST] 3.5s Pre-detonation magenta shockwave. Radius: 12 meters. Roll dodge diagonal-backward.
+              </div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 uppercase">WEAKNESS:</span>
+<span class="font-label-tech-md text-label-tech-md text-secondary font-bold" id="specimen-weakness">Dorsal Core / Cryo</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 uppercase">ARMOR TYPE:</span>
+<span class="font-label-tech-md text-label-tech-md text-on-surface font-bold" id="specimen-armor">Organic Bioplate II</span>
+</div>
+</div>
+</div>
+<!-- Hitbox & Spatial Specifications -->
+<div class="p-space-md bg-surface-container rounded flex flex-col gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container uppercase font-bold tracking-widest">[ 空間命中判定 / HITBOX SPECS ]</span>
+<div class="grid grid-cols-3 gap-space-xs text-center pt-space-xs">
+<div class="p-space-xs bg-surface-container-lowest">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 block">WIDTH</span>
+<span class="font-label-tech-md text-label-tech-md text-primary font-bold" id="specimen-hit-w">1.82 m</span>
+</div>
+<div class="p-space-xs bg-surface-container-lowest">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 block">HEIGHT</span>
+<span class="font-label-tech-md text-label-tech-md text-primary font-bold" id="specimen-hit-h">2.45 m</span>
+</div>
+<div class="p-space-xs bg-surface-container-lowest">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 block">CRIT RATIO</span>
+<span class="font-label-tech-md text-label-tech-md text-secondary font-bold" id="specimen-crit">3.2x HEAD</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column C: Combat Simulator & DPS Calculator (4 cols) -->
+<div class="lg:col-span-4 flex flex-col justify-between gap-space-md bg-surface-container-low p-space-md rounded">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container font-bold uppercase tracking-widest">[ 戦闘シミュレータ ]</span>
+<span class="font-label-tech-sm text-label-tech-sm text-primary animate-pulse">ENGAGE LIVE</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold uppercase">BALLISTIC DPS SIMULATOR</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Simulate targeted ordnance effectiveness against this specimen's specific bio-dermal layer.
+              </p>
+</div>
+<!-- Interactive Weapon Caliber Selector -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 uppercase">SELECT ARMAMENT CALIBER:</span>
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="p-space-xs text-center bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm font-bold uppercase" id="cal-plasma" onclick="setCaliber('plasma')">
+                  HE-PLASMA
+                </button>
+<button class="p-space-xs text-center bg-surface-container text-on-surface font-label-tech-sm text-label-tech-sm font-bold uppercase" id="cal-rail" onclick="setCaliber('rail')">
+                  RAIL-40MM
+                </button>
+<button class="p-space-xs text-center bg-surface-container text-on-surface font-label-tech-sm text-label-tech-sm font-bold uppercase" id="cal-cryo" onclick="setCaliber('cryo')">
+                  CRYO-FLUX
+                </button>
+</div>
+</div>
+<!-- Health & Depletion Gauge -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant uppercase">TARGET SPECIMEN INTEGRITY</span>
+<span class="text-primary font-bold" id="hp-counter">12,500 / 12,500 HP</span>
+</div>
+<div class="w-full h-3 bg-surface-container-lowest rounded overflow-hidden">
+<div class="h-full bg-primary-container transition-all duration-300" id="hp-bar" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Projected TTK & DPS Readout -->
+<div class="p-space-sm bg-surface-container-lowest rounded flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 uppercase">EFFECTIVE DPS</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold" id="calc-dps">1,840 DPS</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 uppercase">ESTIMATED TTK</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="calc-ttk">6.79 SEC</span>
+</div>
+</div>
+<!-- Engagement & Military Siren Trigger Button -->
+<button class="w-full py-space-md bg-primary-container hover:bg-secondary-container text-on-primary-container hover:text-on-secondary-container transition-all font-headline-sm text-headline-sm uppercase font-bold tracking-widest flex items-center justify-center gap-space-sm shadow-lg" onclick="triggerCombatSimulation()">
+<span class="material-symbols-outlined text-[20px]">crisis_alert</span>
+              RUN ORDNANCE STRIKE
+            </button>
+<div class="font-label-tech-sm text-label-tech-sm text-center text-on-surface-variant/60 truncate" id="audio-alert-log">
+              [SYSTEM: COMBAT SIMULATOR STANDBY // AUDIO SYNTH READY]
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ALL 6 SPECIMENS COMPARATIVE GRID / QUICK REFERENCE CARDS -->
+<section class="w-full px-gutter-desktop py-space-xl bg-surface">
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container font-bold">[ 脅威分類全覧 ]</span>
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase font-bold">INFESTATION THREAT DOSSIERS (N1 - N6)</h3>
+</div>
+<span class="hidden md:inline font-label-tech-sm text-label-tech-sm text-on-surface-variant/50">FIELD REVISION: 2088.11</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+<!-- CARD 1: DOBLE (N1) -->
+<div class="p-space-lg bg-surface-container rounded flex flex-col justify-between gap-space-md hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container font-bold">N1 // 二重</span>
+<span class="px-space-xs py-0.5 bg-primary-container/20 text-primary-container font-label-tech-sm text-label-tech-sm font-bold">EXTREME</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary font-bold">DOBLE (SPLIT WALKER)</h4>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">分裂歩行者 // BICEPHALIC BIOMECH</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+              Dual-torso kinetic sprinter. Splinters into two autonomous entities if severed horizontally. Requires high-voltage cryo shot to sternum.
+            </p>
+</div>
+<div class="flex flex-col gap-space-xs pt-space-xs bg-surface-container-lowest p-space-sm rounded">
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">HITBOX:</span>
+<span class="text-secondary font-bold">1.82m W × 2.45m H</span>
+</div>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">TELEGRAPH:</span>
+<span class="text-primary font-bold">Hazard Magenta Ring-Burst</span>
+</div>
+</div>
+<button class="w-full py-space-xs bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold tracking-widest transition-colors" onclick="selectSpecimen(0)">
+            LOAD TACTICAL DATA [N1]
+          </button>
+</div>
+<!-- CARD 2: LANZADOR (N2) -->
+<div class="p-space-lg bg-surface-container rounded flex flex-col justify-between gap-space-md hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container font-bold">N2 // 投擲者</span>
+<span class="px-space-xs py-0.5 bg-primary-container/20 text-primary-container font-label-tech-sm text-label-tech-sm font-bold">EXTREME</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary font-bold">LANZADOR (ARTILLERY)</h4>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">砲撃獣 // ASYMMETRICAL CRANE ARM</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+              Massive right-arm mutated catapult capable of hurling 4-ton hyper-dense plasma boulders at range 800m. Ground trembles prior to launch.
+            </p>
+</div>
+<div class="flex flex-col gap-space-xs pt-space-xs bg-surface-container-lowest p-space-sm rounded">
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">HITBOX:</span>
+<span class="text-secondary font-bold">3.10m W × 2.90m H</span>
+</div>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">TELEGRAPH:</span>
+<span class="text-primary font-bold">Shoulder Coil Charging Flare</span>
+</div>
+</div>
+<button class="w-full py-space-xs bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold tracking-widest transition-colors" onclick="selectSpecimen(1)">
+            LOAD TACTICAL DATA [N2]
+          </button>
+</div>
+<!-- CARD 3: AGRESOR (N3) -->
+<div class="p-space-lg bg-surface-container rounded flex flex-col justify-between gap-space-md hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container font-bold">N3 // 攻撃者</span>
+<span class="px-space-xs py-0.5 bg-primary-container/20 text-primary-container font-label-tech-sm text-label-tech-sm font-bold">LETHAL-APEX</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary font-bold">AGRESOR (RAPTOR)</h4>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">猛禽殴打者 // BIPEDAL STALKER</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+              Hyper-accelerated predatory quadruped. Flanks squad units at 92 km/h. Uses razor talons that slice through reinforced exo-plating.
+            </p>
+</div>
+<div class="flex flex-col gap-space-xs pt-space-xs bg-surface-container-lowest p-space-sm rounded">
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">HITBOX:</span>
+<span class="text-secondary font-bold">1.45m W × 1.95m H</span>
+</div>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">TELEGRAPH:</span>
+<span class="text-primary font-bold">Auditory Shriek + Eye Gleam</span>
+</div>
+</div>
+<button class="w-full py-space-xs bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold tracking-widest transition-colors" onclick="selectSpecimen(2)">
+            LOAD TACTICAL DATA [N3]
+          </button>
+</div>
+<!-- CARD 4: BLINDADO (N4) -->
+<div class="p-space-lg bg-surface-container rounded flex flex-col justify-between gap-space-md hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container font-bold">N4 // 装甲者</span>
+<span class="px-space-xs py-0.5 bg-secondary-container text-on-secondary-container font-label-tech-sm text-label-tech-sm font-bold">FORTRESS</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary font-bold">BLINDADO (TANK)</h4>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">要塞戦車 // CHITIN-TITANIUM BULWARK</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+              Impervious front-facing armor. Deflects non-plasma ballistics up to 120mm caliber. Front charge destroys physical barricades.
+            </p>
+</div>
+<div class="flex flex-col gap-space-xs pt-space-xs bg-surface-container-lowest p-space-sm rounded">
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">HITBOX:</span>
+<span class="text-secondary font-bold">3.80m W × 3.65m H</span>
+</div>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">TELEGRAPH:</span>
+<span class="text-primary font-bold">Ground Hydraulic Stamp Ground-wave</span>
+</div>
+</div>
+<button class="w-full py-space-xs bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold tracking-widest transition-colors" onclick="selectSpecimen(3)">
+            LOAD TACTICAL DATA [N4]
+          </button>
+</div>
+<!-- CARD 5: RESUCITADO (N5) -->
+<div class="p-space-lg bg-surface-container rounded flex flex-col justify-between gap-space-md hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container font-bold">N5 // 蘇生者</span>
+<span class="px-space-xs py-0.5 bg-primary-container/20 text-primary-container font-label-tech-sm text-label-tech-sm font-bold">PERSISTENT</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary font-bold">RESUCITADO (UNDEAD)</h4>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">不滅の恐怖 // NECRO-SPORE REGENERATOR</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+              Necrotic host corpse sustained by spore lattice. Resuscitates 45 seconds after zero-HP unless target corpse is completely incinerated.
+            </p>
+</div>
+<div class="flex flex-col gap-space-xs pt-space-xs bg-surface-container-lowest p-space-sm rounded">
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">HITBOX:</span>
+<span class="text-secondary font-bold">1.20m W × 2.10m H</span>
+</div>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">TELEGRAPH:</span>
+<span class="text-primary font-bold">Spore Haze Detonation Flash</span>
+</div>
+</div>
+<button class="w-full py-space-xs bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold tracking-widest transition-colors" onclick="selectSpecimen(4)">
+            LOAD TACTICAL DATA [N5]
+          </button>
+</div>
+<!-- CARD 6: MIMETICO (N6) -->
+<div class="p-space-lg bg-surface-container rounded flex flex-col justify-between gap-space-md hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-container font-bold">N6 // 擬態者</span>
+<span class="px-space-xs py-0.5 bg-primary-container/20 text-primary-container font-label-tech-sm text-label-tech-sm font-bold">INFILTRATOR</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary font-bold">MIMETICO (SHIFTER)</h4>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">変形者 // HUMANOID OPTIC CAMOUFLAGE</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+              Matches ally bio-signatures and optical appearance. Uncloaks exclusively at point-blank knife range (1.2m) with an armor-piercing spinal sting.
+            </p>
+</div>
+<div class="flex flex-col gap-space-xs pt-space-xs bg-surface-container-lowest p-space-sm rounded">
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">HITBOX:</span>
+<span class="text-secondary font-bold">0.95m W × 1.88m H</span>
+</div>
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant/60">TELEGRAPH:</span>
+<span class="text-primary font-bold">Phase Disruption Chromatic Glitch</span>
+</div>
+</div>
+<button class="w-full py-space-xs bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold tracking-widest transition-colors" onclick="selectSpecimen(5)">
+            LOAD TACTICAL DATA [N6]
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- OPERATIONAL BESTIARY SCRIPT -->
+<script>
+    const SPECIMEN_DATA = [
+      {
+        id: "N1 // ALPHA",
+        title: "DOBLE (N1)",
+        sub: "二重 (N1) // 分裂歩行者 // SPLIT WALKER",
+        desc: "Bicephalic bifurcated mutant infantry. Displays unstable bio-nuclear kinetic energy. Upon physical severance, both dorsal torsos split into autonomous attack vectors.",
+        height: "HT: 2.45M",
+        threat: "DEFCON-1",
+        telegraph: "[RING-BURST] 3.5s Pre-detonation magenta shockwave. Radius: 12 meters. Roll dodge diagonal-backward.",
+        weakness: "Dorsal Core / Cryo",
+        armor: "Organic Bioplate II",
+        w: "1.82 m",
+        h: "2.45 m",
+        crit: "3.2x HEAD",
+        maxHp: 12500,
+        svgPath: "M90 30 C 90 20, 110 20, 110 30 C 110 40, 120 45, 125 50 C 140 60, 150 90, 145 120 L 155 160 L 140 180 L 130 150 L 125 210 L 115 235 L 105 180 L 95 235 L 85 210 L 80 150 L 65 180 L 50 160 L 60 120 C 55 90, 65 60, 80 50 Z"
+      },
+      {
+        id: "N2 // BETA",
+        title: "LANZADOR (N2)",
+        sub: "投擲者 (N2) // 砲撃獣 // ARTILLERY BEAST",
+        desc: "Asymmetric siege carrier wielding a colossal overgrown biological catapult arm. Hurls molten chitin cluster rounds across 800m tactical distance.",
+        height: "HT: 2.90M",
+        threat: "SIEGE-RED",
+        telegraph: "[HEAVY LIFT] 4.2s Arm rotation clockwise with blinding magenta arc. Area-of-effect suppression radius 25m.",
+        weakness: "Left Counter-weight Sinew",
+        armor: "Dorsal Carapace III",
+        w: "3.10 m",
+        h: "2.90 m",
+        crit: "2.8x ARMPIT",
+        maxHp: 18400,
+        svgPath: "M80 40 C 90 20, 110 20, 115 40 C 130 50, 155 60, 175 100 L 165 160 C 155 150, 140 160, 130 180 L 125 230 L 110 180 L 90 230 L 75 170 C 60 160, 40 130, 30 110 L 40 80 C 60 70, 70 50, 80 40 Z"
+      },
+      {
+        id: "N3 // GAMMA",
+        title: "AGRESOR (N3)",
+        sub: "攻撃者 (N3) // 猛禽殴打者 // RAPTOR MAULER",
+        desc: "Hyper-speed quadrupedal biped hybrid hunter. Leaps across broken urban terrain with hyper-dense leg actuators. Slices medium vehicles in half.",
+        height: "HT: 1.95M",
+        threat: "APEX-STALKER",
+        telegraph: "[POUNCE TELEGRAPH] 1.8s Low ground crouch accompanied by high-pitch sonar chirp. Evade lateral immediately.",
+        weakness: "Cranial Siphon Vent",
+        armor: "Light Carbon-Skin",
+        w: "1.45 m",
+        h: "1.95 m",
+        crit: "4.0x EYE-SLIT",
+        maxHp: 9800,
+        svgPath: "M85 50 C 90 30, 120 30, 130 50 C 145 70, 160 100, 150 140 L 170 170 L 140 180 L 130 220 L 110 170 L 90 220 L 70 160 L 50 190 L 60 140 C 50 100, 65 70, 85 50 Z"
+      },
+      {
+        id: "N4 // DELTA",
+        title: "BLINDADO (N4)",
+        sub: "装甲者 (N4) // 要塞戦車 // FORTRESS TANK",
+        desc: "Monolithic juggernaut clad in foot-thick petrified osteoderms. Acts as walking mobile cover for lower-tier bio-swarms. Deflects explosive charges.",
+        height: "HT: 3.65M",
+        threat: "FORTRESS-IV",
+        telegraph: "[BULL CHARGE] 5.0s Back turbine thermal vents ignite yellow-magenta smoke. Ramming damage is instantaneously fatal.",
+        weakness: "Ventral Cooling Ports",
+        armor: "Titanium Chitin Bulk",
+        w: "3.80 m",
+        h: "3.65 m",
+        crit: "1.5x VENT ONLY",
+        maxHp: 32000,
+        svgPath: "M60 40 L 140 40 L 160 80 L 170 160 L 150 230 L 130 230 L 125 170 L 75 170 L 70 230 L 50 230 L 30 160 L 40 80 Z"
+      },
+      {
+        id: "N5 // EPSILON",
+        title: "RESUCITADO (N5)",
+        sub: "蘇生者 (N5) // 不死の恐怖 // UNDEAD HORROR",
+        desc: "Fleshy automaton bound by subterranean fungal filaments. When felled, its heart cavity primes a secondary microbial reactivation.",
+        height: "HT: 2.10M",
+        threat: "BIO-HAZARD-II",
+        telegraph: "[SPORE-BURST] 2.2s Chest cavity rib-cage cracks outward emitting caustic mist. Wear chemical filter masks.",
+        weakness: "Thermal Incineration",
+        armor: "Rotting Mycelium",
+        w: "1.20 m",
+        h: "2.10 m",
+        crit: "2.5x SPINE",
+        maxHp: 11000,
+        svgPath: "M95 30 C 105 20, 115 30, 115 45 L 120 70 L 140 100 L 130 160 L 120 235 L 105 170 L 95 235 L 85 160 L 70 100 L 85 70 Z"
+      },
+      {
+        id: "N6 // ZETA",
+        title: "MIMETICO (N6)",
+        sub: "擬態者 (N6) // 変形者 // SHAPE-SHIFTER",
+        desc: "Sub-microscopic cell mimic. Masks infrared thermals to match friendly operative uniforms. Ambush predator with lethal neuro-toxin injector.",
+        height: "HT: 1.88M",
+        threat: "INFILTRATION-S",
+        telegraph: "[SHIMMER DETECT] 0.9s Subtle refraction glitch in ambient lighting. Requires automated AI proximity radar scan.",
+        weakness: "High-Frequency EMP",
+        armor: "Adaptive Cloak Membrane",
+        w: "0.95 m",
+        h: "1.88 m",
+        crit: "3.5x NEURO-NODE",
+        maxHp: 8400,
+        svgPath: "M95 25 C 105 25, 105 38, 95 38 C 85 38, 85 25, 95 25 Z M 80 50 L 115 50 L 125 100 L 115 150 L 115 230 L 100 170 L 85 230 L 85 150 L 70 100 Z"
+      }
+    ];
+
+    let currentSpecimenIndex = 0;
+    let currentCaliber = 'plasma';
+    let currentHp = 12500;
+
+    const CALIBER_DATA = {
+      plasma: { dpsMultiplier: 1.0, name: "HE-PLASMA", freq: 440 },
+      rail: { dpsMultiplier: 1.45, name: "RAIL-40MM", freq: 280 },
+      cryo: { dpsMultiplier: 0.85, name: "CRYO-FLUX", freq: 620 }
+    };
+
+    function selectSpecimen(index) {
+      currentSpecimenIndex = index;
+      const data = SPECIMEN_DATA[index];
+
+      // Update Tab Styles
+      for (let i = 0; i < 6; i++) {
+        const tab = document.getElementById('tab-' + i);
+        if (i === index) {
+          tab.classList.remove('bg-surface-container');
+          tab.classList.add('bg-surface-container-highest');
+        } else {
+          tab.classList.remove('bg-surface-container-highest');
+          tab.classList.add('bg-surface-container');
+        }
+      }
+
+      // Update Dossier Content
+      document.getElementById('specimen-id-badge').innerText = data.id;
+      document.getElementById('specimen-title').innerText = data.title;
+      document.getElementById('specimen-kanji-sub').innerText = data.sub;
+      document.getElementById('specimen-description').innerText = data.desc;
+      document.getElementById('specimen-metric-height').innerText = data.height;
+      document.getElementById('specimen-threat-code').innerText = 'CLASS: ' + data.threat;
+      document.getElementById('specimen-telegraph').innerText = data.telegraph;
+      document.getElementById('specimen-weakness').innerText = data.weakness;
+      document.getElementById('specimen-armor').innerText = data.armor;
+      document.getElementById('specimen-hit-w').innerText = data.w;
+      document.getElementById('specimen-hit-h').innerText = data.h;
+      document.getElementById('specimen-crit').innerText = data.crit;
+
+      // Update Silhouette Path
+      document.getElementById('specimen-svg-path').setAttribute('d', data.svgPath);
+
+      // Reset Combat HP
+      currentHp = data.maxHp;
+      updateCombatReadout();
+    }
+
+    function setCaliber(caliber) {
+      currentCaliber = caliber;
+      ['plasma', 'rail', 'cryo'].forEach(cal => {
+        const btn = document.getElementById('cal-' + cal);
+        if (cal === caliber) {
+          btn.classList.remove('bg-surface-container', 'text-on-surface');
+          btn.classList.add('bg-primary-container', 'text-on-primary-container');
+        } else {
+          btn.classList.remove('bg-primary-container', 'text-on-primary-container');
+          btn.classList.add('bg-surface-container', 'text-on-surface');
+        }
+      });
+      updateCombatReadout();
+    }
+
+    function updateCombatReadout() {
+      const data = SPECIMEN_DATA[currentSpecimenIndex];
+      const cal = CALIBER_DATA[currentCaliber];
+      
+      const baseDps = 1840;
+      const effectiveDps = Math.round(baseDps * cal.dpsMultiplier);
+      const estTtk = (data.maxHp / effectiveDps).toFixed(2);
+
+      document.getElementById('calc-dps').innerText = effectiveDps.toLocaleString() + ' DPS';
+      document.getElementById('calc-ttk').innerText = estTtk + ' SEC';
+
+      const hpPercent = Math.max(0, (currentHp / data.maxHp) * 100);
+      document.getElementById('hp-bar').style.width = hpPercent + '%';
+      document.getElementById('hp-counter').innerText = Math.round(currentHp).toLocaleString() + ' / ' + data.maxHp.toLocaleString() + ' HP';
+    }
+
+    // Audio Synthetic Siren & Military Strike
+    function triggerCombatSimulation() {
+      const data = SPECIMEN_DATA[currentSpecimenIndex];
+      const cal = CALIBER_DATA[currentCaliber];
+
+      // Synthetic Web Audio Siren
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(cal.freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(cal.freq * 2.2, audioCtx.currentTime + 0.15);
+        osc.frequency.exponentialRampToValueAtTime(cal.freq * 0.5, audioCtx.currentTime + 0.35);
+
+        gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.4);
+      } catch (e) {
+        // Fallback if audio context not permitted
+      }
+
+      // Damage calculation decrement
+      const damageDealt = Math.round(data.maxHp * 0.35);
+      currentHp -= damageDealt;
+      if (currentHp <= 0) {
+        currentHp = data.maxHp;
+        document.getElementById('audio-alert-log').innerText = '[STATUS: SPECIMEN NEUTRALIZED // AUTO-RELOADING CHAMBER]';
+      } else {
+        document.getElementById('audio-alert-log').innerText = '[SALVO DELIVERED: -' + damageDealt.toLocaleString() + ' DMG WITH ' + cal.name + ']';
+      }
+
+      updateCombatReadout();
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-4px_24px_rgba(0,0,0,0.4)]"><div class="w-full px-gutter-desktop py-space-xl flex flex-col gap-space-lg"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md"><div class="flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs"><span class="font-label-tech-sm text-label-tech-sm text-secondary-container uppercase font-bold tracking-widest">[ 防衛省特定作戦記録室 ]</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/50">// CLASSIFIED LEVEL 5 CLEARANCE ONLY</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-2xl">Operational Directive 88-Delta: Unauthorized access, telemetry breach, or replication of anti-kaiju bio-mechanic telemetry warrants court-martial. All orbital uplinks routed through Neo-Shinjuku Defense Terminal 01.</p></div><div class="flex flex-wrap items-center gap-space-md"><div class="px-space-md py-space-sm bg-surface-container flex flex-col"><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 uppercase">SYS_LATENCY</span><span class="font-label-tech-md text-label-tech-md text-secondary font-bold">0.0024 MS // SAT_04</span></div><div class="px-space-md py-space-sm bg-surface-container flex flex-col"><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 uppercase">SURVEILLANCE CIPHER</span><span class="font-label-tech-md text-label-tech-md text-primary font-bold">AES-GCM-512-ND</span></div></div></div><div class="flex flex-col md:flex-row items-center justify-between gap-space-md pt-space-md"><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/50 uppercase tracking-widest">© 2088 NIPPON DESTRUCTION TACTICAL COMMAND. ALL STRATEGIC RIGHTS RESERVED.</span><div class="flex items-center gap-space-lg"><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer uppercase">MIL-SPEC PROTOCOLS</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer uppercase">TELEMETRY FEED SPECS</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer uppercase">SECURE TERMINAL REBOOT</span></div></div></div></footer></body></html>

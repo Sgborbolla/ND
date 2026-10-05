@@ -2,13 +2,17 @@
 
 Documento único para retomar el proyecto en cualquier sesión.
 Auditoría detallada de las referencias Stitch en `AUDIT_STITCH_ND.md`.
+Auditoría del código frente a este diseño en `AUDIT_CODIGO_ND.md`.
 
 ## 1. Idea
 
-Juego 2D de acción con 2 botones (golpe + dash), estilo **siluetas negras**, ambiente
-atardecer con contraluz. Nombre: Nippon Destruction → **ND**.
+Juego 2D de acción con siluetas negras, ambiente atardecer con contraluz y
+lluvia ácida. Nombre: Nippon Destruction → **ND**.
 
-Objetivo: algo pegadizo, funcional y agradable en móvil (horizontal) + web.
+Objetivo: pegadizo, funcional y agradable en **PC y móvil** (horizontal) + web.
+
+Dirección gráfica: **híbrido**. El fondo y los efectos usan las referencias de
+Stitch como assets; los personajes son siluetas vectoriales articuladas. Ver §3.
 
 ## 2. Arquitectura
 
@@ -16,167 +20,529 @@ Vanilla, sin build, sin dependencias:
 
 ```
 index.html      markup + CSS del HUD táctil
-nd.js           IIFE con todo el juego (canvas 2D + WebAudio)
-nd.webmanifest  PWA (fullscreen, landscape)
-server.js       servidor estático para Node (puerto 8123)
-start.bat       abre index.html en PC
-test/nd-test.js 27 pruebas con dobles de canvas/audio/DOM/reloj
-icons/          icono real 192/512, maskable, apple-touch, favicons
-refs/           referencias Stitch descargadas + manifiesto de URLs
+nd.js           IIFE con todo el juego (canvas 2d + WebAudio)
+start.bat       abre index.html en PC (doble clic, sin instalar nada)
+server.js       servidor estático opcional para Node (puerto 8123)
+test/nd-test.js pruebas con dobles de canvas/audio/DOM/reloj
+icons/          icono 192/512, maskable, apple-touch, favicons
+icons/android/  ic_launcher 48/72/96/144/192/512 para el APK
+refs/hi/        11 fotos Stitch 1376×768 (ASSETS del juego, versionadas)
+refs/stitch/    mockups HTML de Stitch (solo referencia)
 DESIGN_ND.md    este archivo
 AUDIT_STITCH_ND.md  auditoría de los HTML de Stitch
-PROMPT_ND_*.md  prompts de diseño (V2 es el maestro)
+AUDIT_CODIGO_ND.md  auditoría del código frente al diseño
+PROMPT_ND.md    prompt canónico (sustituye a los PROMPT_ND_*.md eliminados)
 ```
 
-Interno: `960×540`, suelo en `y=468`. Runs: `python3 -m http.server 8000` o `node server.js`.
+### 2.1 Offline y empaquetado
 
-## 3. Canónico de diseño (fijado en la auditoría)
+El juego tiene que funcionar **offline**. Restricción dura, por eso:
 
-Decisiones tomadas para eliminar las contradicciones entre los 26 HTML de Stitch:
+- **No hay PWA.** Se eliminó `nd.webmanifest` y sus `<meta>`. El APK se hará
+  aparte al final, en un proyecto Android que envuelve estos ficheros.
+- **Sin `fetch`, sin ES modules, sin XHR, sin service worker.** Por eso
+  `file://` funciona: doble clic en `index.html` y a jugar.
+- **Las imágenes van con `new Image()`**, que también funciona en `file://`.
+- **Sin `getImageData`** en el canvas principal, así que no hay taint y se puede
+  dibujar cualquier foto local sin problemas.
+- `start.bat` es el lanzador de PC. `server.js` es opcional y solo comodidad.
+
+El proyecto Android que se hará después necesita, además del código:
+
+| Recurso | Ruta | Para qué |
+|---|---|---|
+| Código | `index.html`, `nd.js`, `start.bat`, `server.js` | el juego |
+| Assets | `refs/hi/*.jpg` | fondos y efectos |
+| Iconos | `icons/android/ic_launcher-*.png` | launcher del APK |
+
+Interno: `960×540`, suelo en `y=468`. Las fotos de `refs/hi/` son assets reales
+del juego, así que **el juego no necesita servidor**: no hay `fetch`, ni ES
+modules, ni XHR. Las imágenes se cargan con `new Image()`, que sí funciona en
+`file://`. `python3 -m http.server` y `node server.js` son solo por comodidad.
+
+## 3. Canónico de diseño
+
+Decisiones fijadas tras comparar los tres proyectos (NPAD, Stitch, ND):
 
 | Tema | Canónico | Descartado |
 |---|---|---|
-| Kanji Rika | **里花** (12 vs 3) | 里香 |
+| Kanji Rika | **里花** | 里香 |
 | Kanji Goro | **五郎** | 吾郎 |
 | Kanji Ren / Yui | 林 蓮 / 中村 結衣 | — |
 | Amarillo | **#FFC400** | #FEC300, #FFB871 |
 | Magenta | **#FF2D6F** | #FF4E7C, #FFB2BD |
-| Hitstop | **14 frames** | 8 / 12 / 16 / 18 |
-| Año del setting | **2088** | 2025, 2048 |
-| Ruptura | **automática al encadenar** (ND) | botón `Q` aparte de Stitch |
-| Assets | 16 disponibles | 17 declarados, 5 URLs muertas |
+| Cielo | **4 tonos** | 5 tonos con `#E8813F` |
+| Tinta de silueta | **#000000** puro | `#05030A` |
+| I-frames de dash | `#F2DCC0` | `#8FE8FF` |
+| Assets | **fotos de `refs/hi/`** | solo primitivas de canvas |
+| Ruptura | **botón `Q`** (Stitch) | automática al encadenar (NPAD mantiene) |
+| Cuarto botón | **DEFINITIVA** | `DEFCON` como ítem (Stitch) |
 
-Paleta: `#150E2B → #4A2247 → #A84A38 → #F0A65A` (cielo de 4 tonos), `#FF2D6F` peligro,
-`#FFC400` aviso, `#F2DCC0` acento, `#05030A` tinta de siluetas.
+### 3.1 Paleta
+
+Cielo de 4 tonos: `#150E2B → #4A2247 → #A84A38 → #F0A65A`.
+`#FF2D6F` peligro, `#FFC400` aviso, `#F2DCC0` acento y luz de contorno,
+`#FFB871` terciario, `#000000` tinta de siluetas.
+
+Tokens Material 3 de Stitch para superficies: `#100926`, `#1E1734`, `#221B38`,
+`#2C2543`, `#37304F`, `#3C3554`.
+
+### 3.2 Gráficos: por qué híbrido y no solo vectores
+
+Medida de las referencias: `heroes-lineup.jpg` tiene **63%** de píxeles casi
+negros y `gameplay-mock.jpg` **79%**. Stitch **también es silueta negra**, así
+que la dirección de ND era correcta desde el principio; lo que faltaba era
+calidad de ejecución.
+
+Consecuencia de esa medición:
+
+- **Fondo y efectos** → se pueden replicar exactos. Un efecto de pantalla es
+  geometría pura, no pintura.
+- **Personajes** → no se pueden calcarse. Stitch no tiene sprites de personajes:
+  los tiene en HTML/CSS y en fotos pintadas. No existe ningún fichero de
+  animación de personajes en las 38 carpetas.
+
+Por eso: fondo y efectos exactos con assets, personajes en silueta vectorial
+articulada con luz de contorno.
 
 ## 4. Estado: HECHO
 
-- [x] Bucle canvas 960×540 con parallax 3 capas (`.10 / .24 / .46`) + suelo y niebla
-- [x] Atardecer 4 tonos + sol con glow + lluvia ácida
-- [x] **4 héroes** (RIKA, GORO, REN, YUI) con voz sintetizada distinta y cita JA/ES
-- [x] **6 arquetipos** enemies, uno por nivel: El Doble, Lanzador, El Agresor,
-      Blindado, Resucitado, El Mimético — cada uno con comportamiento propio
-- [x] Guardia del Blindado: 3 golpes la rompen, o un dash atravesándola
-- [x] Dash con i-frames, hitstop, slow-motion, combo con ruptura, knockback
-- [x] Enemigos con grito + telegrafia visual/audio antes de atacar (sin spam de audio)
-- [x] Zonas de peligro dibujadas en coordenadas de mundo
-- [x] Música cyberpunk/funk generativa **BPM 104** (bajo, percusión, lead)
-- [x] SFX sintetizados + voces japonesas (ataque, ruptura, daño, muerte)
-- [x] Controles teclado (`A`/`D`, `Espacio`/`J`, `Shift`/`K`) y táctiles (◀ ▶ GOLPE DASH)
-- [x] PWA: manifest, fullscreen, orientation landscape
-- [x] **Icono real** derivado del key-art (192/512, maskable, apple-touch, favicons)
-      y conectado a `index.html` + `nd.webmanifest`
-- [x] `test/nd-test.js` → **27 ok / 0 fail**
+- [x] Bucle canvas 960×540 con parallax 3 capas (`.10 / .26 / .48`)
+- [x] Atardecer 4 tonos + sol con glow + lluvia ácida + relámpago
+- [x] **4 héroes** (RIKA, GORO, REN, YUI) con voz sintetizada y cita JA/ES
+- [x] **6 arquetipos** de enemigos, uno por nivel
+- [x] Guardia del Blindado: 3 golpes o un dash la rompen
+- [x] Dash con i-frames, hitstop, slow-motion
+- [x] Enemigos con telegrafia visual/audio antes de atacar
+- [x] Zonas de peligro en coordenadas de mundo
+- [x] Música generativa **BPM 104** + SFX sintetizados + voces japonesas
+- [x] Icono real derivado del key-art
+- [x] PWA **retirada**: `nd.webmanifest` borrado, sin service worker (§2.1)
+- [x] Paleta canónica de 4 tonos aplicada, `INK=#000000`, `RIM=#F2DCC0`
+
+### 4.1 HECHO por personaje
+
+Cada héroe con stats de movimiento y poder propios, adaptados de NPAD al
+Canvas. Los 4 comparten `silo()` plano (rig pendiente, §5.6).
+
+| Héroe | Poder en ND | Campos |
+|---|---|---|
+| RIKA · LA HOJA | dash atraviesa, daña y recupera carga | `thru:1`, `dsh:12` |
+| GORO · EL YUNQUE | carga larga, embestida y empuje en `P.fc` | `push:1`, `dsh:26` |
+| REN · EL RELÁMPAGO | 3 cargas autorrecargables, zigzag | `ch:3`, `cm:26`, `zz:1` |
+| YUI · EL ECO | rifle a distancia, teletransporte, onda de ralentización | `rng:1`, `tp:150` |
+
+- [x] Yui: proyectiles `SH`, copia residual `GH`, onda `RG`, trazador `#F2DCC0`,
+      ralentización enemiga. Estados, update y render.
+- [x] Movimiento por héroe con `acc` / `brk` / `air` distintos.
+- [x] HUD de dash adaptado a barra o pips según número de cargas.
 
 ## 5. Estado: FALTA
 
-### 5.1 Splash / presentación
-`SPLASH_01 → 06` animada: cámara lateral por la calle destruida, relámpago que
-revela al héroe en contraluz, título `NIPPON DESTRUCTION` + `日本崩壊` con glow
-`#F2DCC0`, fundido a la selección. Referencia: `splash_01..06` + `01._pr_logo_cinematográfico`.
+### 5.1 Sistema de rupturas — PRIORIDAD
+ND **no tiene** sistema de ruptura. Los otros dos proyectos sí, y es lo que da
+identidad a cada héroe. Botón `Q` independiente, invulnerable de principio a
+fin, cuesta 1 carga completa, cut-in de 12–18 frames y onda expansiva con
+empuje.
 
-### 5.2 Selección de héroes (actualmente básica)
-Slots de 88×104 sin más. Falta la ficha del sistema táctico:
-- placa kanji + nombre + apodo + rol (`DPS` / `TANK` / `SPEED` / `CHRONO`)
-- descripción ES y cita de campo JA/ES
-- 4 métricas: fuerza de impacto, velocidad, hitstop (14F), radio de dash
-- 3 niveles de habilidad, matriz cromática por héroe
-- navegación teclado `1..4` + táctil, confirmación `DESPLEGAR UNIDAD`
+| Héroe | Ruptura `Q` | Definitiva `E` | Hitstop |
+|---|---|---|---|
+| RIKA | IAIDO RELÁMPAGO (12f invuln, atraviesa defensas) | SOBRECARGA ND: SINFONÍA DE SANGRE (7 cortes cruzados, gasta toda la carga) | 70ms / 14f |
+| GORO | MAZAZO DE RUPTURA SÍSMICA (rompe `guard` de Blindados) | DEMOLICIÓN ND: COLAPSO TECTÓNICO (onda de pantalla completa) | 92ms / 24f |
+| REN | DESTELLO ZIG-ZAG (cadena de 5 blancos, arcos `#FFC400`) | TORMENTA (giro 360°) | 55ms / 8f |
+| YUI | VÓRTICE DE REVERBERACIÓN (ralentiza proyectiles 80% por 3.5s) | COLAPSO ND: ANOMALÍA RECURSIVA (invierte 4s de daño) | 85ms / 18f |
 
-### 5.3 HUD táctico (ahora solo 2 líneas de texto)
-**Se adopta el de Stitch tal cual**: está diseñado para móvil en 16:9 forzado
-(zonas táctiles por cuadrante, safe areas, botones ≥48px WCAG). Hoy ND solo
-pinta `VIDA 05/05` y `OLEADA 3 · LANZADOR · 7 BAJAS`. Falta el sistema completo:
+- [ ] `HEROES.rup` con tier 1, tier 3, hitstop y frames
+- [ ] `ruptura()` y `definitiva()` sobre `punch()` / `slow()` / `burst()`
+- [ ] Arrays de efectos `RZ` / `GB` / `TB` / `VV` siguiendo el patrón de `SH`/`GH`/`RG`
+- [ ] Input `Q`/`E` con prioridad de buffer `RUPTURA > ESQUIVA > ATAQUE`
+- [ ] Goro: pasiva BASTIÓN DE TITANIO, absorbe 90% del frontal automáticamente
+- [ ] Yui: `D` = DESFASADOR DE SILUETA (copia residual + reposición)
 
-| Zona | Elemento | Valores de referencia |
+Efectos a replicar tal cual de `splash_05_tajo_instant`: `120 Vector Rays`,
+`16 FRAMES (~266ms)`, `0.266s HITSTOP IMPACT`, smear arcs, destello blanco de
+1 frame al conectar.
+
+### 5.2 Reliquias temporales
+Los enemigos sueltan reliquias al morir. Se recogen en 0.15s y se pierden al
+cambiar de tramo. Nunca permanentes.
+
+| Clave | Nombre | Efecto |
 |---|---|---|
-| Sup. izq. `QUAD_01` | barra de vida + medidor trifásico de dash | `1,840/2,000 HP (85%)`, `2/3 CARGAS`, recarga 40% |
-| Sup. der. `QUAD_02` | combo + tacómetro de amenaza | `38 HITS // SSS`, `MULTIPLICADOR x4.8`, `THREAT LEVEL S-RANK`, `WAVE 04/06` |
-| Inf. izq. `QUAD_03` | joystick flotante | radio 64px, deadzone 12% |
-| Inf. der. `QUAD_04` | botonera | Tajo 72px a 30°, Ruptura `#FF2D6F`, Dash 56px |
-| Global | telégrafo | `⚠ ¡TELÉGRAFO DETECTADO! ⚠`, `DASH CD`, `RUPTURA: MAX` |
+| `dashCura` | TRAVESÍA VITAL | Atravesar un enemigo te cura |
+| `estela` | ESTELA RESIDUAL | El dash deja estela que daña |
+| `crit` | PRECISIÓN FRÍA | Tras 3s sin atacar, el golpe es crítico |
+| `carga` | RUPTURA RECARGADA | Matar recupera una carga |
 
-### 5.4 Subjefes (ninguno)
-`EL CIERRE` · `LA CADENA` · `EL DESGARRO` · `EL MURO` · `EL ECO ROTO` · `LA CUCHILLA COLGADA`
-Silueta propia cada uno, barra de vida propia y patrón de ataque. Entran en oleadas altas.
+Criterio de NPAD `diseño.md:1208`: una reliquia debe **cambiar cómo juegas**, no
+cuánto pegas. Por eso no hay `+10% daño`.
 
-### 5.5 Jefes colosales (ninguno)
-`PUERTA DE ACERO` · `COLAPSO` · `HORNO` · `CEMENTERIO` · `RESONANCIA` · `NÚCLEO ND`
-Con fases por porcentaje de vida y barra de jefe dedicada.
+- [ ] `IT` + `REL` (no reutilizar `drops`, que ya es la lluvia en `nd.js:252`)
+- [ ] Drops en `hurt()` (`nd.js:509`): 25% base, 60% Blindado, 100% Resucitado
+      y cierre de tramo
+- [ ] Recogida por contacto con orbe, sin parpadeo
+- [ ] Panel `DEFCON` en el HUD con la reliquia activa y su duración
 
-### 5.6 Otros
+### 5.3 Cámara y progresión
+Hoy la cámara estática en juego: `nd.js:659` la limita a `W-440`. Solo el título
+avanza (`nd.js:800`).
+
+- [ ] Quitar el clamp y hacer que el mundo avance con el scroll
+- [ ] Botones de avanzar hasta el final del tramo
+- [ ] Puerta de transición al completar tramo
+- [ ] Progresión por avance, no solo por matar
+
+### 5.4 HUD y controles — 4 cuadrantes de Stitch
+Etiquetas literales sacadas de `14._arquitectura_de_ui_y_hud_táctil` y
+`04._arena_combat_hud`. Se **adoptan tal cual**, están diseñados para móvil en
+16:9 forzado.
+
+| Zona | Elemento | Etiqueta en el botón |
+|---|---|---|
+| `QUAD_01` sup. izq. | barra de vida + medidor trifásico | `2/3 CARGAS` |
+| `QUAD_02` sup. der. | combo + tacómetro | `WAVE 04/06` |
+| `QUAD_03` inf. izq. | **2 botones de dirección** (sustituyen al joystick flotante) | `AVANZAR` / `RETROCESO` |
+| `QUAD_04` inf. der. | cluster de 4 en arco bajo el pulgar | `TAJO` (72px) · `RUPTURA ND` · `DASH` · `DEFINITIVA` |
+
+- [ ] 6 botones con el nombre dentro, en `#F2DCC0`, `letter-spacing` amplio
+- [ ] `clamp(58px, 13vmin, 88px)`, separación mínima 12px, `TAJO` a 72px
+- [ ] `env(safe-area-inset-*)` para que no caigan bajo el notch
+- [ ] `bind()` (`nd.js:408`) a `pointerdown`/`pointerup` con
+      `setPointerCapture` para multitáctil real
+- [ ] Tinte `#FF2D6F` en `RUPTURA ND` cuando hay carga, `#FFC400` a carga
+      completa en `DEFINITIVA`
+- [ ] Buffer de 5 frames para pulsaciones cortas (el pulgar no mantiene)
+- [ ] Pausa al perder el foco, para no morir por un golpe fuera de pantalla
+
+### 5.5 Selección de héroes
+Referencia preferida: `refs/hi/hero-select.jpg`. Tarjetas de **cristal** con el
+personaje de **katana y pelo largo**. Se rechaza la variante de pelo corto.
+
+- [ ] placa kanji + nombre + apodo + rol (`DPS`/`TANK`/`SPEED`/`CHRONO`)
+- [ ] 4 métricas: impacto, velocidad, hitstop, evasión
+- [ ] navegación `1..4` + táctil, confirmación
+
+### 5.6 Rigs articulados
+`silo()` (`nd.js:199`) dibuja un bloque. Falta anatomía con capas separadas:
+torso, cuello, brazo delantero, brazo trasero, pierna delantera, pierna
+trasera, arma, y borde con luz de contorno `#F2DCC0`.
+
+La forma de cada héroe se recorta de `refs/hi/heroes-lineup.jpg`, para que la
+silueta salga de la ilustración y no del criterio del código.
+
+Se busca ver **inspirado en** Stitch, no calcado: una silueta vectorial no tiene
+el borde pintado de una ilustración.
+
+### 5.7 Game feel
+- [ ] **shake de cámara**: `tr` se acumula pero nunca se dibuja
+- [ ] hitstop de ruptura a 14f canónicos
+- [ ] `slashGlow`, `shockwaveExpand`, `flashLight` / `flashHeavy`
+- [ ] speedlines y corte diagonal en la ruptura cinemática
+
+### 5.8 Otros pendientes
+- [ ] Fin de partida: total de oleadas, condición de victoria
 - [ ] puntuación máxima local
 - [ ] pausa
-- [ ] catálogo modal de los 16 assets (como en el HTML de Stitch)
-- [ ] `Q` / ruptura manual (decidir: se mantiene automática)
-- [ ] imbalancear y afinar dificultad
+- [ ] 6 subjefes · 6 jefes colosales con fases
+- [ ] knockback real
+- [ ] shake de cámara dibujado, con los dos keyframes de Stitch (0.22s / 0.38s)
+
+### 5.9 Audio: voces, SFX y música
+
+El juego **no es mudo**. Todo el audio es local y corre en `file://`: ni un
+solo fichero de sonido externo, ni red en runtime.
+
+| Capa | Estado | Fichero |
+|---|---|---|
+| Música generativa | BPM 104, 1 solo tema | `nd.js:130-189` |
+| Música por intensidad | Hero roots, pad, lead, tensión | `assets/music.js` |
+| SFX de combate | 13 efectos sintetizados | `nd.js:110-128` |
+| Ambiente y FX | lluvia, trueno, goteo, puertas, cronos | `assets/sfx.js` |
+| Voces japonesas | 28 MP3 locales | `assets/voice/` |
+
+### 5.9.1 Voces japonesas
+
+Generadas con Google Translate TTS (`ie=UTF-8`, `client=tw-ob`, `tl=ja`) solo en
+tiempo de build; el juego reproduce los MP3. Regenerar:
+
+```bash
+sh tools/fetch_voice.sh          # descarga lo que falte
+sh tools/fetch_voice.sh --force  # regenera los 28
+```
+
+| Categoría | Claves | Conteo |
+|---|---|---|
+| Cita de héroe | `*_cita` | 4 |
+| Grito de ruptura | `*_rup` | 4 |
+| Grito de definitiva | `*_def` | 4 |
+| Quejido de daño | `*_hurt` | 4 |
+| Ataque enemigo | `e_*` | 6 |
+| Muerte enemiga | `d_*` | 6 |
+
+- [ ] Cargar `assets/voice/lines.js` en `index.html` y meter un pool de `Audio`
+- [ ] Enganchar los barks a swing / ruptura / definitiva / daño / muerte
+- [ ] Añadir `bark()` con **máx. 2 voces simultáneas** y cooldowns
+      `1.2s` ataque, `2.0s` daño, `0.8s` dash, prioridad `Poder > Daño > Ataque > Dash`
+- [ ] Bajar las voces **por debajo** de la música y subir pitch con la racha
+- [ ] Falta bark de victoria y de derrota diferenciado
+- [ ] Corregir `e_resucitado`: usa `苏` (chino simplificado), debe ser `蘇`
+
+En Stitch **no hay ni una sílaba de kana** en los 22 `code.html`: las voces
+enemigas son diseño nuestro, no copia.
+
+#### Casting de voz por héroe
+
+Única fuente con timbre escrito: `diseño.md:1855-1860`.
+
+| Héroe | Cita `ja` | Casting |
+|---|---|---|
+| RIKA | `まだ名前を覚えている。…絶対に、消させはしない。` | Femenina, contenida, resuelta |
+| GORO | `俺がこの扉を作った。最後に、俺が閉める。` | Masculina, grave, áspera |
+| REN | `誰も行かねえなら…俺が行く。` | Masculina, juvenil, impulsiva |
+| YUI | `もう、誰かの残響にはなりたくない。` | Femenina, calmada, melancólica |
+
+Subjefes y jefes sí tienen casting y frases JA completas
+(`diseño.md:1884-1901`), aunque ND todavía no tiene jefes implementados:
+
+| Piso | Nombre | Intro JA | Outro JA |
+|---|---|---|---|
+| P1 | EL PORTERO | `「受付業務…対象を排除する。」` | `「行け。ここは、もう俺の番じゃない。」` |
+| P2 | LOS GEMELOS | `「二重登録を確認。矯正開始。」` | `「…やっと、休める。」` |
+| P3 | LA CALDERA | `「過圧警告。自動制御解除。」` | `「火は、まだ消えてねぇぞ。」` |
+| P4 | EL ESCRIBANO | `「ファイル照合。矛盾を検出。」` | `「書き直せ…お前なら。」` |
+| P5 | LA CIRUJANA | `「未登録検体。隔離手続き開始。」` | `「ありがとう…もう眠らせて。」` |
+| P6 | EL NÚCLEO | `「ループ・サブユニット起動。」` | `「裂け目を…閉じろ。」` |
+
+#### Barks por contexto
+
+Regla dura de `diseño.md:1114`: *"Si una línea necesita traducción para
+entenderse, no pertenece al combate."* En combate no se subtitula nada.
+
+| Contexto | RIKA | GORO | REN | YUI |
+|---|---|---|---|---|
+| Ataque 1-3 | `「っ」「せっ」「やっ」` | `「ぐっ」「ふっ」` | `「っ」「はっ」「いっ」` | `「っ」「ふっ」「んっ」` |
+| Dash | `「ひゅっ」` | `「おらっ」` | `「いくっ」` | `「っ」` suave |
+| Daño | `「くっ」「あっ」` | `「ぐっ」「うっ」` | `「っ」「うぐっ」` | `「くっ」「んっ」` ahogado |
+| Ruptura | `一閃…切る！` | `砕けろ…！ 押し通る！` | `突っ込むぞ…！ 行くっ！` | `この音…切り裂いて、終わらせる…！` |
+| Muerte | `「まだ…」` susurrado | `「ちっ…」` entre dientes | `「くそっ…」` | `「…ダメか」` tenue |
+
+- [ ] `swingV()` solo cubre ataque; falta `hurtV()` que el doc exige
+- [ ] Añadir bark de ruptura con subtítulo ES/EN, `0.8-1.2s` en la primera vez
+- [ ] `nd.js:671` dispara el grito enemigo con 50% por frame, sin cooldown:
+      hay que limiterlo o se solapan todos
+
+Duraciones (`diseño.md:1118-1124`): ataque `0.3-0.5s`, daño `0.4-0.7s`, dash
+`0.3-0.5s`, ruptura `0.6-1.0s`, habilidad nueva `0.8-1.2s`.
+
+### 5.9.2 SFX por héroe
+
+| Héroe | Ataque | Dash | Ruptura |
+|---|---|---|---|
+| RIKA | slash corto, metal+aire | whoosh por el aire | agudo, filo |
+| GORO | thud pesado, wood/metal | whoosh corto y grave | grave, physiquement rotundo |
+| REN | stabs múltiples rápidos | whoosh ágil | rápido, juvenil |
+| YUI | whoosh etéreo + impacto tenue | whoosh corto | melancólico y resuelto |
+
+### 5.9.3 SFX enemigos y ambiente
+
+Los 6 base comparten tabla genérica de `diseño.md:2016-2022`, nada más.
+
+| Clave | Voz implementada |
+|---|---|
+| `doble` | 600→900 Hz en 0.1s, vol .11 |
+| `lanzador` | 300→900 Hz en 0.23s, formante 2100 |
+| `blindado` | square 900→300 Hz + metal, sin `vo()` |
+| `resucitado` | 150→68 Hz en 0.35s, la más grave |
+| `agresor` | 400→260 Hz en 0.14s |
+| `mimetico` | **ausente** en `EVO`, hoy es mudo |
+
+- [ ] `EVO.mimetico` + caster propio del Mimético
+- [ ] SFX de puerta/nivel (los pide `diseño.md:1837`)
+- [ ] `parry` metálico sutil (`diseño.md:1832`)
+- [ ] Proyectil del Lanzador: spawn + vuelo
+- [ ] Loop de ambiente por piso (P1 frío/eco … P6 estática + lluvia ácida)
+- [ ] Barcos enemigos no deben sonar en bunch (doc: evitar `crowd barks`)
+
+### 5.9.4 Música
+
+La doc pide **12 temas, 2 por piso**, con BPM por piso:
+
+| Piso | BPM | Ambiente |
+|---|---|---|
+| P1 Vestíbulo | 70-90 | phonk atmosférico, frío y vacío |
+| P2 Market Roto | 100-120 | agresivo, húmedo |
+| P3 Refinería | 120-130 | industrial, caliente |
+| P4 Archivo | 95-115 | tenso, claustrofóbico |
+| P5 Clínica | 110-125 | horror administrativo |
+| P6 Núcleo | 130-140 | progresivo, apocalíptico |
+| Menú | 70-90 | lluvia + viento + estática baja |
+
+`assets/music.js` ya permite variar por héroe (`MUS.roots`, `MUS.lead`) y subir
+intensidad (`musSetLevel`) sin cambiar de fichero.
+
+- [ ] Menú: loop 70-90 BPM con fade-out de 0.5s al arrancar
+- [ ] Un tema por piso, con los BPM de la tabla
+- [ ] Stems separados (percusión / bass / pad) para subir con la racha
+- [ ] Cruce `0.5-0.8s` entre oleada→subjefe; corte seco en cinemática
+- [ ] La energía sube con la **racha**, nunca con la vida del enemigo
+
+### 5.10 Efectos de impacto y timings
+
+Fuente más completa: `splash_05_tajo_instant_neo/code.html`.
+
+| Parámetro | Valor |
+|---|---|
+| Rayos de impacto | `SPEEDLINE_DENSITY: 120 Vector Rays` |
+| Dispersión | `CONE_DISPERSION: 45.0° Symmetrical` |
+| Hitstop | `16 FRAMES (~266ms)` a 60Hz |
+| Timeline | `0.00s IGNITION` · `0.266s HITSTOP IMPACT` · `0.95s SLICE DISPERSION` |
+| Duración total | `950 MS (23 FRAMES)` |
+| Color | `PRIMARY_EMISSION: #FF2D6F` |
+| Audio | `SYNTHESIS: WEBAUDIO_SAWTOOTH_LPF`, `840Hz → 42Hz DROP` |
+
+Escala de impacto por racha (`diseño.md:1294-1300`):
+
+| Racha | Hitstop | Time-scale | Cut-in |
+|---|---|---|---|
+| 0-9 | 2f | `1.0x` | — |
+| 10-19 | 3f | `0.55x` por 0.08s | — |
+| 20-39 | 4f | `0.40x` por 0.12s | flash frame |
+| 40-69 | 5f | `0.25x` por 0.18s | flash + speedlines |
+| 70+ | 6f | `0.15x` por 0.25s | cut-in completo |
+
+Regla dura: **nunca dos niveles de escala en el mismo golpe**. La racha se rompe al
+recibir daño (no al fallar) y decae tras 2.5s sin matar.
+
+Shake y destellos CSS exactos de `04._arena_combat_hud`:
+`shakeLight` 0.22s · `shakeHeavy` 0.38s · `slashGlow` · `shockwaveExpand`
+(`scale 0.1 → 2.8`, borde 6px → 1px) · `flashLight` 0.65→0 en 0.2s ·
+`flashHeavy` 0.9→0 en 0.35s. Chispas: 22 en tajo, 48 en ruptura.
+
+- [ ] Sistema de racha con decay de 2.5s (hoy no existe en `nd.js`)
+- [ ] Escala de impacto por racha, sin solapar niveles
+- [ ] Subir pitch y volumen de SFX con la racha
+
+### 5.11 Contradicciones que hay que decidir
+
+| # | Conflicto | Valores en juego |
+|---|---|---|
+| 1 | Hitstop | 14f canónico · 13f en `nd.js:498` · 16f en Stitch |
+| 2 | BPM | 104 fijo en `nd.js:130` · 6 rangos por piso · 70-90 en menú |
+| 3 | `16 frames (~266ms)` | Solo a 60Hz; con el `24.0 FPS` de `17._manual_maestro` serían 666ms |
+| 4 | Tabla de frames | `ANTICIPACIÓN 4F / HITSTOP 16F / RECOVERY 8F` vs el timeline SVG `1-4 / 5-6 / 7-12 / 13-24` |
+| 5 | Shake | CSS 0.22s / 0.38s vs timers JS 250ms / 420ms |
+| 6 | Buffer táctil | 5f en `DESIGN_ND.md:214` vs 6f de ataque en `diseño.md:318`; hoy no hay ninguno |
+| 7 | Racha | Decay de 2.5s en la doc; el 1.4s que se pidió no existe en ningún fichero |
+| 8 | Enemigos | Set viejo (Carrilero/Embestidor) vs ND (Doble/Lanzador/Agresor/Blindado/Resucitado/Mimético) |
+| 9 | Stitch | `AUDIT_STITCH_ND.md:23` dice 26 HTML; hay 22 |
+| 10 | `splash_06` | Etiqueta `48Hz resonance` pero programa `110 → 32 Hz` |
+| 11 | Hitstop SFX | `01._prólogo` declara 120ms para SFX-05 contra los 266ms del proyecto |
+
+Decisiones ya tomadas: **hitstop canónico 14f**, **60 FPS** en gameplay, buffer
+táctil de **5 frames**, BPM por piso según `diseño.md:2043-2048`.
+
+### 5.12 Ausencias confirmadas
+
+- **Voces**: sin bark de victoria, sin derrota diferenciada, sin `hurtV()`, sin
+  frases JA para los 6 enemigos base, sin `EVO.mimetico`.
+- **SFX**: sin puerta/nivel, sin `parry`, sin proyectil del Lanzador, sin loop de
+  ambiente, sin límite de concurrencia de barks.
+- **Música**: sin BGM de menú, sin un tema por piso, sin stems separados, sin
+  `dialogue.json` ni `AudioBank.cs` (los describe `AGENTS.md:132,135`).
+- **Impacto**: sin shake dibujado, sin `slashGlow`, `shockwaveExpand`, `flashLight`
+  ni `flashHeavy`, sin 120 rays, sin buffer de entrada, sin sistema de combo.
+- Los ficheros `.ogg` que describe `AGENTS.md:129-131` **no existen**: es
+  estructura futura, no un requisito pendiente.
+- 6 de los 22 HTML de Stitch no tienen WebAudio: `02`, `03`, `05`, `14`, `15`, `17`.
+  Entre ellos `03._bestiario`, que es el que define los 6 enemigos.
 
 ## 6. Plan
 
 | Fase | Bloque | Estado |
 |---|---|---|
 | F0 | tests + icono + documentación | **hecho** |
-| F1 | HUD táctico de 4 cuadrantes en canvas | siguiente |
-| F2 | Selección de héroes con ficha táctica completa | pendiente |
-| F3 | Splash animado de 6 frames | pendiente |
-| F4 | 6 subjefes | pendiente |
-| F5 | 6 jefes colosales con fases | pendiente |
-| F6 | puntuación, pausa, catálogo, balance | pendiente |
+| F0.5 | Yui completa + poderes por héroe + paleta de 4 tonos | **hecho** |
+| F0.7 | Audio: banco de ambiente, música por intensidad, 28 MP3 JA | **hecho** |
+| F0.8 | Enganchar audio al juego (pool de voces, `bark()`, SFX por héroe) | siguiente |
+| F1 | Fondos de Stitch en parallax (3 capas con assets) | pendiente |
+| F2 | Efectos exactos: 120 rays, smear, hitstop 14f, destello | pendiente |
+| F3 | Silueta vectorial detallada con luz de contorno | pendiente |
+| F4 | Sistema de rupturas `Q` + definitivas `E` | pendiente |
+| F5 | Reliquias temporales | pendiente |
+| F6 | Cámara avanza + progresión por tramo | pendiente |
+| F7 | HUD 4 cuadrantes + 6 botones + multitáctil | pendiente |
+| F8 | Selección de héroes de cristal | pendiente |
+| F9 | Racha, escala de impacto, pausa, puntuación, fin de partida | pendiente |
+| F10 | Un tema de música por piso + ambiente por piso | pendiente |
+| F11 | Subjefes y jefes con intro/outro JA | pendiente |
 
-Cada fase debe dejar `node test/nd-test.js` en verde y que el commit siga la
-convención: `ND: <qué se añadió>`.
+F1 y F2 van primero a propósito: son lo que más se nota y ya tienen los assets.
+Cada fase debe dejar `node test/nd-test.js` en verde.
 
 ## 7. Referencias Stitch
 
-Carpeta: `/storage/emulated/0/stitch_nippon_destruction_canvas_game` (40 carpetas,
-26 con `code.html`). El **prototipo jugable completo** es
-`nippon_destruction_nd_juego_cinematogr_fico_2d_completo/code.html`
-(1531 líneas, canvas 1280×720, `STATE.mode = SPLASH → SELECT → PLAYING`).
+Ruta real: `/storage/emulated/0/silueta/refs/stitch/stitch_nippon_destruction_canvas_game/`
+(38 carpetas, 22 con `code.html`). La ruta antigua sin `stitch/` no existe.
 
-Imágenes descargadas en `refs/hi/*.jpg` (1376×768, 11 archivos) a partir de las
-URLs del HTML "Archivo Táctico" (manifiesto en `refs/archivo-tactico.tsv`).
-**No hay imágenes square: el ícono se recorta del key-art.**
+Fotos limpias en `refs/hi/*.jpg` (11 archivos, 1376×768). **Son assets del
+juego**, no solo referencia. Los duplicados pequeños de `refs/stitch/` están en
+`.gitignore` porque algunos vienen truncados.
 
-### 7.1 Los dos HTML de UI/HUD (son la referencia oficial)
+Canvas 960×540 = 1.7778 contra fotos 1376×768 = 1.7917: diferencia del 0.8%, se
+recorta sin distorsión.
 
-| Archivo | Líneas | Qué aporta |
-|---|---|---|
-| `04._arena_combat_hud_nippon_destruction_canvas_game/code.html` | 993 | HUD en combate, telemetría, hitstop, CSS de animación |
-| `14._arquitectura_de_ui_y_hud_táctil_nippon_destruction/code.html` | 707 | arquitectura UI/HUD táctil, 4 cuadrantes, ergonomía, latencia |
+### 7.1 Los dos HTML de UI/HUD (referencia oficial)
 
-Están **diseñados para móvil en 16:9 forzado** (zonas táctiles por cuadrante,
-safe areas, botones ≥48px WCAG 2.5.5, joystick flotante). **Se adoptan tal cual**,
-no se rediseñan.
+| Archivo | Qué aporta |
+|---|---|
+| `04._arena_combat_hud_nippon_destruction/code.html` | HUD en combate, telemetría, hitstop, CSS de animación |
+| `14._arquitectura_de_ui_y_hud_t_ctil_nippon_destruction/code.html` | arquitectura táctil, 4 cuadrantes, ergonomía, latencia |
 
-### 7.2 Pendiente: portar el UI/HUD de Stitch al canvas de ND
+Etiquetas de botón verificadas: `TAJO (72PX)`, `RUPTURA ND`,
+`DASH / STAMINA [MEDIDOR TRIFÁSICO]`, `SLOT DE ITEM / DEFCON`.
+Y la regla de prioridad: `PRIORIDAD DE BUFFER: RUPTURA > ESQUIVA > ATAQUE`.
 
-> [ ] Extraer el CSS y la estructura completos de `04` y `14`
-> [ ] Traducir los 4 cuadrantes a primitivas de canvas en `nd.js`
-> [ ] Portar las animaciones: `shakeLight` 0.22s, `shakeHeavy` 0.38s,
->     `slashGlow`, `shockwaveExpand`, `flashLight` / `flashHeavy`
-> [ ] Mantener los textos literales (`DASH CD`, `RUPTURA: MAX`,
->     `OLEADA n / 06`, `BAJAS / DESTRUCCIÓN`, aviso de telégrafo)
-> [ ] Respetar el mapa táctil: joystick 64px, Tajo 72px, Ruptura `#FF2D6F`, Dash 56px
+### 7.2 NPAD_Prototype
 
-Detalle de valores en `AUDIT_STITCH_ND.md` §4.
+`/storage/emulated/0/NPAD_Prototype/docs/diseño.md` (2080 líneas) es la fuente
+de los números de rupturas y reliquias. Claves: `§11.5` ruptura como 4º golpe
+con mantener 0.18s, `§9` reliquias temporales y su criterio de aceptación.
+
+`/storage/emulated/0/NPAD_Prototype/refs_stitch/` tiene 9 PNG de AMB/ESTILO/HUD
+propios de NPAD, incluido `08_HUD_dos_botones.png`.
 
 ## 8. Trampas conocidas
 
-- **No puedo ver imágenes** (el modelo no tiene visión): los `.png` de Stitch solo
-  sirven por nombre y por el texto que los acompaña en el `code.html`.
-- Las 11 imágenes de `refs/hi` y las 16:9 de la carpeta Stitch **son renders
-  distintos del mismo prompt** (0 coincidencias por md5). No son duplicados ni
-  copias unas de otras.
-- 5 URLs del HTML "Archivo Táctico" están **muertas (HTTP 400)**: `ui-hud`,
-  `splash-01`, `splash-02`, `splash-03`, `splash-05`.
-- Ese HTML dice "TODOS (17)" pero su array tiene **16** entradas.
-- Falta la carpeta `06` en Stitch (la `04` numera solo 01–05).
-- `refs/hi/` y `refs/stitch/` están en `.gitignore` (se redescargan).
+- **No puedo ver imágenes**: el modelo no tiene visión. Las fotos de Stitch se
+  analizan por nombre, por el texto de los `code.html`, por OCR y por conversión
+  a ASCII. Para colorearlas hay que usar `magick`.
+- Las 11 imágenes de `refs/hi` y las de la carpeta Stitch son **renders distintos
+  del mismo prompt** (0 coincidencias por md5). No son duplicados.
+- `refs/hi/` y `refs/stitch/` **ya no están** en `.gitignore`: se versionan para
+  que el juego lleve las fotos a cualquier equipo. Solo sigue ignorado
+  `icons/candidates/`.
+- `drops` (`nd.js:252`) **ya está ocupado por la lluvia** (`drops=rain`,
+  `nd.js:350`). Las reliquias necesitan otro nombre.
+- `ctx.letterSpacing` (`nd.js:366-389`) solo existe en Chromium: en Firefox y
+  Safari el título y la selección pierden el tracking. Ya hay fallback con
+  `HASPACE` / `setSpace()` / `trackText()`.
+- El juego no hace `fetch` ni usa ES modules: **`file://` funciona**. Las
+  imágenes con `new Image()` también funcionan en `file://`.
+- **PWA eliminada**, no pendiente: `nd.webmanifest` borrado y sin service
+  worker. Lo que se sigue es el APK nativo (§2.1).
+- `test/nd-test.js:3` tiene la ruta de `nd.js` **absoluta y hardcodeada**.
+- `tools/fetch_voice.sh` necesita red, pero solo en build. Los 28 MP3 van
+  dentro del repo, así que el juego nunca depende de Google.
+- Los `setTimeout` del secuanciador musical corren aunque la pestaña esté en
+  segundo plano: hay que pausar con `visibilitychange` (§5.4).
 
-## 9. Controles actuales
+## 9. Controles
 
 | Acción | Teclado | Táctil |
 |---|---|---|
-| Mover | `A`/`D` o flechas | `◀` `▶` |
-| Golpe | `Espacio` o `J` | `GOLPE` |
+| Avanzar / retroceder | `D`/`A` o flechas | `AVANZAR` / `RETROCESO` |
+| Golpe | `Espacio` o `J` | `TAJO` |
 | Dash | `Shift` o `K` | `DASH` |
+| Ruptura | `Q` | `RUPTURA ND` |
+| Definitiva | `E` | `DEFINITIVA` |
+| Arriba / teletransporte | `W` | — |

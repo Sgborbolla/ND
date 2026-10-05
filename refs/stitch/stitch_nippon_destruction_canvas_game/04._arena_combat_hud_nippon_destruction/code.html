@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* Screen Shake & Impact Keyframes */
+@keyframes shakeLight {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-4px, 3px) rotate(-0.5deg); }
+  40% { transform: translate(5px, -3px) rotate(0.5deg); }
+  60% { transform: translate(-3px, -2px) rotate(-0.3deg); }
+  80% { transform: translate(4px, 2px) rotate(0.2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes shakeHeavy {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  15% { transform: translate(-12px, 8px) scale(1.025) rotate(-1.5deg); filter: contrast(160%) brightness(1.25); }
+  30% { transform: translate(14px, -10px) scale(1.015) rotate(1.2deg); filter: hue-rotate(15deg); }
+  50% { transform: translate(-8px, -8px) scale(1.01) rotate(-0.8deg); }
+  70% { transform: translate(9px, 6px) scale(1.005) rotate(0.5deg); }
+  85% { transform: translate(-4px, 3px) rotate(-0.2deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); filter: none; }
+}
+
+@keyframes slashGlow {
+  0% { opacity: 0; transform: scale(0.6) rotate(-25deg); }
+  35% { opacity: 1; transform: scale(1.1) rotate(-20deg); }
+  100% { opacity: 0; transform: scale(1.3) rotate(-15deg); }
+}
+
+@keyframes shockwaveExpand {
+  0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0.95; border-width: 6px; }
+  60% { opacity: 0.8; border-width: 3px; }
+  100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; border-width: 1px; }
+}
+
+.screen-shake-light {
+  animation: shakeLight 0.22s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.screen-shake-heavy {
+  animation: shakeHeavy 0.38s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+
+.impact-flash-light {
+  animation: flashFade 0.2s ease-out forwards;
+}
+
+.impact-flash-heavy {
+  animation: flashHeavyFade 0.35s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes flashFade {
+  0% { opacity: 0.65; }
+  100% { opacity: 0; }
+}
+
+@keyframes flashHeavyFade {
+  0% { opacity: 0.9; }
+  25% { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#f7be00", "surface-container-lowest": "#100926", "on-surface": "#e8deff", "on-error-container": "#ffdad6", "outline": "#ab888c", "on-secondary-fixed": "#251a00", "on-primary-fixed": "#400014", "inverse-on-surface": "#332c4a", "on-tertiary": "#4a2800", "surface-variant": "#37304f", "primary-container": "#ff4e7c", "on-primary-container": "#5a001f", "on-tertiary-container": "#412200", "surface-tint": "#ffb2bd", "on-surface-variant": "#e4bdc1", "on-error": "#690005", "inverse-surface": "#e8deff", "primary-fixed-dim": "#ffb2bd", "error": "#ffb4ab", "surface-bright": "#3c3554", "surface-container-high": "#2c2543", "secondary-fixed": "#ffdf99", "on-tertiary-fixed": "#2d1600", "primary": "#ffb2bd", "on-primary": "#670025", "secondary-container": "#fec300", "background": "#150e2b", "on-tertiary-fixed-variant": "#6a3c00", "surface-container-highest": "#37304f", "on-primary-fixed-variant": "#900037", "surface-container": "#221b38", "error-container": "#93000a", "primary-fixed": "#ffd9de", "on-background": "#e8deff", "on-secondary-container": "#6d5200", "inverse-primary": "#bc004b", "tertiary": "#ffb871", "on-secondary-fixed-variant": "#5a4300", "tertiary-fixed-dim": "#ffb871", "tertiary-container": "#c58239", "tertiary-fixed": "#ffdcbe", "surface-container-low": "#1e1734", "surface-dim": "#150e2b", "surface": "#150e2b", "secondary": "#ffe5b1", "on-secondary": "#3f2e00", "outline-variant": "#5c3f43" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-tablet": "2rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "margin": "1rem", "gutter-tablet": "1.25rem", "space-xl": "2.5rem", "space-md": "1rem", "space-sm": "0.5rem", "margin-desktop": "3rem" }, "fontFamily": { "headline-lg": [ "Space Grotesk" ], "label-tech-md": [ "JetBrains Mono" ], "body-sm": [ "Chivo" ], "display-lg": [ "Space Grotesk" ], "label-tech-sm": [ "JetBrains Mono" ], "body-md": [ "Chivo" ], "headline-md": [ "Space Grotesk" ], "label-tech-lg": [ "JetBrains Mono" ], "display-lg-mobile": [ "Space Grotesk" ], "body-lg": [ "Chivo" ], "headline-sm": [ "Space Grotesk" ] }, "fontSize": { "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "0.02em", "fontWeight": "700" } ], "label-tech-md": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "500" } ], "body-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-tech-sm": [ "9px", { "lineHeight": "12px", "letterSpacing": "0.16em", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "label-tech-lg": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "500" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.05em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md"><div class="h-20 w-full px-gutter-desktop flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex flex-col"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm uppercase text-primary tracking-wider">日本崩壊 // NIPPON DESTRUCTION</span><span class="px-space-xs py-0.5 bg-primary-container/20 text-primary font-label-tech-sm text-label-tech-sm uppercase tracking-widest">MIL-SPEC ARCHIVE v2.4</span></div><div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant"><span class="text-secondary">[ZONE-0 Tokyo Extinction Basin]</span><span>GRID-REF: 35.6762° N, 139.6503° E</span></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="prologo-cinematico" href="#">01. PRÓLOGO CINEMÁTICO</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="seleccion-de-heroes" href="#">02. SELECCIÓN DE HÉROES</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="bestiario-de-amenazas" href="#">03. BESTIARIO DE AMENAZAS</a><a aria-current="page" class="px-space-sm py-1.5 uppercase transition-colors bg-primary-container text-on-primary-container font-semibold" data-path="arena-combat-hud" href="#">04. ARENA &amp; COMBAT HUD</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="manual-de-produccion" href="#">05. MANUAL DE PRODUCCIÓN</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-high"><span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span><span class="font-label-tech-sm text-label-tech-sm text-primary uppercase">ESTADO: CRÍTICO // EXTINCIÓN ND</span></div><button class="hidden lg:flex items-center gap-space-xs px-space-sm py-1 bg-secondary-container text-on-secondary-container font-label-tech-sm text-label-tech-sm uppercase font-semibold hover:bg-secondary-fixed transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">volume_up</span>ALERTA ND</button><div class="flex flex-col text-right font-label-tech-sm text-label-tech-sm text-on-surface-variant"><span class="text-secondary font-semibold">23:59:41 UTC</span><span>ND-DEFCON: LEVEL 1</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 pb-16 bg-surface" id="main-viewport-root"><div class="flex flex-col w-full">
+<!-- HUD Operational Terminal Header -->
+<section class="w-full px-gutter-desktop py-space-md bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm px-space-xs py-0.5 bg-primary-container text-on-primary-container font-bold uppercase tracking-widest">[ARC-04 COMBAT INTERFACE]</span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary tracking-widest">// 第四戦闘区域：戦術監視盤</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight uppercase mt-1">ARENA &amp; COMBAT HUD TELEMETRY</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-2xl">
+          Análisis balístico, ergonomía táctil y arquitectura HUD de <span class="text-secondary font-semibold">NIPPON DESTRUCTION</span>. Inspección técnica de fotogramas clave, hitstop de ruptura e instrumentación de combate en tiempo real.
+        </p>
+</div>
+<!-- Mode Selector Switcher -->
+<div class="flex items-center p-1 bg-surface-container-high rounded-none shadow-md">
+<button class="px-space-md py-2 font-label-tech-md text-label-tech-md uppercase transition-all duration-200 bg-primary-container text-on-primary-container font-bold shadow-sm flex items-center gap-space-xs" id="btn-view-gameplay" onclick="switchMainView('gameplay')">
+<span class="material-symbols-outlined text-[16px]">videocam</span>
+          01. VISTA DE ACCIÓN EN VIVO
+        </button>
+<button class="px-space-md py-2 font-label-tech-md text-label-tech-md uppercase transition-all duration-200 text-on-surface-variant hover:text-on-surface flex items-center gap-space-xs" id="btn-view-hud" onclick="switchMainView('hud')">
+<span class="material-symbols-outlined text-[16px]">grid_goldenratio</span>
+          02. ARQUITECTURA DE INTERFAZ (UI/HUD)
+        </button>
+</div>
+</div>
+</section>
+<!-- Main Combat Deck Viewport & Hotspots -->
+<section class="w-full px-gutter-desktop py-space-lg bg-surface-container-low">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-md">
+<!-- Telemetry Strip Banner -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container px-space-md py-2 text-on-surface font-label-tech-sm text-label-tech-sm">
+<div class="flex items-center gap-space-md">
+<span class="text-primary font-bold animate-pulse">● FEED 60FPS // HITSTOP DETECTADO</span>
+<span class="text-on-surface-variant">RESOLUCIÓN DE ENCADENAMIENTO: 1376x768 [16:9 NATIVE]</span>
+</div>
+<div class="flex items-center gap-space-md font-label-tech-sm text-label-tech-sm">
+<span class="text-secondary-fixed-dim">CAPA PARALLAX: TRIPLE SKYLINES + LLUVIA ÁCIDA</span>
+<span class="text-tertiary">LATENCIA TÁCTIL: 4.1ms</span>
+</div>
+</div>
+<!-- Main Stage Container with Hotspots -->
+<div class="relative w-full aspect-[16/9] bg-surface-container-lowest overflow-hidden shadow-xl group cursor-crosshair" id="combat-stage-container" onclick="handleStageCombatClick(event)">
+<!-- View 1: Live Combat Gameplay Freeze-Frame -->
+<div class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-100 z-10" id="view-gameplay-container">
+<img alt="Cinematic 2D gameplay hitstop" class="w-full h-full object-cover select-none pointer-events-none" src="https://lh3.googleusercontent.com/aida/AEtjO1UvhFrFMXRuG3DAEDUMRsMPPz1Luvx82xT8qJccLAYYhTgtV0tQsSZ31t6qxWb26zlhOLhXeUc17UeRS2XsyBK8I_K03Hle2rTiDcuR1nFqqkkgafQ22--YfGkUXIpgZdmpr6DxdLJrqEwRQsfXw_VDRUYBjwj4oR2XJOEPU-Ot6Go-9rJjTuJiebqyrj1o_8BZTahic4tjxT7rf4tWUznUblOFX2McjUdY5E_MiaJYmBzoecK9D16U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-surface-container-lowest/40 pointer-events-none"></div>
+<!-- Cinematic Overlay Details -->
+<div class="absolute top-4 left-4 p-space-sm bg-surface-container-lowest/90 backdrop-blur-md flex flex-col gap-0.5 pointer-events-none">
+<span class="font-label-tech-sm text-label-tech-sm text-primary font-bold">FRAME HITSTOP: #12 / 16 DILATACIÓN</span>
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-wider">RIKA TSUKIMI // 斬撃の瞬間</span>
+<span class="font-body-sm text-body-sm text-secondary">Ruptura instantánea sobre Doble, Agresor y El Muro</span>
+</div>
+</div>
+<!-- View 2: Tactical HUD Layout Reference -->
+<div class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-0 pointer-events-none z-0" id="view-hud-container">
+<img alt="Technical tactical HUD breakdown" class="w-full h-full object-cover select-none pointer-events-none" src="https://lh3.googleusercontent.com/aida/AEtjO1UQGGTvWqdOofU-UHbiqw3q8AfY8-ymk1g8SkBUZ6f_B-Wra_q9AmEQGjuhZuhVua776wJeTh_hL1MpHV5WwZYn-k4v3xwrXvpeHSYZLQlNzXodozxCXsNb01a46hnbtDoU8McsLgY_j5uotJxmAhSrOLBvnC_2NI7HeLUHL8m34Fq3ip76b81HojmKfZ5tmqCHP7DOtNMv5H1GgU8sw_q77fy3Kb8sVis8aAS3zoGIohhdmnIgMahtsQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-surface-container-lowest/30 pointer-events-none"></div>
+<!-- HUD Blueprints Overlay Indicator -->
+<div class="absolute top-4 left-4 p-space-sm bg-surface-container-lowest/90 backdrop-blur-md flex flex-col gap-0.5 pointer-events-none">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-fixed-dim font-bold">SCHEMATIC: MIL-SPEC COMBAT HUD</span>
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-wider">MAPA VECTORIAL DE OPERACIONES</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Topología de telemetría, medidores de choque y cuadrantes táctiles</span>
+</div>
+</div>
+<!-- Dynamic Hitstop & Flash Overlay (Screen Shake and Flash) -->
+<div class="absolute inset-0 pointer-events-none z-20 transition-opacity duration-75 opacity-0" id="combat-impact-flash"></div>
+<!-- Canvas Particle Layer for Sparks and Slashes -->
+<canvas class="absolute inset-0 pointer-events-none z-30 w-full h-full" id="combat-sparks-canvas"></canvas>
+<!-- Interactive Hotspot Markers Layer -->
+<div class="absolute inset-0 z-40 pointer-events-auto">
+<!-- Hotspot 1: Hero Status Bar (Top Left) -->
+<button class="absolute top-[8%] left-[5%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-primary-container text-on-primary-container hover:scale-125 transition-transform duration-150 shadow-md group/marker" onclick="event.stopPropagation(); selectTelemetry('hero-status')">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="absolute left-10 whitespace-nowrap bg-surface-container-highest text-on-surface px-space-xs py-0.5 font-label-tech-sm text-label-tech-sm uppercase opacity-0 group-hover/marker:opacity-100 transition-opacity">01. ESTADO HEROÍNA</span>
+</button>
+<!-- Hotspot 2: Boss Health & Armor Pips (Top Center) -->
+<button class="absolute top-[8%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-error text-on-error hover:scale-125 transition-transform duration-150 shadow-md group/marker" onclick="event.stopPropagation(); selectTelemetry('boss-bar')">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+<span class="absolute top-10 whitespace-nowrap bg-surface-container-highest text-on-surface px-space-xs py-0.5 font-label-tech-sm text-label-tech-sm uppercase opacity-0 group-hover/marker:opacity-100 transition-opacity">02. JEFE PUERTA DE ACERO</span>
+</button>
+<!-- Hotspot 3: Wave & Threat Counters (Top Right) -->
+<button class="absolute top-[8%] right-[5%] translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container hover:scale-125 transition-transform duration-150 shadow-md group/marker" onclick="event.stopPropagation(); selectTelemetry('wave-tracker')">
+<span class="material-symbols-outlined text-[18px]">radar</span>
+<span class="absolute right-10 whitespace-nowrap bg-surface-container-highest text-on-surface px-space-xs py-0.5 font-label-tech-sm text-label-tech-sm uppercase opacity-0 group-hover/marker:opacity-100 transition-opacity">03. OLEADAS &amp; BAJAS</span>
+</button>
+<!-- Hotspot 4: Combo & SSS Rank (Mid Left) -->
+<button class="absolute top-[32%] left-[10%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-on-primary hover:scale-125 transition-transform duration-150 shadow-md group/marker" onclick="event.stopPropagation(); selectTelemetry('combo-rank')">
+<span class="material-symbols-outlined text-[18px]">military_tech</span>
+<span class="absolute left-10 whitespace-nowrap bg-surface-container-highest text-on-surface px-space-xs py-0.5 font-label-tech-sm text-label-tech-sm uppercase opacity-0 group-hover/marker:opacity-100 transition-opacity">04. 38 HITS // SSS [連撃]</span>
+</button>
+<!-- Hotspot 5: Virtual Left Joystick (Bottom Left) -->
+<button class="absolute bottom-[10%] left-[8%] -translate-x-1/2 translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container hover:scale-125 transition-transform duration-150 shadow-md group/marker" onclick="event.stopPropagation(); selectTelemetry('controls-left')">
+<span class="material-symbols-outlined text-[18px]">sports_esports</span>
+<span class="absolute bottom-10 left-0 whitespace-nowrap bg-surface-container-highest text-on-surface px-space-xs py-0.5 font-label-tech-sm text-label-tech-sm uppercase opacity-0 group-hover/marker:opacity-100 transition-opacity">05. JOYSTICK ANALÓGICO VIRTUAL</span>
+</button>
+<!-- Hotspot 6: Right Action Cluster (Bottom Right) -->
+<button class="absolute bottom-[10%] right-[8%] translate-x-1/2 translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-primary-container text-on-primary-container hover:scale-125 transition-transform duration-150 shadow-md group/marker" onclick="event.stopPropagation(); selectTelemetry('controls-right')">
+<span class="material-symbols-outlined text-[18px]">touch_app</span>
+<span class="absolute bottom-10 right-0 whitespace-nowrap bg-surface-container-highest text-on-surface px-space-xs py-0.5 font-label-tech-sm text-label-tech-sm uppercase opacity-0 group-hover/marker:opacity-100 transition-opacity">06. BOTONERA DE ACCIÓN Y RUPTURA</span>
+</button>
+</div>
+</div>
+<!-- Quick Sub-Bar: Active Target Readout -->
+<div class="flex items-center justify-between bg-surface-container-lowest px-space-md py-2">
+<div class="flex items-center gap-space-sm font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant">INSPECTOR ACTIVO:</span>
+<span class="text-primary font-bold uppercase" id="active-inspector-title">01. ESTADO DE HEROÍNA &amp; MEDIDOR DE ESTAMINA</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-fixed-dim hidden sm:inline">[HAGA CLIC EN EL VISOR O BOTONES PARA IMPACTO CON SACUDIDA Y CHISPAS]</span>
+</div>
+</div>
+</section>
+<!-- Interactive Telemetry Deep Dive & Hotspot Details -->
+<section class="w-full px-gutter-desktop py-space-xl bg-surface">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left Column: Detailed Telemetry Inspector Card (Bento Focus) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="bg-surface-container p-space-lg shadow-lg flex flex-col gap-space-md" id="inspector-display-card">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-xs py-0.5 bg-primary-container/20 text-primary font-label-tech-sm text-label-tech-sm uppercase tracking-widest" id="inspector-tag">HUD COMPONENT 01</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-wide" id="inspector-heading">BARRA DE ESTADO DEL HÉROE</h2>
+</div>
+<span class="font-headline-sm text-headline-sm text-secondary" id="inspector-kanji">体力・気力計</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant" id="inspector-desc">
+            Matriz de telemetría de supervivencia superior izquierda. Muestra la integridad bio-mecánica de Rika Tsukimi, medidor trifásico de Dash/Stamina en <span class="text-secondary font-mono font-bold">#FFC400</span>, y ranuras de enfriamiento de habilidades de corte transversal.
+          </p>
+<!-- Dynamic Metrics Visualizer Inside Card -->
+<div class="p-space-md bg-surface-container-lowest flex flex-col gap-space-sm" id="inspector-visualizer">
+<div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface">HP ACTUAL: 1,840 / 2,000 [92%]</span>
+<span class="text-primary font-bold">SISTEMA VITAL ESTABLE</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container w-[92%] transition-all duration-300"></div>
+</div>
+<div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm mt-2">
+<span class="text-secondary-fixed-dim">ESTAMINA / MEDIDOR DE DASH (3 CARGAS)</span>
+<span class="text-secondary">RECUPERACIÓN: 0.8s / CARGA</span>
+</div>
+<div class="grid grid-cols-3 gap-2 w-full h-2">
+<div class="h-full bg-secondary-container"></div>
+<div class="h-full bg-secondary-container"></div>
+<div class="h-full bg-secondary-container/40 animate-pulse"></div>
+</div>
+</div>
+<!-- Technical Specs Table -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-space-sm pt-space-xs">
+<div class="p-space-sm bg-surface-container-low flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">FRECUENCIA DE MUESTREO</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="inspector-stat-1">120 Hz</span>
+</div>
+<div class="p-space-sm bg-surface-container-low flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">CANAL DE PRIORIDAD</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold" id="inspector-stat-2">ALPHA-1</span>
+</div>
+<div class="p-space-sm bg-surface-container-low flex flex-col col-span-2 sm:col-span-1">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">TELÉGRAFO VISUAL</span>
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold" id="inspector-stat-3">GLOW VULN</span>
+</div>
+</div>
+</div>
+<!-- 2D Hitstop Mechanics Deep Dive -->
+<div class="bg-surface-container-low p-space-lg flex flex-col gap-space-md shadow-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">motion_photos_paused</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">DINÁMICA DE COMBATE 2D // SISTEMA DE HITSTOP</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            En <span class="text-on-surface font-semibold">NIPPON DESTRUCTION</span>, el impacto no es instantáneo ni etéreo: cada tajo de katana penetrante detiene la animación del atacante y los receptores durante exactamente <span class="text-primary font-bold">16 frames (~266 milisegundos)</span>. Esta dilatación temporal permite al cerebro del jugador registrar la fisura de armadura antes de proyectar las partículas en cono cinético.
+          </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="bg-surface-container p-space-sm flex flex-col gap-1">
+<span class="font-label-tech-sm text-label-tech-sm text-primary font-bold">01. ARCO DE RUPTURA</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Vectores trazados en Magenta #FF2D6F con estela de partículas de descompresión y chispas neón.</p>
+</div>
+<div class="bg-surface-container p-space-sm flex flex-col gap-1">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary font-bold">02. ESQUIVA PERFECTA</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ventana de 4 frames al tocar Dash antes de recibir impacto. Desbloquea contraataque crítico instantáneo.</p>
+</div>
+<div class="bg-surface-container p-space-sm flex flex-col gap-1">
+<span class="font-label-tech-sm text-label-tech-sm text-tertiary font-bold">03. PARALLAX 3 CAPAS</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Capa frontal ácida, skyline de Tokio en llamas intermedias y sol moribundo profundo a 0.25x velocidad.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Interactive Combo Rig & Soundboard Laboratory -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<!-- Live Combo Simulator Module -->
+<div class="bg-surface-container-high p-space-lg flex flex-col gap-space-md shadow-lg" id="combo-deck-container">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-wider">MÓDULO SIMULADOR // BANCADA DE PRUEBAS</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">GENERADOR DE ESTILO // COMBO RIG</h3>
+</div>
+<span class="px-space-xs py-0.5 bg-primary/20 text-primary font-label-tech-sm text-label-tech-sm font-bold">ACTIVE TEST</span>
+</div>
+<!-- Combo Readout Screen -->
+<div class="bg-surface-container-lowest p-space-md flex items-center justify-between shadow-inner">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">HITS ACUMULADOS</span>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary font-bold" id="combo-counter-text">38</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">HITS</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">RANGO DE ESTILO</span>
+<span class="font-display-lg text-display-lg text-secondary font-black tracking-widest animate-pulse" id="combo-rank-badge">SSS</span>
+<span class="font-label-tech-sm text-label-tech-sm text-primary tracking-widest">連撃 // SUPREMO</span>
+</div>
+</div>
+<!-- Style Multiplier Meter -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span>MULTIPLICADOR DE ENERGÍA ND</span>
+<span class="text-secondary font-bold" id="combo-multiplier-label">x4.8 DILATACIÓN</span>
+</div>
+<div class="w-full h-2 bg-surface-container-lowest overflow-hidden">
+<div class="h-full bg-secondary-container w-[85%] transition-all duration-150" id="combo-meter-bar"></div>
+</div>
+</div>
+<!-- Interactive Trigger Buttons -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<button class="relative overflow-hidden p-space-md bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase font-bold hover:brightness-110 active:scale-95 transition-all flex flex-col items-center justify-center gap-1 shadow-md group/btn" id="btn-action-slash" onclick="executeAction('slash', event)">
+<span class="material-symbols-outlined text-[24px]">swords</span>
+              ATAQUE // TAJO
+            </button>
+<button class="relative overflow-hidden p-space-md bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm uppercase font-bold hover:brightness-110 active:scale-95 transition-all flex flex-col items-center justify-center gap-1 shadow-md group/btn" id="btn-action-rupture" onclick="executeAction('rupture', event)">
+<span class="material-symbols-outlined text-[24px]">bolt</span>
+              RUPTURA (HITSTOP)
+            </button>
+<button class="p-space-md bg-surface-container text-on-surface font-headline-sm text-headline-sm uppercase font-bold hover:bg-surface-bright active:scale-95 transition-all flex flex-col items-center justify-center gap-1 shadow-sm" onclick="executeAction('dash', event)">
+<span class="material-symbols-outlined text-[24px]">fast_forward</span>
+              DASH TÁCTICO
+            </button>
+<button class="p-space-md bg-surface-container text-error font-headline-sm text-headline-sm uppercase font-bold hover:bg-surface-bright active:scale-95 transition-all flex flex-col items-center justify-center gap-1 shadow-sm" onclick="resetCombo()">
+<span class="material-symbols-outlined text-[24px]">restart_alt</span>
+              RESET COMBO
+            </button>
+</div>
+<div class="text-on-surface-variant font-label-tech-sm text-label-tech-sm text-center">
+            * Cada pulsación sintetiza dinámicamente un oscilador de audio analógico mediante WebAudio API.
+          </div>
+</div>
+<!-- Telemetry Diagnostic Feed -->
+<div class="bg-surface-container p-space-md flex flex-col gap-space-xs font-label-tech-sm text-label-tech-sm">
+<div class="flex items-center justify-between pb-1">
+<span class="text-on-surface font-bold">HISTORIAL DE IMPACTOS RECIENTES</span>
+<span class="text-primary font-mono">FRAME_BUFFER_OK</span>
+</div>
+<div class="flex flex-col gap-1 max-h-36 overflow-hidden text-on-surface-variant" id="impact-log-stream">
+<div class="flex justify-between p-1 bg-surface-container-lowest">
+<span class="text-primary">&gt; RUPTURA CRÍTICA: SUBJEFE 'EL MURO'</span>
+<span class="text-secondary">-420 ARMOR</span>
+</div>
+<div class="flex justify-between p-1 bg-surface-container-lowest">
+<span class="text-on-surface">&gt; TAJO VELOZ: KAIJU 'DOBLE'</span>
+<span class="text-secondary">-115 HP</span>
+</div>
+<div class="flex justify-between p-1 bg-surface-container-lowest">
+<span class="text-on-surface">&gt; TAJO VELOZ: CYBORG 'AGRESOR'</span>
+<span class="text-secondary">-115 HP</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mobile Ergonomics Architecture Section -->
+<section class="w-full px-gutter-desktop py-space-xl bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary font-bold uppercase tracking-widest">[ERGONOMÍA DE PANTALLA TÁCTIL 16:9]</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-wide mt-1">MAPEO DE CONTROLADORES VIRTUALES</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
+          Diseñado para sostenerse en dispositivos móviles de gama alta sin ocultar los arcos de impacto centrales de Rika ni la barra de estado de los jefes.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Node 1 -->
+<div class="bg-surface-container p-space-md flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-primary font-bold">ZONA 01 // PULGAR IZQUIERDO</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">explore</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">JOYSTICK FLOTANTE</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Radio dinámico de 64px. Aparece donde toca la yema. Auto-centrado con retroalimentación háptica leve en cambios de cuadrante direccional.
+          </p>
+</div>
+<!-- Node 2 -->
+<div class="bg-surface-container p-space-md flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-primary font-bold">ZONA 02 // BOTÓN PRIMARIO</span>
+<span class="material-symbols-outlined text-primary text-[20px]">colorize</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">ATAQUE ANGULAR</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Diámetro de 72px en ángulo de 30° con la base derecha. Permite dobles toques fluidos para encadenar combos de 4 tiempos sin fatiga muscular.
+          </p>
+</div>
+<!-- Node 3 -->
+<div class="bg-surface-container p-space-md flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary font-bold">ZONA 03 // DISPARO DE RUPTURA</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">flash_on</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">GATILLO DE RUPTURA</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Ubicado en el arco superior derecho. Pulsa con iluminación Hazard Magenta cuando el enemigo entra en ventana de vulnerabilidad tras el hitstop.
+          </p>
+</div>
+<!-- Node 4 -->
+<div class="bg-surface-container p-space-md flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-tertiary font-bold">ZONA 04 // UTILIDAD TÁCTICA</span>
+<span class="material-symbols-outlined text-tertiary text-[20px]">medical_services</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">SLOT DE ITEM / DEFCON</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Acceso rápido a nanoinyectores y detonación orbital de apoyo. Bloqueo de seguridad para evitar pulsaciones erróneas durante ráfagas de esquiva.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Logic Script -->
+<script>
+    // State management
+    let comboCount = 38;
+    let comboRanks = ['D', 'C', 'B', 'A', 'S', 'SS', 'SSS'];
+    let audioCtx = null;
+
+    // Sparks Particle Canvas System
+    const sparksCanvas = document.getElementById('combat-sparks-canvas');
+    let ctx = sparksCanvas ? sparksCanvas.getContext('2d') : null;
+    let particles = [];
+    let slashVFX = [];
+    let shockwaves = [];
+    let animationFrameId = null;
+
+    function resizeCanvas() {
+      if (!sparksCanvas) return;
+      const rect = sparksCanvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      sparksCanvas.width = rect.width * dpr;
+      sparksCanvas.height = rect.height * dpr;
+      if (ctx) ctx.scale(dpr, dpr);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('load', resizeCanvas);
+    setTimeout(resizeCanvas, 100);
+
+    // Particle Classes
+    class SparkParticle {
+      constructor(x, y, isRupture = false) {
+        this.x = x;
+        this.y = y;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = isRupture ? (Math.random() * 12 + 4) : (Math.random() * 8 + 2.5);
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed - (isRupture ? 1.5 : 0.8);
+        this.drag = 0.94;
+        this.gravity = 0.28;
+        this.size = isRupture ? (Math.random() * 3.5 + 2) : (Math.random() * 2.5 + 1.2);
+        this.life = 1.0;
+        this.decay = isRupture ? (Math.random() * 0.02 + 0.015) : (Math.random() * 0.04 + 0.025);
+        this.length = isRupture ? (Math.random() * 16 + 6) : (Math.random() * 10 + 4);
+        
+        // Hazard Palette: Yellow #ffc400, Magenta #ff2d6f, White #ffffff, Neon Pink #ffb2bd
+        const colors = [
+          '#ffc400', '#ffe5b1', '#ff2d6f', '#ff4e7c', '#ffffff', '#ffb2bd'
+        ];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      update() {
+        this.vx *= this.drag;
+        this.vy *= this.drag;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.life -= this.decay;
+      }
+
+      draw(context) {
+        if (this.life <= 0) return;
+        context.save();
+        context.globalAlpha = Math.max(0, this.life);
+        context.strokeStyle = this.color;
+        context.lineWidth = this.size;
+        context.lineCap = 'round';
+        context.shadowColor = this.color;
+        context.shadowBlur = 8;
+        
+        context.beginPath();
+        context.moveTo(this.x, this.y);
+        context.lineTo(this.x - this.vx * (this.length / 5), this.y - this.vy * (this.length / 5));
+        context.stroke();
+        context.restore();
+      }
+    }
+
+    class SlashSlashArc {
+      constructor(x, y, isHeavy = false) {
+        this.x = x;
+        this.y = y;
+        this.isHeavy = isHeavy;
+        this.angle = (Math.random() - 0.5) * 1.2 - 0.4;
+        this.length = isHeavy ? 280 : 160;
+        this.life = 1.0;
+        this.decay = isHeavy ? 0.06 : 0.09;
+        this.color = isHeavy ? '#ff2d6f' : '#ffc400';
+      }
+
+      update() {
+        this.life -= this.decay;
+      }
+
+      draw(context) {
+        if (this.life <= 0) return;
+        context.save();
+        context.translate(this.x, this.y);
+        context.rotate(this.angle);
+        context.globalAlpha = Math.max(0, this.life);
+        
+        // Neon core
+        context.strokeStyle = '#ffffff';
+        context.lineWidth = this.isHeavy ? 5 : 3;
+        context.shadowColor = this.color;
+        context.shadowBlur = 18;
+        context.beginPath();
+        context.moveTo(-this.length / 2, 0);
+        context.lineTo(this.length / 2, 0);
+        context.stroke();
+
+        // Outer glow blade
+        context.strokeStyle = this.color;
+        context.lineWidth = this.isHeavy ? 12 : 7;
+        context.globalAlpha = Math.max(0, this.life * 0.7);
+        context.beginPath();
+        context.moveTo(-this.length / 2 * 1.1, 0);
+        context.lineTo(this.length / 2 * 1.1, 0);
+        context.stroke();
+
+        context.restore();
+      }
+    }
+
+    class Shockwave {
+      constructor(x, y, maxRadius = 120, color = '#ff2d6f') {
+        this.x = x;
+        this.y = y;
+        this.radius = 10;
+        this.maxRadius = maxRadius;
+        this.color = color;
+        this.life = 1.0;
+      }
+
+      update() {
+        this.radius += (this.maxRadius - this.radius) * 0.22;
+        this.life -= 0.045;
+      }
+
+      draw(context) {
+        if (this.life <= 0) return;
+        context.save();
+        context.beginPath();
+        context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        context.strokeStyle = this.color;
+        context.lineWidth = Math.max(1, 5 * this.life);
+        context.globalAlpha = Math.max(0, this.life * 0.8);
+        context.shadowColor = this.color;
+        context.shadowBlur = 15;
+        context.stroke();
+        context.restore();
+      }
+    }
+
+    function renderLoop() {
+      if (!ctx || !sparksCanvas) return;
+      const rect = sparksCanvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+
+      // Render shockwaves
+      for (let i = shockwaves.length - 1; i >= 0; i--) {
+        shockwaves[i].update();
+        shockwaves[i].draw(ctx);
+        if (shockwaves[i].life <= 0) shockwaves.splice(i, 1);
+      }
+
+      // Render slashes
+      for (let i = slashVFX.length - 1; i >= 0; i--) {
+        slashVFX[i].update();
+        slashVFX[i].draw(ctx);
+        if (slashVFX[i].life <= 0) slashVFX.splice(i, 1);
+      }
+
+      // Render sparks
+      for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw(ctx);
+        if (particles[i].life <= 0) particles.splice(i, 1);
+      }
+
+      if (particles.length > 0 || slashVFX.length > 0 || shockwaves.length > 0) {
+        animationFrameId = requestAnimationFrame(renderLoop);
+      } else {
+        animationFrameId = null;
+      }
+    }
+
+    function startRenderLoop() {
+      if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(renderLoop);
+      }
+    }
+
+    function triggerSparksBurst(x, y, count = 20, isRupture = false) {
+      resizeCanvas();
+      for (let i = 0; i < count; i++) {
+        particles.push(new SparkParticle(x, y, isRupture));
+      }
+      slashVFX.push(new SlashSlashArc(x, y, isRupture));
+      if (isRupture) {
+        slashVFX.push(new SlashSlashArc(x, y, true));
+        shockwaves.push(new Shockwave(x, y, 160, '#ff2d6f'));
+        shockwaves.push(new Shockwave(x, y, 220, '#ffc400'));
+      } else {
+        shockwaves.push(new Shockwave(x, y, 90, '#ffe5b1'));
+      }
+      startRenderLoop();
+    }
+
+    // Screen Shake & Impact Flash Driver
+    function triggerScreenImpact(type = 'light') {
+      const stage = document.getElementById('combat-stage-container');
+      const root = document.getElementById('main-viewport-root');
+      const flash = document.getElementById('combat-impact-flash');
+
+      const shakeClass = type === 'heavy' ? 'screen-shake-heavy' : 'screen-shake-light';
+      
+      // Apply to stage container and viewport
+      if (stage) {
+        stage.classList.remove('screen-shake-light', 'screen-shake-heavy');
+        void stage.offsetWidth; // Force reflow
+        stage.classList.add(shakeClass);
+        setTimeout(() => stage.classList.remove(shakeClass), type === 'heavy' ? 420 : 250);
+      }
+
+      if (root && type === 'heavy') {
+        root.classList.remove('screen-shake-light', 'screen-shake-heavy');
+        void root.offsetWidth;
+        root.classList.add('screen-shake-light');
+        setTimeout(() => root.classList.remove('screen-shake-light'), 250);
+      }
+
+      // Flash Effect
+      if (flash) {
+        flash.className = 'absolute inset-0 pointer-events-none z-20 transition-opacity';
+        if (type === 'heavy') {
+          flash.style.background = 'radial-gradient(circle at center, rgba(255, 255, 255, 0.9) 0%, rgba(255, 45, 111, 0.8) 45%, rgba(18, 9, 38, 0.4) 100%)';
+          flash.classList.add('impact-flash-heavy');
+          setTimeout(() => {
+            flash.className = 'absolute inset-0 pointer-events-none z-20 opacity-0';
+          }, 360);
+        } else {
+          flash.style.background = 'radial-gradient(circle at center, rgba(255, 255, 255, 0.6) 0%, rgba(254, 195, 0, 0.5) 40%, transparent 80%)';
+          flash.classList.add('impact-flash-light');
+          setTimeout(() => {
+            flash.className = 'absolute inset-0 pointer-events-none z-20 opacity-0';
+          }, 220);
+        }
+      }
+    }
+
+    // Direct Click inside combat stage view to trigger hits
+    function handleStageCombatClick(event) {
+      if (!sparksCanvas) return;
+      const rect = sparksCanvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      
+      // Randomly alternate or make it a solid slash/rupture
+      const isCrit = Math.random() > 0.65;
+      triggerSparksBurst(x, y, isCrit ? 42 : 22, isCrit);
+      triggerScreenImpact(isCrit ? 'heavy' : 'light');
+      playCombatSound(isCrit ? 'rupture' : 'slash');
+
+      comboCount += isCrit ? 6 : 1;
+      updateComboReadout(isCrit ? 'rupture' : 'slash');
+    }
+
+    // WebAudio Procedural Synthesizer for Retro Combat Sounds
+    function playCombatSound(type) {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const now = audioCtx.currentTime;
+
+        if (type === 'slash') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(620, now);
+          osc.frequency.exponentialRampToValueAtTime(120, now + 0.12);
+          gain.gain.setValueAtTime(0.3, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        } else if (type === 'rupture') {
+          // Low boom with high pitch strike
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(980, now);
+          osc.frequency.exponentialRampToValueAtTime(45, now + 0.28);
+          gain.gain.setValueAtTime(0.4, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.28);
+        } else if (type === 'dash') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.15);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.15);
+        }
+      } catch (e) {
+        // Fallback gracefully if audio is prevented
+      }
+    }
+
+    // Toggle between Gameplay View & UI/HUD Reference
+    function switchMainView(mode) {
+      const gameplayEl = document.getElementById('view-gameplay-container');
+      const hudEl = document.getElementById('view-hud-container');
+      const btnGameplay = document.getElementById('btn-view-gameplay');
+      const btnHud = document.getElementById('btn-view-hud');
+
+      if (mode === 'gameplay') {
+        gameplayEl.style.opacity = '1';
+        gameplayEl.style.pointerEvents = 'auto';
+        hudEl.style.opacity = '0';
+        hudEl.style.pointerEvents = 'none';
+
+        btnGameplay.className = 'px-space-md py-2 font-label-tech-md text-label-tech-md uppercase transition-all duration-200 bg-primary-container text-on-primary-container font-bold shadow-sm flex items-center gap-space-xs';
+        btnHud.className = 'px-space-md py-2 font-label-tech-md text-label-tech-md uppercase transition-all duration-200 text-on-surface-variant hover:text-on-surface flex items-center gap-space-xs';
+      } else {
+        gameplayEl.style.opacity = '0';
+        gameplayEl.style.pointerEvents = 'none';
+        hudEl.style.opacity = '1';
+        hudEl.style.pointerEvents = 'auto';
+
+        btnHud.className = 'px-space-md py-2 font-label-tech-md text-label-tech-md uppercase transition-all duration-200 bg-secondary-container text-on-secondary-container font-bold shadow-sm flex items-center gap-space-xs';
+        btnGameplay.className = 'px-space-md py-2 font-label-tech-md text-label-tech-md uppercase transition-all duration-200 text-on-surface-variant hover:text-on-surface flex items-center gap-space-xs';
+      }
+    }
+
+    // Hotspot telemetry details repository
+    const telemetryData = {
+      'hero-status': {
+        title: 'BARRA DE ESTADO DEL HÉROE',
+        tag: 'HUD COMPONENT 01',
+        kanji: '体力・気力計',
+        desc: 'Matriz superior izquierda. Salud biocibernética de Rika, medidor trifásico de Dash/Stamina en #FFC400 y barras de enfriamiento de habilidades activas.',
+        stat1: '120 Hz',
+        stat2: 'ALPHA-1',
+        stat3: 'GLOW VULN',
+        readout: `
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm">
+            <span class="text-on-surface">HP ACTUAL: 1,840 / 2,000 [92%]</span>
+            <span class="text-primary font-bold">SISTEMA VITAL ESTABLE</span>
+          </div>
+          <div class="w-full h-3 bg-surface-container-high overflow-hidden">
+            <div class="h-full bg-primary-container w-[92%]"></div>
+          </div>
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm mt-2">
+            <span class="text-secondary-fixed-dim">ESTAMINA / MEDIDOR DE DASH (3 CARGAS)</span>
+            <span class="text-secondary">RECUPERACIÓN: 0.8s / CARGA</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 w-full h-2">
+            <div class="h-full bg-secondary-container"></div>
+            <div class="h-full bg-secondary-container"></div>
+            <div class="h-full bg-secondary-container/40 animate-pulse"></div>
+          </div>
+        `
+      },
+      'boss-bar': {
+        title: 'BARRA DE JEFE // PUERTA DE ACERO',
+        tag: 'HUD COMPONENT 02',
+        kanji: '要塞巨獣・鉄門',
+        desc: 'Matriz de colisión colosal superior central. Presenta 5 segmentos de blindaje endurecido (Armor Pips) y telégrafo parpadeante sísmico antes de pisotones de área.',
+        stat1: '5 PIPS',
+        stat2: 'ARMOR TITAN',
+        stat3: 'TELÉGRAFO SÍSMICO',
+        readout: `
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm">
+            <span class="text-error font-bold">BLINDAJE RESTANTE: 3/5 SEGMENTOS</span>
+            <span class="text-secondary animate-pulse">ALERTA DE TELÉGRAFO ACTIVA</span>
+          </div>
+          <div class="grid grid-cols-5 gap-1.5 w-full h-3">
+            <div class="h-full bg-error"></div>
+            <div class="h-full bg-error"></div>
+            <div class="h-full bg-error"></div>
+            <div class="h-full bg-surface-container-high"></div>
+            <div class="h-full bg-surface-container-high"></div>
+          </div>
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm mt-2 text-on-surface-variant">
+            <span>RESISTENCIA CINÉTICA: 68%</span>
+            <span>VULNERABILIDAD RUPTURA: DETECTADA EN PIERNA DERECHA</span>
+          </div>
+        `
+      },
+      'wave-tracker': {
+        title: 'CONTADOR DE OLEADAS Y AMENAZAS',
+        tag: 'HUD COMPONENT 03',
+        kanji: '第4波・敵勢力',
+        desc: 'Matriz superior derecha de telemetría de campo. Registra WAVE 04 / 06, recuento de bajas totales y coeficiente de amenaza global de la zona.',
+        stat1: 'WAVE 04/06',
+        stat2: 'MAX THREAT',
+        stat3: '142 BAJAS',
+        readout: `
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm">
+            <span class="text-secondary-fixed-dim font-bold">PROGRESIÓN DE SECTOR: 66%</span>
+            <span class="text-primary font-bold">AMENAZA OMEGACRÓN</span>
+          </div>
+          <div class="w-full h-3 bg-surface-container-high overflow-hidden">
+            <div class="h-full bg-secondary-container w-[66%]"></div>
+          </div>
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm mt-2 text-on-surface-variant">
+            <span>ENEMIGOS ACTIVOS EN ARENA: 3</span>
+            <span>TIEMPO TRANSCURRIDO: 03:42.18</span>
+          </div>
+        `
+      },
+      'combo-rank': {
+        title: 'MEDIDOR DE COMBO Y ESTILO [連撃]',
+        tag: 'HUD COMPONENT 04',
+        kanji: '極限連撃 // SSS',
+        desc: 'Indicador dinámico que flota cerca del hombro de la heroína. Registra 38 HITS consecutivos en Hazard Magenta #FF2D6F con multiplicador exponencial de recompensas.',
+        stat1: 'SSS TIER',
+        stat2: '38 HITS',
+        stat3: 'x4.8 MULT',
+        readout: `
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm">
+            <span class="text-primary font-bold">RANGO ACTUAL: SSS (EXTINCIÓN)</span>
+            <span class="text-secondary font-bold">DECAIMIENTO: 2.4s</span>
+          </div>
+          <div class="w-full h-3 bg-surface-container-high overflow-hidden">
+            <div class="h-full bg-primary-container w-[88%] animate-pulse"></div>
+          </div>
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm mt-2 text-on-surface-variant">
+            <span>BONO DE DAÑO CRÍTICO: +85%</span>
+            <span>VELOCIDAD DE MOVIMIENTO: +30%</span>
+          </div>
+        `
+      },
+      'controls-left': {
+        title: 'JOYSTICK TÁCTIL VIRTUAL',
+        tag: 'HUD COMPONENT 05',
+        kanji: '左側・仮想操舵輪',
+        desc: 'Control analógico flotante izquierdo. Permite cambios direccionales en 360°, agachado y control de salto vertical con sensibilidad regulable.',
+        stat1: '0ms DEADZONE',
+        stat2: 'DYNAMIC POS',
+        stat3: 'HAPTIC MED',
+        readout: `
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm">
+            <span class="text-on-surface">RADIO DE SENSIBILIDAD: 64 PIXELES</span>
+            <span class="text-secondary font-bold">VECTOR: [X: +0.82, Y: 0.00]</span>
+          </div>
+          <div class="w-full h-2 bg-surface-container-high overflow-hidden">
+            <div class="h-full bg-tertiary-container w-[82%]"></div>
+          </div>
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm mt-2 text-on-surface-variant">
+            <span>MODO DE SEGUIMIENTO: DEDO DINÁMICO</span>
+            <span>AUTO-CENTRO: INMEDIATO</span>
+          </div>
+        `
+      },
+      'controls-right': {
+        title: 'BOTONERA TÁCTIL ANGULAR',
+        tag: 'HUD COMPONENT 06',
+        kanji: '右側・戦闘撃発盤',
+        desc: 'Batería de botones de acción en disposición de arco fisiológico: Ataque primario, Dash con esquiva perfecta, Ruptura y Ranura de Item/DEFCON.',
+        stat1: '4 ACTION NODES',
+        stat2: 'ARC 30°',
+        stat3: 'VIBRACIÓN TÁCTIL',
+        readout: `
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm">
+            <span class="text-primary font-bold">BOTÓN RUPTURA: LISTO PARA DISPARAR</span>
+            <span class="text-on-surface-variant">COOLDOWN: 0.0s</span>
+          </div>
+          <div class="w-full h-2 bg-surface-container-high overflow-hidden">
+            <div class="h-full bg-primary-container w-[100%]"></div>
+          </div>
+          <div class="flex justify-between items-center font-label-tech-sm text-label-tech-sm mt-2 text-on-surface-variant">
+            <span>PRIORIDAD DE BUFFER: RUPTURA > ESQUIVA > ATAQUE NORMAL</span>
+          </div>
+        `
+      }
+    };
+
+    function selectTelemetry(key) {
+      const data = telemetryData[key];
+      if (!data) return;
+
+      document.getElementById('inspector-tag').innerText = data.tag;
+      document.getElementById('inspector-heading').innerText = data.title;
+      document.getElementById('inspector-kanji').innerText = data.kanji;
+      document.getElementById('inspector-desc').innerText = data.desc;
+      document.getElementById('inspector-stat-1').innerText = data.stat1;
+      document.getElementById('inspector-stat-2').innerText = data.stat2;
+      document.getElementById('inspector-stat-3').innerText = data.stat3;
+      document.getElementById('inspector-visualizer').innerHTML = data.readout;
+      document.getElementById('active-inspector-title').innerText = data.tag + ' // ' + data.title;
+    }
+
+    function updateComboReadout(type) {
+      const counterText = document.getElementById('combo-counter-text');
+      const meterBar = document.getElementById('combo-meter-bar');
+      const multLabel = document.getElementById('combo-multiplier-label');
+      const logStream = document.getElementById('impact-log-stream');
+      const rankBadge = document.getElementById('combo-rank-badge');
+
+      if (counterText) counterText.innerText = comboCount;
+
+      let rank = 'B';
+      if (comboCount > 50) rank = 'SSS';
+      else if (comboCount > 40) rank = 'SS';
+      else if (comboCount > 30) rank = 'S';
+      else if (comboCount > 20) rank = 'A';
+      if (rankBadge) rankBadge.innerText = rank;
+
+      const fillPct = Math.min(100, Math.max(20, (comboCount % 20) * 5));
+      if (meterBar) meterBar.style.width = fillPct + '%';
+      if (multLabel) multLabel.innerText = 'x' + (1 + (comboCount * 0.1)).toFixed(1) + ' DILATACIÓN';
+
+      if (logStream) {
+        const newEntry = document.createElement('div');
+        newEntry.className = 'flex justify-between p-1 bg-surface-container-lowest';
+        if (type === 'slash') {
+          newEntry.innerHTML = `<span class="text-on-surface">> CORTE FLUÍDO: HIT #${comboCount}</span><span class="text-secondary">-84 HP</span>`;
+        } else if (type === 'rupture') {
+          newEntry.innerHTML = `<span class="text-primary font-bold">> RUPTURA CRÍTICA (HITSTOP 16F)</span><span class="text-secondary font-bold">-480 HP</span>`;
+        } else {
+          newEntry.innerHTML = `<span class="text-tertiary">> ESQUIVA TÁCTICA SINCRONIZADA</span><span class="text-on-surface-variant">+0 HP</span>`;
+        }
+        logStream.insertBefore(newEntry, logStream.firstChild);
+        if (logStream.children.length > 5) {
+          logStream.removeChild(logStream.lastChild);
+        }
+      }
+    }
+
+    // Combat simulator functions with visual effects attached
+    function executeAction(type, event) {
+      playCombatSound(type);
+
+      // Trigger Visual Effects based on action
+      if (type === 'slash') {
+        comboCount += 1;
+        triggerScreenImpact('light');
+        
+        // Spawn sparks in center-right of gameplay stage or at pointer
+        if (sparksCanvas) {
+          const rect = sparksCanvas.getBoundingClientRect();
+          const targetX = rect.width * 0.52 + (Math.random() - 0.5) * 60;
+          const targetY = rect.height * 0.58 + (Math.random() - 0.5) * 50;
+          triggerSparksBurst(targetX, targetY, 22, false);
+        }
+      } else if (type === 'rupture') {
+        comboCount += 6;
+        triggerScreenImpact('heavy');
+        
+        // Hitstop temporal visual freeze simulation
+        const stage = document.getElementById('combat-stage-container');
+        if (stage) {
+          stage.style.filter = 'brightness(1.5) contrast(140%) saturate(130%)';
+          setTimeout(() => { stage.style.filter = 'none'; }, 180);
+        }
+
+        if (sparksCanvas) {
+          const rect = sparksCanvas.getBoundingClientRect();
+          const targetX = rect.width * 0.50;
+          const targetY = rect.height * 0.55;
+          triggerSparksBurst(targetX, targetY, 48, true);
+        }
+      } else if (type === 'dash') {
+        comboCount += 0;
+        if (sparksCanvas) {
+          const rect = sparksCanvas.getBoundingClientRect();
+          shockwaves.push(new Shockwave(rect.width * 0.45, rect.height * 0.65, 80, '#ffb871'));
+          startRenderLoop();
+        }
+      }
+
+      updateComboReadout(type);
+    }
+
+    function resetCombo() {
+      comboCount = 0;
+      document.getElementById('combo-counter-text').innerText = '0';
+      document.getElementById('combo-rank-badge').innerText = 'D';
+      document.getElementById('combo-meter-bar').style.width = '10%';
+      document.getElementById('combo-multiplier-label').innerText = 'x1.0 DILATACIÓN';
+
+      const logStream = document.getElementById('impact-log-stream');
+      const newEntry = document.createElement('div');
+      newEntry.className = 'flex justify-between p-1 bg-surface-container-lowest';
+      newEntry.innerHTML = `<span class="text-error font-bold">> ENLACE DE COMBO INTERRUMPIDO</span><span class="text-on-surface-variant">RESET</span>`;
+      logStream.insertBefore(newEntry, logStream.firstChild);
+    }
+  </script>
+</div></main><footer class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-lowest/95 backdrop-blur-md"><div class="h-12 w-full px-gutter-desktop flex items-center justify-between font-label-tech-sm text-label-tech-sm text-on-surface-variant"><div class="flex items-center gap-space-md"><span class="text-secondary">[MIL-SPEC TELEMETRY ACTIVE]</span><span class="hidden sm:inline">SAT-LINK: 09-OMEGA // ENCRYPTED</span><span class="hidden md:inline">THREAT LEVEL: MAXIMUM KAIJU/CYBORG</span></div><div class="hidden lg:flex items-center gap-space-sm"><span>HOTKEYS: [1-5] VISTAS</span><span>[SPACE] DETONACIÓN</span><span>[M] SILENCIAR ALERTA</span></div><div class="flex items-center gap-space-sm"><span>© 2025 NIPPON DESTRUCTION GAME STUDIO</span><span class="text-primary">// 日本崩壊</span></div></div></footer></body></html>

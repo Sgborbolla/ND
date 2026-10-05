@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#f7be00", "surface-container-lowest": "#100926", "on-surface": "#e8deff", "on-error-container": "#ffdad6", "outline": "#ab888c", "on-secondary-fixed": "#251a00", "on-primary-fixed": "#400014", "inverse-on-surface": "#332c4a", "on-tertiary": "#4a2800", "surface-variant": "#37304f", "primary-container": "#ff4e7c", "on-primary-container": "#5a001f", "on-tertiary-container": "#412200", "surface-tint": "#ffb2bd", "on-surface-variant": "#e4bdc1", "on-error": "#690005", "inverse-surface": "#e8deff", "primary-fixed-dim": "#ffb2bd", "error": "#ffb4ab", "surface-bright": "#3c3554", "surface-container-high": "#2c2543", "secondary-fixed": "#ffdf99", "on-tertiary-fixed": "#2d1600", "primary": "#ffb2bd", "on-primary": "#670025", "secondary-container": "#fec300", "background": "#150e2b", "on-tertiary-fixed-variant": "#6a3c00", "surface-container-highest": "#37304f", "on-primary-fixed-variant": "#900037", "surface-container": "#221b38", "error-container": "#93000a", "primary-fixed": "#ffd9de", "on-background": "#e8deff", "on-secondary-container": "#6d5200", "inverse-primary": "#bc004b", "tertiary": "#ffb871", "on-secondary-fixed-variant": "#5a4300", "tertiary-fixed-dim": "#ffb871", "tertiary-container": "#c58239", "tertiary-fixed": "#ffdcbe", "surface-container-low": "#1e1734", "surface-dim": "#150e2b", "surface": "#150e2b", "secondary": "#ffe5b1", "on-secondary": "#3f2e00", "outline-variant": "#5c3f43" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-tablet": "2rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "margin": "1rem", "gutter-tablet": "1.25rem", "space-xl": "2.5rem", "space-md": "1rem", "space-sm": "0.5rem", "margin-desktop": "3rem" }, "fontFamily": { "headline-lg": [ "Space Grotesk" ], "label-tech-md": [ "JetBrains Mono" ], "body-sm": [ "Chivo" ], "display-lg": [ "Space Grotesk" ], "label-tech-sm": [ "JetBrains Mono" ], "body-md": [ "Chivo" ], "headline-md": [ "Space Grotesk" ], "label-tech-lg": [ "JetBrains Mono" ], "display-lg-mobile": [ "Space Grotesk" ], "body-lg": [ "Chivo" ], "headline-sm": [ "Space Grotesk" ] }, "fontSize": { "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "0.02em", "fontWeight": "700" } ], "label-tech-md": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "500" } ], "body-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-tech-sm": [ "9px", { "lineHeight": "12px", "letterSpacing": "0.16em", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "label-tech-lg": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "500" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.05em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md"><div class="h-20 w-full px-gutter-desktop flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex flex-col"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm uppercase text-primary tracking-wider">日本崩壊 // NIPPON DESTRUCTION</span><span class="px-space-xs py-0.5 bg-primary-container/20 text-primary font-label-tech-sm text-label-tech-sm uppercase tracking-widest">MIL-SPEC ARCHIVE v2.4</span></div><div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant"><span class="text-secondary">[ZONE-0 Tokyo Extinction Basin]</span><span>GRID-REF: 35.6762° N, 139.6503° E</span></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="prologo-cinematico" href="#">01. PRÓLOGO CINEMÁTICO</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="seleccion-de-heroes" href="#">02. SELECCIÓN DE HÉROES</a><a aria-current="page" class="px-space-sm py-1.5 uppercase transition-colors bg-primary-container text-on-primary-container font-semibold" data-path="bestiario-de-amenazas" href="#">03. BESTIARIO DE AMENAZAS</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="arena-combat-hud" href="#">04. ARENA &amp; COMBAT HUD</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="manual-de-produccion" href="#">05. MANUAL DE PRODUCCIÓN</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-high"><span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span><span class="font-label-tech-sm text-label-tech-sm text-primary uppercase">ESTADO: CRÍTICO // EXTINCIÓN ND</span></div><button class="hidden lg:flex items-center gap-space-xs px-space-sm py-1 bg-secondary-container text-on-secondary-container font-label-tech-sm text-label-tech-sm uppercase font-semibold hover:bg-secondary-fixed transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">volume_up</span>ALERTA ND</button><div class="flex flex-col text-right font-label-tech-sm text-label-tech-sm text-on-surface-variant"><span class="text-secondary font-semibold">23:59:41 UTC</span><span>ND-DEFCON: LEVEL 1</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 pb-16 bg-surface"><div class="flex flex-col w-full">
+<!-- TOP TELEMETRY STRIP & CLASSIFICATION CONTROLLER -->
+<section class="w-full px-gutter-desktop py-space-md bg-surface-container-lowest">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="px-space-sm py-1 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold tracking-widest">
+          MIL-INTEL // CLASSIFIED
+        </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span class="text-secondary font-semibold">GRID RECON: TOKYO-EXTINCTION-BASIN</span>
+<span>// RADAR CODEX: ND-BESTIARY-18</span>
+</div>
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">
+            ÍNDICE DE AMENAZAS BIOMECÁNICAS
+          </span>
+</div>
+</div>
+<!-- Quick Stats Switchboard -->
+<div class="flex items-center gap-space-sm font-label-tech-sm text-label-tech-sm overflow-x-auto pb-1 lg:pb-0">
+<div class="px-space-md py-2 bg-surface-container-high flex items-center gap-space-xs shrink-0">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-on-surface-variant uppercase">REGISTRO:</span>
+<span class="text-on-surface font-semibold">18 ESPECÍMENES</span>
+</div>
+<div class="px-space-md py-2 bg-surface-container-high flex items-center gap-space-xs shrink-0">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-on-surface-variant uppercase">TELÉGRAFO MAGENTA:</span>
+<span class="text-primary font-semibold">#FF2D6F CRÍTICO</span>
+</div>
+<div class="px-space-md py-2 bg-surface-container-high flex items-center gap-space-xs shrink-0">
+<span class="text-secondary font-semibold">DEFCON 1 ACTIVE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- MAIN LEVEL SELECTOR TABS (LEVEL 1 / 2 / 3) -->
+<section class="w-full px-gutter-desktop pt-space-md">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<!-- NIVEL 1 TAB -->
+<button class="cat-tab-btn group text-left p-space-md bg-surface-container-high hover:bg-surface-container-highest transition-all duration-200 relative overflow-hidden" id="tab-btn-lvl1" onclick="switchCategory('lvl1')" type="button">
+<div class="flex items-center justify-between mb-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span class="text-secondary font-semibold">[ 第一種 // CAT-1 ]</span>
+<span class="px-1.5 py-0.5 bg-surface-container-lowest text-primary">6 ENTIDADES</span>
+</div>
+<div class="font-headline-sm text-headline-sm uppercase text-on-surface group-hover:text-primary transition-colors">
+          NIVEL 1: INFESTACIÓN BÁSICA
+        </div>
+<div class="font-label-tech-sm text-label-tech-sm text-on-surface-variant mt-1">
+          UNIDADES DE CHOQUE ND-01 // RUPTURA RÁPIDA
+        </div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-primary-container" id="tab-indicator-lvl1"></div>
+</button>
+<!-- NIVEL 2 TAB -->
+<button class="cat-tab-btn group text-left p-space-md bg-surface-container hover:bg-surface-container-highest transition-all duration-200 relative overflow-hidden opacity-80" id="tab-btn-lvl2" onclick="switchCategory('lvl2')" type="button">
+<div class="flex items-center justify-between mb-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span class="text-secondary font-semibold">[ 第二種 // CAT-2 ]</span>
+<span class="px-1.5 py-0.5 bg-surface-container-lowest text-secondary">6 EJECUTORES</span>
+</div>
+<div class="font-headline-sm text-headline-sm uppercase text-on-surface group-hover:text-primary transition-colors">
+          NIVEL 2: SUBJEFES DE SECTOR
+        </div>
+<div class="font-label-tech-sm text-label-tech-sm text-on-surface-variant mt-1">
+          ARQUITECTURA DE CONTENCIÓN // TELÉGRAFOS DE ARCO
+        </div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-transparent" id="tab-indicator-lvl2"></div>
+</button>
+<!-- NIVEL 3 TAB -->
+<button class="cat-tab-btn group text-left p-space-md bg-surface-container hover:bg-surface-container-highest transition-all duration-200 relative overflow-hidden opacity-80" id="tab-btn-lvl3" onclick="switchCategory('lvl3')" type="button">
+<div class="flex items-center justify-between mb-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span class="text-secondary font-semibold">[ 第三種 // CAT-3 ]</span>
+<span class="px-1.5 py-0.5 bg-primary-container text-on-primary-container font-bold">EXTINCIÓN</span>
+</div>
+<div class="font-headline-sm text-headline-sm uppercase text-on-surface group-hover:text-primary transition-colors">
+          NIVEL 3: JEFES COLOSALES
+        </div>
+<div class="font-label-tech-sm text-label-tech-sm text-on-surface-variant mt-1">
+          6 MONOLITOS DE COLAPSO // DISRUPCIÓN GLOBAL
+        </div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-transparent" id="tab-indicator-lvl3"></div>
+</button>
+</div>
+</section>
+<!-- SEARCH, METRICS FILTER & HUD CONTROLS -->
+<section class="w-full px-gutter-desktop py-space-sm">
+<div class="p-space-md bg-surface-container-low flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm flex-1 min-w-0">
+<span class="text-secondary font-label-tech-lg text-label-tech-lg">&gt;_</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-label-tech-md text-label-tech-md px-space-md py-2 focus:outline-none focus:bg-surface-container-high transition-colors" id="tactical-search" oninput="handleSearch(this.value)" placeholder="BUSCAR ESPÉCIMEN POR NOMBRE, CLASIFICACIÓN O VULNERABILIDAD..." type="text"/>
+<button class="px-space-sm py-2 bg-surface-container text-on-surface-variant hover:text-on-surface font-label-tech-sm text-label-tech-sm uppercase shrink-0" onclick="resetFilters()" type="button">
+          [ LIMPIAR ]
+        </button>
+</div>
+<!-- Threat Level Chips & View Mode -->
+<div class="flex items-center gap-space-sm shrink-0 font-label-tech-sm text-label-tech-sm">
+<button class="px-space-md py-2 bg-surface-container-high text-secondary hover:text-on-surface flex items-center gap-space-xs transition-colors" id="btn-hitbox-toggle" onclick="toggleHitboxMode()" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>CAPA HITBOX: <span class="text-primary font-bold" id="hitbox-status">ACTIVA</span></span>
+</button>
+<button class="px-space-md py-2 bg-primary-container text-on-primary-container hover:bg-secondary-container hover:text-on-secondary-container flex items-center gap-space-xs font-semibold transition-colors" onclick="toggleZoomModal()" type="button">
+<span class="material-symbols-outlined text-[16px]">crop_free</span>
+<span>ZOOM ANALÍTICO</span>
+</button>
+</div>
+</div>
+</section>
+<!-- MAIN INTERACTIVE SECTION: TACTICAL VIEWER + COMBAT INTEL PANEL -->
+<section class="w-full px-gutter-desktop py-space-sm">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- LEFT: HIGH-RESOLUTION TACTICAL SHEET DISPLAY (7 COLUMNS) -->
+<div class="lg:col-span-7 flex flex-col gap-space-sm">
+<div class="p-space-md bg-surface-container-low flex flex-col">
+<!-- Sheet Header Bar with Japanese Index -->
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-xs py-0.5 bg-surface-container-highest text-secondary font-label-tech-sm text-label-tech-sm">
+                [ 脅威図鑑・戦術視覚 // ND-PLATE ]
+              </span>
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface" id="plate-category-title">
+                LÁMINA I: BASIC ENEMIES LINEUP
+              </span>
+</div>
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span>RES: 1376x768</span>
+<span class="text-primary font-semibold">// 16:9 MIL-SPEC</span>
+</div>
+</div>
+<!-- Tactical Canvas Container with Optical Grid & Weakness Crosshairs -->
+<div class="relative w-full aspect-video bg-surface-container-lowest overflow-hidden group" id="tactical-plate-wrapper">
+<!-- Dynamic Image Layer for Current Level -->
+<img alt="Lámina Táctica ND" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" id="active-sheet-img" src="https://lh3.googleusercontent.com/aida/AEtjO1VPCLHUzaKoTeZgmJSkIsUdkFZKSzaDZltFG3Xhy6pWWrWP7f6kkIYsdTaSKnAQ5kV70lOIsIBaijbQKvA-a-1BsAv8gZRNGb_ckdJt9dF-Mn0jyJGnu8T0fjYMZ3kWl4IBg0z38Jwb0D2B1FrpM5MxhBV8Aj-tiOupfPla8m0ncPR1n5O2cQXZqXmEoziW9jUSBaI5_jTmHo4CVW-gE5b_yVbeVWRZqBz_RRuhK28ETjgW1UekuelqMg"/>
+<!-- Scanline / CRT Simulation Overlay (Tailwind CSS Linear Gradient) -->
+<div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(16,9,38,0.75)_100%)]"></div>
+<!-- Hitbox & Weakness Pin Overlays for Level 1 Basic Enemies (Dynamic) -->
+<div class="absolute inset-0 pointer-events-none" id="interactive-weakness-pins">
+<!-- Node 1: Doble (Cleaved Torso) -->
+<button class="pointer-events-auto absolute top-[38%] left-[7%] -translate-x-1/2 -translate-y-1/2 p-1 group/pin" onclick="selectSpecimen(0)" title="Doble (N1)" type="button">
+<span class="relative flex h-6 w-6 items-center justify-center">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary-container"></span>
+</span>
+<span class="absolute left-8 top-0 px-2 py-0.5 bg-surface-container-lowest font-label-tech-sm text-label-tech-sm text-primary uppercase whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity">
+                  01. DOBLE [N1] // EJE TÓRAX
+                </span>
+</button>
+<!-- Node 2: Lanzador (Colossal Throwing Arm) -->
+<button class="pointer-events-auto absolute top-[35%] left-[23%] -translate-x-1/2 -translate-y-1/2 p-1 group/pin" onclick="selectSpecimen(1)" title="Lanzador (N2)" type="button">
+<span class="relative flex h-6 w-6 items-center justify-center">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
+</span>
+<span class="absolute left-8 top-0 px-2 py-0.5 bg-surface-container-lowest font-label-tech-sm text-label-tech-sm text-secondary uppercase whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity">
+                  02. LANZADOR [N2] // ARTICULACIÓN HOMBRO
+                </span>
+</button>
+<!-- Node 3: Agresor (Predatory Talons) -->
+<button class="pointer-events-auto absolute top-[42%] left-[39%] -translate-x-1/2 -translate-y-1/2 p-1 group/pin" onclick="selectSpecimen(2)" title="Agresor (N3)" type="button">
+<span class="relative flex h-6 w-6 items-center justify-center">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary-container"></span>
+</span>
+<span class="absolute left-8 top-0 px-2 py-0.5 bg-surface-container-lowest font-label-tech-sm text-label-tech-sm text-primary uppercase whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity">
+                  03. AGRESOR [N3] // CODO FLEXOR
+                </span>
+</button>
+<!-- Node 4: Blindado (Armored Pauldrons) -->
+<button class="pointer-events-auto absolute top-[45%] left-[55%] -translate-x-1/2 -translate-y-1/2 p-1 group/pin" onclick="selectSpecimen(3)" title="Blindado (N4)" type="button">
+<span class="relative flex h-6 w-6 items-center justify-center">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary-container"></span>
+</span>
+<span class="absolute left-8 top-0 px-2 py-0.5 bg-surface-container-lowest font-label-tech-sm text-label-tech-sm text-primary uppercase whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity">
+                  04. BLINDADO [N4] // CUELLO RETRAÍDO
+                </span>
+</button>
+<!-- Node 5: Resucitado (Twisted Torso) -->
+<button class="pointer-events-auto absolute top-[36%] left-[71%] -translate-x-1/2 -translate-y-1/2 p-1 group/pin" onclick="selectSpecimen(4)" title="Resucitado (N5)" type="button">
+<span class="relative flex h-6 w-6 items-center justify-center">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
+</span>
+<span class="absolute left-8 top-0 px-2 py-0.5 bg-surface-container-lowest font-label-tech-sm text-label-tech-sm text-secondary uppercase whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity">
+                  05. RESUCITADO [N5] // COSTILLAR EXPUESTO
+                </span>
+</button>
+<!-- Node 6: Mimético (Doppelganger) -->
+<button class="pointer-events-auto absolute top-[40%] left-[88%] -translate-x-1/2 -translate-y-1/2 p-1 group/pin" onclick="selectSpecimen(5)" title="Mimético (N6)" type="button">
+<span class="relative flex h-6 w-6 items-center justify-center">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary-container"></span>
+</span>
+<span class="absolute right-8 top-0 px-2 py-0.5 bg-surface-container-lowest font-label-tech-sm text-label-tech-sm text-primary uppercase whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity">
+                  06. MIMÉTICO [N6] // NÚCLEO REFLEJO
+                </span>
+</button>
+</div>
+<!-- Optical HUD Markings in Viewer -->
+<div class="pointer-events-none absolute top-3 left-3 font-label-tech-sm text-label-tech-sm text-secondary bg-surface-container-lowest/80 px-2 py-1">
+              OPTIC: MULTI-SPECTRAL TELEMETRY // SILHOUETTE #000000 MATRIX
+            </div>
+<div class="pointer-events-none absolute bottom-3 right-3 font-label-tech-sm text-label-tech-sm text-on-surface-variant bg-surface-container-lowest/80 px-2 py-1 flex items-center gap-space-sm">
+<span class="text-primary font-bold">ALERTA ND: TELÉGRAFO ACTIVO</span>
+<span>MAGENTA #FF2D6F</span>
+</div>
+</div>
+<!-- Bottom Navigation Thumbnails for Rapid Jumping -->
+<div class="mt-space-sm pt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span class="text-secondary">[ SELECCIONAR SUJETO ]:</span>
+<span>CLICK EN PIN O BOTONES INFERIORES</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 bg-surface-container text-on-surface hover:bg-surface-container-high font-label-tech-sm text-label-tech-sm flex items-center gap-1" onclick="cycleSpecimen(-1)" type="button">
+<span class="material-symbols-outlined text-[14px]">arrow_back</span> ANTERIOR
+              </button>
+<button class="px-space-sm py-1 bg-surface-container text-on-surface hover:bg-surface-container-high font-label-tech-sm text-label-tech-sm flex items-center gap-1" onclick="cycleSpecimen(1)" type="button">
+                SIGUIENTE <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Specimen Strip of Active Category -->
+<div class="grid grid-cols-6 gap-space-xs" id="specimens-pill-rack">
+<!-- Buttons dynamically synced via JS -->
+</div>
+</div>
+<!-- RIGHT: MILITARY TACTICAL DOSSIER & ARMOR CRACK INTELLIGENCE (5 COLUMNS) -->
+<div class="lg:col-span-5 flex flex-col gap-space-sm">
+<div class="p-space-md bg-surface-container-high flex flex-col h-full">
+<!-- Entity Header Dossier -->
+<div class="flex items-start justify-between pb-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm">
+<span class="px-space-xs py-0.5 bg-secondary-container text-on-secondary-container font-bold" id="card-kanji-badge">
+                  二重体 // N-01
+                </span>
+<span class="text-primary font-semibold" id="card-threat-level">
+                  CLASE BASICA // INFESTACIÓN
+                </span>
+</div>
+<div class="flex items-baseline gap-space-sm mt-1">
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface tracking-tight" id="card-entity-title">
+                  DOBLE
+                </h2>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-light" id="card-kanji-name">
+                  (ドッペル)
+                </span>
+</div>
+</div>
+<!-- Danger Gauge Widget (Inline SVG Meter) -->
+<div class="flex flex-col items-end">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant uppercase">ÍNDICE DE AMENAZA</span>
+<div class="flex items-center gap-1 mt-1">
+<svg class="w-12 h-6" viewbox="0 0 48 24">
+<path class="text-surface-variant" d="M 4 20 A 20 20 0 0 1 44 20" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path class="text-primary-container" d="M 4 20 A 20 20 0 0 1 28 5" fill="none" id="svg-meter-arc" stroke="currentColor" stroke-width="4"></path>
+</svg>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="card-threat-score">78</span>
+</div>
+</div>
+</div>
+<!-- Visual Profile & Morfology Strip -->
+<div class="mt-space-sm p-space-sm bg-surface-container-lowest">
+<div class="font-label-tech-sm text-label-tech-sm text-secondary uppercase font-semibold mb-1">
+              [ 形態特徴 // MORFOLOGÍA DE SILUETA PURA #000000 ]
+            </div>
+<p class="font-body-md text-body-md text-on-surface" id="card-morphology-desc">
+              Torso hendido verticalmente con doble eje vertebral. Dos cabezas desfasadas operando en sinergia errática, extremidades asimétricas y postura curvada de avance rápido.
+            </p>
+</div>
+<!-- Telegraph Alert Protocol (Hazard Magenta #FF2D6F) -->
+<div class="mt-space-sm p-space-sm bg-primary-container/10">
+<div class="flex items-center justify-between font-label-tech-sm text-label-tech-sm text-primary uppercase font-bold mb-1">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+                TELÉGRAFO DE ATAQUE // HAZARD MAGENTA #FF2D6F
+              </span>
+<span class="text-secondary font-semibold" id="card-telegraph-type">ANILLO DE DILATACIÓN</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="card-telegraph-desc">
+              Expansión radial súbita de 2 anillos magenta concéntricos previos al desgarre gemelo. Tiempo de reacción para parry táctico: 340 milisegundos.
+            </p>
+</div>
+<!-- Tactical Vulnerability & Armor Crack Guide -->
+<div class="mt-space-sm p-space-sm bg-surface-container-lowest">
+<div class="font-label-tech-sm text-label-tech-sm text-secondary uppercase font-semibold mb-1">
+              [ 装甲破壊戦術 // ESTRATEGIA DE RUPTURA &amp; VULNERABILIDAD ]
+            </div>
+<p class="font-body-sm text-body-sm text-on-surface" id="card-vuln-desc">
+              Disparar proyectil cinético al nexo intercraneal durante el parpadeo de recarga de los anillos. Fuerza la apertura de la hendidura esternal para remate letal.
+            </p>
+</div>
+<!-- Combat Metrics & Hitbox Dimensions -->
+<div class="mt-space-sm grid grid-cols-3 gap-space-xs font-label-tech-sm text-label-tech-sm">
+<div class="p-space-sm bg-surface-container-lowest flex flex-col">
+<span class="text-on-surface-variant uppercase">VELOCIDAD REFLEJO</span>
+<span class="text-on-surface font-semibold text-label-tech-lg mt-0.5" id="metric-speed">8.4 m/s</span>
+</div>
+<div class="p-space-sm bg-surface-container-lowest flex flex-col">
+<span class="text-on-surface-variant uppercase">RESISTENCIA BLINDAJE</span>
+<span class="text-secondary font-semibold text-label-tech-lg mt-0.5" id="metric-armor">MEDIO [NIV-2]</span>
+</div>
+<div class="p-space-sm bg-surface-container-lowest flex flex-col">
+<span class="text-on-surface-variant uppercase">RADIO HITBOX</span>
+<span class="text-primary font-semibold text-label-tech-lg mt-0.5" id="metric-hitbox">2.4 METROS</span>
+</div>
+</div>
+<!-- Action HUD Buttons for Intel Deck -->
+<div class="mt-auto pt-space-md flex items-center gap-space-sm">
+<button class="flex-1 py-space-sm px-space-md bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wider hover:bg-secondary-container hover:text-on-secondary-container transition-colors text-center font-bold" onclick="triggerSimulatedEngagement()" type="button">
+              SIMULAR ENFRENTAMIENTO
+            </button>
+<button class="px-space-md py-space-sm bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest font-label-tech-sm text-label-tech-sm uppercase flex items-center justify-center gap-1" onclick="triggerCodexDownload()" type="button">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>EXTRAER DATA</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FULL DETAILED ROSTER MATRIX (18 ENTITIES ARCHIVE GRID) -->
+<section class="w-full px-gutter-desktop py-space-xl">
+<div class="p-space-lg bg-surface-container-lowest flex flex-col">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-md mb-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-secondary">
+<span>[ 全脅威・総合マトリクス // 18 ENTITY CODEX ]</span>
+<span>DATA LOG 2025 // ND-SYS</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg uppercase text-on-surface mt-1">
+            MATRIZ TÁCTICA DEL BESTIARIO ND
+          </h3>
+</div>
+<div class="flex items-center gap-space-sm font-label-tech-sm text-label-tech-sm">
+<span class="text-on-surface-variant">FILTRADO:</span>
+<button class="grid-filter-btn px-2 py-1 bg-primary-container text-on-primary-container font-bold" onclick="filterGrid('all')" type="button">TODOS (18)</button>
+<button class="grid-filter-btn px-2 py-1 bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="filterGrid('lvl1')" type="button">BÁSICOS (6)</button>
+<button class="grid-filter-btn px-2 py-1 bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="filterGrid('lvl2')" type="button">SUBJEFES (6)</button>
+<button class="grid-filter-btn px-2 py-1 bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="filterGrid('lvl3')" type="button">JEFES (6)</button>
+</div>
+</div>
+<!-- 18 Cards Responsive Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-space-sm" id="full-roster-grid">
+<!-- Rendered by client script for all 18 entities -->
+</div>
+</div>
+</section>
+<!-- ANALYTIC ZOOM MODAL DIALOG (HIDDEN BY DEFAULT) -->
+<div class="fixed inset-0 z-50 bg-surface-container-lowest/95 backdrop-blur-xl flex flex-col p-gutter-desktop hidden" id="zoom-modal">
+<div class="flex items-center justify-between pb-space-md">
+<div class="flex items-center gap-space-md">
+<span class="px-space-sm py-1 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold">
+          OPTIC RECON // ZOOM 4X EXTENDED
+        </span>
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface" id="zoom-modal-title">
+          LÁMINA TÁCTICA // ALTA RESOLUCIÓN
+        </span>
+</div>
+<button class="px-space-md py-1.5 bg-surface-container-high text-on-surface hover:bg-primary-container hover:text-on-primary-container font-label-tech-md text-label-tech-md uppercase transition-colors" onclick="toggleZoomModal()" type="button">
+        [ CERRAR VISOR ESC ]
+      </button>
+</div>
+<div class="relative flex-1 bg-surface-container-low overflow-auto flex items-center justify-center p-space-md">
+<img alt="Tactical Zoom View" class="max-w-none w-auto h-full object-contain cursor-grab active:cursor-grabbing" id="zoom-modal-img" src="https://lh3.googleusercontent.com/aida/AEtjO1VPCLHUzaKoTeZgmJSkIsUdkFZKSzaDZltFG3Xhy6pWWrWP7f6kkIYsdTaSKnAQ5kV70lOIsIBaijbQKvA-a-1BsAv8gZRNGb_ckdJt9dF-Mn0jyJGnu8T0fjYMZ3kWl4IBg0z38Jwb0D2B1FrpM5MxhBV8Aj-tiOupfPla8m0ncPR1n5O2cQXZqXmEoziW9jUSBaI5_jTmHo4CVW-gE5b_yVbeVWRZqBz_RRuhK28ETjgW1UekuelqMg"/>
+<div class="absolute bottom-4 left-4 p-space-sm bg-surface-container-lowest font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span>RETÍCULA MAGENTA: #FF2D6F // CALIBRACIÓN KAIJU-SILHOUETTE 0.05µm</span>
+</div>
+</div>
+</div>
+<!-- EMBEDDED BESTIARY DATABASE AND CONTROLLER LOGIC -->
+<script>
+    const BESTIARY_DATA = {
+      lvl1: {
+        categoryTitle: "LÁMINA I: BASIC ENEMIES LINEUP // 6 ESPECÍMENES",
+        sheetImage: "https://lh3.googleusercontent.com/aida/AEtjO1VPCLHUzaKoTeZgmJSkIsUdkFZKSzaDZltFG3Xhy6pWWrWP7f6kkIYsdTaSKnAQ5kV70lOIsIBaijbQKvA-a-1BsAv8gZRNGb_ckdJt9dF-Mn0jyJGnu8T0fjYMZ3kWl4IBg0z38Jwb0D2B1FrpM5MxhBV8Aj-tiOupfPla8m0ncPR1n5O2cQXZqXmEoziW9jUSBaI5_jTmHo4CVW-gE5b_yVbeVWRZqBz_RRuhK28ETjgW1UekuelqMg",
+        pins: [
+          { name: "DOBLE", code: "N1", left: "7%", top: "38%", focus: "EJE TÓRAX" },
+          { name: "LANZADOR", code: "N2", left: "23%", top: "35%", focus: "ARTICULACIÓN HOMBRO" },
+          { name: "AGRESOR", code: "N3", left: "39%", top: "42%", focus: "CODO FLEXOR" },
+          { name: "BLINDADO", code: "N4", left: "55%", top: "45%", focus: "CUELLO RETRAÍDO" },
+          { name: "RESUCITADO", code: "N5", left: "71%", top: "36%", focus: "COSTILLAR EXPUESTO" },
+          { name: "MIMÉTICO", code: "N6", left: "88%", top: "40%", focus: "NÚCLEO REFLEJO" }
+        ],
+        specimens: [
+          {
+            id: 0,
+            name: "DOBLE",
+            kanji: "二重体",
+            subtext: "ドッペル // N-01",
+            level: "NIVEL 1: INFESTACIÓN BÁSICA",
+            score: "78",
+            arc: "M 4 20 A 20 20 0 0 1 30 6",
+            morphology: "Torso hendido verticalmente con doble eje vertebral. Dos cabezas desfasadas operando en sinergia errática, extremidades asimétricas y postura curvada de avance rápido.",
+            telegraphType: "ANILLO DE DILATACIÓN CONCÉNTRICO",
+            telegraphDesc: "Expansión radial súbita de 2 anillos magenta (#ff2d6f) concéntricos previos al desgarre gemelo. Tiempo de reacción para parry táctico: 340 milisegundos.",
+            vuln: "Disparar proyectil cinético al nexo intercraneal durante el parpadeo de recarga de los anillos. Fuerza la apertura de la hendidura esternal para remate letal.",
+            speed: "8.4 m/s",
+            armor: "MEDIO [NIV-2]",
+            hitbox: "2.4 METROS"
+          },
+          {
+            id: 1,
+            name: "LANZADOR",
+            kanji: "投擲機",
+            subtext: "プロジェクター // N-02",
+            level: "NIVEL 1: INFESTACIÓN BÁSICA",
+            score: "72",
+            arc: "M 4 20 A 20 20 0 0 1 26 7",
+            morphology: "Hombros desproporcionados con colosal brazo derecho de catapultado. Torso reclinado hacia atrás, caderas bajas y silueta en triángulo invertido hipertrófico.",
+            telegraphType: "CONO DE PROYECCIÓN BALÍSTICA",
+            telegraphDesc: "Haz magenta cónico proyectado hacia el suelo en trayectoria parabólica. Emite chispas de pre-ignición ambarina (#ffc400) durante la acumulación de torsión.",
+            vuln: "Interrupción por impacto pesado en el codo de carga durante la fase de balanceo retrógrado. Provoca auto-detonación del proyectil de escombros.",
+            speed: "4.8 m/s",
+            armor: "PESADO DEXTRO",
+            hitbox: "3.8 METROS"
+          },
+          {
+            id: 2,
+            name: "AGRESOR",
+            kanji: "強襲型",
+            subtext: "アグレッサー // N-03",
+            level: "NIVEL 1: INFESTACIÓN BÁSICA",
+            score: "85",
+            arc: "M 4 20 A 20 20 0 0 1 36 8",
+            morphology: "Postura encorvada depredadora con hombros adelantados, garras curvas hiper-alargadas de acero carbonizado y muslos gruesos de empuje explosivo.",
+            telegraphType: "LÍNEAS VECTORIALES DE BARRIDO",
+            telegraphDesc: "Tres líneas láser magenta en abanico que colapsan en 120ms hacia la posición del héroe antes de una embestida en tijera triple.",
+            vuln: "Paso lateral de esquiva perfecta al momento de convergencia. Expone la articulación de la corva izquierda a rupturas de contragolpe.",
+            speed: "12.2 m/s",
+            armor: "LIGERO ÁGIL",
+            hitbox: "2.1 METROS"
+          },
+          {
+            id: 3,
+            name: "BLINDADO",
+            kanji: "重装甲",
+            subtext: "タンク // N-04",
+            level: "NIVEL 1: INFESTACIÓN BÁSICA",
+            score: "81",
+            arc: "M 4 20 A 20 20 0 0 1 33 6",
+            morphology: "Silueta cúbica masiva con hombreras rectangulares de búnker móvil. Centro de gravedad a ras de suelo y cuello completamente retraído en coraza de placa.",
+            telegraphType: "IMPACTO SÍSMICO PERIMETRAL",
+            telegraphDesc: "Onda de choque circular magenta con textura de peligro diagonal. El suelo fracturado emite pulsaciones previas al pisotón hidráulico.",
+            vuln: "Ataques de salto con impacto vertical en el respiradero dorsal superior. Rompe las placas laterales y anula el 80% de su defensa frontal.",
+            speed: "3.2 m/s",
+            armor: "FORTIFICADO MAX",
+            hitbox: "4.5 METROS"
+          },
+          {
+            id: 4,
+            name: "RESUCITADO",
+            kanji: "蘇生異形",
+            subtext: "リボーン // N-05",
+            level: "NIVEL 1: INFESTACIÓN BÁSICA",
+            score: "79",
+            arc: "M 4 20 A 20 20 0 0 1 31 6",
+            morphology: "Silueta asimétrica grotesca con torso torcido en diagonal. Brazo izquierdo descolgado e inerte, caja torácica expuesta y pierna retorcida que deja rastro.",
+            telegraphType: "PULSO DE FLUIDO CORROSIVO",
+            telegraphDesc: "Anillo irregular con burbujeo magenta en arco de 180 grados. Libera vapor a presión con telegrafía sonora de siseo mecánico.",
+            vuln: "Desarmar el hombro anclado funcional derecho para dejarlo completamente sin balance, provocando colapso estructural inmediato.",
+            speed: "5.0 m/s",
+            armor: "ORGÁNICO MUTADO",
+            hitbox: "2.8 METROS"
+          },
+          {
+            id: 5,
+            name: "MIMÉTICO",
+            kanji: "擬態模倣",
+            subtext: "ミミック // N-06",
+            level: "NIVEL 1: INFESTACIÓN BÁSICA",
+            score: "88",
+            arc: "M 4 20 A 20 20 0 0 1 38 10",
+            morphology: "Silueta humanoide perturbadora idéntica al héroe con bordes ondulantes espectrales y articulaciones sutilmente alargadas que imitan posturas marciales.",
+            telegraphType: "REFLEJO PARÁSITO SIMULTÁNEO",
+            telegraphDesc: "Proyecta una silueta gemela con bordes magenta vibrantes que anticipa el propio ataque del jugador en contra-fase.",
+            vuln: "Fintar con ataque ligero para forzar su postura de parry falso, luego conectar un ataque pesado rompe-guardias en su tiempo muerto.",
+            speed: "11.0 m/s",
+            armor: "CAMUFLAJE BIO",
+            hitbox: "1.9 METROS"
+          }
+        ]
+      },
+      lvl2: {
+        categoryTitle: "LÁMINA II: SUBBOSSES DE SECTOR // 6 EJECUTORES",
+        sheetImage: "https://lh3.googleusercontent.com/aida/AEtjO1VEKqC2RKjBCStr-ws--OyNBtUTxoY0TZQM86PDj_AcFMdSbWUW2UDtcZLE_8vUx5zMAR5_BQDslMzTDo44_HzNLRGqCdBY2sspc66AivV9tYhwsPpJ3kG8yXXN_DUGhcWmcL9plAhWCWoY8jrWZxDHKFbh2VuR9fqLGFBNOCyxMCQ95x3Z9mp5wuMq6BESCJF7YhD6j9b0DRBk_pGhnWTF4QPUMHBuOtQjOgeqcgUfDh9hBLtGGJ-N",
+        pins: [
+          { name: "EL CIERRE", code: "SB1", left: "8%", top: "36%", focus: "ESCOTILLAS DE HOMBRO" },
+          { name: "LA CADENA", code: "SB2", left: "24%", top: "34%", focus: "VÉRTEBRAS EXPUESTAS" },
+          { name: "EL DESGARRO", code: "SB3", left: "41%", top: "37%", focus: "JÁULA COSTAL" },
+          { name: "EL MURO", code: "SB4", left: "57%", top: "42%", focus: "ANCLAJES DE ASFALTO" },
+          { name: "EL ECO ROTO", code: "SB5", left: "73%", top: "35%", focus: "SILUETA DESFASADA" },
+          { name: "LA CUCHILLA COLGADA", code: "SB6", left: "89%", top: "38%", focus: "BISAGRA DE GUILLOTINA" }
+        ],
+        specimens: [
+          {
+            id: 0,
+            name: "EL CIERRE",
+            kanji: "閉鎖機構",
+            subtext: "クローズ // SB-01",
+            level: "NIVEL 2: SUBJEFE DE SECTOR",
+            score: "91",
+            arc: "M 4 20 A 20 20 0 0 1 40 12",
+            morphology: "Torso cilíndrico reforzado flanqueado por dos pesadas compuertas de esclusa en hombros. Puños de maza hidráulica y piernas de columna de compresión.",
+            telegraphType: "PRENSADO BIPOLAR HORIZONTAL",
+            telegraphDesc: "Dos arcos magenta convergen violentamente desde ambos extremos de la pantalla hacia el centro con alarma sonora de descompresión.",
+            vuln: "Evasión vertical hacia arriba antes del choque de compuertas; las placas quedan atascadas 2.8 segundos facilitando golpes de ruptura en el centro.",
+            speed: "6.5 m/s",
+            armor: "TITANIO ND-B",
+            hitbox: "5.2 METROS"
+          },
+          {
+            id: 1,
+            name: "LA CADENA",
+            kanji: "連鎖鎖鞭",
+            subtext: "チェーン // SB-02",
+            level: "NIVEL 2: SUBJEFE DE SECTOR",
+            score: "89",
+            arc: "M 4 20 A 20 20 0 0 1 39 11",
+            morphology: "Espina dorsal segmentada tipo ciempiés hipertrofiada con hombros asimétricos y brazos ultra-largos que actúan como látigos de eslabones dentados.",
+            telegraphType: "ESPIRAL LATERAL CONCÉNTRICA",
+            telegraphDesc: "Anillos orbitales magenta giratorios que se expanden cubriendo hasta 15 metros a la redonda antes de un latigazo en látigo continuo.",
+            vuln: "Corte transversal con proyectil de alta frecuencia al segmento espinal dorsal número 4 mientras ejecuta el giro centrífugo.",
+            speed: "9.6 m/s",
+            armor: "ESLABONADO PESADO",
+            hitbox: "3.4 METROS"
+          },
+          {
+            id: 2,
+            name: "EL DESGARRO",
+            kanji: "断裂鎌刃",
+            subtext: "リッパー // SB-03",
+            level: "NIVEL 2: SUBJEFE DE SECTOR",
+            score: "94",
+            arc: "M 4 20 A 20 20 0 0 1 42 14",
+            morphology: "Cuerpo superior desproporcionado con columna en joroba repleta de navajas. Cuatro extremidades en forma de guadaña asimétrica de corte rápido.",
+            telegraphType: "ASPAS CRUZADAS DE DISRUPCIÓN",
+            telegraphDesc: "Patrón en 'X' magenta gigante proyectado en el suelo con 180 milisegundos de antelación al descuartizamiento simultáneo.",
+            vuln: "Posicionarse exactamente en el epicentro neutral de la X y castigar el esternón abierto cuando finaliza la maniobra de guadañas.",
+            speed: "14.5 m/s",
+            armor: "QUERATINA ACERADA",
+            hitbox: "3.9 METROS"
+          },
+          {
+            id: 3,
+            name: "EL MURO",
+            kanji: "防壁要塞",
+            subtext: "ザ・ウォール // SB-04",
+            level: "NIVEL 2: SUBJEFE DE SECTOR",
+            score: "92",
+            arc: "M 4 20 A 20 20 0 0 1 41 13",
+            morphology: "Monolito cúbico impenetrable con cabeza hundida entre dos parapetos de trinchera. Brazos bunker que se clavan en el pavimento creando una barrera física.",
+            telegraphType: "BARRERA TÉRMICA FRONTAL",
+            telegraphDesc: "Muro de plasma magenta vertical continuo que avanza frontalmente barriendo proyectiles y empujando al jugador hacia la niebla radiactiva.",
+            vuln: "Deslizarse por los respiraderos inferiores entre las patas de anclaje durante la elevación del muro para demoler sus válvulas traseras.",
+            speed: "2.1 m/s",
+            armor: "HORMIGÓN ARMADO ND",
+            hitbox: "6.8 METROS"
+          },
+          {
+            id: 4,
+            name: "EL ECO ROTO",
+            kanji: "反響幻影",
+            subtext: "ブロークン・エコー // SB-05",
+            level: "NIVEL 2: SUBJEFE DE SECTOR",
+            score: "90",
+            arc: "M 4 20 A 20 20 0 0 1 40 12",
+            morphology: "Doble silueta superpuesta desfasada en el tiempo óptico. Cuello serpentino oscilante y brazos dislocados con vibración fantasma de baja frecuencia.",
+            telegraphType: "ANILLOS DE RESONANCIA ACÚSTICA",
+            telegraphDesc: "Pulsaciones esféricas distorsionadas magenta que ralentizan la velocidad de esquiva del jugador en un 60% por contacto.",
+            vuln: "Atacar únicamente la silueta que proyecta sombra física en el asfalto. La imagen secundaria se disipa con cualquier daño elemental.",
+            speed: "10.0 m/s",
+            armor: "FASE TELEMÉTRICA",
+            hitbox: "3.2 METROS"
+          },
+          {
+            id: 5,
+            name: "LA CUCHILLA COLGADA",
+            kanji: "断頭懸垂",
+            subtext: "ギロチン // SB-06",
+            level: "NIVEL 2: SUBJEFE DE SECTOR",
+            score: "95",
+            arc: "M 4 20 A 20 20 0 0 1 43 15",
+            morphology: "Silueta esbelta de gran estatura con hombros estrechos y elevados. Su brazo derecho es una descomunal cuchilla de guillotina que arrastra chispas por el suelo.",
+            telegraphType: "TAJO VERTICAL AL VACÍO",
+            telegraphDesc: "Línea magenta finísima de 30 metros de longitud que corta el espacio a la velocidad del sonido, dejando una grieta de plasma residual.",
+            vuln: "Parry cinético con ventana estricta de 90 milisegundos en el momento que la cuchilla roza el suelo, provocando su encaje por 4 segundos.",
+            speed: "13.0 m/s",
+            armor: "HOJA MONOMOLECULAR",
+            hitbox: "4.1 METROS"
+          }
+        ]
+      },
+      lvl3: {
+        categoryTitle: "LÁMINA III: JEFES COLOSALES / EXTINCIÓN // 6 MONOLITOS",
+        sheetImage: "https://lh3.googleusercontent.com/aida/AEtjO1WcJYyqu5BCjLa2nLTpg8bBu-Owr6ijdtGrYIm4ZqEA97JgzBHLW_9jb1UIKohGMYvxp6XwmbHfoO4prm0eaPZJsJvOXogki-01qgjheXLGQBm7PfluO0JyMpjUB3R7Pfvr57sRm5PtZKt5G9dp63sic5C6D_NhRKDNcWzOOJFTA1JqFzLhf2ZI5DmG6A1tt_ODYGCQIY5OaKE79ngJEyXohcpEZNKavpikd8sFHEjbINP22HjBHIi8Ew",
+        pins: [
+          { name: "PUERTA DE ACERO", code: "BOSS-1", left: "9%", top: "35%", focus: "COMPUERTA PECTORAL" },
+          { name: "COLAPSO", code: "BOSS-2", left: "25%", top: "38%", focus: "VIGAS EXPUESTAS" },
+          { name: "HORNO", code: "BOSS-3", left: "41%", top: "33%", focus: "VENTILACIÓN TÉRMICA" },
+          { name: "CEMENTERIO", code: "BOSS-4", left: "57%", top: "40%", focus: "LÁPIDAS MAESTRAS" },
+          { name: "RESONANCIA", code: "BOSS-5", left: "74%", top: "32%", focus: "ESPIRAL CENTRAL" },
+          { name: "NÚCLEO ND", code: "BOSS-6", left: "90%", top: "30%", focus: "OJO MONOLÍTICO" }
+        ],
+        specimens: [
+          {
+            id: 0,
+            name: "PUERTA DE ACERO",
+            kanji: "鋼鉄之門",
+            subtext: "アイアンドア // BOSS-01",
+            level: "NIVEL 3: MONOLITO DE EXTINCIÓN",
+            score: "98",
+            arc: "M 4 20 A 20 20 0 0 1 44 17",
+            morphology: "Colosal fortaleza trapezoidal con pecho de compuerta antiatómica maciza, piernas de columna ciclópea y brazos con doble pistón hidráulico industrial.",
+            telegraphType: "ANILLO DE SOBREPRESIÓN HIDRÁULICA",
+            telegraphDesc: "Anillo triple magenta con diámetro de 40 metros que sacude la arena entera. Libera vapor a 400 grados centígrados tras cada impacto.",
+            vuln: "Detonar cargas sónicas en las articulaciones de los pistones dorsales mientras abre la compuerta frontal para disparar el haz térmico.",
+            speed: "4.2 m/s",
+            armor: "BLINDAJE BUNKER III",
+            hitbox: "14.5 METROS"
+          },
+          {
+            id: 1,
+            name: "COLAPSO",
+            kanji: "崩落震動",
+            subtext: "コラプス // BOSS-02",
+            level: "NIVEL 3: MONOLITO DE EXTINCIÓN",
+            score: "96",
+            arc: "M 4 20 A 20 20 0 0 1 43 16",
+            morphology: "Torso partido y desmembrado con armaduras de acero corrugado al aire y vigas retorcidas. Miembros trémulos que colapsan y se reconstruyen en segundos.",
+            telegraphType: "FALLA TECTÓNICA TELESFÉRICA",
+            telegraphDesc: "Cuadrícula de fracturas magenta en el pavimento que se desgajan secuencialmente hacia la posición del escuadrón.",
+            vuln: "Atracción hacia las zonas elevadas de escombros para cortar las varillas de anclaje de su columna antes de su recomposición tectónica.",
+            speed: "7.0 m/s",
+            armor: "ESCOMBRO DINÁMICO",
+            hitbox: "16.0 METROS"
+          },
+          {
+            id: 2,
+            name: "HORNO",
+            kanji: "灼熱高炉",
+            subtext: "ファーネス // BOSS-03",
+            level: "NIVEL 3: MONOLITO DE EXTINCIÓN",
+            score: "99",
+            arc: "M 4 20 A 20 20 0 0 1 44 18",
+            morphology: "Cuerpo ovoidal abultado de fundición industrial con hombreras en cúpula de escape, fisuras con radiación térmica y puños de martillo de forja titánicos.",
+            telegraphType: "PURGA DE ESCORIA MAGENTA",
+            telegraphDesc: "Erupción de lava residual y anillos magenta de choque calórico en 360 grados, saturando la pantalla de ceniza electrostática.",
+            vuln: "Extinguir las tres toberas de ventilación traseras con refrigerante criogénico durante la recarga para generar un shock de metal fundido.",
+            speed: "5.5 m/s",
+            armor: "CRISOL TERMOPLÁSTICO",
+            hitbox: "15.2 METROS"
+          },
+          {
+            id: 3,
+            name: "CEMENTERIO",
+            kanji: "墓標集積",
+            subtext: "グレイブヤード // BOSS-04",
+            level: "NIVEL 3: MONOLITO DE EXTINCIÓN",
+            score: "97",
+            arc: "M 4 20 A 20 20 0 0 1 43 16",
+            morphology: "Bestia de amalgama ciclópea formada por losas funerarias, vigas y escombros de rascacielos derrumbados. Masa aplastante asimétrica implacable.",
+            telegraphType: "LLUVIA DE MONOLITOS GRAVITACIONAL",
+            telegraphDesc: "Marcadores circulares magenta en tierra donde descenderán bloques de concreto de 80 toneladas a velocidad terminal.",
+            vuln: "Escalar la masa de tumbas usando el gancho electromagnético y plantar la carga de disrupción en la lápida central de la cabeza.",
+            speed: "3.8 m/s",
+            armor: "CONCRETO POLIMÉRICO",
+            hitbox: "18.5 METROS"
+          },
+          {
+            id: 4,
+            name: "RESONANCIA",
+            kanji: "共鳴破砕",
+            subtext: "レゾナンス // BOSS-05",
+            level: "NIVEL 3: MONOLITO DE EXTINCIÓN",
+            score: "99",
+            arc: "M 4 20 A 20 20 0 0 1 44 19",
+            morphology: "Eco triple desfasado de siluetas de pesadilla. Torso en espiral ascendente, brazos elásticos infinitos y anillos de distorsión en onda sónica visible.",
+            telegraphType: "DEFORMACIÓN DEL ESPACIO SÓNICO",
+            telegraphDesc: "Anillos concéntricos dobles en magenta absoluto (#ff2d6f) que invierten momentáneamente los controles de dirección y desestabilizan el HUD.",
+            vuln: "Interferir la frecuencia del núcleo espiral mediante granadas electromagnéticas afinadas a 432 Hz cuando las tres sombras convergen en una.",
+            speed: "16.0 m/s",
+            armor: "DISRUPCIÓN DE CAMPO",
+            hitbox: "13.0 METROS"
+          },
+          {
+            id: 5,
+            name: "NÚCLEO ND",
+            kanji: "崩壊核心",
+            subtext: "オメガ・コア // BOSS-06",
+            level: "NIVEL 3: MONOLITO DE EXTINCIÓN",
+            score: "100",
+            arc: "M 4 20 A 20 20 0 0 1 44 20",
+            morphology: "Monolito torre monumental supremo. Núcleo cilíndrico hueco con ojo ominoso de magma cibernético, cuatro pilares titánicos y raíces de asfalto petrificado.",
+            telegraphType: "CATACLISMO OMEGA EN HAZ CONTINUO",
+            telegraphDesc: "El ojo central proyecta un pilar de haz magenta total que borra la arena de combate durante 6 segundos. Requiere refugio tras los pilares.",
+            vuln: "Sobrecargar los 4 enlaces de anclaje geotérmico antes de que el ojo alcance el 100% de ignición. Expone la lente para un ataque final de escuadrón.",
+            speed: "ESTACIONARIO MONOLITO",
+            armor: "MATRIZ EXTINCIÓN MAX",
+            hitbox: "28.0 METROS"
+          }
+        ]
+      }
+    };
+
+    let currentCategoryKey = 'lvl1';
+    let currentSpecimenIndex = 0;
+    let hitboxActive = true;
+
+    function renderSpecimensRack() {
+      const cat = BESTIARY_DATA[currentCategoryKey];
+      const rack = document.getElementById('specimens-pill-rack');
+      rack.innerHTML = '';
+
+      cat.specimens.forEach((sp, idx) => {
+        const isSelected = idx === currentSpecimenIndex;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.onclick = () => selectSpecimen(idx);
+        btn.className = `p-space-sm text-left transition-all duration-150 flex flex-col ${
+          isSelected 
+            ? 'bg-primary-container text-on-primary-container font-bold shadow-lg' 
+            : 'bg-surface-container text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface'
+        }`;
+        btn.innerHTML = `
+          <div class="flex items-center justify-between font-label-tech-sm text-label-tech-sm">
+            <span>0${idx + 1}</span>
+            <span class="opacity-70">${sp.subtext.split('//')[1] || ''}</span>
+          </div>
+          <div class="font-headline-sm text-headline-sm uppercase truncate mt-0.5">${sp.name}</div>
+          <div class="font-label-tech-sm text-label-tech-sm mt-0.5 truncate opacity-80">${sp.kanji}</div>
+        `;
+        rack.appendChild(btn);
+      });
+    }
+
+    function renderPins() {
+      const cat = BESTIARY_DATA[currentCategoryKey];
+      const container = document.getElementById('interactive-weakness-pins');
+      container.innerHTML = '';
+
+      if (!hitboxActive) return;
+
+      cat.pins.forEach((pin, idx) => {
+        const isSelected = idx === currentSpecimenIndex;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.onclick = () => selectSpecimen(idx);
+        btn.style.left = pin.left;
+        btn.style.top = pin.top;
+        btn.className = `pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 p-1 group/pin z-10 transition-transform ${
+          isSelected ? 'scale-125' : 'hover:scale-110'
+        }`;
+        btn.title = `${pin.name} (${pin.code})`;
+        btn.innerHTML = `
+          <span class="relative flex h-6 w-6 items-center justify-center">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full ${isSelected ? 'bg-secondary' : 'bg-primary-container'} opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 ${isSelected ? 'bg-secondary' : 'bg-primary-container'}"></span>
+          </span>
+          <span class="absolute left-8 top-0 px-2 py-0.5 bg-surface-container-lowest font-label-tech-sm text-label-tech-sm ${isSelected ? 'text-secondary font-bold' : 'text-primary'} uppercase whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity">
+            0${idx + 1}. ${pin.name} [${pin.code}] // ${pin.focus}
+          </span>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    function updateDossier() {
+      const specimen = BESTIARY_DATA[currentCategoryKey].specimens[currentSpecimenIndex];
+      if (!specimen) return;
+
+      document.getElementById('card-kanji-badge').innerText = `${specimen.kanji} // ${specimen.subtext.split('//')[1] || 'ND'}`;
+      document.getElementById('card-threat-level').innerText = specimen.level;
+      document.getElementById('card-entity-title').innerText = specimen.name;
+      document.getElementById('card-kanji-name').innerText = `(${specimen.kanji})`;
+      document.getElementById('card-threat-score').innerText = specimen.score;
+      document.getElementById('svg-meter-arc').setAttribute('d', specimen.arc);
+      document.getElementById('card-morphology-desc').innerText = specimen.morphology;
+      document.getElementById('card-telegraph-type').innerText = specimen.telegraphType;
+      document.getElementById('card-telegraph-desc').innerText = specimen.telegraphDesc;
+      document.getElementById('card-vuln-desc').innerText = specimen.vuln;
+      document.getElementById('metric-speed').innerText = specimen.speed;
+      document.getElementById('metric-armor').innerText = specimen.armor;
+      document.getElementById('metric-hitbox').innerText = specimen.hitbox;
+    }
+
+    function switchCategory(key) {
+      currentCategoryKey = key;
+      currentSpecimenIndex = 0;
+
+      // Update Tabs visual state
+      const tabs = ['lvl1', 'lvl2', 'lvl3'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const indicator = document.getElementById(`tab-indicator-${t}`);
+        if (t === key) {
+          btn.classList.add('bg-surface-container-high');
+          btn.classList.remove('bg-surface-container', 'opacity-80');
+          indicator.className = 'absolute bottom-0 left-0 w-full h-1 bg-primary-container';
+        } else {
+          btn.classList.remove('bg-surface-container-high');
+          btn.classList.add('bg-surface-container', 'opacity-80');
+          indicator.className = 'absolute bottom-0 left-0 w-full h-1 bg-transparent';
+        }
+      });
+
+      // Update Active Image & Header
+      const cat = BESTIARY_DATA[key];
+      document.getElementById('active-sheet-img').src = cat.sheetImage;
+      document.getElementById('zoom-modal-img').src = cat.sheetImage;
+      document.getElementById('plate-category-title').innerText = cat.categoryTitle;
+
+      renderPins();
+      renderSpecimensRack();
+      updateDossier();
+    }
+
+    function selectSpecimen(idx) {
+      currentSpecimenIndex = idx;
+      renderSpecimensRack();
+      renderPins();
+      updateDossier();
+    }
+
+    function cycleSpecimen(direction) {
+      const max = BESTIARY_DATA[currentCategoryKey].specimens.length;
+      currentSpecimenIndex = (currentSpecimenIndex + direction + max) % max;
+      selectSpecimen(currentSpecimenIndex);
+    }
+
+    function toggleHitboxMode() {
+      hitboxActive = !hitboxActive;
+      const statusLabel = document.getElementById('hitbox-status');
+      statusLabel.innerText = hitboxActive ? 'ACTIVA' : 'OCULTA';
+      statusLabel.className = hitboxActive ? 'text-primary font-bold' : 'text-on-surface-variant font-normal';
+      renderPins();
+    }
+
+    function toggleZoomModal() {
+      const modal = document.getElementById('zoom-modal');
+      modal.classList.toggle('hidden');
+      document.getElementById('zoom-modal-title').innerText = BESTIARY_DATA[currentCategoryKey].categoryTitle;
+    }
+
+    function handleSearch(query) {
+      const q = query.trim().toLowerCase();
+      if (!q) {
+        renderFullGrid('all');
+        return;
+      }
+      
+      const grid = document.getElementById('full-roster-grid');
+      grid.innerHTML = '';
+
+      let matches = 0;
+      ['lvl1', 'lvl2', 'lvl3'].forEach(catKey => {
+        const cat = BESTIARY_DATA[catKey];
+        cat.specimens.forEach((sp, idx) => {
+          const matchTarget = `${sp.name} ${sp.kanji} ${sp.level} ${sp.telegraphType} ${sp.vuln}`.toLowerCase();
+          if (matchTarget.includes(q)) {
+            matches++;
+            createGridCard(grid, sp, catKey, idx);
+          }
+        });
+      });
+
+      if (matches === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-space-xl text-center font-label-tech-md text-label-tech-md text-on-surface-variant">
+            NO SE ENCONTRARON AMENAZAS QUE COINCIDAN CON: "${query.toUpperCase()}"
+          </div>
+        `;
+      }
+    }
+
+    function resetFilters() {
+      document.getElementById('tactical-search').value = '';
+      renderFullGrid('all');
+    }
+
+    function filterGrid(type) {
+      renderFullGrid(type);
+      document.querySelectorAll('.grid-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold');
+        btn.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      event.target.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      event.target.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold');
+    }
+
+    function createGridCard(container, sp, catKey, idx) {
+      const card = document.createElement('div');
+      card.className = 'p-space-sm bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col justify-between group cursor-pointer';
+      card.onclick = () => {
+        switchCategory(catKey);
+        selectSpecimen(idx);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+      card.innerHTML = `
+        <div>
+          <div class="flex items-center justify-between font-label-tech-sm text-label-tech-sm text-on-surface-variant mb-1">
+            <span class="text-secondary font-semibold">[ ${sp.kanji} ]</span>
+            <span class="text-primary font-bold">SCR: ${sp.score}</span>
+          </div>
+          <div class="font-headline-sm text-headline-sm uppercase text-on-surface group-hover:text-primary transition-colors truncate">
+            ${sp.name}
+          </div>
+          <div class="font-label-tech-sm text-label-tech-sm text-on-surface-variant truncate mt-0.5">
+            ${sp.level.split(':')[0]}
+          </div>
+        </div>
+        <div class="mt-space-sm pt-space-xs font-label-tech-sm text-label-tech-sm text-secondary flex items-center justify-between">
+          <span class="truncate">${sp.telegraphType}</span>
+          <span class="material-symbols-outlined text-[16px] text-primary">arrow_forward</span>
+        </div>
+      `;
+      container.appendChild(card);
+    }
+
+    function renderFullGrid(type) {
+      const grid = document.getElementById('full-roster-grid');
+      grid.innerHTML = '';
+
+      const categoriesToRender = type === 'all' ? ['lvl1', 'lvl2', 'lvl3'] : [type];
+      categoriesToRender.forEach(catKey => {
+        const cat = BESTIARY_DATA[catKey];
+        cat.specimens.forEach((sp, idx) => {
+          createGridCard(grid, sp, catKey, idx);
+        });
+      });
+    }
+
+    function triggerSimulatedEngagement() {
+      const sp = BESTIARY_DATA[currentCategoryKey].specimens[currentSpecimenIndex];
+      alert(`[ALERTA ND] Iniciando simulación holográfica contra ${sp.name} (${sp.kanji})... Tiempo de reacción telemétrico: ${sp.speed}. ¡Preparar Parry a 340ms!`);
+    }
+
+    function triggerCodexDownload() {
+      const sp = BESTIARY_DATA[currentCategoryKey].specimens[currentSpecimenIndex];
+      alert(`[MIL-SPEC ARCHIVE] Telemetría de ${sp.name} extraída con éxito al datapad táctico.`);
+    }
+
+    // Keyboard Hotkeys support: 1, 2, 3 to switch categories, Left/Right for specimen
+    window.addEventListener('keydown', (e) => {
+      if (document.activeElement.tagName === 'INPUT') return;
+      if (e.key === '1') switchCategory('lvl1');
+      if (e.key === '2') switchCategory('lvl2');
+      if (e.key === '3') switchCategory('lvl3');
+      if (e.key === 'ArrowLeft') cycleSpecimen(-1);
+      if (e.key === 'ArrowRight') cycleSpecimen(1);
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('zoom-modal');
+        if (!modal.classList.contains('hidden')) modal.classList.add('hidden');
+      }
+    });
+
+    // Initial boot sequence
+    window.addEventListener('DOMContentLoaded', () => {
+      switchCategory('lvl1');
+      renderFullGrid('all');
+    });
+  </script>
+</div></main><footer class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-lowest/95 backdrop-blur-md"><div class="h-12 w-full px-gutter-desktop flex items-center justify-between font-label-tech-sm text-label-tech-sm text-on-surface-variant"><div class="flex items-center gap-space-md"><span class="text-secondary">[MIL-SPEC TELEMETRY ACTIVE]</span><span class="hidden sm:inline">SAT-LINK: 09-OMEGA // ENCRYPTED</span><span class="hidden md:inline">THREAT LEVEL: MAXIMUM KAIJU/CYBORG</span></div><div class="hidden lg:flex items-center gap-space-sm"><span>HOTKEYS: [1-5] VISTAS</span><span>[SPACE] DETONACIÓN</span><span>[M] SILENCIAR ALERTA</span></div><div class="flex items-center gap-space-sm"><span>© 2025 NIPPON DESTRUCTION GAME STUDIO</span><span class="text-primary">// 日本崩壊</span></div></div></footer></body></html>

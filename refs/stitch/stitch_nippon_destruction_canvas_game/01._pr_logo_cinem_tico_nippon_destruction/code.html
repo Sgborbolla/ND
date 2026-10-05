@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#f7be00", "surface-container-lowest": "#100926", "on-surface": "#e8deff", "on-error-container": "#ffdad6", "outline": "#ab888c", "on-secondary-fixed": "#251a00", "on-primary-fixed": "#400014", "inverse-on-surface": "#332c4a", "on-tertiary": "#4a2800", "surface-variant": "#37304f", "primary-container": "#ff4e7c", "on-primary-container": "#5a001f", "on-tertiary-container": "#412200", "surface-tint": "#ffb2bd", "on-surface-variant": "#e4bdc1", "on-error": "#690005", "inverse-surface": "#e8deff", "primary-fixed-dim": "#ffb2bd", "error": "#ffb4ab", "surface-bright": "#3c3554", "surface-container-high": "#2c2543", "secondary-fixed": "#ffdf99", "on-tertiary-fixed": "#2d1600", "primary": "#ffb2bd", "on-primary": "#670025", "secondary-container": "#fec300", "background": "#150e2b", "on-tertiary-fixed-variant": "#6a3c00", "surface-container-highest": "#37304f", "on-primary-fixed-variant": "#900037", "surface-container": "#221b38", "error-container": "#93000a", "primary-fixed": "#ffd9de", "on-background": "#e8deff", "on-secondary-container": "#6d5200", "inverse-primary": "#bc004b", "tertiary": "#ffb871", "on-secondary-fixed-variant": "#5a4300", "tertiary-fixed-dim": "#ffb871", "tertiary-container": "#c58239", "tertiary-fixed": "#ffdcbe", "surface-container-low": "#1e1734", "surface-dim": "#150e2b", "surface": "#150e2b", "secondary": "#ffe5b1", "on-secondary": "#3f2e00", "outline-variant": "#5c3f43" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-tablet": "2rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "margin": "1rem", "gutter-tablet": "1.25rem", "space-xl": "2.5rem", "space-md": "1rem", "space-sm": "0.5rem", "margin-desktop": "3rem" }, "fontFamily": { "headline-lg": [ "Space Grotesk" ], "label-tech-md": [ "JetBrains Mono" ], "body-sm": [ "Chivo" ], "display-lg": [ "Space Grotesk" ], "label-tech-sm": [ "JetBrains Mono" ], "body-md": [ "Chivo" ], "headline-md": [ "Space Grotesk" ], "label-tech-lg": [ "JetBrains Mono" ], "display-lg-mobile": [ "Space Grotesk" ], "body-lg": [ "Chivo" ], "headline-sm": [ "Space Grotesk" ] }, "fontSize": { "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "0.02em", "fontWeight": "700" } ], "label-tech-md": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "500" } ], "body-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-tech-sm": [ "9px", { "lineHeight": "12px", "letterSpacing": "0.16em", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "label-tech-lg": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "500" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.05em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md"><div class="h-20 w-full px-gutter-desktop flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex flex-col"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm uppercase text-primary tracking-wider">日本崩壊 // NIPPON DESTRUCTION</span><span class="px-space-xs py-0.5 bg-primary-container/20 text-primary font-label-tech-sm text-label-tech-sm uppercase tracking-widest">MIL-SPEC ARCHIVE v2.4</span></div><div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant"><span class="text-secondary">[ZONE-0 Tokyo Extinction Basin]</span><span>GRID-REF: 35.6762° N, 139.6503° E</span></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a aria-current="page" class="px-space-sm py-1.5 uppercase transition-colors bg-primary-container text-on-primary-container font-semibold" data-path="prologo-cinematico" href="#">01. PRÓLOGO CINEMÁTICO</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="seleccion-de-heroes" href="#">02. SELECCIÓN DE HÉROES</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="bestiario-de-amenazas" href="#">03. BESTIARIO DE AMENAZAS</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="arena-combat-hud" href="#">04. ARENA &amp; COMBAT HUD</a><a class="px-space-sm py-1.5 font-label-tech-md text-label-tech-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="manual-de-produccion" href="#">05. MANUAL DE PRODUCCIÓN</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-high"><span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span><span class="font-label-tech-sm text-label-tech-sm text-primary uppercase">ESTADO: CRÍTICO // EXTINCIÓN ND</span></div><button class="hidden lg:flex items-center gap-space-xs px-space-sm py-1 bg-secondary-container text-on-secondary-container font-label-tech-sm text-label-tech-sm uppercase font-semibold hover:bg-secondary-fixed transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">volume_up</span>ALERTA ND</button><div class="flex flex-col text-right font-label-tech-sm text-label-tech-sm text-on-surface-variant"><span class="text-secondary font-semibold">23:59:41 UTC</span><span>ND-DEFCON: LEVEL 1</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 pb-16 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Command HUD Overline -->
+<section class="w-full px-gutter-desktop py-space-sm bg-surface-container-lowest/80 backdrop-blur-md flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-primary uppercase">
+<span class="w-2.5 h-2.5 bg-primary-container animate-pulse inline-block"></span>
+<span>REC_PLAYBACK // TIMELINE OMEGA</span>
+</div>
+<div class="hidden md:flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant">
+<span class="text-secondary-fixed-dim">[CANON_SEQUENCE: PROLOGUE_01-06+KEY]</span>
+<span>CODEC: ND-VECTOR_RAW_1440P</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md font-label-tech-sm text-label-tech-sm">
+<span class="text-tertiary">ASPECT RATIO 16:9 [ANAMORPHIC]</span>
+<span class="text-on-surface-variant bg-surface-container px-space-xs py-0.5">FPS: 24.0 FIXED (CINEMATIC)</span>
+<span class="text-secondary font-label-tech-md text-label-tech-md font-semibold" id="global-timer">T+ 00:00:00:00</span>
+</div>
+</section>
+<!-- Main Cinematic Command Deck: 12-Column Grid -->
+<div class="w-full px-gutter-desktop py-space-md grid grid-cols-1 xl:grid-cols-12 gap-gutter-desktop items-start">
+<!-- Left Column (Cols 1-8): Large 16:9 Viewport & Playback Telemetry -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<!-- Primary 16:9 Anamorphic Canvas Container -->
+<div class="relative w-full aspect-video bg-black overflow-hidden shadow-2xl flex items-center justify-center group" id="cinema-frame-wrapper">
+<!-- CRT Screenline Overlay (CSS Pure Gradient) -->
+<div class="absolute inset-0 pointer-events-none z-20 opacity-30 mix-blend-screen bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.6)_50%)] bg-[length:100%_4px]"></div>
+<!-- Framing Corner Reticles -->
+<div class="absolute top-3 left-3 z-30 pointer-events-none flex flex-col gap-1">
+<div class="w-6 h-1.5 bg-primary"></div>
+<div class="w-1.5 h-4.5 bg-primary"></div>
+<span class="font-label-tech-sm text-label-tech-sm text-primary tracking-widest">[FRAME_LOC_A]</span>
+</div>
+<div class="absolute top-3 right-3 z-30 pointer-events-none flex flex-col items-end gap-1">
+<div class="w-6 h-1.5 bg-primary"></div>
+<div class="w-1.5 h-4.5 bg-primary"></div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary tracking-widest">[REC: ACTIVE]</span>
+</div>
+<div class="absolute bottom-3 left-3 z-30 pointer-events-none flex flex-col gap-1">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant tracking-wider">ZONE-0 BASIN</span>
+<div class="w-1.5 h-4.5 bg-primary"></div>
+<div class="w-6 h-1.5 bg-primary"></div>
+</div>
+<div class="absolute bottom-3 right-3 z-30 pointer-events-none flex flex-col items-end gap-1">
+<span class="font-label-tech-sm text-label-tech-sm text-tertiary">35.6762°N</span>
+<div class="w-1.5 h-4.5 bg-primary"></div>
+<div class="w-6 h-1.5 bg-primary"></div>
+</div>
+<!-- Crosshair HUD Center Overlay -->
+<div class="absolute inset-0 z-20 pointer-events-none flex items-center justify-center opacity-25">
+<div class="w-16 h-16 border-t-0 border-b-0 border-l-0 border-r-0 relative">
+<span class="absolute top-1/2 left-0 w-3 h-0.5 bg-secondary -translate-y-1/2"></span>
+<span class="absolute top-1/2 right-0 w-3 h-0.5 bg-secondary -translate-y-1/2"></span>
+<span class="absolute top-0 left-1/2 w-0.5 h-3 -translate-x-1/2"></span>
+<span class="absolute bottom-0 left-1/2 w-0.5 h-3 -translate-x-1/2"></span>
+<div class="w-2 h-2 rounded-full border border-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+</div>
+</div>
+<!-- Dynamic Cinematic Visual Asset Stream (Controlled via Script) -->
+<div class="relative w-full h-full">
+<img alt="Cinematic Display Frame" class="w-full h-full object-cover transition-opacity duration-300" id="main-cinematic-img" src="https://lh3.googleusercontent.com/aida/AEtjO1UUfCz7VnNs3nF1GJPjRc7NJuWFot75cq1u3yZZKYMcAzXi3i_--gf4ugTbSxGzcS74RWFotVG4RTTdRbhqjZ4h-fTYYPnghYmfqBlB63EmZ8iz7HVQp4jKG3xCqio7Yaczful9lY0q6gxXH8KurIKSVUZ80V-hGHpRBAS6fkmEqjZbp43vwoaViSsm52RCzEzqOXPjPmwmwjl4yf9epN9Ili8lC_OaiMSgXlRB-2uyUcrSGUVmbysE"/>
+<!-- Hazard Flash Effect on transition -->
+<div class="absolute inset-0 bg-primary opacity-0 pointer-events-none transition-opacity duration-150 z-10" id="flash-overlay"></div>
+</div>
+<!-- Narrative Subtitle System (Fixed at bottom edge inside 16:9 frame) -->
+<div class="absolute bottom-6 left-0 right-0 z-30 px-gutter-desktop text-center flex flex-col items-center pointer-events-none">
+<div class="bg-surface-container-lowest/85 backdrop-blur-md px-space-md py-space-xs max-w-3xl shadow-xl flex flex-col gap-1">
+<span class="font-headline-sm text-headline-sm text-secondary-fixed tracking-widest drop-shadow-md" id="subtitle-jp">
+              東京都第七区：酸性雨が廃墟の鉄骨を溶かす黄昏。
+            </span>
+<span class="font-body-md text-body-md text-on-surface uppercase tracking-wide" id="subtitle-es">
+              "Bajo el cielo marchito de Tokio, la lluvia ácida devora el acero... La extinción ya comenzó."
+            </span>
+</div>
+</div>
+<!-- Current Frame Badge in Frame -->
+<div class="absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+<span class="px-space-sm py-1 bg-surface-container-high/90 text-primary font-label-tech-sm text-label-tech-sm font-bold tracking-widest uppercase" id="current-frame-badge">
+            PLANO 01 // 07 : DESOLACIÓN INICIAL
+          </span>
+</div>
+</div>
+<!-- Playback Console Controls (Hardware Deck Layout) -->
+<div class="w-full bg-surface-container p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<!-- Transport Trigger Systems -->
+<div class="flex items-center gap-space-xs">
+<!-- Step Prev -->
+<button class="px-space-md py-2 bg-surface-container-high text-on-surface hover:text-primary hover:bg-surface-variant transition-all font-label-tech-sm text-label-tech-sm flex items-center gap-1" id="btn-prev" type="button">
+<span class="material-symbols-outlined text-[18px]">skip_previous</span>
+<span>ANTERIOR</span>
+</button>
+<!-- Play/Stop Master Button -->
+<button class="px-space-lg py-2 bg-primary-container text-on-primary font-headline-sm text-headline-sm uppercase font-bold tracking-wider hover:bg-secondary-container hover:text-on-secondary-container transition-all flex items-center gap-space-xs shadow-lg" id="btn-play-toggle" type="button">
+<span class="material-symbols-outlined text-[20px]" id="play-icon">play_arrow</span>
+<span id="play-label">SECUENCIA AUTOMÁTICA</span>
+</button>
+<!-- Step Next -->
+<button class="px-space-md py-2 bg-surface-container-high text-on-surface hover:text-primary hover:bg-surface-variant transition-all font-label-tech-sm text-label-tech-sm flex items-center gap-1" id="btn-next" type="button">
+<span>SIGUIENTE</span>
+<span class="material-symbols-outlined text-[18px]">skip_next</span>
+</button>
+</div>
+<!-- Frame Rate & Sound FX Diagnostic Trigger -->
+<div class="flex items-center gap-space-sm">
+<button class="px-space-sm py-1.5 bg-surface-container-highest text-secondary font-label-tech-sm text-label-tech-sm uppercase flex items-center gap-1 hover:bg-surface-bright transition-colors" id="btn-sfx-test" type="button">
+<span class="material-symbols-outlined text-[16px]">graphic_eq</span>
+<span>TEST AUDIO SFX [SYNTH]</span>
+</button>
+<button class="p-2 bg-surface-container-high text-on-surface-variant hover:text-primary hover:bg-surface-variant transition-colors" id="btn-fullscreen" title="Pantalla Completa" type="button">
+<span class="material-symbols-outlined text-[20px]">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Linear Scrub Progress Indicator -->
+<div class="w-full bg-surface-container-lowest h-2 overflow-hidden relative">
+<div class="h-full bg-primary-container w-[14.28%] transition-all duration-300" id="playback-progress"></div>
+</div>
+<!-- Filmstrip / Interactive Storyboard Timeline (7 Keyframes) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant uppercase tracking-wider">
+            [ TIRA DE PELÍCULA // CÓMIC CINEMÁTICO STORYBOARD ]
+          </span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">CLICK EN MINIATURA PARA SALTAR</span>
+</div>
+<!-- 7-Keyframe Horizontal Film Strip -->
+<div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-space-xs w-full" id="thumbnails-track">
+<!-- Thumb 01 -->
+<button class="thumb-card group relative aspect-video bg-surface-container-lowest overflow-hidden transition-all text-left ring-2 ring-primary-container" data-index="0" onclick="loadFrame(0)" type="button">
+<img alt="Thumb 01" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1UUfCz7VnNs3nF1GJPjRc7NJuWFot75cq1u3yZZKYMcAzXi3i_--gf4ugTbSxGzcS74RWFotVG4RTTdRbhqjZ4h-fTYYPnghYmfqBlB63EmZ8iz7HVQp4jKG3xCqio7Yaczful9lY0q6gxXH8KurIKSVUZ80V-hGHpRBAS6fkmEqjZbp43vwoaViSsm52RCzEzqOXPjPmwmwjl4yf9epN9Ili8lC_OaiMSgXlRB-2uyUcrSGUVmbysE"/>
+<div class="absolute inset-0 bg-surface-container-lowest/40 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-1 left-1 px-1 bg-surface-container-lowest/90 font-label-tech-sm text-label-tech-sm text-primary">01</div>
+<div class="absolute bottom-1 right-1 px-1 bg-surface-container-high/90 font-label-tech-sm text-label-tech-sm text-secondary">3200ms</div>
+</button>
+<!-- Thumb 02 -->
+<button class="thumb-card group relative aspect-video bg-surface-container-lowest overflow-hidden transition-all text-left opacity-75 hover:opacity-100" data-index="1" onclick="loadFrame(1)" type="button">
+<img alt="Thumb 02" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1X8UR_slAypwqzfd1ZbQWm7gnXV4wVfB7xGXNgyx8HRpUmtg0hm2vpr6WiDHwMof95IFeoPAQZaqZOEUPYLQ0w4BeU_k0R1ZT4zGx_7S-hO4p5K5lVJKRoOMirFEeq_kMI5iPAft-51xrlBgdJCazIBCizRx4X0Yt0T4hF6bE90HQq-kgBEeEFav_3ZTyPG-9ABU34uks4ClRgSe5DC9M0J1HfDnVYFaG1px6J7GOGvnJ-BVMAb9O43HQ"/>
+<div class="absolute inset-0 bg-surface-container-lowest/40 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-1 left-1 px-1 bg-surface-container-lowest/90 font-label-tech-sm text-label-tech-sm text-on-surface-variant">02</div>
+<div class="absolute bottom-1 right-1 px-1 bg-surface-container-high/90 font-label-tech-sm text-label-tech-sm text-secondary">1800ms</div>
+</button>
+<!-- Thumb 03 -->
+<button class="thumb-card group relative aspect-video bg-surface-container-lowest overflow-hidden transition-all text-left opacity-75 hover:opacity-100" data-index="2" onclick="loadFrame(2)" type="button">
+<img alt="Thumb 03" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1XCy9Twc5UtwO5upj08TQTMWlmYakGkdlvV7uCi6GXGKEm4PXPPEYmAXj73d8JP3HBws2BWFsiTW8Fmxxrm-GwfdSaBlQ_fAD1mhrcjyoBUpsp6uaqAf3GqqHT8sqY5ZodH60MUK4aW4bNiFdPpx1KLoPKjTytjE3-Zuap8Vgj4szTgPR4C7COEwq_12yXx589gkOKKqL6BWjy89uLoCDsJLJ6uer5KZhbLcIg-UoSE8UbkNjuJKu_t"/>
+<div class="absolute inset-0 bg-surface-container-lowest/40 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-1 left-1 px-1 bg-surface-container-lowest/90 font-label-tech-sm text-label-tech-sm text-on-surface-variant">03</div>
+<div class="absolute bottom-1 right-1 px-1 bg-surface-container-high/90 font-label-tech-sm text-label-tech-sm text-secondary">2400ms</div>
+</button>
+<!-- Thumb 04 -->
+<button class="thumb-card group relative aspect-video bg-surface-container-lowest overflow-hidden transition-all text-left opacity-75 hover:opacity-100" data-index="3" onclick="loadFrame(3)" type="button">
+<img alt="Thumb 04" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1XQtceiKrjN8m9pK0A2_ZwXQFF-hH0ScFhYifCb02HD2FHBKRePG4gU-ypRrauXi3MgicMJVvcoCLG5cSMAdO17BQxurK6P4Z3ldf5jcT4zU92QuzsOuAPbUoHwS9zEVWdumuU2eT-QtI8tnWCcDHpvoV-aNxtoYIYI9aQrj7k7m96mFMG7TUuw8fOdCBbg9D6_CtZ4C_MTY-6ksO95w8tHxJg_aBciMZuK74R2tqTJH539mYuZSpzd"/>
+<div class="absolute inset-0 bg-surface-container-lowest/40 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-1 left-1 px-1 bg-surface-container-lowest/90 font-label-tech-sm text-label-tech-sm text-on-surface-variant">04</div>
+<div class="absolute bottom-1 right-1 px-1 bg-surface-container-high/90 font-label-tech-sm text-label-tech-sm text-secondary">1500ms</div>
+</button>
+<!-- Thumb 05 -->
+<button class="thumb-card group relative aspect-video bg-surface-container-lowest overflow-hidden transition-all text-left opacity-75 hover:opacity-100" data-index="4" onclick="loadFrame(4)" type="button">
+<img alt="Thumb 05" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1UFK72YwZx97rLwNeOPvo_nMu9gGCMBlcrU_yrae93pLfgmU5zbsjq8m9-hAJqij2mclmmpnW9OMAAhigIR0kAYmTWenQYJYTBIxAAa-LuvV9-YecGy2NqetwtPGTeS3F-0o4r1XfbbVMcKRHr5ImQBmrEm68MTFMIazz1cgV3SN8cvPcmXEVWgwJTPZ0GzhoDRBOh8Uq86AEamCPNPq9srTMj-u408Sy6Oo-9o1288-lgb8G43QhCwYA"/>
+<div class="absolute inset-0 bg-surface-container-lowest/40 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-1 left-1 px-1 bg-surface-container-lowest/90 font-label-tech-sm text-label-tech-sm text-on-surface-variant">05</div>
+<div class="absolute bottom-1 right-1 px-1 bg-surface-container-high/90 font-label-tech-sm text-label-tech-sm text-secondary">950ms</div>
+</button>
+<!-- Thumb 06 -->
+<button class="thumb-card group relative aspect-video bg-surface-container-lowest overflow-hidden transition-all text-left opacity-75 hover:opacity-100" data-index="5" onclick="loadFrame(5)" type="button">
+<img alt="Thumb 06" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1XD5TbQjPklpiny-81DovFgi78IrHV8pOy6SpMYAC2gwvM1baNqk9rUKXL60kxvNBtFY4L-DSxXD85L12bXGuVkiYXb5ZB7alTB90GC_wrgc0XpWC14PZWD7aWLupoOzq4bN5-F-nSOGX-jXU-vb9oyR_xP_Blkmfk1OpGxd2Ux7uSqScJkbHJgAsdGpEVmt4mvLtF1Xk9r9TfLaWXOw2CXQwYifyAWfkVAFG1ofjwF-VvxqfmsuZV50w"/>
+<div class="absolute inset-0 bg-surface-container-lowest/40 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-1 left-1 px-1 bg-surface-container-lowest/90 font-label-tech-sm text-label-tech-sm text-on-surface-variant">06</div>
+<div class="absolute bottom-1 right-1 px-1 bg-surface-container-high/90 font-label-tech-sm text-label-tech-sm text-secondary">4000ms</div>
+</button>
+<!-- Thumb 07 / KEY ART -->
+<button class="thumb-card group relative aspect-video bg-surface-container-lowest overflow-hidden transition-all text-left opacity-75 hover:opacity-100" data-index="6" onclick="loadFrame(6)" type="button">
+<img alt="Thumb 07" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1WhPzibRcgUw7u7SXDlmAnqyvoW1P4ZIhtClwsVy3jzxaj4VCNviuvzLgZfDF53roAbfj1oFDBGr7iDsu1ejg7z889QJtDM7hGKHXHlSaxIN1dsmvAjNilz4QmDSFumd3NfgROLN-Xo7Sdck4ZUR3BD9lhPf27hFz2uDZ7tdRld0SUQ3-bNWLAZ2yeyYsPuBKjaGDBbeQPJnFlILpdAIGSR8O8jWQv_uPQz5qfWLXVO13w78sGkeG05vQ"/>
+<div class="absolute inset-0 bg-surface-container-lowest/40 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-1 left-1 px-1 bg-primary text-on-primary font-label-tech-sm text-label-tech-sm">KEY</div>
+<div class="absolute bottom-1 right-1 px-1 bg-surface-container-high/90 font-label-tech-sm text-label-tech-sm text-secondary">MASTER</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column (Cols 9-12): Tactical Production Script & Director Telemetry -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Panel Header Bar with Unit Marker -->
+<div class="bg-surface-container-lowest p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm">
+<span class="text-secondary">[ 第零式演出卓 ]</span>
+<span class="text-on-surface uppercase font-bold tracking-wider">TRANSCRIPCIÓN Y NOTAS DE DIRECCIÓN</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">CANON v1.0</span>
+</div>
+</div>
+<!-- Active Frame Narrative & Technical Card -->
+<div class="bg-surface-container p-space-md flex flex-col gap-space-md shadow-xl relative overflow-hidden">
+<!-- Visual Spectrum accent bar on left edge -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-primary-container to-secondary"></div>
+<!-- Shot Identification Code -->
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-tech-lg text-label-tech-lg text-primary font-bold tracking-widest uppercase" id="detail-code">
+              PLANO-01 // DESOLACIÓN INICIAL
+            </span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-fixed-dim" id="detail-jp-title">
+              第１幕：東京壊滅 • 廃墟の酸性雨
+            </span>
+</div>
+<span class="px-space-xs py-0.5 bg-surface-container-high font-label-tech-sm text-label-tech-sm text-tertiary" id="detail-duration">
+            DURACIÓN: 3200 MS
+          </span>
+</div>
+<!-- Framing & Camera Dynamics -->
+<div class="flex flex-col gap-1 bg-surface-container-lowest p-space-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant uppercase tracking-wider">
+            [ TIPO DE PLANO &amp; COMPOSICIÓN ÓPTICA ]
+          </span>
+<p class="font-body-sm text-body-sm text-on-surface" id="detail-camera">
+            Gran plano general (16:9). Paneo lento hacia las ruinas con lluvia ácida diagonal. Gradiente de atardecer violáceo (#150E2B a #F0A65A) reflejado en el asfalto quebrado. Siluetas negras puras (#000000).
+          </p>
+</div>
+<!-- Cinematic Narrative Beat -->
+<div class="flex flex-col gap-1">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant uppercase tracking-wider">
+            [ DESCRIPCIÓN NARRATIVA // ACCIÓN ]
+          </span>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed" id="detail-narrative">
+            La soledad total tras el colapso del sistema de defensa metropolitano. Los rascacielos derrumbados forman una tumba de hormigón. No hay señales de vida biológica; solo cables oscilando y el goteo corrosivo sobre las barricadas destrozadas.
+          </p>
+</div>
+<!-- Audio Engineering & Synthesized SFX -->
+<div class="bg-surface-container-high p-space-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-widest flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">volume_up</span>
+              DISEÑO ACÚSTICO // SFX CUES
+            </span>
+<button class="px-space-xs py-0.5 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase font-bold hover:bg-primary hover:text-on-primary transition-colors" onclick="playCurrentSFX()" type="button">
+              SONORIZAR
+            </button>
+</div>
+<p class="font-label-tech-sm text-label-tech-sm text-on-surface-variant" id="detail-sfx">
+            SFX-01: Ruido blanco filtrado paso-bajo simulando lluvia continua, ráfaga de viento estéreo con zumbido residual de 60Hz.
+          </p>
+</div>
+<!-- Director's Art Direction Note -->
+<div class="flex flex-col gap-1 bg-surface-container-low p-space-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-primary uppercase tracking-wider">
+            [ NOTA DE DIRECCIÓN // PALETA &amp; CONTRASTE ]
+          </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic" id="detail-notes">
+            "Priorizar siluetas 100% negras sin luz cenital. El cielo de atardecer debe sentirse tóxico y sofocante antes del relámpago violento."
+          </p>
+</div>
+<!-- Visual Palette Color Swatches for the Shot -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant uppercase">
+            VECTOR COLOR SPECIFICATION
+          </span>
+<div class="grid grid-cols-5 gap-1 text-center font-label-tech-sm text-[8px]">
+<div class="h-6 bg-[#000000] text-[#e8deff] flex items-center justify-center font-bold">#000000</div>
+<div class="h-6 bg-[#150E2B] text-[#e8deff] flex items-center justify-center font-bold">#150E2B</div>
+<div class="h-6 bg-[#4A2247] text-[#e8deff] flex items-center justify-center font-bold">#4A2247</div>
+<div class="h-6 bg-[#ff2d6f] text-black flex items-center justify-center font-bold">#FF2D6F</div>
+<div class="h-6 bg-[#ffc400] text-black flex items-center justify-center font-bold">#FFC400</div>
+</div>
+</div>
+</div>
+<!-- Quick Action Commands Block -->
+<div class="bg-surface-container-lowest p-space-sm flex items-center justify-between text-on-surface-variant font-label-tech-sm text-label-tech-sm">
+<span>TECLA [ESPACIO]: PLAY/PAUSE</span>
+<span>TECLA [← / →]: SALTO PLANO</span>
+</div>
+</div>
+</div>
+<!-- Audio Synthesis & Dynamic Sequencer Engine Script -->
+<script>
+    // Sequence Data Store
+    const cinematicFrames = [
+      {
+        id: "SPLASH_01",
+        src: "https://lh3.googleusercontent.com/aida/AEtjO1UUfCz7VnNs3nF1GJPjRc7NJuWFot75cq1u3yZZKYMcAzXi3i_--gf4ugTbSxGzcS74RWFotVG4RTTdRbhqjZ4h-fTYYPnghYmfqBlB63EmZ8iz7HVQp4jKG3xCqio7Yaczful9lY0q6gxXH8KurIKSVUZ80V-hGHpRBAS6fkmEqjZbp43vwoaViSsm52RCzEzqOXPjPmwmwjl4yf9epN9Ili8lC_OaiMSgXlRB-2uyUcrSGUVmbysE",
+        code: "PLANO-01 // DESOLACIÓN INICIAL",
+        jpTitle: "第１幕：東京壊滅 • 廃墟の酸性雨",
+        badge: "PLANO 01 // 07 : DESOLACIÓN INICIAL",
+        duration: 3200,
+        subJp: "東京都第七区：酸性雨が廃墟の鉄骨を溶かす黄昏。",
+        subEs: '"Bajo el cielo marchito de Tokio, la lluvia ácida devora el acero... La extinción ya comenzó."',
+        camera: "Gran plano general (16:9). Paneo lento hacia las ruinas con lluvia ácida diagonal. Gradiente de atardecer violáceo (#150E2B a #F0A65A) reflejado en el asfalto quebrado.",
+        narrative: "La soledad total tras el colapso del sistema de defensa metropolitano. Los rascacielos derrumbados forman una tumba de hormigón. No hay señales de vida biológica; solo cables oscilando y el goteo corrosivo sobre las barricadas destrozadas.",
+        sfxDesc: "SFX-01: Ruido blanco filtrado paso-bajo simulando lluvia continua, ráfaga de viento estéreo con zumbido residual de 60Hz.",
+        directorNotes: '"Priorizar siluetas 100% negras sin luz cenital. El cielo de atardecer debe sentirse tóxico y sofocante antes del relámpago violento."',
+        sfxType: "rain"
+      },
+      {
+        id: "SPLASH_02",
+        src: "https://lh3.googleusercontent.com/aida/AEtjO1X8UR_slAypwqzfd1ZbQWm7gnXV4wVfB7xGXNgyx8HRpUmtg0hm2vpr6WiDHwMof95IFeoPAQZaqZOEUPYLQ0w4BeU_k0R1ZT4zGx_7S-hO4p5K5lVJKRoOMirFEeq_kMI5iPAft-51xrlBgdJCazIBCizRx4X0Yt0T4hF6bE90HQq-kgBEeEFav_3ZTyPG-9ABU34uks4ClRgSe5DC9M0J1HfDnVYFaG1px6J7GOGvnJ-BVMAb9O43HQ",
+        code: "PLANO-02 // IMPACTO DE RELÁMPAGO",
+        jpTitle: "第２幕：紫電一閃 • 崩壊街路の閃光",
+        badge: "PLANO 02 // 07 : RELÁMPAGO EN RUINAS",
+        duration: 1800,
+        subJp: "紫電が闇を裂き、鋼鉄の骸を白日の下に晒す。",
+        subEs: '"Un violento trueno violeta rasga la penumbra, proyectando las siluetas de la metrópoli calcinada."',
+        camera: "Plano general medio con sacudida horizontal de cámara en el impacto del rayo. Chispas #FFC400 saltando en bucle.",
+        narrative: "Un relámpago violeta hiper-eléctrico descarga contra una torre de telecomunicaciones quebrada. El estallido revela barricadas rotas, charcos electrificados y escombros suspendidos en un instante de alto dramatismo visual.",
+        sfxDesc: "SFX-02: Trueno de sintetizador sub-bajo (45Hz) seguido por chisporroteo granular agudo de cables de alta tensión.",
+        directorNotes: '"Corte seco sin disolución. El resplandor magenta/violeta debe cegar brevemente al espectador para establecer tensión táctica."',
+        sfxType: "thunder"
+      },
+      {
+        id: "SPLASH_03",
+        src: "https://lh3.googleusercontent.com/aida/AEtjO1XCy9Twc5UtwO5upj08TQTMWlmYakGkdlvV7uCi6GXGKEm4PXPPEYmAXj73d8JP3HBws2BWFsiTW8Fmxxrm-GwfdSaBlQ_fAD1mhrcjyoBUpsp6uaqAf3GqqHT8sqY5ZodH60MUK4aW4bNiFdPpx1KLoPKjTytjE3-Zuap8Vgj4szTgPR4C7COEwq_12yXx589gkOKKqL6BWjy89uLoCDsJLJ6uer5KZhbLcIg-UoSE8UbkNjuJKu_t",
+        code: "PLANO-03 // APARICIÓN DE RIKA",
+        jpTitle: "第３幕：孤高の影 • 月見里カの降臨",
+        badge: "PLANO 03 // 07 : ENTRADA DE LA ESPADACHINA",
+        duration: 2400,
+        subJp: "風に棚引く生成りの羽織。死線に立つ一筋の刃。",
+        subEs: '"Sobre el viaducto fracturado, Rika Tsukimi vigila. Su haori ondea ante el abismo."',
+        camera: "Contrapicado heroico. Silueta en negro puro de Rika con rim-light dorsal en tono crema pálido (#F2DCC0). Capa ondeando intensamente.",
+        narrative: "En lo alto de una pasarela peatonal demolida, la espadachina de élite se erige inmóvil frente al vendaval radioactivo. Su katana cuelga lista en un ángulo exacto de 30 grados.",
+        sfxDesc: "SFX-03: Tela de seda azotada fuertemente por ráfaga eólica, sub-tono resonante de anticipación marcial.",
+        directorNotes: '"Mantener el rostro en absoluta sombra. La identidad de Rika se comunica mediante la postura marcial y el contraste de su haori."',
+        sfxType: "wind"
+      },
+      {
+        id: "SPLASH_04",
+        src: "https://lh3.googleusercontent.com/aida/AEtjO1XQtceiKrjN8m9pK0A2_ZwXQFF-hH0ScFhYifCb02HD2FHBKRePG4gU-ypRrauXi3MgicMJVvcoCLG5cSMAdO17BQxurK6P4Z3ldf5jcT4zU92QuzsOuAPbUoHwS9zEVWdumuU2eT-QtI8tnWCcDHpvoV-aNxtoYIYI9aQrj7k7m96mFMG7TUuw8fOdCBbg9D6_CtZ4C_MTY-6ksO95w8tHxJg_aBciMZuK74R2tqTJH539mYuZSpzd",
+        code: "PLANO-04 // DESENFUNDE TÁCTICO",
+        jpTitle: "第４幕：抜刀の構え • 臨界スパーク",
+        badge: "PLANO 04 // 07 : TENSIÓN DE HOJA",
+        duration: 1500,
+        subJp: "鯉口を切る。鞘走る白刃に火花が散る。",
+        subEs: '"El pulgar libera el tsuba. El acero susurra su sentencia con chispas de plasma."',
+        camera: "Primer plano extremo al desenfunde de la katana. Destello de peligro #FFC400 y micro-chispas #FF2D6F al liberar la hoja.",
+        narrative: "Rika tensa los tendones de su mano enguantada. La cuchilla monomolecular emite una fricción lumínica cegadora al desengancharse de la vaina electromagnética.",
+        sfxDesc: "SFX-04: Fricción metálica aguda ('SHIIING') con resonancia de campana tibetana distorsionada y pulso de carga.",
+        directorNotes: '"Hitstop visual de 4 frames antes de que la hoja salga por completo. Tensión sonora máxima."',
+        sfxType: "blade"
+      },
+      {
+        id: "SPLASH_05",
+        src: "https://lh3.googleusercontent.com/aida/AEtjO1UFK72YwZx97rLwNeOPvo_nMu9gGCMBlcrU_yrae93pLfgmU5zbsjq8m9-hAJqij2mclmmpnW9OMAAhigIR0kAYmTWenQYJYTBIxAAa-LuvV9-YecGy2NqetwtPGTeS3F-0o4r1XfbbVMcKRHr5ImQBmrEm68MTFMIazz1cgV3SN8cvPcmXEVWgwJTPZ0GzhoDRBOh8Uq86AEamCPNPq9srTMj-u408Sy6Oo-9o1288-lgb8G43QhCwYA",
+        code: "PLANO-05 // CORTE SUPERSÓNICO",
+        jpTitle: "第５幕：音速横一文字 • 時空破断",
+        badge: "PLANO 05 // 07 : TAJO SUPERSÓNICO ND",
+        duration: 950,
+        subJp: "一閃。次元を断ち切る深紅の残光。",
+        subEs: '"Un único corte horizontal supersónico parte la lluvia ácida en dos mitades simétricas."',
+        camera: "Plano medio cinemático con líneas de velocidad masivas. Estela horizontal #FF2D6F con gotas de lluvia congeladas en el aire.",
+        narrative: "Ejecución perfecta del corte dimensional. La estela de luz magenta persiste en la retina mientras los escombros de fondo se parten con retardo temporal (corte de precisión ND).",
+        sfxDesc: "SFX-05: Explosión sónica transitoria (BASS BOOM) con corte instantáneo de reverberación (hitstop absoluto de 120ms).",
+        directorNotes: '"El fotograma más agresivo del opening. Usar aceleración de cuadro y sacudida de pantalla con micro-flash blanco/magenta."',
+        sfxType: "slash"
+      },
+      {
+        id: "SPLASH_06",
+        src: "https://lh3.googleusercontent.com/aida/AEtjO1XD5TbQjPklpiny-81DovFgi78IrHV8pOy6SpMYAC2gwvM1baNqk9rUKXL60kxvNBtFY4L-DSxXD85L12bXGuVkiYXb5ZB7alTB90GC_wrgc0XpWC14PZWD7aWLupoOzq4bN5-F-nSOGX-jXU-vb9oyR_xP_Blkmfk1OpGxd2Ux7uSqScJkbHJgAsdGpEVmt4mvLtF1Xk9r9TfLaWXOw2CXQwYifyAWfkVAFG1ofjwF-VvxqfmsuZV50w",
+        code: "PLANO-06 // TITLE CARD COLOSAL",
+        jpTitle: "第６幕：日本崩壊 • タイトルカード",
+        badge: "PLANO 06 // 07 : TITLE CARD NIPPON DESTRUCTION",
+        duration: 4000,
+        subJp: "『日本崩壊』 二次元殲滅アクションシステム起動。",
+        subEs: '"NIPPON DESTRUCTION. El sistema de exterminio ha comenzado. Sin retirada posible."',
+        camera: "Plano general monumental. Tipografía colosal en pantalla con Rika en silueta solitaria en el borde del rascacielos.",
+        narrative: "La cámara retrocede a una vista colosal de Tokio en ruinas bajo el sol poniente. El logotipo 'NIPPON DESTRUCTION / 日本崩壊' estalla en el centro de la pantalla con glow magenta y backlight pálido.",
+        sfxDesc: "SFX-06: Acorde industrial mayor distorsionado con timbal ceremonial taiko y caída de tensión eléctrica.",
+        directorNotes: '"Mantener durante 4 segundos completos para que el impacto del título se grabe antes de pasar al menú o arena de combate."',
+        sfxType: "title"
+      },
+      {
+        id: "ND_KEYART",
+        src: "https://lh3.googleusercontent.com/aida/AEtjO1WhPzibRcgUw7u7SXDlmAnqyvoW1P4ZIhtClwsVy3jzxaj4VCNviuvzLgZfDF53roAbfj1oFDBGr7iDsu1ejg7z889QJtDM7hGKHXHlSaxIN1dsmvAjNilz4QmDSFumd3NfgROLN-Xo7Sdck4ZUR3BD9lhPf27hFz2uDZ7tdRld0SUQ3-bNWLAZ2yeyYsPuBKjaGDBbeQPJnFlILpdAIGSR8O8jWQv_uPQz5qfWLXVO13w78sGkeG05vQ",
+        code: "MASTER KEY ART // SOL NEGRO",
+        jpTitle: "終幕：黒日と戦乙女 • 公式キービジュアル",
+        badge: "KEY ART MASTER : SOL NEGRO Y RUINAS",
+        duration: 5000,
+        subJp: "黒い太陽が照らす終末の地。彼女は刃と共に歩む。",
+        subEs: '"Bajo el disco del Sol Negro, la última guardiana de Japón reina sobre el fin de una era."',
+        camera: "Composición 16:9 ilustrada de rango completo. Sol negro colosal en el horizonte, degradado tetracromático de atardecer, Rika en lo alto del escombro.",
+        narrative: "El arte clave fundacional de NIPPON DESTRUCTION. Condensa toda la identidad estética del proyecto: soledad apocalíptica, elegancia samurái cibernética y paleta cromática de alta fidelidad.",
+        sfxDesc: "SFX-07: Viento desértico modulado, pulso estéreo de baja frecuencia emulando el campo gravitatorio del sol negro.",
+        directorNotes: '"Punto cúspide del manual y la pantalla de inicio. Todos los parámetros de contraste y saturación deben coincidir con la guía de estilo militar."',
+        sfxType: "ambient"
+      }
+    ];
+
+    let currentFrameIndex = 0;
+    let isPlaying = false;
+    let playTimer = null;
+    let audioCtx = null;
+
+    // WebAudio Synthesizer for Tactical Sci-Fi SFX
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playSynthSFX(type) {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+
+        if (type === 'thunder' || type === 'slash') {
+          // Deep punch + noise burst
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(type === 'slash' ? 220 : 90, now);
+          osc.frequency.exponentialRampToValueAtTime(30, now + 0.35);
+
+          gain.gain.setValueAtTime(0.4, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.45);
+        } else if (type === 'blade') {
+          // High pitched metallic sheen
+          const osc1 = ctx.createOscillator();
+          const osc2 = ctx.createOscillator();
+          const gain = ctx.createGain();
+
+          osc1.type = 'sine';
+          osc2.type = 'triangle';
+          osc1.frequency.setValueAtTime(1400, now);
+          osc1.frequency.exponentialRampToValueAtTime(2800, now + 0.2);
+          osc2.frequency.setValueAtTime(1450, now);
+          osc2.frequency.exponentialRampToValueAtTime(2850, now + 0.2);
+
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+          osc1.connect(gain);
+          osc2.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc1.start(now);
+          osc2.start(now);
+          osc1.stop(now + 0.35);
+          osc2.stop(now + 0.35);
+        } else {
+          // Low atmospheric hum / wind pulse
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(75, now);
+          osc.frequency.linearRampToValueAtTime(55, now + 0.5);
+
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.6);
+        }
+      } catch (e) {
+        console.warn("WebAudio disabled or unsupported", e);
+      }
+    }
+
+    function playCurrentSFX() {
+      const frame = cinematicFrames[currentFrameIndex];
+      playSynthSFX(frame.sfxType);
+    }
+
+    // Load Frame into Visual Deck & Script Panel
+    function loadFrame(index, triggeredBySequence = false) {
+      if (index < 0) index = 0;
+      if (index >= cinematicFrames.length) index = cinematicFrames.length - 1;
+      currentFrameIndex = index;
+      const data = cinematicFrames[index];
+
+      // Flash FX
+      const flash = document.getElementById('flash-overlay');
+      if (flash) {
+        flash.classList.remove('opacity-0');
+        flash.classList.add('opacity-40');
+        setTimeout(() => {
+          flash.classList.remove('opacity-40');
+          flash.classList.add('opacity-0');
+        }, 80);
+      }
+
+      // Update Cinema Display
+      const mainImg = document.getElementById('main-cinematic-img');
+      if (mainImg) {
+        mainImg.src = data.src;
+      }
+
+      // Update Subtitles
+      document.getElementById('subtitle-jp').innerText = data.subJp;
+      document.getElementById('subtitle-es').innerText = data.subEs;
+      document.getElementById('current-frame-badge').innerText = data.badge;
+
+      // Update Script Telemetry Panel
+      document.getElementById('detail-code').innerText = data.code;
+      document.getElementById('detail-jp-title').innerText = data.jpTitle;
+      document.getElementById('detail-duration').innerText = `DURACIÓN: ${data.duration} MS`;
+      document.getElementById('detail-camera').innerText = data.camera;
+      document.getElementById('detail-narrative').innerText = data.narrative;
+      document.getElementById('detail-sfx').innerText = data.sfxDesc;
+      document.getElementById('detail-notes').innerText = data.directorNotes;
+
+      // Update Linear Progress Bar
+      const progressPercent = ((index + 1) / cinematicFrames.length) * 100;
+      document.getElementById('playback-progress').style.width = `${progressPercent}%`;
+
+      // Update Thumbnail Highlights
+      const thumbs = document.querySelectorAll('.thumb-card');
+      thumbs.forEach((th, i) => {
+        if (i === index) {
+          th.classList.add('ring-2', 'ring-primary-container', 'opacity-100');
+          th.classList.remove('opacity-75');
+        } else {
+          th.classList.remove('ring-2', 'ring-primary-container', 'opacity-100');
+          th.classList.add('opacity-75');
+        }
+      });
+
+      // Sound feedback
+      if (triggeredBySequence) {
+        playSynthSFX(data.sfxType);
+      }
+    }
+
+    function toggleAutoPlay() {
+      isPlaying = !isPlaying;
+      const playIcon = document.getElementById('play-icon');
+      const playLabel = document.getElementById('play-label');
+
+      if (isPlaying) {
+        playIcon.innerText = 'pause';
+        playLabel.innerText = 'PAUSAR SECUENCIA';
+        runSequenceStep();
+      } else {
+        playIcon.innerText = 'play_arrow';
+        playLabel.innerText = 'SECUENCIA AUTOMÁTICA';
+        if (playTimer) clearTimeout(playTimer);
+      }
+    }
+
+    function runSequenceStep() {
+      if (!isPlaying) return;
+      const cur = cinematicFrames[currentFrameIndex];
+      playTimer = setTimeout(() => {
+        let nextIndex = currentFrameIndex + 1;
+        if (nextIndex >= cinematicFrames.length) {
+          nextIndex = 0; // Loop or finish
+        }
+        loadFrame(nextIndex, true);
+        if (isPlaying) {
+          runSequenceStep();
+        }
+      }, cur.duration);
+    }
+
+    // Fullscreen Viewport Mode
+    function toggleFullscreen() {
+      const el = document.getElementById('cinema-frame-wrapper');
+      if (!document.fullscreenElement) {
+        if (el.requestFullscreen) {
+          el.requestFullscreen();
+        } else if (el.webkitRequestFullscreen) {
+          el.webkitRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Timer Simulation
+    let secondsElapsed = 0;
+    setInterval(() => {
+      secondsElapsed++;
+      const hrs = String(Math.floor(secondsElapsed / 3600)).padStart(2, '0');
+      const mins = String(Math.floor((secondsElapsed % 3600) / 60)).padStart(2, '0');
+      const secs = String(secondsElapsed % 60).padStart(2, '0');
+      const frames = String((secondsElapsed * 24) % 24).padStart(2, '0');
+      const el = document.getElementById('global-timer');
+      if (el) el.innerText = `T+ ${hrs}:${mins}:${secs}:${frames}`;
+    }, 1000);
+
+    // Event Wire-up
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnPlay = document.getElementById('btn-play-toggle');
+      if (btnPlay) btnPlay.addEventListener('click', toggleAutoPlay);
+
+      const btnPrev = document.getElementById('btn-prev');
+      if (btnPrev) {
+        btnPrev.addEventListener('click', () => {
+          if (isPlaying) toggleAutoPlay();
+          loadFrame(currentFrameIndex - 1);
+        });
+      }
+
+      const btnNext = document.getElementById('btn-next');
+      if (btnNext) {
+        btnNext.addEventListener('click', () => {
+          if (isPlaying) toggleAutoPlay();
+          loadFrame(currentFrameIndex + 1);
+        });
+      }
+
+      const btnSfx = document.getElementById('btn-sfx-test');
+      if (btnSfx) {
+        btnSfx.addEventListener('click', playCurrentSFX);
+      }
+
+      const btnFs = document.getElementById('btn-fullscreen');
+      if (btnFs) {
+        btnFs.addEventListener('click', toggleFullscreen);
+      }
+
+      // Keyboard Listeners
+      window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+          e.preventDefault();
+          toggleAutoPlay();
+        } else if (e.code === 'ArrowRight') {
+          e.preventDefault();
+          if (isPlaying) toggleAutoPlay();
+          loadFrame(currentFrameIndex + 1);
+        } else if (e.code === 'ArrowLeft') {
+          e.preventDefault();
+          if (isPlaying) toggleAutoPlay();
+          loadFrame(currentFrameIndex - 1);
+        }
+      });
+
+      // Init on Frame 0
+      loadFrame(0);
+    });
+  </script>
+</div></main><footer class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-lowest/95 backdrop-blur-md"><div class="h-12 w-full px-gutter-desktop flex items-center justify-between font-label-tech-sm text-label-tech-sm text-on-surface-variant"><div class="flex items-center gap-space-md"><span class="text-secondary">[MIL-SPEC TELEMETRY ACTIVE]</span><span class="hidden sm:inline">SAT-LINK: 09-OMEGA // ENCRYPTED</span><span class="hidden md:inline">THREAT LEVEL: MAXIMUM KAIJU/CYBORG</span></div><div class="hidden lg:flex items-center gap-space-sm"><span>HOTKEYS: [1-5] VISTAS</span><span>[SPACE] DETONACIÓN</span><span>[M] SILENCIAR ALERTA</span></div><div class="flex items-center gap-space-sm"><span>© 2025 NIPPON DESTRUCTION GAME STUDIO</span><span class="text-primary">// 日本崩壊</span></div></div></footer></body></html>

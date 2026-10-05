@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "background": "#150e2b",
+          "on-surface": "#e8deff",
+          "primary-fixed-dim": "#ffb2bd",
+          "surface-variant": "#37304f",
+          "on-tertiary-container": "#412200",
+          "on-tertiary-fixed": "#2d1600",
+          "primary": "#ffb2bd",
+          "surface": "#150e2b",
+          "surface-tint": "#ffb2bd",
+          "on-secondary": "#3f2e00",
+          "on-primary-fixed-variant": "#900037",
+          "on-primary-fixed": "#400014",
+          "on-secondary-fixed-variant": "#5a4300",
+          "inverse-on-surface": "#332c4a",
+          "on-error-container": "#ffdad6",
+          "tertiary-fixed-dim": "#ffb871",
+          "on-primary-container": "#5a001f",
+          "primary-fixed": "#ffd9de",
+          "outline-variant": "#5c3f43",
+          "surface-bright": "#3c3554",
+          "secondary-fixed-dim": "#f7be00",
+          "on-tertiary-fixed-variant": "#6a3c00",
+          "primary-container": "#ff4e7c",
+          "secondary": "#ffe5b1",
+          "surface-container-low": "#1e1734",
+          "error-container": "#93000a",
+          "tertiary-container": "#c58239",
+          "on-secondary-fixed": "#251a00",
+          "inverse-surface": "#e8deff",
+          "secondary-fixed": "#ffdf99",
+          "on-secondary-container": "#6d5200",
+          "on-background": "#e8deff",
+          "outline": "#ab888c",
+          "error": "#ffb4ab",
+          "on-error": "#690005",
+          "surface-dim": "#150e2b",
+          "surface-container": "#221b38",
+          "surface-container-high": "#2c2543",
+          "on-tertiary": "#4a2800",
+          "tertiary": "#ffb871",
+          "on-primary": "#670025",
+          "surface-container-lowest": "#100926",
+          "secondary-container": "#fec300",
+          "inverse-primary": "#bc004b",
+          "tertiary-fixed": "#ffdcbe",
+          "on-surface-variant": "#e4bdc1",
+          "surface-container-highest": "#37304f"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "gutter-tablet": "1.25rem",
+          "space-xs": "0.25rem",
+          "space-md": "1rem",
+          "gutter-desktop": "1.5rem",
+          "margin-desktop": "3rem",
+          "gutter": "1rem",
+          "margin": "1rem",
+          "space-lg": "1.5rem",
+          "margin-tablet": "2rem",
+          "space-sm": "0.5rem",
+          "space-xl": "2.5rem"
+        },
+        "fontFamily": {
+          "label-tech-md": [
+            "JetBrains Mono"
+          ],
+          "label-tech-sm": [
+            "JetBrains Mono"
+          ],
+          "headline-sm": [
+            "Space Grotesk"
+          ],
+          "body-lg": [
+            "Chivo"
+          ],
+          "display-lg": [
+            "Space Grotesk"
+          ],
+          "body-md": [
+            "Chivo"
+          ],
+          "body-sm": [
+            "Chivo"
+          ],
+          "headline-lg": [
+            "Space Grotesk"
+          ],
+          "headline-md": [
+            "Space Grotesk"
+          ],
+          "display-lg-mobile": [
+            "Space Grotesk"
+          ],
+          "label-tech-lg": [
+            "JetBrains Mono"
+          ]
+        },
+        "fontSize": {
+          "label-tech-md": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.12em",
+              "fontWeight": "500"
+            }
+          ],
+          "label-tech-sm": [
+            "9px",
+            {
+              "lineHeight": "12px",
+              "letterSpacing": "0.16em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "0.05em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-lg": [
+            "56px",
+            {
+              "lineHeight": "64px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-md": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg-mobile": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "700"
+            }
+          ],
+          "label-tech-lg": [
+            "14px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0.08em",
+              "fontWeight": "500"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"><div class="h-20 w-full px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-label-tech-sm text-label-tech-sm text-secondary tracking-widest">[ 日本崩壊 // ND-SPEC ]</span><span class="h-1.5 w-1.5 rounded-full bg-primary-container animate-pulse"></span></div><span class="font-headline-md text-headline-md uppercase tracking-wider text-on-surface font-bold">NIPPON DESTRUCTION</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">SYS.VER 2.4.9 // SISTEMA DE EXTERMINIO 2D</span></div><div class="hidden xl:flex items-center gap-space-sm pl-space-md border-l border-outline-variant/40"><div class="flex flex-col bg-surface-container px-space-sm py-space-xs border border-primary-container/40"><span class="font-label-tech-sm text-label-tech-sm text-primary-container font-bold flex items-center gap-1"><span class="inline-block w-1.5 h-1.5 bg-primary-container"></span>DEFCON-1 ACTIVE</span><span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">LAT 35.6762° N // LONG 139.6503° E</span></div></div></div><nav class="hidden lg:flex items-center gap-space-xs overflow-x-auto py-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold"><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="command-matrix" href="#">COMMAND MATRIX</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="hero-dossiers" href="#">HERO DOSSIERS</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="tactical-bestiary" href="#">TACTICAL BESTIARY</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="combat-arena" href="#">COMBAT ARENA</a><a aria-current="page" class="px-space-sm py-1 uppercase tracking-widest transition-colors whitespace-nowrap bg-primary-container text-on-primary-container font-bold" data-path="ui-architecture" href="#">UI ARCHITECTURE</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="chromatic-lab" href="#">CHROMATIC LAB</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="promo-keyart" href="#">PROMO KEYART</a><a class="px-space-sm py-1 font-label-tech-md text-label-tech-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="production-manual" href="#">PRODUCTION MANUAL</a></nav><div class="flex items-center gap-space-sm shrink-0"><div class="hidden sm:flex flex-col text-right"><span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase tracking-wider">[ 葛城指令官 // S-RANK ]</span><span class="font-label-tech-md text-label-tech-md text-on-surface uppercase font-bold">CMDR. KATSURAGI</span></div><div class="relative p-0.5 border border-primary-container"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XD5TbQjPklpiny-81DovFgi78IrHV8pOy6SpMYAC2gwvM1baNqk9rUKXL60kxvNBtFY4L-DSxXD85L12bXGuVkiYXb5ZB7alTB90GC_wrgc0XpWC14PZWD7aWLupoOzq4bN5-F-nSOGX-jXU-vb9oyR_xP_Blkmfk1OpGxd2Ux7uSqScJkbHJgAsdGpEVmt4mvLtF1Xk9r9TfLaWXOw2CXQwYifyAWfkVAFG1ofjwF-VvxqfmsuZV50w"/><span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 bg-secondary border border-surface-container-lowest rounded-full"></span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<div class="w-full px-space-md lg:px-space-xl py-space-lg flex flex-col gap-space-xl max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary tracking-widest">[ SPECIFICATION 14 // UI/HUD ARCHITECTURE ]</span>
+<span class="px-space-xs py-0.5 bg-primary-container/20 text-primary-container font-label-tech-sm text-label-tech-sm rounded-none">ACTIVO // ND-14</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg uppercase font-bold text-on-surface tracking-tight">
+          Arquitectura de UI y HUD Táctil
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Matriz de despliegue táctil militar para formato 16:9 apaisado. Optimización ergonómica de control háptico, jerarquía de lectura visual para combate a alta velocidad y telemetría de daño en tiempo real.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container-high px-space-md py-space-sm rounded-lg self-start md:self-auto">
+<div class="flex flex-col text-right">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">TOUCH LATENCY SPEC</span>
+<span class="font-label-tech-md text-label-tech-md text-secondary font-bold">&lt; 4.10 MS [MIL-SPEC]</span>
+</div>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+</div>
+<!-- 16:9 HUD REFERENCE VIEWER FRAME -->
+<div class="w-full bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col shadow-2xl">
+<!-- Frame Telemetry Header -->
+<div class="bg-surface-container-high px-space-md py-space-xs flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface font-bold uppercase tracking-wider">CANONICAL SHEET // HUD_V1.4.2_ND</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 hidden sm:inline">[ 1920x1080 RENDER CANVAS ]</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">OVERLAY: ACTIVE</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/50">ASSET ID: ND-SPEC-43</span>
+</div>
+</div>
+<!-- Main Image Display Container -->
+<div class="relative w-full aspect-video bg-black flex items-center justify-center overflow-hidden">
+<img alt="16:9 Landscape HUD Reference Sheet for Nippon Destruction" class="w-full h-full object-contain select-none" id="hud-canonical-img" src="https://lh3.googleusercontent.com/aida/AEtjO1UQGGTvWqdOofU-UHbiqw3q8AfY8-ymk1g8SkBUZ6f_B-Wra_q9AmEQGjuhZuhVua776wJeTh_hL1MpHV5WwZYn-k4v3xwrXvpeHSYZLQlNzXodozxCXsNb01a46hnbtDoU8McsLgY_j5uotJxmAhSrOLBvnC_2NI7HeLUHL8m34Fq3ip76b81HojmKfZ5tmqCHP7DOtNMv5H1GgU8sw_q77fy3Kb8sVis8aAS3zoGIohhdmnIgMahtsQ"/>
+<!-- Interactive SVG Overlay Layer -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-300" id="hud-svg-overlay" preserveaspectratio="none" viewbox="0 0 1920 1080">
+<!-- Zone Markers / Graticules -->
+<!-- Top Left Zone -->
+<g class="overlay-zone" data-zone="tl">
+<rect class="text-secondary/40" fill="none" height="420" stroke="currentColor" stroke-dasharray="8 6" stroke-width="2" width="560" x="40" y="40"></rect>
+<rect class="text-secondary" fill="currentColor" height="16" width="16" x="40" y="40"></rect>
+<text class="text-secondary font-label-tech-sm text-[18px] font-bold" fill="currentColor" x="65" y="70">[ ZONE_TL // HEALTH &amp; DASH ]</text>
+</g>
+<!-- Top Right Zone -->
+<g class="overlay-zone" data-zone="tr">
+<rect class="text-primary-container/40" fill="none" height="440" stroke="currentColor" stroke-dasharray="8 6" stroke-width="2" width="440" x="1440" y="40"></rect>
+<rect class="text-primary-container" fill="currentColor" height="16" width="16" x="1864" y="40"></rect>
+<text class="text-primary-container font-label-tech-sm text-[18px] font-bold" fill="currentColor" x="1465" y="70">[ ZONE_TR // COMBO &amp; WAVE ]</text>
+</g>
+<!-- Bottom Left Joystick Zone -->
+<g class="overlay-zone" data-zone="bl">
+<rect class="text-secondary-fixed/40" fill="none" height="460" stroke="currentColor" stroke-dasharray="8 6" stroke-width="2" width="480" x="60" y="560"></rect>
+<circle class="text-secondary/30" cx="290" cy="780" fill="none" r="140" stroke="currentColor" stroke-width="2"></circle>
+<text class="text-secondary-fixed font-label-tech-sm text-[18px] font-bold" fill="currentColor" x="85" y="590">[ ZONE_BL // VIRTUAL JOYSTICK ]</text>
+</g>
+<!-- Bottom Right Action Cluster Zone -->
+<g class="overlay-zone" data-zone="br">
+<rect class="text-primary/40" fill="none" height="520" stroke="currentColor" stroke-dasharray="8 6" stroke-width="2" width="660" x="1220" y="500"></rect>
+<rect class="text-primary" fill="currentColor" height="16" width="16" x="1864" y="1004"></rect>
+<text class="text-primary font-label-tech-sm text-[18px] font-bold" fill="currentColor" x="1245" y="530">[ ZONE_BR // TACTICAL CLUSTER ]</text>
+</g>
+</svg>
+<!-- Dynamic Overlay Filter Scrims -->
+<div class="absolute inset-0 pointer-events-none transition-all duration-300" id="filter-scrim"></div>
+</div>
+<!-- Quick Inspection Controls Bar -->
+<div class="bg-surface-container px-space-md py-space-sm flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant uppercase">MODO DE INSPECCIÓN:</span>
+<button class="px-space-sm py-1 bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-tech-sm text-label-tech-sm uppercase rounded transition-colors flex items-center gap-1" id="btn-toggle-graticule">
+<span class="material-symbols-outlined text-sm">grid_goldenratio</span> REJILLA RETICULAR
+          </button>
+<button class="px-space-sm py-1 bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-tech-sm text-label-tech-sm uppercase rounded transition-colors flex items-center gap-1" id="btn-toggle-heatmap">
+<span class="material-symbols-outlined text-sm">heat_pump</span> MAPA DE CALOR TÁCTIL
+          </button>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">RELACIÓN FIJA: 16:9 HORIZONTAL</span>
+<span class="h-2 w-2 rounded-full bg-secondary-container"></span>
+</div>
+</div>
+</div>
+<!-- 1. ANÁLISIS ERGONÓMICO DE INTERFAZ 16:9 -->
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">[ MODALIDAD DE TELEMETRÍA BIOMECÁNICA ]</span>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase font-bold tracking-wide">
+            1. Análisis Ergonómico de Interfaz 16:9
+          </h2>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 hidden sm:inline">SECTOR DE IMPACTO TÁCTICO // 4 CUADRANTES</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Cuadrante 1: Superior Izquierda -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-space-sm transition-transform hover:-translate-y-0.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 bg-secondary rounded-none"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary font-bold uppercase tracking-wider">ZONA SUPERIOR IZQUIERDA // QUAD_01</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">DEFENSA VITAL</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface uppercase font-bold">
+            Barra de Vida Dinámica y Dash Trifásico
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Ubicada fuera del cono de oclusión dactilar de la mano izquierda. Provee lectura periférica inmediata durante desplazamientos violentos sin necesidad de fijar la fóvea central.
+          </p>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg flex flex-col gap-space-xs mt-auto">
+<div class="flex justify-between items-center">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">HEALTH BAR</span>
+<span class="font-label-tech-sm text-label-tech-sm text-primary-container font-bold">1,840 / 2,000 HP (85%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded overflow-hidden flex">
+<div class="h-full bg-gradient-to-r from-primary-container via-primary-fixed-dim to-secondary-container w-[85%]"></div>
+</div>
+<div class="flex justify-between items-center pt-space-xs">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">DASH / STAMINA [MEDIDOR TRIFÁSICO]</span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary font-bold">2/3 CARGAS (RECARGA 40%)</span>
+</div>
+<div class="grid grid-cols-3 gap-1 h-2">
+<div class="bg-secondary h-full rounded-sm"></div>
+<div class="bg-secondary h-full rounded-sm"></div>
+<div class="bg-surface-container-high h-full rounded-sm relative overflow-hidden">
+<div class="bg-secondary h-full w-[40%] animate-pulse"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Cuadrante 2: Superior Derecha -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-space-sm transition-transform hover:-translate-y-0.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 bg-primary-container rounded-none"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-primary-container font-bold uppercase tracking-wider">ZONA SUPERIOR DERECHA // QUAD_02</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">ESTILO &amp; OLEADA</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface uppercase font-bold">
+            Indicador de Combo SSS y Tacómetro de Amenaza
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Monitoreo de rendimiento cinético. El contador de golpes emite pulsos luminosos de color carmesí neón al superar el umbral de 30 impactos continuos, incentivando la continuidad agresiva.
+          </p>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg flex items-center justify-between mt-auto">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-primary-container uppercase font-bold">[ 連撃 // HITS ]</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">38</span>
+<span class="font-headline-sm text-headline-sm text-primary-container font-bold">HITS // SSS</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">MULTIPLICADOR: x4.8 DINÁMICO</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">THREAT LEVEL</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">S-RANK</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/80">WAVE 04 / 06 [142 KILLS]</span>
+</div>
+</div>
+</div>
+<!-- Cuadrante 3: Inferior Izquierda -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-space-sm transition-transform hover:-translate-y-0.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 bg-secondary-fixed rounded-none"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary-fixed font-bold uppercase tracking-wider">ZONA INFERIOR IZQUIERDA // QUAD_03</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">VECTOR DE NAVEGACIÓN</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface uppercase font-bold">
+            Joystick Flotante Táctil con Zona Muerta Calibrada
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Radio dinámico de 64px con recentrado inteligente bajo el punto inicial de presión (floating stick). Implementa una zona muerta de 12% para prevenir desvíos de carrera no intencionales.
+          </p>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg flex items-center justify-between gap-space-md mt-auto">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-secondary"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface font-bold">RADIO TOTAL: 64 PX</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">DEADZONE: 12% RADIAL</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-on-surface-variant"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">HAPTIC: 8MS IMPULSO TICK</span>
+</div>
+</div>
+<div class="w-20 h-20 bg-surface-container-high rounded-full flex items-center justify-center relative border border-outline-variant/30">
+<div class="w-8 h-8 rounded-full bg-primary-container/80 shadow-[0_0_12px_rgba(255,78,124,0.6)] flex items-center justify-center">
+<span class="material-symbols-outlined text-xs text-on-primary">navigation</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Cuadrante 4: Inferior Derecha -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-space-sm transition-transform hover:-translate-y-0.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 bg-primary rounded-none"></span>
+<span class="font-label-tech-sm text-label-tech-sm text-primary font-bold uppercase tracking-wider">ZONA INFERIOR DERECHA // QUAD_04</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">ARSENAL DE COMBATE</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface uppercase font-bold">
+            Cluster de Botones de Acción Biomecánica
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Disposición arqueada que coincide con el radio natural del pulgar derecho. Incluye el botón maestro de Tajo Primario (72px), Gatillo de Ruptura ND (#FF2D6F) e Ítem Táctico DEFCON.
+          </p>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg flex items-center justify-around gap-space-xs mt-auto">
+<div class="flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined text-sm">fast_forward</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary font-bold">DASH</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_0_16px_rgba(255,78,124,0.8)]">
+<span class="material-symbols-outlined text-lg">swords</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-primary-container font-bold">TAJO (72PX)</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary border border-primary/40">
+<span class="material-symbols-outlined text-sm">flash_on</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-primary">RUPTURA ND</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-xs">shield</span>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">DEFCON</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. INTERACTIVE COMPONENT TESTBED -->
+<div class="bg-surface-container p-space-lg rounded-xl flex flex-col gap-space-lg shadow-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">[ BANCO DE PRUEBAS DE RESPUESTA EN VIVO ]</span>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase font-bold tracking-wide">
+            2. Banco de Pruebas de Telemetría Táctil y Latencia
+          </h2>
+</div>
+<div class="flex items-center gap-space-xs font-label-tech-sm text-label-tech-sm text-on-surface-variant bg-surface-container-lowest px-space-sm py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span> SENSOR SAMPLING: 240 HZ
+        </div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Col 1: Interactive Trigger Pad -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl flex flex-col gap-space-md">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant font-bold uppercase tracking-wider">SIMULADOR DE BOTÓN TÁCTICO</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Haz clic o toca repetidamente para medir la latencia del buffer de entrada y verificar el registro de cuadro (frame input buffer).
+          </p>
+<div class="flex-1 flex flex-col items-center justify-center py-space-md">
+<button class="w-28 h-28 rounded-full bg-primary-container active:scale-95 transition-all text-on-primary-container font-headline-sm text-headline-sm uppercase font-bold flex flex-col items-center justify-center shadow-[0_0_24px_rgba(255,78,124,0.5)] hover:shadow-[0_0_32px_rgba(255,196,0,0.8)] cursor-pointer select-none" id="tactile-trigger-btn">
+<span class="material-symbols-outlined text-2xl">flare</span>
+<span class="text-xs tracking-wider">STRIKE</span>
+</button>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70 mt-space-sm">TAP TRIGGER // RADIUS 72PX</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container px-space-sm py-space-xs rounded">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">ESTADO DE REGISTRO:</span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary font-bold" id="trigger-status">EN ESPERA</span>
+</div>
+</div>
+<!-- Col 2: Real-time Latency Metrics -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl flex flex-col gap-space-md">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant font-bold uppercase tracking-wider">MÉTRICAS DE LATENCIA EN TIEMPO REAL</span>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container p-space-sm rounded flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">ÚLTIMA PULSACIÓN</span>
+<span class="font-headline-md text-headline-md text-primary-container font-bold" id="metric-last-latency">3.84 ms</span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">PASS (&lt; 4.1 ms)</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">PROMEDIO 10 TAPS</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold" id="metric-avg-latency">3.92 ms</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">JITTER: 0.18 ms</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">BUFFER DROP RATE</span>
+<span class="font-headline-md text-headline-md text-secondary font-bold">0.00%</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/70">ZERO GHOSTING</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">FRAME DESYNC</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">0 FRAMES</span>
+<span class="font-label-tech-sm text-label-tech-sm text-secondary">60/120 FPS LOCK</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-auto">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant">CALIBRACIÓN MIL-SPEC ACCURACY: 99.4%</span>
+<div class="w-full h-1.5 bg-surface-container-high rounded overflow-hidden">
+<div class="h-full bg-secondary w-[99.4%]"></div>
+</div>
+</div>
+</div>
+<!-- Col 3: Live Visual Filter Modes -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl flex flex-col gap-space-md">
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant font-bold uppercase tracking-wider">FILTROS VISUALES DE SIMULACIÓN</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Conmuta capas ópticas de visualización para certificar legibilidad ante diferentes condiciones cromáticas de pantalla.
+          </p>
+<div class="flex flex-col gap-space-xs">
+<button class="filter-opt-btn w-full text-left px-space-sm py-2 bg-primary-container text-on-primary-container font-label-tech-sm text-label-tech-sm uppercase rounded font-bold flex items-center justify-between" data-filter="normal">
+<span>ESTÁNDAR // NORMAL CRT</span>
+<span class="material-symbols-outlined text-sm">check_circle</span>
+</button>
+<button class="filter-opt-btn w-full text-left px-space-sm py-2 bg-surface-container text-on-surface hover:bg-surface-container-high font-label-tech-sm text-label-tech-sm uppercase rounded font-bold flex items-center justify-between transition-colors" data-filter="nightvision">
+<span>VISIÓN NOCTURNA FOSFÓRICA</span>
+<span class="material-symbols-outlined text-sm opacity-50">visibility</span>
+</button>
+<button class="filter-opt-btn w-full text-left px-space-sm py-2 bg-surface-container text-on-surface hover:bg-surface-container-high font-label-tech-sm text-label-tech-sm uppercase rounded font-bold flex items-center justify-between transition-colors" data-filter="highcontrast">
+<span>ALTO CONTRASTE DEFCON-1</span>
+<span class="material-symbols-outlined text-sm opacity-50">contrast</span>
+</button>
+</div>
+<div class="bg-surface-container p-space-xs rounded flex items-center gap-space-xs mt-auto">
+<span class="material-symbols-outlined text-secondary text-sm">info</span>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/80">LOS FILTROS AFECTAN LA MATRIZ DEL RENDER SUPERIOR.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. TECHNICAL SPECS TABLE -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">[ ESPECIFICACIONES DE ADAPTACIÓN DISPOSITIVA ]</span>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase font-bold tracking-wide">
+            3. Tabla de Especificaciones Técnicas y Downscaling
+          </h2>
+</div>
+<span class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60 hidden sm:inline">VIEWPORT 1920x1080 &amp; MOBILE COMPLIANCE</span>
+</div>
+<div class="w-full bg-surface-container rounded-xl overflow-x-auto shadow-md">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest text-secondary font-label-tech-sm text-label-tech-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md">PARÁMETRO ARQUITECTURAL</th>
+<th class="py-space-sm px-space-md">TARGET 16:9 MASTER (1920x1080)</th>
+<th class="py-space-sm px-space-md">REGLA DOWNSCALE MÓVIL (390PX+)</th>
+<th class="py-space-sm px-space-md">TOLERANCIA ERGONÓMICA</th>
+<th class="py-space-sm px-space-md">ESTADO</th>
+</tr>
+</thead>
+<tbody class="font-label-tech-md text-label-tech-md divide-y-0 text-on-surface">
+<tr class="bg-surface-container/60 hover:bg-surface-bright/20 transition-colors">
+<td class="py-space-sm px-space-md font-bold text-primary-container">Safe Areas Laterales</td>
+<td class="py-space-sm px-space-md">48px Margen Exterior Absoluto</td>
+<td class="py-space-sm px-space-md">Safe Margin Dinámico Notch (16-32px)</td>
+<td class="py-space-sm px-space-md">± 4px sin solapamiento</td>
+<td class="py-space-sm px-space-md text-secondary font-bold">[ CERTIFICADO ]</td>
+</tr>
+<tr class="bg-surface-container-low hover:bg-surface-bright/20 transition-colors">
+<td class="py-space-sm px-space-md font-bold text-primary-container">Touch Target Primario (Tajo)</td>
+<td class="py-space-sm px-space-md">72px Diámetro de Acción</td>
+<td class="py-space-sm px-space-md">Escalado relativo (Mínimo 44px)</td>
+<td class="py-space-sm px-space-md">Mínimo 48px según WCAG 2.5.5</td>
+<td class="py-space-sm px-space-md text-secondary font-bold">[ ÓPTIMO ]</td>
+</tr>
+<tr class="bg-surface-container/60 hover:bg-surface-bright/20 transition-colors">
+<td class="py-space-sm px-space-md font-bold text-primary-container">Touch Target Secundario (Dash/Ruptura)</td>
+<td class="py-space-sm px-space-md">56px Diámetro Activo</td>
+<td class="py-space-sm px-space-md">44px Diámetro Compacto</td>
+<td class="py-space-sm px-space-md">Espaciado inter-botón &gt; 12px</td>
+<td class="py-space-sm px-space-md text-secondary font-bold">[ CERTIFICADO ]</td>
+</tr>
+<tr class="bg-surface-container-low hover:bg-surface-bright/20 transition-colors">
+<td class="py-space-sm px-space-md font-bold text-primary-container">Joystick Floating Zone</td>
+<td class="py-space-sm px-space-md">Radio 64px (Centro a Borde)</td>
+<td class="py-space-sm px-space-md">Radio 48px con Anclaje Reconfigurable</td>
+<td class="py-space-sm px-space-md">Margen de deslizamiento 80px</td>
+<td class="py-space-sm px-space-md text-secondary font-bold">[ ADAPTATIVO ]</td>
+</tr>
+<tr class="bg-surface-container/60 hover:bg-surface-bright/20 transition-colors">
+<td class="py-space-sm px-space-md font-bold text-primary-container">Latencia Táctil de Procesamiento</td>
+<td class="py-space-sm px-space-md">&lt; 4.10 ms (Input polling 240Hz)</td>
+<td class="py-space-sm px-space-md">&lt; 8.33 ms (Sincronía 120Hz Nativo)</td>
+<td class="py-space-sm px-space-md">Mínimo 1 frame a 60 FPS</td>
+<td class="py-space-sm px-space-md text-secondary font-bold">[ MIL-SPEC PASS ]</td>
+</tr>
+<tr class="bg-surface-container-low hover:bg-surface-bright/20 transition-colors">
+<td class="py-space-sm px-space-md font-bold text-primary-container">Oclusión Central de Combate</td>
+<td class="py-space-sm px-space-md">&lt; 14% del área central de visión</td>
+<td class="py-space-sm px-space-md">&lt; 18% con elementos colapsados</td>
+<td class="py-space-sm px-space-md">Retículo de mira 100% despejado</td>
+<td class="py-space-sm px-space-md text-secondary font-bold">[ COMPLIANT ]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Interactive UI Script for HUD Sheet 14
+  (function() {
+    const graticuleBtn = document.getElementById('btn-toggle-graticule');
+    const heatmapBtn = document.getElementById('btn-toggle-heatmap');
+    const svgOverlay = document.getElementById('hud-svg-overlay');
+    const filterScrim = document.getElementById('filter-scrim');
+    const triggerBtn = document.getElementById('tactile-trigger-btn');
+    const triggerStatus = document.getElementById('trigger-status');
+    const metricLastLatency = document.getElementById('metric-last-latency');
+    const metricAvgLatency = document.getElementById('metric-avg-latency');
+    const filterButtons = document.querySelectorAll('.filter-opt-btn');
+
+    let showGraticule = true;
+    let showHeatmap = false;
+    let latencyHistory = [3.8, 3.9, 4.0, 3.7];
+
+    // Toggle Graticule Overlay
+    if (graticuleBtn && svgOverlay) {
+      graticuleBtn.addEventListener('click', function() {
+        showGraticule = !showGraticule;
+        svgOverlay.style.opacity = showGraticule ? '1' : '0';
+        graticuleBtn.classList.toggle('text-secondary', showGraticule);
+      });
+    }
+
+    // Toggle Heatmap Overlay
+    if (heatmapBtn && filterScrim) {
+      heatmapBtn.addEventListener('click', function() {
+        showHeatmap = !showHeatmap;
+        if (showHeatmap) {
+          filterScrim.style.background = 'radial-gradient(circle at 15% 80%, rgba(255, 78, 124, 0.45) 0%, transparent 35%), radial-gradient(circle at 85% 80%, rgba(254, 195, 0, 0.5) 0%, transparent 40%)';
+          heatmapBtn.classList.add('text-secondary');
+        } else {
+          filterScrim.style.background = 'transparent';
+          heatmapBtn.classList.remove('text-secondary');
+        }
+      });
+    }
+
+    // Tactile Button Testbed Interaction
+    if (triggerBtn) {
+      triggerBtn.addEventListener('pointerdown', function() {
+        const start = performance.now();
+        
+        // Random micro-jitter for realistic demonstration around 3.2 - 4.1 ms
+        const latency = (Math.random() * (4.05 - 3.2) + 3.2).toFixed(2);
+        latencyHistory.push(parseFloat(latency));
+        if (latencyHistory.length > 10) latencyHistory.shift();
+
+        const avg = (latencyHistory.reduce((a, b) => a + b, 0) / latencyHistory.length).toFixed(2);
+
+        if (metricLastLatency) metricLastLatency.textContent = latency + ' ms';
+        if (metricAvgLatency) metricAvgLatency.textContent = avg + ' ms';
+
+        if (triggerStatus) {
+          triggerStatus.textContent = 'REGISTRADO // ' + latency + ' MS';
+          triggerStatus.classList.remove('text-secondary');
+          triggerStatus.classList.add('text-primary-container');
+        }
+
+        setTimeout(() => {
+          if (triggerStatus) {
+            triggerStatus.textContent = 'EN ESPERA';
+            triggerStatus.classList.remove('text-primary-container');
+            triggerStatus.classList.add('text-secondary');
+          }
+        }, 600);
+      });
+    }
+
+    // Filter Switcher
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const mode = this.getAttribute('data-filter');
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-primary-container', 'text-on-primary-container');
+          b.classList.add('bg-surface-container', 'text-on-surface');
+        });
+        this.classList.remove('bg-surface-container', 'text-on-surface');
+        this.classList.add('bg-primary-container', 'text-on-primary-container');
+
+        const hudImg = document.getElementById('hud-canonical-img');
+        if (!hudImg) return;
+
+        if (mode === 'nightvision') {
+          hudImg.style.filter = 'hue-rotate(90deg) contrast(140%) brightness(110%)';
+        } else if (mode === 'highcontrast') {
+          hudImg.style.filter = 'contrast(180%) saturate(150%) brightness(105%)';
+        } else {
+          hudImg.style.filter = 'none';
+        }
+      });
+    });
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-md"><div class="w-full px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex flex-wrap items-center gap-space-md"><div class="flex items-center gap-space-xs"><span class="inline-block w-2 h-2 bg-secondary rounded-full animate-ping"></span><span class="font-label-tech-sm text-label-tech-sm text-secondary uppercase">MIL-SPEC LATENCY: 0.0024 MS // SAT_04</span></div><span class="text-outline-variant hidden sm:inline">|</span><div class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/80 uppercase">CIPHER: AES-GCM-512-ND // NODE: TYO-SECTOR-09</div></div><div class="flex flex-wrap items-center gap-space-md"><div class="font-label-tech-sm text-label-tech-sm text-on-surface-variant/60">[ 第九戦術防衛司令部 // NIPPON DESTRUCTION ] © 2025. OPERATIONAL PROTOCOL STRICTLY ENFORCED.</div><div class="font-label-tech-sm text-label-tech-sm text-primary uppercase border border-outline-variant/50 px-space-xs py-0.5">GRID: LIVE</div></div></div></footer></body></html>
