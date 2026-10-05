@@ -137,6 +137,29 @@ Imágenes descargadas en `refs/hi/*.jpg` (1376×768, 11 archivos) a partir de la
 URLs del HTML "Archivo Táctico" (manifiesto en `refs/archivo-tactico.tsv`).
 **No hay imágenes square: el ícono se recorta del key-art.**
 
+### 7.1 Los dos HTML de UI/HUD (son la referencia oficial)
+
+| Archivo | Líneas | Qué aporta |
+|---|---|---|
+| `04._arena_combat_hud_nippon_destruction_canvas_game/code.html` | 993 | HUD en combate, telemetría, hitstop, CSS de animación |
+| `14._arquitectura_de_ui_y_hud_táctil_nippon_destruction/code.html` | 707 | arquitectura UI/HUD táctil, 4 cuadrantes, ergonomía, latencia |
+
+Están **diseñados para móvil en 16:9 forzado** (zonas táctiles por cuadrante,
+safe areas, botones ≥48px WCAG 2.5.5, joystick flotante). **Se adoptan tal cual**,
+no se rediseñan.
+
+### 7.2 Pendiente: portar el UI/HUD de Stitch al canvas de ND
+
+> [ ] Extraer el CSS y la estructura completos de `04` y `14`
+> [ ] Traducir los 4 cuadrantes a primitivas de canvas en `nd.js`
+> [ ] Portar las animaciones: `shakeLight` 0.22s, `shakeHeavy` 0.38s,
+>     `slashGlow`, `shockwaveExpand`, `flashLight` / `flashHeavy`
+> [ ] Mantener los textos literales (`DASH CD`, `RUPTURA: MAX`,
+>     `OLEADA n / 06`, `BAJAS / DESTRUCCIÓN`, aviso de telégrafo)
+> [ ] Respetar el mapa táctil: joystick 64px, Tajo 72px, Ruptura `#FF2D6F`, Dash 56px
+
+Detalle de valores en `AUDIT_STITCH_ND.md` §4.
+
 ## 8. Trampas conocidas
 
 - **No puedo ver imágenes** (el modelo no tiene visión): los `.png` de Stitch solo
