@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#080510">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Nippon Destruction — ND</title>
+<link rel="manifest" href="nd.webmanifest">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:none;user-select:none}
+html,body{width:100%;height:100%;overflow:hidden;background:#080510;font-family:system-ui,sans-serif}
+#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#c{display:block}
+#hud{position:fixed;top:0;left:0;right:0;padding:9px 13px;z-index:4;pointer-events:none;
+color:#F2DCC0;font:800 11px system-ui;display:none;justify-content:space-between;
+letter-spacing:1.5px;text-shadow:0 2px 9px rgba(0,0,0,.95)}
+#pad{position:fixed;inset:0;pointer-events:none;z-index:5;display:none}
+.btn{position:absolute;pointer-events:auto;display:flex;align-items:center;justify-content:center;
+width:80px;height:80px;border-radius:50%;font:900 22px system-ui;color:#F2DCC0;
+border:2px solid rgba(242,220,192,.34);
+background:radial-gradient(circle,rgba(18,10,22,.66),rgba(8,5,16,.44));
+backdrop-filter:blur(3px);box-shadow:0 4px 20px rgba(0,0,0,.55);transition:transform .05s}
+.btn.on{transform:scale(.9);background:radial-gradient(circle,rgba(242,220,192,.38),rgba(18,10,22,.6))}
+#l{left:14px;bottom:18px}#r{left:100px;bottom:18px}
+#a{right:116px;bottom:18px;font-size:11px;letter-spacing:2px}
+#d{right:14px;bottom:18px;font-size:11px;letter-spacing:2px}
+#ui{position:fixed;inset:0;z-index:6;display:flex;flex-direction:column;
+align-items:center;justify-content:flex-end;padding-bottom:9vh;background:transparent}
+#play{padding:14px 40px;border:none;border-radius:9px;cursor:pointer;pointer-events:auto;
+background:linear-gradient(180deg,#F2DCC0,#C9A886);color:#140A16;
+font:900 13px system-ui;letter-spacing:7px;box-shadow:0 6px 30px rgba(255,150,70,.35)}
+#play:active{transform:scale(.94)}
+#tips{margin-top:12px;color:rgba(242,220,192,.4);font:600 9px system-ui;letter-spacing:2.5px;text-align:center}
+#over{position:fixed;inset:0;z-index:7;display:none;flex-direction:column;align-items:center;
+justify-content:center;gap:14px;background:rgba(8,5,16,.9)}
+#ores{color:#F2DCC0;font:900 38px system-ui;letter-spacing:10px}
+#ost{color:rgba(242,220,192,.6);font:700 11px system-ui;letter-spacing:3px}
+#re{padding:13px 34px;border:none;border-radius:8px;cursor:pointer;
+background:linear-gradient(180deg,#F2DCC0,#C9A886);color:#140A16;
+font:900 12px system-ui;letter-spacing:6px}
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="c"></canvas></div>
+<div id="hud"><span id="hp"></span><span id="stat"></span></div>
+<div id="pad">
+<div class="btn" id="l">◀</div>
+<div class="btn" id="r">▶</div>
+<div class="btn" id="a">GOLPE</div>
+<div class="btn" id="d">DASH</div>
+</div>
+<div id="ui">
+<button id="play">ENTRAR</button>
+<div id="tips">◀ ▶ MOVER &nbsp;·&nbsp; GOLPE &nbsp;·&nbsp; DASH<br>SILUETAS NEGRAS · ATARDECER CON CONTRALUZ</div>
+</div>
+<div id="over">
+<div id="ores"></div>
+<div id="ost"></div>
+<button id="re">REINTENTAR</button>
+</div>
+<script src="nd.js"></script>
+</body>
+</html>
