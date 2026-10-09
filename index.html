@@ -9,111 +9,62 @@
 <title>Nippon Destruction (ND)</title>
 <style>
   :root {
-    --danger: #FF2D6F;
-    --warning: #FFC400;
-    --cyan: #00FFFF;
-    --rim: #F2DCC0;
-    --ink: #000000;
-    --bg-panel: rgba(10, 15, 30, 0.75);
+    --danger: #FF2D6F; --warning: #FFC400; --cyan: #00FFFF;
+    --rim: #F2DCC0; --ink: #000000; --bg-panel: rgba(10, 15, 30, 0.75);
   }
   * { box-sizing: border-box; user-select: none; -webkit-user-select: none; touch-action: none; margin: 0; padding: 0; }
   html, body {
-    width: 100dvw; height: 100dvh;
-    background: #000; overflow: hidden;
+    width: 100dvw; height: 100dvh; background: #000; overflow: hidden;
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     font-family: 'Arial Black', sans-serif;
   }
-  #game-container {
-    position: fixed; top: 0; left: 0;
-    width: 100dvw; height: 100dvh;
-    background: #000; overflow: hidden;
-  }
+  #game-container { position: fixed; top: 0; left: 0; width: 100dvw; height: 100dvh; background: #000; overflow: hidden; }
   canvas {
     display: block;
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     image-rendering: pixelated;
   }
-  .hud {
-    position: fixed; top: 0; left: 0;
-    width: 100dvw; height: 100dvh;
-    pointer-events: none;
-  }
+  .hud { position: fixed; top: 0; left: 0; width: 100dvw; height: 100dvh; pointer-events: none; }
   .btn-menu {
-    position: fixed; top: 10px; right: 10px;
-    pointer-events: auto;
-    background: var(--bg-panel);
-    border: 1.5px solid var(--danger);
-    border-radius: 6px;
-    color: var(--danger);
-    font-size: 11px; font-weight: bold;
-    padding: 5px 8px;
-    cursor: pointer;
-    box-shadow: 0 0 8px rgba(255, 45, 111, 0.4);
-    display: none;
-    letter-spacing: 0.5px;
-    z-index: 100;
+    position: fixed; top: 10px; right: 10px; pointer-events: auto;
+    background: var(--bg-panel); border: 1.5px solid var(--danger); border-radius: 6px;
+    color: var(--danger); font-size: 11px; font-weight: bold; padding: 5px 8px;
+    cursor: pointer; box-shadow: 0 0 8px rgba(255, 45, 111, 0.4); display: none; letter-spacing: 0.5px; z-index: 100;
   }
   .btn-menu:active { background: var(--danger); color: var(--ink); transform: scale(0.95); }
   .btn-menu.visible { display: block; }
   .joystick-zone {
-    position: fixed; bottom: 15px; left: 15px;
-    pointer-events: auto;
-    width: clamp(90px, 18vw, 110px);
-    height: clamp(45px, 9vw, 55px);
-    z-index: 50;
+    position: fixed; bottom: 15px; left: 15px; pointer-events: auto;
+    width: clamp(90px, 18vw, 110px); height: clamp(45px, 9vw, 55px); z-index: 50;
   }
   .joystick-base {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%; height: 100%;
-    border-radius: 25px;
-    background: rgba(10, 15, 30, 0.5);
-    border: 2px solid var(--cyan);
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 100%; height: 100%; border-radius: 25px;
+    background: rgba(10, 15, 30, 0.5); border: 2px solid var(--cyan);
     box-shadow: 0 0 12px var(--cyan), inset 0 0 8px rgba(0, 255, 255, 0.3);
   }
   .joystick-stick {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 38px; height: 38px;
-    border-radius: 50%;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 38px; height: 38px; border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, var(--cyan), #0088aa);
-    border: 1.5px solid var(--cyan);
-    box-shadow: 0 0 10px var(--cyan);
-    transition: transform 0.05s;
+    border: 1.5px solid var(--cyan); box-shadow: 0 0 10px var(--cyan); transition: transform 0.05s;
   }
   .joystick-label {
-    position: absolute; bottom: -14px; left: 50%;
-    transform: translateX(-50%);
-    color: var(--cyan);
-    font-size: 9px; font-weight: bold;
-    letter-spacing: 1px;
-    text-shadow: 0 0 4px var(--cyan);
+    position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
+    color: var(--cyan); font-size: 9px; font-weight: bold; letter-spacing: 1px; text-shadow: 0 0 4px var(--cyan);
   }
   .action-panel {
-    position: fixed; bottom: 15px; right: 15px;
-    pointer-events: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 6px;
-    width: clamp(110px, 22vw, 140px);
-    height: clamp(110px, 22vw, 140px);
+    position: fixed; bottom: 15px; right: 15px; pointer-events: auto;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr; gap: 6px;
+    width: clamp(110px, 22vw, 140px); height: clamp(110px, 22vw, 140px);
   }
   .btn-action {
-    width: clamp(32px, 7vw, 42px);
-    height: clamp(32px, 7vw, 42px);
-    background: var(--bg-panel);
-    border: 1.5px solid;
-    border-radius: 50%;
-    font-size: clamp(8px, 1.8vw, 11px);
-    font-weight: bold;
-    display: flex; justify-content: center; align-items: center;
-    cursor: pointer;
-    transition: all 0.1s;
-    justify-self: center; align-self: center;
-    letter-spacing: 0.3px;
-    box-shadow: 0 0 6px currentColor;
+    width: clamp(32px, 7vw, 42px); height: clamp(32px, 7vw, 42px);
+    background: var(--bg-panel); border: 1.5px solid; border-radius: 50%;
+    font-size: clamp(8px, 1.8vw, 11px); font-weight: bold;
+    display: flex; justify-content: center; align-items: center; cursor: pointer;
+    transition: all 0.1s; justify-self: center; align-self: center; letter-spacing: 0.3px; box-shadow: 0 0 6px currentColor;
   }
   .btn-action:active { transform: scale(0.92); }
   .btn-rupture { grid-column: 2; grid-row: 1; border-color: var(--cyan); color: var(--cyan); }
@@ -123,13 +74,9 @@
   .btn-skill { grid-column: 3; grid-row: 2; border-color: var(--rim); color: var(--rim); }
   .btn-skill:active { background: var(--rim); color: var(--ink); }
   .btn-attack {
-    grid-column: 2; grid-row: 3;
-    width: clamp(42px, 9vw, 55px);
-    height: clamp(42px, 9vw, 55px);
-    border-color: var(--danger); color: var(--danger);
-    font-size: clamp(10px, 2.2vw, 13px);
-    background: rgba(255, 45, 111, 0.2);
-    box-shadow: 0 0 12px var(--danger);
+    grid-column: 2; grid-row: 3; width: clamp(42px, 9vw, 55px); height: clamp(42px, 9vw, 55px);
+    border-color: var(--danger); color: var(--danger); font-size: clamp(10px, 2.2vw, 13px);
+    background: rgba(255, 45, 111, 0.2); box-shadow: 0 0 12px var(--danger);
   }
   .btn-attack:active { background: var(--danger); color: #fff; }
 </style>

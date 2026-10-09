@@ -25,11 +25,9 @@
     const aspectRatio = w / h;
     const baseAspect = CANVAS_W / CANVAS_H;
     if (aspectRatio > baseAspect) {
-      // Horizontal: expandir el ancho lógico para llenar la pantalla
       VIEW_H = CANVAS_H;
       VIEW_W = Math.round(CANVAS_H * aspectRatio);
     } else {
-      // Vertical: mantener 16:9 y encajar con letterbox (nada se recorta)
       VIEW_W = CANVAS_W;
       VIEW_H = CANVAS_H;
     }
@@ -40,7 +38,6 @@
     canvas.style.height = Math.round(VIEW_H * scale) + 'px';
     viewOffsetX = (VIEW_W - CANVAS_W) / 2;
   }
-
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('orientationchange', resizeCanvas);
   resizeCanvas();
@@ -58,10 +55,10 @@
   let spawnTimer = 0;
 
   const HERO_DATA = {
-    RIKA: { name: 'RIKA', kanji: '里花', title: 'LA HOJA', role: 'DPS', color: '#F2DCC0' },
-    GORO: { name: 'GORO', kanji: '五郎', title: 'EL YUNQUE', role: 'TANK', color: '#FFC400' },
-    REN: { name: 'REN', kanji: '蓮', title: 'EL RELÁMPAGO', role: 'SPEED', color: '#FFC400' },
-    YUI: { name: 'YUI', kanji: '結衣', title: 'EL ECO', role: 'CHRONO', color: '#F2DCC0' }
+    RIKA: { name: '月見 里花', kanji: '月見 里花', title: 'LA HOJA', role: 'DPS', color: '#F2DCC0' },
+    GORO: { name: '嵐 五郎', kanji: '嵐 五郎', title: 'EL YUNQUE', role: 'TANK', color: '#FFC400' },
+    REN: { name: '林 蓮', kanji: '林 蓮', title: 'EL RELÁMPAGO', role: 'SPEED', color: '#FFC400' },
+    YUI: { name: '中村 結衣', kanji: '中村 結衣', title: 'EL ECO', role: 'CHRONO', color: '#F2DCC0' }
   };
 
   let player = {
@@ -91,8 +88,7 @@
     if (Math.abs(joystickVectorX) < JOYSTICK_DEAD_ZONE / JOYSTICK_MAX_RADIUS) joystickVectorX = 0;
   }
   function resetJoystick() {
-    joystickActive = false;
-    joystickVectorX = 0;
+    joystickActive = false; joystickVectorX = 0;
     joystickStick.style.transform = 'translate(-50%, -50%)';
   }
   joystickZone.addEventListener('pointerdown', (e) => {
@@ -106,7 +102,7 @@
   joystickZone.addEventListener('pointerup', (e) => { e.preventDefault(); resetJoystick(); });
   joystickZone.addEventListener('pointercancel', () => { resetJoystick(); });
 
-  // === ENEMIGOS MEJORADOS ===
+  // === ENEMIGOS ===
   const enemies = [];
   function spawnEnemy() {
     enemies.push({
@@ -156,75 +152,41 @@
     ctx.scale(e.facing, 1);
     const t = e.animTimer;
     const legSwing = e.state === 'walk' ? Math.sin(t * 8) * 10 : 0;
-
-    // Sombra
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.beginPath();
-    ctx.ellipse(0, 2, 18, 6, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Piernas con armadura
     ctx.fillStyle = '#1a1a1a';
     ctx.strokeStyle = '#444';
     ctx.lineWidth = 1.5;
     ctx.beginPath(); ctx.moveTo(-5, -20); ctx.lineTo(-8 - legSwing * 0.5, 0); ctx.lineTo(-4 - legSwing * 0.5, 0); ctx.lineTo(-2, -20); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(5, -20); ctx.lineTo(8 + legSwing * 0.5, 0); ctx.lineTo(4 + legSwing * 0.5, 0); ctx.lineTo(2, -20); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Grebas (armadura de piernas)
     ctx.fillStyle = '#2a2a2a';
     ctx.fillRect(-9 - legSwing * 0.5, -8, 6, 8);
     ctx.fillRect(3 + legSwing * 0.5, -8, 6, 8);
-
-    // Torso con armadura samurái
     ctx.fillStyle = '#1a1a1a';
     ctx.beginPath(); ctx.moveTo(-12, -65); ctx.lineTo(12, -65); ctx.lineTo(10, -20); ctx.lineTo(-10, -20); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Peto (armadura del pecho)
     ctx.fillStyle = '#2a2a2a';
     ctx.fillRect(-10, -60, 20, 35);
-    ctx.strokeStyle = '#555';
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 1;
     ctx.strokeRect(-10, -60, 20, 35);
-
-    // Casco samurái
     ctx.fillStyle = '#1a1a1a';
     ctx.beginPath(); ctx.arc(0, -75, 10, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-    // Cuernos del casco
-    ctx.strokeStyle = '#666';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#666'; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(-8, -78); ctx.lineTo(-14, -85); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(8, -78); ctx.lineTo(14, -85); ctx.stroke();
-
-    // Visor del casco
     ctx.fillStyle = COLORS.danger;
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = COLORS.danger;
+    ctx.shadowBlur = 8; ctx.shadowColor = COLORS.danger;
     ctx.fillRect(-6, -76, 12, 3);
     ctx.shadowBlur = 0;
-
-    // Hombros con hombreras
     ctx.fillStyle = '#2a2a2a';
     ctx.beginPath(); ctx.arc(-12, -62, 6, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.arc(12, -62, 6, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-    // Brazos
     ctx.fillStyle = '#1a1a1a';
     ctx.beginPath(); ctx.moveTo(-10, -60); ctx.lineTo(-15, -40); ctx.lineTo(-12, -30); ctx.lineTo(-8, -40); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(10, -60); ctx.lineTo(15, -40); ctx.lineTo(12, -30); ctx.lineTo(8, -40); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Espadas (dos katanas)
-    ctx.strokeStyle = '#888';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#888'; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(-12, -30); ctx.lineTo(-12, -5); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(12, -30); ctx.lineTo(12, -5); ctx.stroke();
-
-    // Brillo de las espadas
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(-11, -28); ctx.lineTo(-11, -7); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(13, -28); ctx.lineTo(13, -7); ctx.stroke();
-
     ctx.restore();
   }
   function drawEnemies(ctx) { enemies.forEach(e => { if (e.type === 'DOBLE') drawDoble(ctx, e); }); }
@@ -240,7 +202,7 @@
     updateMenuButton();
   }
 
-  // === SILUETA DETALLADA DE RIKA (MEJORADA) ===
+  // === RIKA: Kimono blanco, pelo largo en cola, katana larga ===
   function drawRika(ctx, p) {
     const t = p.animTimer;
     const breathe = Math.sin(t * 2) * 0.5;
@@ -250,80 +212,176 @@
     const isAttacking = p.state === 'attack' || p.isRupturing;
 
     // Sombra
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.beginPath();
-    ctx.ellipse(0, 2, 15, 5, 0, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.beginPath(); ctx.ellipse(0, 2, 18, 6, 0, 0, Math.PI * 2); ctx.fill();
 
-    ctx.fillStyle = COLORS.ink;
+    // KIMONO BLANCO (cuerpo principal)
+    ctx.fillStyle = '#e8e8e8';
     ctx.strokeStyle = COLORS.rim;
     ctx.lineWidth = 1.5;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-
-    // Piernas con hakama (pantalón samurái)
-    ctx.beginPath(); ctx.moveTo(-6, -25); ctx.lineTo(-10 - legSwing * 0.5, -10); ctx.lineTo(-8 - legSwing * 0.5, 0); ctx.lineTo(-4 - legSwing * 0.5, 0); ctx.lineTo(-4, -10); ctx.lineTo(-2, -25); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(6, -25); ctx.lineTo(10 + legSwing * 0.5, -10); ctx.lineTo(8 + legSwing * 0.5, 0); ctx.lineTo(4 + legSwing * 0.5, 0); ctx.lineTo(4, -10); ctx.lineTo(2, -25); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Torso con haori (chaqueta samurái)
-    ctx.beginPath(); ctx.moveTo(-14, -70 + breathe); ctx.lineTo(14, -70 + breathe); ctx.lineTo(12, -50); ctx.lineTo(10, -25); ctx.lineTo(-10, -25); ctx.lineTo(-12, -50); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Cinturón obi
-    ctx.fillStyle = COLORS.rim;
-    ctx.fillRect(-11, -28, 22, 3);
-    ctx.fillStyle = COLORS.ink;
-
-    // Mangas del haori
-    ctx.beginPath(); ctx.moveTo(-12, -65 + breathe); ctx.lineTo(-16 - armSwing, -45); ctx.lineTo(-14 - armSwing, -30); ctx.lineTo(-10 - armSwing, -30); ctx.lineTo(-10, -45); ctx.lineTo(-8, -65 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Cabeza
-    ctx.beginPath(); ctx.arc(0, -78 + breathe, 9, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-    // Pelo largo en cola de caballo (más detallado)
     ctx.beginPath();
-    ctx.moveTo(-2, -82 + breathe);
-    ctx.quadraticCurveTo(-8, -85 + breathe, -12, -82 + breathe);
-    ctx.quadraticCurveTo(-15, -78 + breathe, -14, -72 + breathe);
-    ctx.quadraticCurveTo(-18, -65 + breathe, -22, -55 + breathe);
-    ctx.quadraticCurveTo(-26, -45 + breathe, -28, -35 + breathe);
-    ctx.quadraticCurveTo(-30, -25 + breathe, -26, -20 + breathe);
-    ctx.quadraticCurveTo(-22, -18 + breathe, -20, -22 + breathe);
-    ctx.quadraticCurveTo(-18, -30 + breathe, -16, -40 + breathe);
-    ctx.quadraticCurveTo(-14, -50 + breathe, -12, -60 + breathe);
-    ctx.quadraticCurveTo(-10, -68 + breathe, -6, -75 + breathe);
+    ctx.moveTo(-16, -70 + breathe);
+    ctx.lineTo(16, -70 + breathe);
+    ctx.lineTo(14, -45);
+    ctx.lineTo(18, -20);
+    ctx.lineTo(22, 0);
+    ctx.lineTo(-22, 0);
+    ctx.lineTo(-18, -20);
+    ctx.lineTo(-14, -45);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
 
-    // Brazo delantero con katana
-    const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.9 : 0.2;
-    ctx.save();
-    ctx.translate(12, -65 + breathe);
-    ctx.rotate(armAngle);
+    // Pliegues del kimono
+    ctx.strokeStyle = '#999';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(-8, -65 + breathe); ctx.lineTo(-10, 0); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, -65 + breathe); ctx.lineTo(0, 0); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(8, -65 + breathe); ctx.lineTo(10, 0); ctx.stroke();
 
-    // Manga
-    ctx.beginPath(); ctx.moveTo(-4, 0); ctx.lineTo(4, 0); ctx.lineTo(5, 18); ctx.lineTo(3, 22); ctx.lineTo(-3, 22); ctx.lineTo(-5, 18); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Katana mejorada
-    ctx.strokeStyle = COLORS.ink;
-    ctx.lineWidth = 2.5;
-    ctx.beginPath(); ctx.moveTo(0, 20); ctx.lineTo(0, 65); ctx.stroke();
-
-    // Tsuba (guarda)
-    ctx.fillStyle = COLORS.ink;
-    ctx.fillRect(-4, 18, 8, 3);
+    // CINTURÓN OBI (ancho, atado)
+    ctx.fillStyle = '#2a2a2a';
+    ctx.fillRect(-14, -28, 28, 6);
     ctx.strokeStyle = COLORS.rim;
     ctx.lineWidth = 1;
-    ctx.strokeRect(-4, 18, 8, 3);
+    ctx.strokeRect(-14, -28, 28, 6);
+    // Nudo del obi
+    ctx.fillStyle = '#1a1a1a';
+    ctx.beginPath();
+    ctx.moveTo(12, -28);
+    ctx.lineTo(18, -26);
+    ctx.lineTo(18, -22);
+    ctx.lineTo(12, -22);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
 
+    // MANGAS LARGAS del kimono
+    ctx.fillStyle = '#e8e8e8';
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
+    // Manga trasera
+    ctx.beginPath();
+    ctx.moveTo(-14, -65 + breathe);
+    ctx.lineTo(-20 - armSwing, -40);
+    ctx.lineTo(-18 - armSwing, -20);
+    ctx.lineTo(-12 - armSwing, -20);
+    ctx.lineTo(-10, -40);
+    ctx.lineTo(-8, -65 + breathe);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    // Manga delantera
+    ctx.beginPath();
+    ctx.moveTo(14, -65 + breathe);
+    ctx.lineTo(20 + armSwing, -40);
+    ctx.lineTo(18 + armSwing, -20);
+    ctx.lineTo(12 + armSwing, -20);
+    ctx.lineTo(10, -40);
+    ctx.lineTo(8, -65 + breathe);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // MANOS (negras, saliendo de las mangas)
+    ctx.fillStyle = COLORS.ink;
+    ctx.beginPath(); ctx.arc(-15 - armSwing, -18, 3, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(15 + armSwing, -18, 3, 0, Math.PI * 2); ctx.fill();
+
+    // CUELLO
+    ctx.fillStyle = '#e8e8e8';
+    ctx.fillRect(-4, -78 + breathe, 8, 8);
+    ctx.strokeRect(-4, -78 + breathe, 8, 8);
+
+    // CABEZA (silueta negra con rostro)
+    ctx.fillStyle = COLORS.ink;
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(0, -85 + breathe, 9, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+    // PELO LARGO EN COLA DE CABALLO (muy detallado)
+    ctx.fillStyle = COLORS.ink;
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1;
+    // Parte superior del pelo
+    ctx.beginPath();
+    ctx.moveTo(-9, -88 + breathe);
+    ctx.quadraticCurveTo(-12, -95 + breathe, -6, -95 + breathe);
+    ctx.quadraticCurveTo(0, -96 + breathe, 6, -95 + breathe);
+    ctx.quadraticCurveTo(12, -95 + breathe, 9, -88 + breathe);
+    ctx.quadraticCurveTo(6, -82 + breathe, 0, -82 + breathe);
+    ctx.quadraticCurveTo(-6, -82 + breathe, -9, -88 + breathe);
+    ctx.fill();
+    ctx.stroke();
+    // Cola de caballo larga y ondulada
+    ctx.beginPath();
+    ctx.moveTo(2, -92 + breathe);
+    ctx.quadraticCurveTo(15, -90 + breathe, 25, -80 + breathe);
+    ctx.quadraticCurveTo(35, -70 + breathe, 40, -55 + breathe);
+    ctx.quadraticCurveTo(42, -40 + breathe, 38, -25 + breathe);
+    ctx.quadraticCurveTo(35, -15 + breathe, 30, -10 + breathe);
+    ctx.quadraticCurveTo(25, -8 + breathe, 22, -12 + breathe);
+    ctx.quadraticCurveTo(28, -20 + breathe, 30, -35 + breathe);
+    ctx.quadraticCurveTo(32, -50 + breathe, 25, -65 + breathe);
+    ctx.quadraticCurveTo(18, -78 + breathe, 5, -88 + breathe);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    // Mechones sueltos
+    ctx.beginPath();
+    ctx.moveTo(-8, -88 + breathe);
+    ctx.quadraticCurveTo(-15, -80 + breathe, -20, -70 + breathe);
+    ctx.quadraticCurveTo(-22, -60 + breathe, -18, -55 + breathe);
+    ctx.quadraticCurveTo(-14, -60 + breathe, -12, -70 + breathe);
+    ctx.quadraticCurveTo(-10, -80 + breathe, -6, -88 + breathe);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // KATANA LARGA (sostenida en la mano delantera)
+    const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.9 : 0.3;
+    ctx.save();
+    ctx.translate(15 + armSwing, -18);
+    ctx.rotate(armAngle);
+
+    // Hoja de la katana (larga y curva)
+    ctx.strokeStyle = COLORS.ink;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.quadraticCurveTo(2, 40, 0, 80);
+    ctx.stroke();
     // Brillo del filo
     ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 0.8;
-    ctx.beginPath(); ctx.moveTo(1, 22); ctx.lineTo(1, 63); ctx.stroke();
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(1, 2);
+    ctx.quadraticCurveTo(3, 40, 1, 78);
+    ctx.stroke();
+    // Tsuba (guarda)
+    ctx.fillStyle = COLORS.ink;
+    ctx.fillRect(-5, -3, 10, 4);
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(-5, -3, 10, 4);
+    // Tsuka (mango)
+    ctx.fillStyle = '#2a2a2a';
+    ctx.fillRect(-3, -15, 6, 12);
+    ctx.strokeStyle = COLORS.rim;
+    ctx.strokeRect(-3, -15, 6, 12);
+    // Cordones del mango
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i < 4; i++) {
+      ctx.beginPath();
+      ctx.moveTo(-3, -14 + i * 3);
+      ctx.lineTo(3, -12 + i * 3);
+      ctx.stroke();
+    }
 
     ctx.restore();
 
-    // Efecto de tajo mejorado
+    // Efecto de tajo
     if (isAttacking && attackProgress < 1) {
       const prog = p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress;
       ctx.strokeStyle = p.isRupturing ? COLORS.white : COLORS.danger;
@@ -331,13 +389,15 @@
       ctx.globalAlpha = 1 - prog;
       ctx.shadowBlur = p.isRupturing ? 25 : 15;
       ctx.shadowColor = p.isRupturing ? COLORS.warning : COLORS.danger;
-      ctx.beginPath(); ctx.arc(0, -40, p.isRupturing ? 100 : 50, -Math.PI / 3, Math.PI / 3 + prog * Math.PI); ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, -40, p.isRupturing ? 100 : 60, -Math.PI / 3, Math.PI / 3 + prog * Math.PI);
+      ctx.stroke();
       ctx.globalAlpha = 1;
       ctx.shadowBlur = 0;
     }
   }
 
-  // === SILUETA DETALLADA DE GORO (MEJORADA) ===
+  // === GORO: Musculoso, maza sobre hombro, escudo redondo ===
   function drawGoro(ctx, p) {
     const t = p.animTimer;
     const breathe = Math.sin(t * 2) * 0.5;
@@ -346,61 +406,124 @@
     const attackProgress = p.state === 'attack' ? Math.min(1, t / 0.18) : 0;
     const isAttacking = p.state === 'attack' || p.isRupturing;
 
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.beginPath();
-    ctx.ellipse(0, 2, 20, 7, 0, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.beginPath(); ctx.ellipse(0, 2, 22, 7, 0, 0, Math.PI * 2); ctx.fill();
 
-    ctx.fillStyle = COLORS.ink;
+    // PIERNAS MUSCULOSAS
+    ctx.fillStyle = '#1a1a1a';
     ctx.strokeStyle = COLORS.rim;
     ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(-12, -25); ctx.lineTo(-16 - legSwing * 0.5, -10); ctx.lineTo(-14 - legSwing * 0.5, 0); ctx.lineTo(-6 - legSwing * 0.5, 0); ctx.lineTo(-6, -10); ctx.lineTo(-4, -25); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(12, -25); ctx.lineTo(16 + legSwing * 0.5, -10); ctx.lineTo(14 + legSwing * 0.5, 0); ctx.lineTo(6 + legSwing * 0.5, 0); ctx.lineTo(6, -10); ctx.lineTo(4, -25); ctx.closePath(); ctx.fill(); ctx.stroke();
 
-    // Piernas musculosas
-    ctx.beginPath(); ctx.moveTo(-10, -25); ctx.lineTo(-14 - legSwing * 0.5, -10); ctx.lineTo(-12 - legSwing * 0.5, 0); ctx.lineTo(-6 - legSwing * 0.5, 0); ctx.lineTo(-6, -10); ctx.lineTo(-4, -25); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(10, -25); ctx.lineTo(14 + legSwing * 0.5, -10); ctx.lineTo(12 + legSwing * 0.5, 0); ctx.lineTo(6 + legSwing * 0.5, 0); ctx.lineTo(6, -10); ctx.lineTo(4, -25); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // TORSO MUSCULOSO (ancho)
+    ctx.fillStyle = '#1a1a1a';
+    ctx.beginPath();
+    ctx.moveTo(-26, -70 + breathe);
+    ctx.lineTo(26, -70 + breathe);
+    ctx.lineTo(24, -50);
+    ctx.lineTo(22, -25);
+    ctx.lineTo(-22, -25);
+    ctx.lineTo(-24, -50);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
 
-    // Torso musculoso
-    ctx.beginPath(); ctx.moveTo(-22, -65 + breathe); ctx.lineTo(22, -65 + breathe); ctx.lineTo(20, -45); ctx.lineTo(18, -25); ctx.lineTo(-18, -25); ctx.lineTo(-20, -45); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Pectorales
+    // Pectorales marcados
     ctx.strokeStyle = COLORS.rim;
     ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, -60 + breathe); ctx.lineTo(0, -40); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, -65 + breathe); ctx.lineTo(0, -40); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-12, -55 + breathe); ctx.quadraticCurveTo(-8, -50 + breathe, -12, -45); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(12, -55 + breathe); ctx.quadraticCurveTo(8, -50 + breathe, 12, -45); ctx.stroke();
 
-    // Brazos musculosos
-    ctx.beginPath(); ctx.moveTo(-20, -60 + breathe); ctx.lineTo(-26 - armSwing, -40); ctx.lineTo(-22 - armSwing, -25); ctx.lineTo(-16 - armSwing, -25); ctx.lineTo(-16, -40); ctx.lineTo(-14, -60 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // ABDOMEN (6-pack simplificado)
+    ctx.strokeStyle = '#444';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 3; i++) {
+      ctx.beginPath(); ctx.moveTo(-8, -35 + i * 4); ctx.lineTo(8, -35 + i * 4); ctx.stroke();
+    }
+    ctx.beginPath(); ctx.moveTo(0, -38); ctx.lineTo(0, -25); ctx.stroke();
 
-    // Cabeza calva
-    ctx.beginPath(); ctx.arc(0, -75 + breathe, 11, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-    // Brazo delantero con maza
-    const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.8 : 0.3;
-    ctx.save();
-    ctx.translate(20, -60 + breathe);
-    ctx.rotate(armAngle);
-
-    ctx.beginPath(); ctx.moveTo(-6, 0); ctx.lineTo(6, 0); ctx.lineTo(7, 20); ctx.lineTo(4, 24); ctx.lineTo(-4, 24); ctx.lineTo(-7, 20); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Maza mejorada
-    ctx.strokeStyle = COLORS.ink;
-    ctx.lineWidth = 5;
-    ctx.beginPath(); ctx.moveTo(0, 22); ctx.lineTo(0, 40); ctx.stroke();
-
-    // Cabeza de la maza
-    ctx.fillStyle = COLORS.ink;
-    ctx.fillRect(-12, 38, 24, 16);
+    // BRAZO TRASERO (musculoso)
+    ctx.fillStyle = '#1a1a1a';
     ctx.strokeStyle = COLORS.rim;
     ctx.lineWidth = 1.5;
-    ctx.strokeRect(-12, 38, 24, 16);
+    ctx.beginPath();
+    ctx.moveTo(-24, -65 + breathe);
+    ctx.lineTo(-30 - armSwing, -45);
+    ctx.lineTo(-26 - armSwing, -25);
+    ctx.lineTo(-18 - armSwing, -25);
+    ctx.lineTo(-18, -45);
+    ctx.lineTo(-18, -65 + breathe);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // CABEZA (calva, robusta)
+    ctx.fillStyle = COLORS.ink;
+    ctx.beginPath(); ctx.arc(0, -80 + breathe, 12, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    // Mandíbula cuadrada
+    ctx.fillRect(-8, -75 + breathe, 16, 5);
+
+    // BRAZO DELANTERO (sosteniendo maza sobre el hombro)
+    const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.7 : -0.4;
+    ctx.save();
+    ctx.translate(24, -65 + breathe);
+    ctx.rotate(armAngle);
+
+    // Bíceps y antebrazo
+    ctx.fillStyle = '#1a1a1a';
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(-8, 0);
+    ctx.lineTo(8, 0);
+    ctx.lineTo(10, 25);
+    ctx.lineTo(6, 28);
+    ctx.lineTo(-6, 28);
+    ctx.lineTo(-10, 25);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // MAZA SOBRE EL HOMBRO (mango largo + cabeza grande)
+    ctx.strokeStyle = '#4a4a4a';
+    ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(0, 20); ctx.lineTo(0, 55); ctx.stroke();
+    // Cabeza de la maza (grande y cuadrada)
+    ctx.fillStyle = '#2a2a2a';
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
+    ctx.fillRect(-14, 50, 28, 18);
+    ctx.strokeRect(-14, 50, 28, 18);
+    // Remaches
+    ctx.fillStyle = '#666';
+    ctx.beginPath(); ctx.arc(-10, 54, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(10, 54, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(-10, 64, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(10, 64, 2, 0, Math.PI * 2); ctx.fill();
 
     ctx.restore();
 
-    // Escudo a la espalda
-    ctx.fillStyle = COLORS.ink;
+    // ESCUDO REDONDO GRANDE (a la espalda/lado)
+    ctx.fillStyle = '#2a2a2a';
     ctx.strokeStyle = COLORS.rim;
     ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.arc(-22, -45, 18, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    ctx.beginPath(); ctx.arc(-22, -45, 8, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(-26, -45, 22, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    // Centro del escudo (umbo)
+    ctx.fillStyle = '#4a4a4a';
+    ctx.beginPath(); ctx.arc(-26, -45, 8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    // Remaches del escudo
+    ctx.fillStyle = '#666';
+    for (let i = 0; i < 8; i++) {
+      const angle = (i / 8) * Math.PI * 2;
+      const rx = -26 + Math.cos(angle) * 16;
+      const ry = -45 + Math.sin(angle) * 16;
+      ctx.beginPath(); ctx.arc(rx, ry, 2, 0, Math.PI * 2); ctx.fill();
+    }
 
     // Efecto de impacto
     if (isAttacking && attackProgress < 1) {
@@ -416,7 +539,7 @@
     }
   }
 
-  // === SILUETA DETALLADA DE REN (MEJORADA) ===
+  // === REN: Pelo puntiagudo, vendas, dos dagas, rayos eléctricos ===
   function drawRen(ctx, p) {
     const t = p.animTimer;
     const breathe = Math.sin(t * 2) * 0.5;
@@ -425,82 +548,167 @@
     const attackProgress = p.state === 'attack' ? Math.min(1, t / 0.18) : 0;
     const isAttacking = p.state === 'attack' || p.isRupturing;
 
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.beginPath(); ctx.ellipse(0, 2, 14, 5, 0, 0, Math.PI * 2); ctx.fill();
+
+    // PIERNAS CON VENDAS
+    ctx.fillStyle = '#1a1a1a';
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(-6, -22); ctx.lineTo(-9 - legSwing * 0.5, -10); ctx.lineTo(-7 - legSwing * 0.5, 0); ctx.lineTo(-3 - legSwing * 0.5, 0); ctx.lineTo(-3, -10); ctx.lineTo(-2, -22); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(6, -22); ctx.lineTo(9 + legSwing * 0.5, -10); ctx.lineTo(7 + legSwing * 0.5, 0); ctx.lineTo(3 + legSwing * 0.5, 0); ctx.lineTo(3, -10); ctx.lineTo(2, -22); ctx.closePath(); ctx.fill(); ctx.stroke();
+
+    // VENDAS en piernas
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 4; i++) {
+      ctx.beginPath(); ctx.moveTo(-7, -18 + i * 4); ctx.lineTo(-4, -17 + i * 4); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(4, -18 + i * 4); ctx.lineTo(7, -17 + i * 4); ctx.stroke();
+    }
+
+    // TORSO (delgado, con chaqueta abierta)
+    ctx.fillStyle = '#1a1a1a';
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.ellipse(0, 2, 12, 4, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = COLORS.ink;
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-
-    // Piernas con vendas
-    ctx.beginPath(); ctx.moveTo(-5, -22); ctx.lineTo(-8 - legSwing * 0.5, -10); ctx.lineTo(-6 - legSwing * 0.5, 0); ctx.lineTo(-3 - legSwing * 0.5, 0); ctx.lineTo(-3, -10); ctx.lineTo(-2, -22); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 0.8;
-    for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(-5, -20 + i * 6); ctx.lineTo(-7, -18 + i * 6); ctx.stroke(); }
-
-    ctx.fillStyle = COLORS.ink;
-    ctx.beginPath(); ctx.moveTo(5, -22); ctx.lineTo(8 + legSwing * 0.5, -10); ctx.lineTo(6 + legSwing * 0.5, 0); ctx.lineTo(3 + legSwing * 0.5, 0); ctx.lineTo(3, -10); ctx.lineTo(2, -22); ctx.closePath(); ctx.fill();
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // Torso con chaqueta
-    ctx.fillStyle = COLORS.ink;
-    ctx.beginPath(); ctx.moveTo(-11, -65 + breathe); ctx.lineTo(11, -65 + breathe); ctx.lineTo(10, -45); ctx.lineTo(9, -22); ctx.lineTo(-9, -22); ctx.lineTo(-10, -45); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Brazos con vendas
-    ctx.beginPath(); ctx.moveTo(-9, -60 + breathe); ctx.lineTo(-13 - armSwing, -42); ctx.lineTo(-11 - armSwing, -28); ctx.lineTo(-7 - armSwing, -28); ctx.lineTo(-7, -42); ctx.lineTo(-5, -60 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 0.8;
-    for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(-10, -55 + breathe + i * 8); ctx.lineTo(-12, -53 + breathe + i * 8); ctx.stroke(); }
-
-    // Cabeza
-    ctx.fillStyle = COLORS.ink;
-    ctx.beginPath(); ctx.arc(0, -75 + breathe, 8, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // Pelo puntiagudo
-    ctx.beginPath();
-    ctx.moveTo(-7, -78 + breathe);
-    ctx.lineTo(-10, -85 + breathe);
-    ctx.lineTo(-6, -82 + breathe);
-    ctx.lineTo(-3, -88 + breathe);
-    ctx.lineTo(0, -84 + breathe);
-    ctx.lineTo(3, -89 + breathe);
-    ctx.lineTo(6, -83 + breathe);
-    ctx.lineTo(9, -86 + breathe);
-    ctx.lineTo(7, -78 + breathe);
+    ctx.moveTo(-13, -68 + breathe);
+    ctx.lineTo(13, -68 + breathe);
+    ctx.lineTo(12, -45);
+    ctx.lineTo(10, -22);
+    ctx.lineTo(-10, -22);
+    ctx.lineTo(-12, -45);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
 
-    // Brazo delantero con daga
-    const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.9 : 0.3;
-    ctx.save();
-    ctx.translate(9, -60 + breathe);
-    ctx.rotate(armAngle);
+    // Chaqueta abierta (líneas laterales)
+    ctx.strokeStyle = '#444';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(-10, -65 + breathe); ctx.lineTo(-8, -22); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(10, -65 + breathe); ctx.lineTo(8, -22); ctx.stroke();
 
-    ctx.fillStyle = COLORS.ink;
-    ctx.beginPath(); ctx.moveTo(-3, 0); ctx.lineTo(3, 0); ctx.lineTo(4, 16); ctx.lineTo(2, 19); ctx.lineTo(-2, 19); ctx.lineTo(-4, 16); ctx.closePath(); ctx.fill();
+    // BRAZO TRASERO con vendas
+    ctx.fillStyle = '#1a1a1a';
     ctx.strokeStyle = COLORS.rim;
     ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(-11, -63 + breathe);
+    ctx.lineTo(-15 - armSwing, -42);
+    ctx.lineTo(-13 - armSwing, -25);
+    ctx.lineTo(-9 - armSwing, -25);
+    ctx.lineTo(-9, -42);
+    ctx.lineTo(-7, -63 + breathe);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    // Vendas en brazo
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 0.8;
+    for (let i = 0; i < 3; i++) {
+      ctx.beginPath(); ctx.moveTo(-12, -55 + breathe + i * 6); ctx.lineTo(-10, -54 + breathe + i * 6); ctx.stroke();
+    }
+
+    // CABEZA
+    ctx.fillStyle = COLORS.ink;
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(0, -78 + breathe, 9, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+    // PELO PUNTIAGUDO (muy detallado, estilo anime)
+    ctx.fillStyle = COLORS.ink;
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(-10, -80 + breathe);
+    ctx.lineTo(-14, -92 + breathe);
+    ctx.lineTo(-8, -86 + breathe);
+    ctx.lineTo(-6, -96 + breathe);
+    ctx.lineTo(-2, -88 + breathe);
+    ctx.lineTo(0, -98 + breathe);
+    ctx.lineTo(3, -88 + breathe);
+    ctx.lineTo(6, -96 + breathe);
+    ctx.lineTo(8, -86 + breathe);
+    ctx.lineTo(14, -92 + breathe);
+    ctx.lineTo(10, -80 + breathe);
+    ctx.quadraticCurveTo(6, -75 + breathe, 0, -75 + breathe);
+    ctx.quadraticCurveTo(-6, -75 + breathe, -10, -80 + breathe);
+    ctx.closePath();
+    ctx.fill();
     ctx.stroke();
 
-    // Daga
+    // BRAZO DELANTERO con daga
+    const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.9 : 0.4;
+    ctx.save();
+    ctx.translate(11, -63 + breathe);
+    ctx.rotate(armAngle);
+
+    ctx.fillStyle = '#1a1a1a';
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(-4, 0);
+    ctx.lineTo(4, 0);
+    ctx.lineTo(5, 18);
+    ctx.lineTo(3, 21);
+    ctx.lineTo(-3, 21);
+    ctx.lineTo(-5, 18);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // Vendas en antebrazo
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 0.8;
+    for (let i = 0; i < 3; i++) {
+      ctx.beginPath(); ctx.moveTo(-4, 5 + i * 5); ctx.lineTo(4, 6 + i * 5); ctx.stroke();
+    }
+
+    // DAGA (corta y afilada)
     ctx.strokeStyle = COLORS.ink;
     ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(0, 17); ctx.lineTo(0, 28); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, 19); ctx.lineTo(0, 32); ctx.stroke();
     ctx.strokeStyle = COLORS.warning;
     ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(1, 18); ctx.lineTo(1, 27); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(1, 20); ctx.lineTo(1, 31); ctx.stroke();
+    // Guarda de la daga
+    ctx.fillStyle = '#444';
+    ctx.fillRect(-3, 17, 6, 3);
 
     ctx.restore();
 
-    // Efecto de arcos dorados
+    // SEGUNDA DAGA (en la otra mano, visible en reposo)
+    if (!isAttacking) {
+      ctx.save();
+      ctx.translate(-13 - armSwing, -23);
+      ctx.rotate(-0.3);
+      ctx.strokeStyle = COLORS.ink;
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, 12); ctx.stroke();
+      ctx.strokeStyle = COLORS.warning;
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(1, 1); ctx.lineTo(1, 11); ctx.stroke();
+      ctx.restore();
+    }
+
+    // RAYOS ELÉCTRICOS alrededor del cuerpo (efecto permanente)
+    ctx.strokeStyle = COLORS.warning;
+    ctx.lineWidth = 1.5;
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = COLORS.warning;
+    ctx.globalAlpha = 0.6 + Math.sin(t * 10) * 0.3;
+    for (let i = 0; i < 6; i++) {
+      const angle = (i / 6) * Math.PI * 2 + t * 2;
+      const r1 = 20 + Math.sin(t * 5 + i) * 5;
+      const r2 = 35 + Math.cos(t * 7 + i) * 8;
+      ctx.beginPath();
+      ctx.moveTo(Math.cos(angle) * r1, -40 + Math.sin(angle) * r1);
+      ctx.lineTo(Math.cos(angle + 0.2) * r2, -40 + Math.sin(angle + 0.2) * r2);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
+
+    // Efecto de ataque (arcos dorados)
     if (isAttacking && attackProgress < 1) {
       const prog = p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress;
       ctx.strokeStyle = COLORS.warning;
@@ -515,7 +723,7 @@
     }
   }
 
-  // === SILUETA DETALLADA DE YUI (MEJORADA) ===
+  // === YUI: Pelo corto, rifle de asalto detallado, pose táctica ===
   function drawYui(ctx, p) {
     const t = p.animTimer;
     const breathe = Math.sin(t * 2) * 0.5;
@@ -524,75 +732,151 @@
     const attackProgress = p.state === 'attack' ? Math.min(1, t / 0.18) : 0;
     const isAttacking = p.state === 'attack' || p.isRupturing;
 
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.beginPath();
-    ctx.ellipse(0, 2, 13, 5, 0, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.beginPath(); ctx.ellipse(0, 2, 14, 5, 0, 0, Math.PI * 2); ctx.fill();
 
-    ctx.fillStyle = COLORS.ink;
+    // PIERNAS (pantalón táctico)
+    ctx.fillStyle = '#1a1a1a';
     ctx.strokeStyle = COLORS.rim;
     ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(-6, -24); ctx.lineTo(-9 - legSwing * 0.5, -10); ctx.lineTo(-7 - legSwing * 0.5, 0); ctx.lineTo(-3 - legSwing * 0.5, 0); ctx.lineTo(-3, -10); ctx.lineTo(-2, -24); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(6, -24); ctx.lineTo(9 + legSwing * 0.5, -10); ctx.lineTo(7 + legSwing * 0.5, 0); ctx.lineTo(3 + legSwing * 0.5, 0); ctx.lineTo(3, -10); ctx.lineTo(2, -24); ctx.closePath(); ctx.fill(); ctx.stroke();
 
-    // Piernas
-    ctx.beginPath(); ctx.moveTo(-5, -24); ctx.lineTo(-8 - legSwing * 0.5, -10); ctx.lineTo(-6 - legSwing * 0.5, 0); ctx.lineTo(-3 - legSwing * 0.5, 0); ctx.lineTo(-3, -10); ctx.lineTo(-2, -24); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(5, -24); ctx.lineTo(8 + legSwing * 0.5, -10); ctx.lineTo(6 + legSwing * 0.5, 0); ctx.lineTo(3 + legSwing * 0.5, 0); ctx.lineTo(3, -10); ctx.lineTo(2, -24); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Bolsillos tácticos
+    ctx.fillStyle = '#2a2a2a';
+    ctx.fillRect(-8 - legSwing * 0.5, -15, 5, 6);
+    ctx.fillRect(3 + legSwing * 0.5, -15, 5, 6);
 
-    // Torso con ropa táctica
-    ctx.beginPath(); ctx.moveTo(-12, -68 + breathe); ctx.lineTo(12, -68 + breathe); ctx.lineTo(11, -48); ctx.lineTo(10, -24); ctx.lineTo(-10, -24); ctx.lineTo(-11, -48); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Brazos
-    ctx.beginPath(); ctx.moveTo(-10, -63 + breathe); ctx.lineTo(-14 - armSwing, -45); ctx.lineTo(-12 - armSwing, -30); ctx.lineTo(-8 - armSwing, -30); ctx.lineTo(-8, -45); ctx.lineTo(-6, -63 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Cabeza
-    ctx.beginPath(); ctx.arc(0, -76 + breathe, 8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-    // Pelo corto
+    // TORSO (ropa táctica ajustada)
+    ctx.fillStyle = '#1a1a1a';
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.moveTo(-7, -79 + breathe);
-    ctx.quadraticCurveTo(-9, -83 + breathe, -5, -84 + breathe);
-    ctx.quadraticCurveTo(0, -85 + breathe, 5, -84 + breathe);
-    ctx.quadraticCurveTo(9, -83 + breathe, 7, -79 + breathe);
-    ctx.quadraticCurveTo(8, -74 + breathe, 6, -72 + breathe);
-    ctx.lineTo(-6, -72 + breathe);
-    ctx.quadraticCurveTo(-8, -74 + breathe, -7, -79 + breathe);
+    ctx.moveTo(-13, -70 + breathe);
+    ctx.lineTo(13, -70 + breathe);
+    ctx.lineTo(12, -50);
+    ctx.lineTo(11, -24);
+    ctx.lineTo(-11, -24);
+    ctx.lineTo(-12, -50);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
 
-    // Brazo delantero con rifle
-    const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.7 : 0.2;
+    // Chaleco táctico
+    ctx.fillStyle = '#2a2a2a';
+    ctx.fillRect(-10, -65 + breathe, 20, 25);
+    ctx.strokeStyle = '#444';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(-10, -65 + breathe, 20, 25);
+    // Bolsillos del chaleco
+    ctx.fillRect(-8, -60 + breathe, 6, 8);
+    ctx.fillRect(2, -60 + breathe, 6, 8);
+    ctx.strokeRect(-8, -60 + breathe, 6, 8);
+    ctx.strokeRect(2, -60 + breathe, 6, 8);
+
+    // BRAZO TRASERO
+    ctx.fillStyle = '#1a1a1a';
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(-11, -65 + breathe);
+    ctx.lineTo(-15 - armSwing, -45);
+    ctx.lineTo(-13 - armSwing, -28);
+    ctx.lineTo(-9 - armSwing, -28);
+    ctx.lineTo(-9, -45);
+    ctx.lineTo(-7, -65 + breathe);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // CABEZA
+    ctx.fillStyle = COLORS.ink;
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(0, -78 + breathe, 9, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+    // PELO CORTO (bob cut, estilo táctico)
+    ctx.fillStyle = COLORS.ink;
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(-10, -80 + breathe);
+    ctx.quadraticCurveTo(-12, -88 + breathe, -6, -90 + breathe);
+    ctx.quadraticCurveTo(0, -91 + breathe, 6, -90 + breathe);
+    ctx.quadraticCurveTo(12, -88 + breathe, 10, -80 + breathe);
+    ctx.quadraticCurveTo(11, -74 + breathe, 8, -72 + breathe);
+    ctx.lineTo(-8, -72 + breathe);
+    ctx.quadraticCurveTo(-11, -74 + breathe, -10, -80 + breathe);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    // Flequillo
+    ctx.beginPath();
+    ctx.moveTo(-8, -82 + breathe);
+    ctx.lineTo(-4, -78 + breathe);
+    ctx.lineTo(0, -80 + breathe);
+    ctx.lineTo(4, -78 + breathe);
+    ctx.lineTo(8, -82 + breathe);
+    ctx.lineTo(6, -86 + breathe);
+    ctx.lineTo(0, -87 + breathe);
+    ctx.lineTo(-6, -86 + breathe);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // BRAZO DELANTERO sosteniendo rifle
+    const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.6 : 0.2;
     ctx.save();
-    ctx.translate(10, -63 + breathe);
+    ctx.translate(11, -65 + breathe);
     ctx.rotate(armAngle);
 
-    ctx.beginPath(); ctx.moveTo(-4, 0); ctx.lineTo(4, 0); ctx.lineTo(5, 18); ctx.lineTo(3, 21); ctx.lineTo(-3, 21); ctx.lineTo(-5, 18); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#1a1a1a';
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(-5, 0);
+    ctx.lineTo(5, 0);
+    ctx.lineTo(6, 20);
+    ctx.lineTo(4, 23);
+    ctx.lineTo(-4, 23);
+    ctx.lineTo(-6, 20);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
 
-    // Rifle detallado
-    ctx.strokeStyle = COLORS.ink;
-    ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(-2, 19); ctx.lineTo(-2, 50); ctx.stroke();
-
+    // RIFLE DE ASALTO DETALLADO
+    // Culata
+    ctx.fillStyle = '#2a2a2a';
+    ctx.fillRect(-6, 18, 12, 8);
+    ctx.strokeStyle = COLORS.rim;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(-6, 18, 12, 8);
     // Cuerpo del rifle
-    ctx.fillStyle = COLORS.ink;
-    ctx.fillRect(-4, 17, 8, 6);
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1;
-    ctx.strokeRect(-4, 17, 8, 6);
-
-    // Mira telescópica
-    ctx.fillStyle = COLORS.ink;
-    ctx.fillRect(-2, 14, 4, 4);
-    ctx.strokeRect(-2, 14, 4, 4);
-
+    ctx.fillStyle = '#1a1a1a';
+    ctx.fillRect(-4, 26, 8, 20);
+    ctx.strokeRect(-4, 26, 8, 20);
+    // Cargador
+    ctx.fillStyle = '#2a2a2a';
+    ctx.fillRect(-3, 46, 6, 10);
+    ctx.strokeRect(-3, 46, 6, 10);
     // Cañón
-    ctx.strokeStyle = COLORS.ink;
-    ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(-1, 48); ctx.lineTo(-1, 55); ctx.stroke();
-
-    // Trazador
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, 20); ctx.lineTo(0, 48); ctx.stroke();
+    ctx.fillStyle = '#1a1a1a';
+    ctx.fillRect(-2, 26, 4, 35);
+    ctx.strokeRect(-2, 26, 4, 35);
+    // Mira telescópica
+    ctx.fillStyle = '#2a2a2a';
+    ctx.fillRect(-3, 22, 6, 5);
+    ctx.strokeRect(-3, 22, 6, 5);
+    // Lente de la mira
+    ctx.fillStyle = COLORS.rim;
+    ctx.beginPath(); ctx.arc(0, 24, 2, 0, Math.PI * 2); ctx.fill();
+    // Guardamano
+    ctx.fillStyle = '#2a2a2a';
+    ctx.fillRect(-3, 30, 6, 12);
+    ctx.strokeRect(-3, 30, 6, 12);
+    // Bocacha apagallamas
+    ctx.fillStyle = '#444';
+    ctx.fillRect(-2, 58, 4, 4);
 
     ctx.restore();
 
@@ -855,95 +1139,57 @@
     if (flashAlpha > 0) { ctx.fillStyle = `rgba(255, 255, 255, ${flashAlpha})`; ctx.fillRect(0, 0, VIEW_W, VIEW_H); }
   }
 
-  // === FONDO MEJORADO (PRIMER NIVEL: VESTÍBULO) ===
+  // === FONDO ===
   function drawVectorBackground(ctx, scrollX, time) {
-    // Cielo degradado de 4 tonos
     const grad = ctx.createLinearGradient(0, 0, 0, VIEW_H);
-    grad.addColorStop(0, COLORS.skyTop);
-    grad.addColorStop(0.33, COLORS.skyMid);
-    grad.addColorStop(0.66, COLORS.skyBot);
-    grad.addColorStop(1, COLORS.skyHor);
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, VIEW_W, VIEW_H);
-
-    // Sol con glow intenso
-    ctx.save();
-    ctx.shadowBlur = 80;
-    ctx.shadowColor = COLORS.skyHor;
-    ctx.fillStyle = COLORS.warning;
-    ctx.beginPath();
-    ctx.arc(VIEW_W / 2, GROUND_Y - 60, 60, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-
-    // Capa lejana de edificios (parallax lento)
+    grad.addColorStop(0, COLORS.skyTop); grad.addColorStop(0.33, COLORS.skyMid); grad.addColorStop(0.66, COLORS.skyBot); grad.addColorStop(1, COLORS.skyHor);
+    ctx.fillStyle = grad; ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+    ctx.save(); ctx.shadowBlur = 80; ctx.shadowColor = COLORS.skyHor; ctx.fillStyle = COLORS.warning;
+    ctx.beginPath(); ctx.arc(VIEW_W / 2, GROUND_Y - 60, 60, 0, Math.PI * 2); ctx.fill(); ctx.restore();
     ctx.fillStyle = '#0a0a0a';
     const offset1 = (scrollX * 0.10) % 200;
     for (let i = -1; i < 7; i++) {
       const x = i * 200 - offset1;
-      // Edificio principal
       ctx.fillRect(x, GROUND_Y - 140, 160, 140);
-      // Torre
       ctx.fillRect(x + 60, GROUND_Y - 180, 40, 40);
-      // Ventanas iluminadas
       ctx.fillStyle = 'rgba(255, 200, 100, 0.3)';
       for (let wy = 0; wy < 5; wy++) {
         for (let wx = 0; wx < 4; wx++) {
-          if (Math.random() > 0.3) {
-            ctx.fillRect(x + 20 + wx * 30, GROUND_Y - 120 + wy * 25, 15, 18);
-          }
+          if (Math.random() > 0.3) ctx.fillRect(x + 20 + wx * 30, GROUND_Y - 120 + wy * 25, 15, 18);
         }
       }
       ctx.fillStyle = '#0a0a0a';
     }
-
-    // Capa media de edificios
     const offset2 = (scrollX * 0.26) % 300;
     for (let i = -1; i < 5; i++) {
       const x = i * 300 - offset2;
       ctx.fillRect(x, GROUND_Y - 200, 140, 200);
       ctx.fillRect(x + 160, GROUND_Y - 160, 120, 160);
-      // Neones
       ctx.fillStyle = 'rgba(0, 255, 255, 0.4)';
       ctx.fillRect(x + 20, GROUND_Y - 180, 30, 5);
       ctx.fillStyle = 'rgba(255, 45, 111, 0.4)';
       ctx.fillRect(x + 180, GROUND_Y - 140, 40, 5);
       ctx.fillStyle = '#0a0a0a';
     }
-
-    // Capa cercana de edificios
     const offset3 = (scrollX * 0.48) % 400;
     for (let i = -1; i < 4; i++) {
       const x = i * 400 - offset3;
       ctx.fillRect(x, GROUND_Y - 260, 180, 260);
       ctx.fillRect(x + 220, GROUND_Y - 200, 160, 200);
-      // Detalles arquitectónicos
       ctx.fillStyle = '#1a1a1a';
       ctx.fillRect(x + 40, GROUND_Y - 240, 100, 20);
       ctx.fillRect(x + 260, GROUND_Y - 180, 80, 20);
       ctx.fillStyle = '#0a0a0a';
     }
-
-    // Suelo
     ctx.fillRect(0, GROUND_Y, VIEW_W, VIEW_H - GROUND_Y);
-
-    // Lluvia ácida
-    ctx.strokeStyle = 'rgba(242, 220, 192, 0.4)';
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(242, 220, 192, 0.4)'; ctx.lineWidth = 1.5; ctx.beginPath();
     for (let i = 0; i < 60; i++) {
       let rx = (Math.sin(i * 132.1) * 0.5 + 0.5) * VIEW_W;
       let ry = ((time * 400 + i * 73) % VIEW_H);
-      ctx.moveTo(rx, ry);
-      ctx.lineTo(rx - 12, ry + 25);
+      ctx.moveTo(rx, ry); ctx.lineTo(rx - 12, ry + 25);
     }
     ctx.stroke();
-
-    // Relámpago ocasional
-    if (Math.random() < 0.008) {
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-      ctx.fillRect(0, 0, VIEW_W, VIEW_H);
-    }
+    if (Math.random() < 0.008) { ctx.fillStyle = 'rgba(255, 255, 255, 0.9)'; ctx.fillRect(0, 0, VIEW_W, VIEW_H); }
   }
 
   // === UI / SELECCIÓN / HUD ===
@@ -951,26 +1197,37 @@
     if (gameState === 'select') {
       drawVectorBackground(ctx, 0, time);
       ctx.fillStyle = COLORS.rim; ctx.font = 'bold 36px Arial Black'; ctx.textAlign = 'center';
-      ctx.fillText('NIPPON DESTRUCTION', VIEW_W / 2, 60);
-      ctx.font = 'bold 22px Arial Black'; ctx.fillText('SELECT YOUR HERO', VIEW_W / 2, 90);
-      const cardWidth = 140, cardHeight = 220, cardGap = 20;
+      ctx.fillText('NIPPON DESTRUCTION {ND}', VIEW_W / 2, 50);
+      const cardWidth = 140, cardHeight = 240, cardGap = 20;
       const totalWidth = cardWidth * 4 + cardGap * 3;
       const startX = (VIEW_W - totalWidth) / 2;
-      const cardY = 120;
+      const cardY = 80;
       ['RIKA', 'GORO', 'REN', 'YUI'].forEach((hero, index) => {
         const x = startX + index * (cardWidth + cardGap);
         const data = HERO_DATA[hero];
-        ctx.fillStyle = 'rgba(10, 15, 30, 0.85)'; ctx.strokeStyle = data.color; ctx.lineWidth = 2;
-        ctx.fillRect(x, cardY, cardWidth, cardHeight); ctx.strokeRect(x, cardY, cardWidth, cardHeight);
-        const preview = { type: hero, x: x + cardWidth / 2, y: cardY + cardHeight - 15, facing: 1, state: 'idle', animTimer: time };
+        // Tarjeta de cristal
+        ctx.fillStyle = 'rgba(10, 15, 30, 0.85)';
+        ctx.strokeStyle = data.color;
+        ctx.lineWidth = 2;
+        ctx.fillRect(x, cardY, cardWidth, cardHeight);
+        ctx.strokeRect(x, cardY, cardWidth, cardHeight);
+        // Preview del héroe
+        const preview = { type: hero, x: x + cardWidth / 2, y: cardY + cardHeight - 30, facing: 1, state: 'idle', animTimer: time };
         drawHeroSilhouette(ctx, preview);
-        ctx.fillStyle = data.color; ctx.font = 'bold 20px Arial Black'; ctx.fillText(data.kanji, x + cardWidth / 2, cardY + cardHeight + 22);
-        ctx.font = 'bold 13px Arial Black'; ctx.fillText(data.name, x + cardWidth / 2, cardY + cardHeight + 38);
-        ctx.font = '11px Arial Black'; ctx.fillText(data.title, x + cardWidth / 2, cardY + cardHeight + 52);
-        ctx.fillStyle = '#999'; ctx.font = '10px Arial Black'; ctx.fillText(data.role, x + cardWidth / 2, cardY + cardHeight + 66);
+        // Texto
+        ctx.fillStyle = data.color;
+        ctx.font = 'bold 16px Arial Black';
+        ctx.fillText(data.kanji, x + cardWidth / 2, cardY + cardHeight + 18);
+        ctx.font = 'bold 12px Arial Black';
+        ctx.fillText(data.name, x + cardWidth / 2, cardY + cardHeight + 32);
+        ctx.font = '10px Arial Black';
+        ctx.fillText(data.title, x + cardWidth / 2, cardY + cardHeight + 46);
+        ctx.fillStyle = '#999';
+        ctx.font = '9px Arial Black';
+        ctx.fillText(data.role, x + cardWidth / 2, cardY + cardHeight + 60);
       });
-      ctx.fillStyle = COLORS.rim; ctx.font = 'bold 16px Arial Black';
-      ctx.fillText('PRESS 1-4 OR TAP A CARD', VIEW_W / 2, VIEW_H - 20);
+      ctx.fillStyle = COLORS.rim; ctx.font = 'bold 14px Arial Black';
+      ctx.fillText('PRESS 1-4 OR TAP A CARD', VIEW_W / 2, VIEW_H - 15);
     } else {
       ctx.fillStyle = COLORS.rim; ctx.font = 'bold 18px Arial Black'; ctx.textAlign = 'left';
       ctx.fillText(`CARGAS: ${'■'.repeat(player.cargas)}${'□'.repeat(player.maxCargas - player.cargas)}`, 15, 30);
@@ -987,10 +1244,10 @@
   }
 
   function handleHeroSelect(x, y) {
-    const cardWidth = 140, cardHeight = 220, cardGap = 20;
+    const cardWidth = 140, cardHeight = 240, cardGap = 20;
     const totalWidth = cardWidth * 4 + cardGap * 3;
     const startX = (VIEW_W - totalWidth) / 2;
-    const cardY = 120;
+    const cardY = 80;
     ['RIKA', 'GORO', 'REN', 'YUI'].forEach((hero, index) => {
       const cardX = startX + index * (cardWidth + cardGap);
       if (x >= cardX && x <= cardX + cardWidth && y >= cardY && y <= cardY + cardHeight) {
@@ -1091,6 +1348,6 @@
     updateEffects(dt);
   }
 
-  console.log('Nippon Destruction Engine - Gráficos mejorados');
+  console.log('Nippon Destruction Engine - Héroes detallados estilo referencia');
   requestAnimationFrame(gameLoop);
 })();
