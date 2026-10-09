@@ -14,7 +14,7 @@
   const ctx = canvas.getContext('2d', { alpha: false });
   const btnMenu = document.getElementById('btn-menu');
 
-  // === ANCHO DE VISTA DINÁMICO ===
+  // === VIEWPORT DINÁMICO (horizontal llena, vertical letterbox) ===
   let VIEW_W = CANVAS_W;
   let VIEW_H = CANVAS_H;
   let viewOffsetX = 0;
@@ -24,58 +24,26 @@
     const h = window.innerHeight;
     const aspectRatio = w / h;
     const baseAspect = CANVAS_W / CANVAS_H;
-
     if (aspectRatio > baseAspect) {
-      // Pantalla más ancha que 16:9 → expandir VIEW_W (sin barras)
+      // Horizontal: expandir el ancho lógico para llenar la pantalla
       VIEW_H = CANVAS_H;
       VIEW_W = Math.round(CANVAS_H * aspectRatio);
     } else {
-      // Pantalla más estrecha → mantener 16:9 y encajar (sin recortar)
+      // Vertical: mantener 16:9 y encajar con letterbox (nada se recorta)
       VIEW_W = CANVAS_W;
       VIEW_H = CANVAS_H;
     }
-
     canvas.width = VIEW_W;
     canvas.height = VIEW_H;
-
-    const scaleX = w / VIEW_W;
-    const scaleY = h / VIEW_H;
-    const scale = (aspectRatio > baseAspect) ? Math.max(scaleX, scaleY) : Math.min(scaleX, scaleY);
-
+    const scale = Math.min(w / VIEW_W, h / VIEW_H);
     canvas.style.width = Math.round(VIEW_W * scale) + 'px';
     canvas.style.height = Math.round(VIEW_H * scale) + 'px';
-
     viewOffsetX = (VIEW_W - CANVAS_W) / 2;
   }
 
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('orientationchange', resizeCanvas);
   resizeCanvas();
-
-  // === FULLSCREEN AUTOMÁTICO + BLOQUEO LANDSCAPE ===
-  function goFullscreen() {
-    const el = document.documentElement;
-    const req = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
-    if (req && !document.fullscreenElement) {
-      try {
-        const p = req.call(el);
-        if (p && p.catch) p.catch(() => {});
-      } catch (e) {}
-    }
-  }
-  function lockLandscape() {
-    if (screen.orientation && screen.orientation.lock) {
-      try {
-        const l = screen.orientation.lock('landscape');
-        if (l && l.catch) l.catch(() => {});
-      } catch (e) {}
-    }
-  }
-  document.addEventListener('fullscreenchange', () => {
-    if (document.fullscreenElement) lockLandscape();
-  });
-  window.addEventListener('pointerdown', goFullscreen, { once: true });
-  window.addEventListener('keydown', goFullscreen, { once: true });
 
   let lastTime = 0;
   let timeScale = 1.0;
@@ -1097,7 +1065,7 @@
       drawUI(ctx);
     } else {
       drawVectorBackground(ctx, scrollX, time);
-      // Mundo del juego con offset para mantener coords 0..960
+      // Mundo del juego (960 de ancho) centrado en el viewport
       ctx.save();
       ctx.translate(viewOffsetX, 0);
       drawEnemies(ctx);
