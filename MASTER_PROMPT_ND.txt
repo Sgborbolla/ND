@@ -1,0 +1,76 @@
+========================================================
+   MASTER PROMPT: NIPPON DESTRUCTION (ND)
+   100% PROCEDURAL & ANIMATED
+========================================================
+
+# MASTER PROMPT: NIPPON DESTRUCTION (ND) - 100% PROCEDURAL & ANIMATED
+
+Actúa como un desarrollador experto en Vanilla JavaScript, Canvas 2D API y WebAudio API. Tu misión es construir el juego "Nippon Destruction (ND)" desde cero. 
+
+##  REGLAS DE ORO (NO NEGOCIABLES)
+1. CERO IMÁGENES EXTERNAS: No uses `new Image()`, ni JPG, ni PNG. Todo (fondos, personajes, efectos, UI) debe ser dibujado dinámicamente con Canvas 2D API o HTML/CSS puro. Todo debe ser 100% animado y movible.
+2. ARQUITECTURA PURA: Vanilla JS. Sin ES Modules (`type="module"`), sin `fetch`, sin XHR, sin dependencias. Todo el código del juego debe ir dentro de un IIFE `(function() { 'use strict'; ... })();` en un solo archivo `nd.js`.
+3. FUNCIONAMIENTO OFFLINE: Debe funcionar abriendo `index.html` directamente en el navegador (protocolo `file://`).
+4. ESTILO VISUAL EXACTO: Siluetas negras puras con luz de contorno (rim light), atardecer de 4 tonos, lluvia ácida y efectos de impacto estilo anime.
+
+##  PALETA DE COLORES CANÓNICA
+- Cielo (Gradiente): `#150E2B` (arriba) -> `#4A2247` -> `#A84A38` -> `#F0A65A` (horizonte).
+- Tinta de Siluetas: `#000000` (Negro puro absoluto).
+- Luz de Contorno (Rim Light): `#F2DCC0` (Crema luz).
+- Peligro / Ruptura: `#FF2D6F` (Magenta).
+- Aviso / Rayo: `#FFC400` (Amarillo).
+
+## 🖥️ ARQUITECTURA TÉCNICA
+- Canvas: 960x540 píxeles (16:9 forzado). Suelo en `y=468`.
+- Archivos: `index.html` (markup + CSS del HUD táctil) y `nd.js` (lógica del juego).
+- Bucle de juego: `requestAnimationFrame` con delta time.
+- Inputs: Soporte dual para Teclado (WASD/Flechas, Espacio, Shift, Q, E) y Multitáctil (Pointer Events).
+
+## 📋 PLAN DE IMPLEMENTACIÓN DETALLADO (FASES)
+
+### FASE 1: MOTOR, FONDO VECTORIAL Y PARALLAX
+- Crea la función `drawVectorBackground(ctx, scrollX, time)`.
+- Dibuja el cielo con `createLinearGradient` usando los 4 tonos exactos.
+- Dibuja un sol con `shadowBlur` (glow) color `#FFC400`.
+- Genera una ciudad en silueta negra (`#000000`) en la parte inferior. Usa `ctx.rect` y `ctx.lineTo` para crear edificios de diferentes alturas.
+- Aplica Parallax de 3 capas: Capa lejana (velocidad 0.10), Capa media (0.26), Capa cercana/suelo (0.48).
+- Añade lluvia ácida (líneas diagonales cayendo con `ctx.moveTo/lineTo`) y un sistema de relámpagos que cambie el `globalAlpha` del fondo a blanco por 2 frames ocasionalmente.
+
+### FASE 2: SISTEMA DE HUESOS (RIGGING) Y PERSONAJES
+- Crea una clase `Bone(x, y, length, angle, parent)`. Debe tener `update()` (calcula posición basada en el padre) y `draw(ctx)`.
+- En `draw(ctx)`, dibuja cada hueso como una forma vectorial negra (`#000000`) con un borde de luz de contorno (`strokeStyle = '#F2DCC0'`, `lineWidth = 2`).
+- Crea rigs para los 4 héroes (RIKA, GORO, REN, YUI). Cada uno tiene torso, cuello, brazo delantero, brazo trasero, pierna delantera, pierna trasera y arma.
+- Crea funciones de animación: `animateRun(rig, time)` usando `Math.sin(time * speed)` para rotar extremidades, y `animateAttack(rig)` para rotar el brazo delantero rápidamente.
+- Implementa los 4 estados animados: IDLE (respiración sutil), RUN (piernas alternan), ATTACK (brazo rota -90° a +45°), DASH (cuerpo inclinado 15° con estela).
+
+### FASE 3: EFECTOS DE IMPACTO Y "GAME FEEL"
+- Crea un sistema de partículas para impactos. Al conectar un golpe, genera 120 líneas (rayos vectoriales) desde el punto de impacto en un cono de 45 grados. Color: `#FF2D6F`. Deben acortarse y desvanecerse (`globalAlpha`) en 16 frames.
+- Implementa `hitstop`: cuando hay impacto, congela la variable `timeScale` a 0 durante 14 frames (a 60fps).
+- Implementa `screenShake`: variables `shakeX` y `shakeY`. Al impactar, dales un valor aleatorio (-5 a 5) y que decaigan a 0 en 0.22s. Aplica `ctx.translate(shakeX, shakeY)` al inicio de cada frame.
+- Sistema de Racha (Combo): Si el combo es > 40, reduce `timeScale` a 0.25 durante 18 frames (slow motion), añade speedlines (40 líneas blancas del centro a los bordes) y flash blanco.
+
+### FASE 4: AUDIO Y VOCES (100% WEB AUDIO API)
+- No uses archivos MP3 externos. Todo el audio debe ser sintetizado en tiempo real con `AudioContext`.
+- Crea un objeto `AudioEngine`.
+- SFX de combate: 'slash' (ruido blanco con filtro paso bajo), 'hit' (onda cuadrada que baja de 800Hz a 100Hz en 0.1s), 'dash' (whoosh con filtro paso banda).
+- Voces: Usa osciladores para crear "barks" (gritos) sintetizados por héroe. Rika (onda senoidal aguda), Goro (onda de sierra grave), Ren (onda cuadrada rápida), Yui (onda triangular melancólica).
+
+### FASE 5: HUD TÁCTIL (HTML/CSS)
+- Escribe el CSS para el HUD de 4 cuadrantes sobre el canvas.
+- Cuadrante Inferior Derecho: Cluster de 4 botones en arco (TAJO, RUPTURA ND, DASH, DEFINITIVA).
+- Estilo: Texto color `#F2DCC0`, fondo semitransparente, `border-radius`, `letter-spacing` amplio.
+- Lógica: Usa eventos `pointerdown` y `pointerup` con `setPointerCapture` para multitáctil real en móvil.
+
+### FASE 6: CINEMÁTICAS Y DIÁLOGOS
+- Crea un sistema de cinemáticas simple basado en un array `cutsceneQueue`.
+- Cuando se active: congelar el juego (timeScale = 0), hacer zoom in suave (`ctx.scale` de 1.0 a 1.3 en 30 frames), oscurecer el fondo.
+- Mostrar cuadro de diálogo centrado: Fondo `rgba(0,0,0,0.7)`, borde `#F2DCC0` de 2px, texto `#F2DCC0`, nombre del personaje en `#FF2D6F`.
+- Esperar input del jugador o tiempo, hacer zoom out y reanudar.
+
+## ⚙️ INSTRUCCIONES DE EJECUCIÓN PARA LA IA
+1. Escribe primero el `index.html` completo con el CSS del HUD y la estructura del canvas.
+2. Escribe el `nd.js` completo. No uses marcadores de posición como "// aquí va el código". Escribe la lógica real y funcional.
+3. Asegúrate de que el código esté encapsulado en un IIFE: `(function() { 'use strict'; ... })();`.
+4. Al finalizar, explica brevemente cómo probarlo en Termux usando `python3 -m http.server 8080` o abriéndolo directamente en el navegador.
+
+Empieza generando el código completo ahora. No omitas ninguna fase. 

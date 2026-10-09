@@ -1,0 +1,204 @@
+ND — auditoría de las referencias Stitch
+
+Fuente: /storage/emulated/0/stitch_nippon_destruction_canvas_game
+Auditado: 2026-10-05. El modelo no tiene visión: todo lo que sigue sale de
+leer los code.html y el texto que acompaña a cada imagen, no de mirar los PNG.
+
+1. Inventario
+
+- 40 carpetas, 0 duplicados exactos (md5).
+- 26 con code.html + screen.png vertical (hasta 1600 px de alto).
+- 14 solo con screen.png 1376×768 (los artworks 16:9).
+- Falta la carpeta 06 (el documento 04 numera solo 01–05).
+
+      El HTML que manda
+
+nippon_destruction_nd_juego_cinematogr_fico_2d_completo/code.html — 1531 líneas,
+prototipo jugable real: STATE.mode = SPLASH → SELECT → PLAYING, canvas
+1280×720, HEROES, ENEMY_TYPES (incluye sub-jefe y jefe), splashScreen,
+selectScreen, modalCatalog, HUD, BPM 104, parallax 0.05/0.26/0.48/1.0,
+playJapaneseBark().
+
+Los otros 25 code.html son mockups estáticos o documentos de referencia.
+
+      Mapa de carpetas
+
+ |  Carpeta  |  Contenido  |
+ | - | - |
+ |  01._pr_logo_cinematográfico  |  splash/logo  |
+ |  02._selección_de_héroes  |  selección de héroes (documental)  |
+ |  03._bestiario_de_amenazas  |  bestiario  |
+ |  04._arena_combat_hud  |  HUD en combate (documental)  |
+ |  05._manual_de_producción  |  manual  |
+ |  07._key_art_oficial_sol_negro  |  key art  |
+ |  08._escuadrón_de_héroes_lineup_24px  |  lineup 24px  |
+ |  09._selector_táctico_de_héroes  |  selector táctico  |
+ |  10._bestiario_nivel_1_infestación_básica  |  6 enemigos  |
+ |  11._bestiario_nivel_2_subjefes_de_sector  |  6 subjefes  |
+ |  12._bestiario_nivel_3_jefes_colosales  |  6 jefes  |
+ |  13._gameplay_freeze_frame_hitstop  |  hitstop  |
+ |  14._arquitectura_de_ui_y_hud_táctil  |  arquitectura UI/HUD  |
+ |  15._laboratorio_cromático_paleta_cánica  |  paleta  |
+ |  16._key_art_promocional_póster  |  póster  |
+ |  17._manual_maestro_y_biblia_de_arte  |  biblia de arte  |
+ |  bestiario_interactivo_y_galería  |  = el "Archivo Táctico" (16 assets)  |
+ |  splash_01..06  |  secuencia de presentación  |
+ |  cinematic_ / colossal_ / detailed_ / technical_  |  artworks 16:9  |
+
+2. Paleta
+
+Consistente en lo esencial. Frecuencia global en los 26 HTML:
+
+#150E2B 146   #FF2D6F 100   #F2DCC0  87   #000000  81
+#4A2247  78   #F0A65A  74   #FFC400  72   #A84A38  48
+#FFB2BD  77   #E8DEFF  75   #FFB871  46   #FFE5B1  31
+#37304F  59   #FF4E7C  52   #FEC300  48   #AB888C  25
+#5C3F43  25   #E4BDC1  24
+(fin del codigo)
+
+Los 4 tonos canónicos son #150E2B → #4A2247 → #A84A38 → #F0A65A; el resto son
+tintes y Derivados. Hay que fijar los canónicos (ver §6).
+
+3. Tipografías
+
+25 de 26 usan el mismo stack: Space Grotesk + Chivo + JetBrains Mono
++ Material Symbols Outlined, con un sistema de clases utilitarias
+(font-label ×1663, font-headline ×282, font-body ×182, font-mono ×136).
+
+1 solo (el "Archivo Táctico") usa Orbitron + Rajdhani + Noto Sans JP.
+
+Los nombres de Google Font que aparecen: Space Grotesk 16, Chivo 16,
+JetBrains Mono 16, Material Symbols 22, Noto Sans JP 2, Orbitron 1, Rajdhani 1,
+Cinzel 1, Teko 1.
+
+4. Especificación del HUD (`04`, `14` y el juego completo)
+
+Cuatro cuadrantes, formato 16:9 forzado:
+
+ |  Zona  |  Elemento  |  Valores literales  |
+ | - | - | - |
+ |  QUAD_01 sup. izq.  |  barra de vida + medidor trifásico de dash  |  1,840 / 2,000 HP (85%), 2/3 CARGAS (RECARGA 40%), medidor en #FFC400  |
+ |  QUAD_02 sup. der.  |  combo + tacómetro de amenaza  |  38 HITS // SSS, MULTIPLICADOR: x4.8 DINÁMICO, THREAT LEVEL S-RANK, WAVE 04/06 [142 KILLS], pulso carmesí al superar 30 hits  |
+ |  QUAD_03 inf. izq.  |  joystick flotante  |  radio 64px, deadzone 12% radial, haptic 8ms, recentrado bajo el dedo  |
+ |  QUAD_04 inf. der.  |  botonera  |  Tajo 72px a 30°, Ruptura #FF2D6F, Dash 56px, item DEFCON, separación > 12px  |
+
+Cabecera y avisos:
+日本崩壊 // NIPPON DESTRUCTION · MIL-SPEC ARCHIVE v2.4 ·
+ESTADO: CRÍTICO // EXTINCIÓN ND · ND-DEFCON: LEVEL 1 ·
+⚠️ ¡TELÉGRAFO DE JUGADOR DETECTADO! ⚠️ · DASH CD: LISTO · RUPTURA: MAX ·
+OLEADA 01 / 06 · BAJAS / DESTRUCCIÓN 000.
+
+Dinámica de impacto (del 04):
+- hitstop de ruptura = 16 frames (~266 ms)
+- ventana de esquiva perfecta = 4 frames
+- parallax 3 capas: frontal ácida / skyline intermedio / sol moribundo a 0.25×
+- shakeLight 0.22s y shakeHeavy 0.38s con keyframes completos
+- slashGlow, shockwaveExpand, flashLight/flashHeavy
+
+Ergonomía (del 14): joystick 64px→48px, botón tajo 72px→mín. 48px (WCAG 2.5.5),
+latencia táctil 1 frame a 60 FPS, zona central de combate 100% despejada.
+
+5. Especificación de selección de héroes (`02`, `09`, juego completo)
+
+4 slots horizontales, siluetas canónicas sobre el crepúsculo ácido, Keys 1..4.
+
+SLOT 01 // [ 月見 里花 ]   DPS     RIKA TSUKIMI   "La Hoja"      Iaido de Ruptura
+SLOT 02 // [ 嵐 五郎 ]     TANK    GORO ARASHI    "El Yunque"    Mazo Colosal & Baluarte
+SLOT 03 // [ 林 蓮 ]       SPEED   REN HAYASHI    "El Relámpago" Flanqueador Zig-Zag
+SLOT 04 // [ 中村 結衣 ]   CHRONO  YUI NAKAMURA   "El Eco"       Resonancia Espaciotemporal
+(fin del codigo)
+
+Ficha por héroe seleccionado: CALIBRACIÓN CANÓNICA: 24PX, rol, armamento,
+cita de campo + VOX-FREQ: 142.80 MHz, y 4 métricas:
+
+ |  Métrica  |  Rika  |
+ | - | - |
+ |  FUERZA DE IMPACTO (DMG)  |  88/100 [CRÍTICO]  |
+ |  VELOCIDAD DE DESPLAZAMIENTO  |  94/100 [EXTREMA]  |
+ |  HITSTOP FRAMES (PARRY WINDOW)  |  14 FRAMES (230ms)  |
+ |  RADIO DE EVASIÓN TÁCTICA  |  3.8 METROS (DASH)  |
+
+3 niveles de habilidad por héroe (TIER 01 PASSIVE, TIER 02 TACTICAL,
+TIER 03 APOCALYPSE) con kanji propio (影閃, 千刃斬, 残照天裂).
+
+Matriz cromática por héroe:
+Rika #F2DCC0 + #FF2D6F · Goro #FFC300 + #A84A38 ·
+Ren #FFC400 + #4A2247 · Yui #FFB2BD + #150E2B.
+
+Silueta a 24px: Rika 6 cabezas (haori crema + katana 30px) · Goro 5 cabezas
+(escudo 14×20, mazo 26px) · Ren frenético (arcos rayo #FFC400, vendas) ·
+Yui espectral (doble contorno, moño alto).
+
+Datos del juego completo (HEROES, 1280×720):
+
+ |  #  |  Nombre  |  Kanji  |  Apodo  |  Tipo  |  speed  |  damage  |  rango  |  color  |
+ | - | - | - | - | - | - | - | - | - |
+ |  0  |  RIKA TSUKIMI  |  月見 里香  |  LA HOJA  |  Delgada 6c  |  7.2  |  45  |  90  |  #ff2d6f  |
+ |  1  |  GORO ARASHI  |  嵐 吾郎  |  EL YUNQUE  |  Ancho macizo 5c  |  4.8  |  85  |  75  |  #ffc400  |
+ |  2  |  REN HAYASHI  |  林 蓮  |  EL RELÁMPAGO  |  Delgado nervioso  |  8.5  |  38  |  80  |  #ffc400  |
+ |  3  |  YUI NAKAMURA  |  中村 結衣  |  EL ECO  |  Esbelta  |  6.8  |  55  |  105  |  #F2DCC0  |
+
+6. Contradicciones entre los 26 HTML
+
+ |  Tema  |  Variantes  |  Canónico elegido  |
+ | - | - | - |
+ |  Kanji Rika  |  里花 ×12 · 里香 ×3  |  里花  |
+ |  Kanji Goro  |  五郎 ×5 · 吾郎 ×2  |  五郎  |
+ |  Amarillo  |  #FFC400 ×22 · #FEC300 ×8 · #FFB871 ×1  |  #FFC400  |
+ |  Magenta  |  #FF2D6F ×30 · #FF4E7C ×9 · #FFB2BD ×3  |  #FF2D6F  |
+ |  Hitstop  |  8F · 12F · 14F · 16F · 18F  |  14F (el canónico de ND)  |
+ |  Año  |  2088 ×22 · ©2025 ×10 · 2048  |  2088  |
+ |  Assets  |  declaran 17 · el HTML tiene 16  |  16  |
+ |  DEFCON  |  DEFCON-1 ×31 · DEFCON-1 · DEFCON LEVEL 1  |  DEFCON-1  |
+ |  Ruptura  |  Stitch: botón Q propio · ND: automática por combo  |  automática (o añadir Q)  |
+ |  Enemigos  |  PROMPT_V2 dice "DOBLE eliminado" · Stitch lo incluye como DOBLE(N1)  |  decidir  |
+
+7. Bestiario pendiente
+
+6 básicos (10, y ENEMY_TYPES del juego completo con sus HP):
+
+ |  Enemigo  |  HP (HTML)  |  speed  |  w×h  |  Descripción canónica  |
+ | - | - | - | - | - |
+ |  DOBLE(N1)  |  60  |  2.2  |  50×90  |  Torso partido vertical, 2 cabezas desplazadas, simétrico  |
+ |  LANZADOR(N2)  |  80  |  1.8  |  65×85  |  Hombros anchísimos, brazo derecho exagerado, triangular invertida  |
+ |  AGRESOR(N3)  |  110  |  3.8  |  55×80  |  Corcovado, garras curvas, muslos potentes  |
+ |  BLINDADO(N4)  |  180  |  1.2  |  75×95  |  Cúbico macizo, hombreras rectangulares  |
+ |  RESUCITADO(N5)  |  95  |  1.5  |  50×90  |  Asimétrico, brazo izq colgando, pierna rígida torcida  |
+ |  MIMÉTICO(N6)  |  130  |  3.2  |  48×92  |  Humanoide base héroe, articulaciones alargadas, copia ataques  |
+
+6 subjefes (11): EL CIERRE (320 HP en el HTML) · LA CADENA · EL DESGARRO ·
+EL MURO · EL ECO ROTO · LA CUCHILLA COLGADA.
+Stats de ejemplo: EL CIERRE 8.400 HP, parry 5F, LAYER: TITANIUM-CHITIN,
+POISE BREAK 780 N, WEAKPOINT: BACK VENT.
+Telegrafía: YELLOW: EVADE CONE / MAGENTA: FATAL SHOCK.
+
+6 jefes (12): PUERTA DE ACERO (600 HP en el HTML) · COLAPSO · HORNO ·
+CEMENTERIO · RESONANCIA · NÚCLEO ND.
+NÚCLEO ND = ND-EXT-06-APEX, 98.500.000/100.000.000 HP, 485 m (140 pisos),
+1.820.000 t. Fases: 100–75% anclaje tectónico / 74–30% haz vertical /
+29–0% sobrecarga crítica con autodestrucción de 180 s.
+Debilidades: ojo central MULTI-DAÑO x3.5, articulaciones x2.0.
+
+8. Los 17 assets del catálogo
+
+ND_KEYART · SPLASH_01..06 · TITLE_BG · HERO_SELECT_FULL · HEROES_FULL ·
+ENEMIES · SUBBOSSES · BOSSES · GAMEPLAY_MOCK · UI_HUD · PALETTE ·
+PROMO_LANDSCAPE. Todos a 1920×1080.
+
+En la práctica solo hay 11 artworks 16:9 utilizables (refs/hi/), y de ellos
+son útiles para el juego: key-art (ya es el ícono), splash-06,
+hero-select, enemies-basic, subbosses-lineup, bosses-colossal,
+heroes-lineup, gameplay-mock, palette-guide.
+
+9. Descargas y URLs
+
+refs/archivo-tactico.tsv es el manifiesto id → URL del HTML "Archivo Táctico".
+
+- 11 descargas correctas a 1376×768 con el sufijo =w1376-h768-no.
+- 5 URLs muertas (HTTP 400): ui-hud, splash-01, splash-02, splash-03,
+  splash-05. Reintentar con otro render de Stitch si hacen falta.
+- El HTML dice TODOS (17) pero el array tiene 16 entradas.
+- Las imágenes de refs/hi y las 16:9 de la carpeta Stitch son **renders
+  distintos del mismo prompt**: 0 coincidencias por md5.
+- No hay ningún asset square: el ícono hubo que recortar el key-art
+  (768×768 del centro → 512×512).

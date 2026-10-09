@@ -1,0 +1,2979 @@
+# ND — NIPPON DESTRUCTION · LO ESTOY JUGANDO AHORA MISMO (EN SILUETA)
+
+> Esto no es un resumen. Es lo que veo mientras juego, y todo lo que veo empieza
+> como silueta: un contorno sólido y negro puro recortado contra el atardecer,
+> sin detalle interno. La cabina, los números, las alertas, la barra que me dice
+> si puedo salvarme, el contador que me da miedo, cada destello y cada color:
+> primero la forma, después el relleno, y el relleno solo cuando importa para el
+> combate. Paso el juego entero con los cuatro héroes, de la silueta de Rika —la
+> Hoja, esbelta, el haori ondeando como lengua de tela, la katana horizontal a
+> la cadera— a la de Yui —el Eco, el rifle largo y el trazador claro que deja
+> colgando en el aire—, pasando por el yunque de Goro y la daga corta de Ren.
+> Escribo en primera persona porque es lo que hago: mirar la pantalla y jugar. Si
+> algo aparece en pantalla, lo cuento. Si algo no aparece, también.
+
+---
+
+# CÓMO SE LEE MI PANTALLA (la cabina, antes de empezar)
+
+Antes de tocar nada, esto es lo que tengo delante cuando ya estoy en un piso:
+una pila de siluetas negras recortadas contra un cielo que no se apaga nunca y
+que pasa en cuatro tonos —`#150E2B`, `#4A2247`, `#A84A38`, `#F0A65A`—, con
+lluvia ácida cayendo en diagonal y un contraluz que les pone un filo claro
+`#F2DCC0` en el borde. Regla de lectura a la resolución interna: la forma sola me
+dice qué es y qué va a hacer; el relleno llega después y solo cuando importa para
+el combate.
+
+**Arriba a la izquierda — la VIDA y las CARGAS.** Primero es silueta: un bloque
+macizo y negro, esquinas cortadas, apretado contra la esquina, sin sombra ni
+redondeo. Esa forma ya me dice "aguanto". El relleno viene después: un panel
+biselado, borde de 1 px burocrático. Dentro, en texto monoespaciado claro `#F2DCC0`,
+leo `VIDA` y debajo el número exacto: `100`. Al lado, **un medidor trifásico** —
+tres muescas grandes separadas por hilos de 1 px. A medida que me golpean, las
+muescas se van apagando y las que quedan por debajo de la mitad **se tiñen de
+peligro** `#FF2D6F`: no es adorno, es el color que me avisa de que la siguiente
+decisión pesa. Debajo del medidor leo siempre la etiqueta literal **`2/3 CARGAS`**,
+recortada y clara, con tracking amplio: me dice cuántas cargas me quedan para
+gastar. Cuando me tocan, la muesca que pierdo parpadea un frame en blanco antes
+de apagarse. Cuando estoy a punto de morir, las últimas muescas **laten** en
+`#FF2D6F` a 2 Hz, y el número `100` ya no es `100`: es `23`, es `14`, es `9`.
+Nunca hay un número de daño flotando por la pantalla — eso está apagado a
+propósito, porque llenaría la silueta de cifras y no vería al enemigo.
+
+**Debajo de la vida — las CARGAS.** Silueta primero: una fila de discos macizos
+pegada al borde, recortados como monedas contra el atardecer. No es una barra:
+son **círculos**. Rika lleva `●●`. Goro lleva `●`. Ren lleva `●●●`. Yui lleva
+`●●`. Círculo lleno `#FFC400` (oro) = carga disponible; el oro solo pinta la
+silueta cuando es recompensa. Círculo vacío, contorno claro sobre hueco negro =
+carga gastada: ya solo queda el hueco donde estaba la forma. Cuando una carga
+está a medio volver, el círculo se dibuja **a medias, rellenándose como un reloj**
+desde las doce. La primera vez que un círculo vuelve oigo un click seco de servo.
+Este es el recurso más importante de toda la pantalla: **es el dash y es la
+Ruptura**. La **Ruptura es un botón `Q` independiente** y cuesta una carga entera;
+la **Definitiva `E`** es otra cosa y no se dispara sola. Si tengo carga, puedo
+abrir la cinemática; si está seca, soy un caminante sin i-frames. Las bajas
+recargan este círculo — matar me mueve, y por eso **mato siempre hacia arriba**.
+
+**Arriba a la derecha — COMBO y WAVE.** Dos bloques, primero dos siluetas rectas:
+el de arriba con el combo, el de abajo con la oleada. El **tacómetro** sube con
+cada golpe encadenado sin que me toquen, y debajo leo la etiqueta literal
+**`WAVE 04/06`**: el segundo número es el total del tramo y el primero sube.
+Cuando el combo cruza el siguiente umbral, el bloque hace un **flash claro de 1
+frame** y el número se pone en `#FFC400` un instante — recompensa, no peligro.
+Cuando me quedo por debajo de lo necesario, el número **se pone `#FF2D6F` y
+parpadea**: ahí sé que la puerta no me deja pasar aunque llegue al final.
+
+**Centro-arriba — la RACHA.** No aparece al empezar: la silueta de la racha no
+existe hasta que la gano. En cuanto hago **dos bajas seguidas sin que me toquen**,
+sale un número grande, monoespaciado, en claro, con un contorno de 1 px —
+recortado en duro contra el atardecer. Cada baja nueva lo incrementa con un
+pequeño *pop* (escala 1.0 → 1.2 → 1.0 en 3 frames). A partir de 10 **late**; a
+partir de 20 late más fuerte y más rápido; a partir de 40 el propio número parece
+vibrar. Si me tocan, **se rompe en seco**: el número hace un glitch de 2 frames y
+desaparece —no al fallar, solo al recibir daño. Si dejo de matar 2.5 s, el número
+parpadea tres veces y se apaga solo. Y a partir de 70 el juego me **cobra el
+espectáculo**: hitstop más largo, flash frame, speedlines, cut-in completo. Ver
+ese número alto es lo único que me da permiso para el slow-motion.
+
+**Abajo a la izquierda — la DIRECCIÓN.** Dos siluetas de botón, anchas, pegadas
+al borde inferior: a la izquierda **`RETROCESO`**, a la derecha **`AVANZAR`**.
+Primero leo el hueco; el texto claro `#F2DCC0` lo rellena después. No me quitan
+la vista del enemigo: están en la zona que el pulgar ya ocupa sin mirar.
+
+**Abajo a la derecha — el CLUSTER.** Cuatro formas en arco, la más grande en el
+centro. La principal es **`TAJO`** (72 px), el golpe que disparo con el pulgar.
+Alrededor, **`RUPTURA ND`** (que se tiñe `#FF2D6F` cuando tengo carga),
+**`DASH`** y **`DEFINITIVA`** (que se tiñe `#FFC400` a carga completa). El arco
+respeta el safe-area: separación mínima de 12 px entre formas, nada bajo el notch.
+Cada etiqueta va dentro de su botón, clara, con tracking amplio, y sé lo que hace
+por la silueta antes de leerla.
+
+**Abajo al centro — los avisos.** Siluetas de panel que **entran y salen solos**,
+sin pausar; el contorno llega primero, el texto lo rellena. Ejemplos que voy a
+leer mil veces:
+- `WAVE 04/06` en claro cuando entro al tramo y todavía me falta oleada.
+- `[PISO.02 — MARKET ROTO]` en claro, 2 s, al entrar.
+- `NUEVO: EL AGRESOR` una sola vez, la primera vez que aparece el arquetipo.
+- `OLEADA COMPLETA` en claro cuando alcanzo el número, con el mismo flash.
+Ninguno me quita el control. Puedo seguir moviéndome mientras los leo.
+
+**El mundo de colores me habla, pero siempre sobre la silueta.** El atardecer es
+decorado; existe para que el negro `#000000` recorte y el filo lo bese. El
+**peligro `#FF2D6F` es peligro, siempre y sin excepción** — en un enemigo, en un
+proyectil, en el suelo, en un aviso. El **terciario `#FFB871`** es peligro de
+zona: charcos, aros, ondas de calor. El **`#FFC400` es recompensa**: mi carga
+llena, el oro de la Definitiva, la oleada cumplida. Y el **filo `#F2DCC0`** es la
+única luz clara de todo el juego: es la **luz de contorno de cada silueta** y el
+**trazador del rifle de Yui**. El cursor que apunto sobre la pantalla hace su
+ping con ese mismo filo `#F2DCC0`; y cuando el Resucitado va a levantarse por
+segunda vez, su contorno entero se enciende en `#FF2D6F`, peligro puro. No hay
+ningún otro color luminoso: si veo el filo claro, sé exactamente qué está a punto
+de pasar y cuánto tengo antes de que pase.
+
+**Las formas del peligro.** Cada ataque enemigo dibuja su precursor antes de
+hacer daño, y no depende del color para leerse: basta la silueta. Y cada enemigo
+ya llega leído por su forma —el torso partido en vertical y las dos cabezas
+desplazadas del Doble, los hombros anchísimos y el brazo derecho exagerado del
+Lanzador, la corcova con garras curvas del Agresor, el cubo macizo de hombreras
+rectangulares del Blindado, el brazo colgando y la pierna torcida del Resucitado,
+las articulaciones alargadas del Mimético, que copia mis ataques— así que sé qué
+va a hacer mucho antes de que pinte:
+- **Círculo en el suelo** = daño en esa zona.
+- **Línea o cono** = daño en esa dirección.
+- **Aro que crece** = daño radial desde un centro.
+- **Parpadeo del enemigo** = se está cargando; aún no toca.
+
+**Los golpes.** Cada impacto: **flash blanco de 1 frame**, **hitstop** que
+congela a mí y a mi víctima pero **no a la cámara**, **knockback** (siempre — me
+dice dónde pasó sin UI). Cada muerte: destello, la silueta se parte en
+fragmentos, salen partículas y se disuelve. El sonido va en capas y **sube de
+tono con la racha**. Todo esto corre sobre Canvas 2D a 960×540, con el suelo en
+y=468, y con el audio 100% sintetizado en runtime. Nada de esto lo leo: lo
+siento en las manos.
+
+---
+
+
+---
+
+
+# RUN 1 — RIKA. LA HOJA (EN SILUETA)
+
+## Abro el juego
+
+**Enciendo.** Negro absoluto. Una línea de barrido tipo CRT cruza de arriba abajo,
+fino, y se queda como viñeta en los bordes. Por debajo del negro empieza a subir el
+atardecer de cuatro tonos —`#150E2B`, `#4A2247`, `#A84A38`, `#F0A65A`—, y sobre el
+horizonte cae **lluvia ácida**: gotas finas en diagonal que silban y dejan una
+estela `#FFB871` antes de evaporarse. Silencio. En el centro, `ND` en mayúsculas
+monoespaciadas gruesas, esquinas a 45°, color rim `#F2DCC0` — recortado, sin
+relleno interno: un contorno macizo contra el cielo ardiente. Debajo, pequeño y con
+mucho espaciado: `NIPPON DESTRUCTION`.
+
+**Se abre el fondo.** Detrás del logo aparece la torre desde fuera, en silueta
+`#000000` pura, bajo la lluvia ácida, y lo primero que veo es su contorno negro
+recortado contra el degradado de atardecer, sin un solo detalle dentro de la forma.
+Truenos graves y espaciados, con silencios largos entre uno y otro, y relámpagos
+que por un frame lavan el cielo a `#F0A65A` y le ponen a la torre un filo de luz de
+contorno `#F2DCC0`. Un solo piso emite un resplandor tenue. El fondo corre en
+**parallax de 3 capas**, con la ruina lejana a `.10`, la media a `.26` y la cercana
+a `.48`. Entra el tema de menú, 70–90 BPM: lluvia ácida en capas sobre metal, viento
+y una estática baja que no llega a ser melodía.
+
+**El menú.** `[ INICIAR JUEGO ]`, `[ SELECCIONAR PERSONAJE ]`, `[ MODO DE JUEGO ]`,
+`[ OPCIONES ]`, `[ SALIR ]`. Mi cursor es un corchete `[` que parpadea a 2 Hz en el
+acento `#F2DCC0`; cada movimiento suena un click seco de servo. En `[OPCIONES]` dejo
+idioma ESPAÑOL, subtítulos ES, BGM/SFX/VO a gusto y `[SALTAR CINEMÁTICAS: NO]`. En
+`[MODO DE JUEGO]` marco `[SINGLE PLAYER]`.
+
+**Selección de héroe.** Fondo: el Vestíbulo vacío, pero ahora bajo el atardecer de
+cuatro tonos y con lluvia ácida entrando por los huecos del techo; el contraluz
+recorta cada forma en `#000000` puro. Cuatro **tarjetas de cristal** en fila sobre
+una línea de suelo, translúcidas, con el cielo ardiendo detrás y la lluvia resbalando
+sobre el vidrio. Cada tarjeta lleva **su placa kanji grabada**, el nombre, el apodo,
+el rol y **cuatro métricas**: impacto, velocidad, hitstop y evasión. Ahora mismo ya
+son pura silueta: contorno sólido y negro, sin ropa, sin textura, sin cara; la forma
+sola me dice quién es quién. Paso el cursor y se animan a 60 fps, y ahí el relleno
+aparece solo donde importa: **Rika** respira y el haori ondea como lengua de tela
+con 2 frames de retardo, la katana horizontal a la cadera —la única línea larga y
+curva de todo el elenco—; **Goro** apenas se mueve —masa ancha y baja, escudo como
+joroba cuadrada a la espalda— y la brasa `#FFB871` late suave en su guante; **Ren**
+es bajo con cabeza desproporcionada, tiembla de manos y una cinta corta flota a su
+espalda; **Yui** es la más erguida, moño alto, rifle en horizontal, y el **trazador
+`#F2DCC0`** de su rifle late **una vez** al posarse.
+
+Las tarjetas se leen así:
+
+```
+[ 里花 RIKA · LA HOJA · DPS ]
+[ impacto ▮▮▮▯▯  velocidad ▮▮▮▮▯  hitstop 14f  evasión ▮▮▮▮▯ ]
+
+[ 五郎 GORO · EL YUNQUE · TANK ]
+[ impacto ▮▮▮▮▮  velocidad ▮▯▯▯▯  hitstop 24f  evasión ▮▯▯▯▯ ]
+
+[ 林 蓮 REN · EL RELÁMPAGO · SPEED ]
+[ impacto ▮▮▯▯▯  velocidad ▮▮▮▮▮  hitstop 8f   evasión ▮▮▮▮▯ ]
+
+[ 中村 結衣 YUI · EL ECO · CHRONO ]
+[ impacto ▮▮▮▯▯  velocidad ▮▮▮▯▯  hitstop 18f  evasión ▮▮▮▯▯ ]
+```
+
+Me detengo en **RIKA · LA HOJA (DPS)**: la más fina del cuatro, haori como lengua de
+tela a la cadera con la katana, `●●` de dash. Click de servo. Confirmo. Los controles
+quedan así: `TAJO` = `Espacio` o `J`; `DASH` = `Shift` o `K`; arriba y teletransporte
+= `W`; `RUPTURA` = `Q`; `DEFINITIVA` = `E`. Buffer de **5 frames**, prioridad
+**RUPTURA > ESQUIVA > ATAQUE**, y pausa al perder el foco.
+
+## Prólogo de RIKA — «Lo que aún queda» (5–8 s)
+
+En estilo OVA, sprite animado a 24–30 fps, **mudo**: la voz va como pista aparte y
+los subtítulos se re-temporizan por idioma. Subtítulos máximo de dos líneas, 42
+caracteres, en panel oscuro biselado abajo. Se salta con Escape 0.6 s a partir de la
+segunda vez.
+
+**Plano general (2 s).** Exterior de la torre bajo lluvia ácida. La puerta de acero
+enorme con el emblema administrativo en silueta. Rika de espaldas, pequeña contra la
+puerta: un contorno negro recortado sobre el atardecer de cuatro tonos, y el haori
+es el único punto claro que se mueve —una lengua de tela que atrapa el rim
+`#F2DCC0`—. Cámara fija. Un relámpago le lava el borde un frame.
+
+**Plano medio (2 s).** Corte a su perfil izquierdo. Sigo sin ver relleno: solo el
+borde de la ceja, la hundida de los ojos, la katana horizontal a la cadera sin
+desenvainar. Cicatriz vieja en la ceja izquierda, pero se lee como una muesca del
+contorno, no como pintura.
+
+> **JA:** `まだ名前を覚えている。…絶対に、消させはしない。`
+> **ES:** *«Aún recuerdo su nombre... No dejaré que me lo borren.»*
+
+**Plano detalle (1.5 s).** La mano vendada se cierra en el mango —un bloque pequeño
+que se ajusta sobre la barra de la katana—. Un frame de pausa: respiración. Fondo
+desenfocado de la puerta entreabierta, la lluvia colándose.
+
+**Plano inverso (1.5 s).** Desde dentro de la torre: su silueta contra el cielo
+ardiente. El haori se mueve una última vez. Fundido a negro.
+
+**Tarjeta de poder (1 s).** Texto pequeño que se va solo:
+
+> *Su dash atraviesa enemigos y los daña. Cada enemigo atravesado le devuelve carga.*
+
+> Juego a Rika primero porque es la ruta que enseña a dominar los dos botones desde
+> el día uno. Su dash atraviesa **y** daña: su sitio es **dentro** de la horda, no en
+> el borde.
+
+---
+
+## PISO 1 — VESTÍBULO — `24`
+
+**Entro (cinemática 2–4 s).** Fundido desde negro. Vista del atrio **sin HUD y sin
+mí**: mostrador con huecos de objetos que ya no están, torniquetes bloqueados,
+fluorescentes muertos —todo leído como contornos planos `#000000` contra el
+atardecer, uno zumba y parpadea cada 4 s—. Señalética en japonés por todas partes
+(`受領`, `入場証`, `閉鎖`, `立入禁止`). La lluvia ácida gotea desde el techo roto y
+cruza la sala en diagonales `#FFB871`; relámpagos lejanos enmarcan el hueco del
+techo en rim `#F2DCC0`. La cámara panéa hacia arriba y me enseña la altura del techo
+antes de dejarme tocar nada: el vacío vertical queda como un hueco negro recortado.
+Lluvia lejana, eco, buzz de tubo.
+
+**Título.** 2 s y se disuelve:
+
+```
+[PISO.01 — VESTÍBULO]
+[エントランスホール]
+```
+
+**Aparece mi cabina.** Cuatro cuadrantes. Arriba a la izquierda, el bloque macizo
+de la vida con el medidor trifásico y la etiqueta **`2/3 CARGAS`**; arriba a la
+derecha, el combo con el tacómetro y **`WAVE 04/06`**; abajo a la izquierda, dos
+botones anchos, **`AVANZAR`** y **`RETROCESO`**; abajo a la derecha, el cluster en
+arco: **`TAJO`** (72 px) en el centro, y alrededor **`RUPTURA ND`**, **`DASH`** y
+**`DEFINITIVA`**. Todas las etiquetas van dentro de su botón, tintadas `#F2DCC0`,
+con tracking amplio, y respetan el safe-area del notch. `RUPTURA ND` se tiñe
+`#FF2D6F` cuando tengo carga; `DEFINITIVA` se tiñe `#FFC400` a carga completa. Rika
+abajo a la izquierda, 24 px: una silueta única, fina, el contorno del haori ondulando
+y la katana horizontal marcando la cadera. Contra el atardecer la forma sola basta —
+sé que es ella y sé hacia dónde mira. Leo:
+
+```
+[ VIDA 100 · ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ ]      [ OLEADA 1 ]
+[ 2/3 CARGAS ]                            [ BAJAS 0/24 ]
+```
+
+Muevo con WASD. Idle de 4 frames antes de arrancar, luego correr de 8. El pelo y el
+haori llevan 2 frames de retardo —lo primero que mi ojo detecta, la cola de tela que
+se arrastra detrás del contorno—. Pasos ligeros con eco. A la izquierda el mostrador,
+papeles amarillentos, un mapa de evacuación. Los torniquetes no se mueven: metal frío.
+
+**Primer dash (Shift o K).** 0.18 s. Estela `#F2DCC0` tras la hoja, i-frames, y
+atravieso hacia una repisa que solo se alcanza así. El círculo: uno de los dos `●`
+del DASH se vacía con un zumbido corto y queda como contorno gris. Desde la repisa
+veo el atrio entero desde arriba —el vacío vertical del techo, la lluvia entrando
+en diagonal.
+
+**Primer enemigo — EL DOBLE.** 26×12 px. Primero la forma, ahora mismo: un torso
+**partido en vertical**, **dos cabezas desplazadas** y simetría exacta a los dos
+lados del corte —dos mitades que son la misma mitad—. A 24 px ya sé que camina hacia
+mí y que no puede hacer otra cosa. El relleno llega después y solo porque importa:
+cuerpo `#000000`, y **un punto `#FF2D6F` en la juntura central**, lo único saturado
+del bicho. Camina lento, ciclo de 6 frames. No tiene telegrafía: **el contacto es el
+aviso**. Su voz dobla de 600 a 900 Hz, sin subtítulo.
+
+**Espacio o J — mi cadena 1-2-3.** Lo hago sin pensarlo:
+1. **Tajo horizontal.** Mi silueta se parte en un arco `#F2DCC0` con filo
+   `#F2DCC0`: 3 frames de anticipación, 3 de recorrido. Autoavanzo medio paso.
+   **Flash blanco de 1 frame**, knockback de 6 px, metal+aire crisp. Hitstop de
+   2 frames: se congelan él y yo, **no la cámara**. Partículas hueso.
+2. **Revés** dentro de una ventana de 0.30 s —arco contrario, más corto—.
+3. **Arco amplio** que empuja: el Doble vuela, cae, destello → fragmentos →
+   partículas → disolución en la lluvia. Las dos cabezas se separan una de otra al
+   partirse.
+
+Miro la cabina: `BAJAS 1/24` con un flash. **RACHA: aparece el `1`** y hace su pop.
+Y lo importante: la baja me devolvió ~15% de dash, y **el círculo gris empezó a
+rellenarse como un reloj**. Ese es el bucle, y ya lo noto en la mano.
+
+**Emboscada.** Tres Dobles: dos desde abajo, uno lateral. El fondo se desplaza —
+mostrador abajo, pasarelas técnicas arriba, conductos, cajas, todo en planos negros
+que dejan recortarse contra el atardecer—. El primero que me alcanza sin dash me
+quita **8–10 de vida**, me da **0.45 s de invulnerabilidad** y **mi sprite parpadea**
+—mi contorno se interrumpe y vuelve—. Veo cómo la barra segmentada pierde una muesca
+y cómo las que quedan se tiñen `#FF2D6F` pasado el ecuador. Mi racha se rompe en
+seco: glitch de 2 frames y desaparece.
+
+**Dash-ataque.** Aprendo lo que me hace Rika: ataco **durante** el dash. Atravieso
+al Doble dañándolo, con las i-frames intactas y la estela de la hoja visible sobre su
+contorno. El atravesado **me devuelve más carga** que una baja normal —el círculo se
+llena de golpe y puedo seguir—. La RACHA ya va por `3`. `BAJAS 3/24`.
+
+**Umbral (0:40–1:05).** Puertas de seguridad automáticas —clank pesado detrás de
+mí—. Aviso en peligro `#FF2D6F`: **`BAJAS NECESARIAS: 18/24`**. El combate no para
+mientras subo. Cuatro a seis Dobles a la vez, todos desde abajo, más rápidos que mi
+caminar —seis torsos partidos moviéndose, y la forma me dice cuál está más cerca—.
+La puerta solo abre si tengo el recuento **y** he llegado. La música sube a phonk
+frío y vacío, 70–90 BPM, con el cruce de oleada a subjefe de 0.5–0.8 s.
+
+**Reliquia — la carta sin modal.** El juego **no se congela**. Alrededor de Rika, en
+el mundo, aparece un **anillo de 3 reliquias flotantes** —tres rectángulos recortados
+girando en silueta—. No hay "confirmar": tengo **2.5 s** y se cierra sola. Se recogen
+en 0.15 s al pasar por encima y **se pierden al cambiar de tramo**. Elijo **dashando
+hacia la reliquia**:
+
+```
+[TRAVESÍA VITAL]    Atravesar enemigos me cura
+[ESTELA RESIDUAL]   El dash deja una estela que daña
+[PRECISIÓN FRÍA]    Tras 3 s sin atacar, golpe crítico
+```
+
+Dasho hacia **[TRAVESÍA VITAL]**. La reliquia se enciende en recompensa `#FFC400`
+—recompensa sobre el contorno— cuando mi dash la toca, y entra. Atravesar ahora me
+cura unos puntos. El gesto que me salva es el que me da el poder.
+
+Sigo por el umbral con la cadena de 4: tajo, revés, amplio, y un cuarto golpe que
+empuja más. Otra vez flash, hitstop, knockback en cada uno. **La RACHA llega a 8** y
+el número late un poco más fuerte. La música sube de intensidad, la percusión entra
+más.
+
+**Subjefe — EL DOBLE.** Rellano amplio: lo más grande del piso. Reloj de pared
+parado, mapa de evacuación. La música baja a un pad sostenido. Entra un Doble **de
+élite**, grande, y **la cámara se fija 1 s** —pero yo ya puedo moverme, y él todavía
+no me toca—. 40 px, simétrico y partido, con las dos cabezas desplazadas y el punto
+`#FF2D6F` latiendo más rápido. Se posa con peso y **el suelo tiembla un frame**. Su
+voz dobla 600→900 Hz con un segundo armónico encima.
+
+Combate: se inclina 4 frames antes de embestir, con **un cono `#FF2D6F` en el suelo**
+que marca la dirección —el cono es la telegrafía y se lee de un vistazo—. Si salgo
+del cono, se queda quieto **1.2 s** —esa es la ventana—. Le meto la cadena de 4:
+cuatro flashes, cuatro hitstops. **RACHA 12**: en el cuarto golpe el juego entra en
+**time-scale 0.55x por 0.08 s**; se siente en las manos. Cae con peso, explosión
+contenida, ceniza hacia arriba.
+
+Dos Dobles sueltos más, el recuento se completa (`BAJAS 24/24`, flash), la puerta
+abre.
+
+**Ascenso alto (1:25–2:05).** Tramo de servicio: pasarelas técnicas, escalera de
+caracol, estrecho. Aquí no caben cinco enemigos. Rika sube a dashes verticales —
+cada repisa me cuesta una carga—. Aprendo la lección del piso: **círculo seco =
+caminante sin i-frames; círculo lleno = subida rápida**. La economía y la geometría
+son lo mismo.
+
+**Jefe — EL PORTERO (2:05–2:35).** Sala totalmente sellada. Muro de contención con
+emblema. Un panel de contadores congelado en `40.000`. Sin ventanas. **La música
+corta a silencio medio segundo**, y entra el tema de jefe: phonk industrial pesado.
+
+**Intro de jefe (3–4 s, nunca menos).** El Portero se materializa del panel: 52 px,
+**una puerta con piernas** —cuadrado arriba y desproporcionado abajo, un contorno
+macizo que ocupa un tercio de la pantalla—. Cuerpo `#000000`, y un **ojo central
+`#FF2D6F` que se enciende en el último frame**: peligro encendido sobre la silueta.
+**Yo ya me puedo mover.**
+
+> **JA:** `「受付業務…対象を排除する。」`
+> **ES:** *«Procedimiento de recepción... eliminando objetivo.»*
+
+Tres ataques, todos telegrafiados:
+1. **Embestida:** cono `#FF2D6F` de **1 s**.
+2. **Pisotón:** círculo `#FF2D6F` que crece y detona.
+3. **Barrido de brazos:** arco de 180°.
+
+Tras cada ataque: **1.2 s quieto**. Esa es mi ventana. Entro con la cadena completa,
+aguanto el 4º golpe. A los 0.18 s de mantener, **la Ruptura está cargada** —mi
+círculo de dash está lleno y teñido `#FFC400`.
+
+**Cut-in de Ruptura `Q` — IAIDO RELÁMPAGO (1–2 s, 12 fps).** Cuesta **1 carga
+completa** y soy **invulnerable de principio a fin**, 12 frames de invuln que
+**atraviesan defensas**. La pantalla se llena con un fotograma fijo estilo OVA: Rika
+centrada como contorno negro puro, la katana trazando la cruz, estela `#F2DCC0`
+sobre fondo de líneas radiales. **12–18 frames escalonados, no interpolados**, y un
+destello que se lee como relámpago. La voz va encima:
+
+> **JA:** `「一閃…切る！」`
+> **ES:** *«¡Un destello... lo corto!»*
+
+**No me bloquea el input.** Vuelve al gameplay sin fade: **onda en cruz**, daño a
+todo lo que toca, empuje. El Portero pierde un tramo de vida. Cadena final: knockback,
+caída, flash.
+
+**Outro + transición (8–10 s, una sola pieza).**
+
+> **JA:** `「行け。ここは、もう俺の番じゃない。」`
+> **ES:** *«Ve. Aquí ya no es mi turno.»*
+
+Se deshace en ceniza hacia arriba —la puerta con piernas pierde su contorno de abajo
+arriba—. La cámara sube a la puerta. Rika camina sola 2–3 s y la toca. **Reveal del
+piso siguiente:** el Market Roto desde abajo, sin enemigos —lonas colgando, puestos
+volcados, ocre cálido desaturado bajo el negro—. La cámara panéa arriba y me enseña
+la densidad que viene. Guarda el estado. Salto (ya lo vi).
+
+```
+[PISO.02 — MARKET ROTO]
+[壊れた市場]
+```
+
+---
+
+## PISO 2 — MARKET ROTO — `32`
+
+**Subo.** Pasillo central entre puestos volcados: mostradores reventados, cajas
+apiladas de cualquier manera, lonas que se mueven con corriente —planos negros y
+ocres, todo como recorte, el contorno de cada cosa diciendo qué es—. Plástico,
+cartón, ocre. `営業停止`, `食料品`, `半額`. Lluvia ácida golpeando toldos, charcos
+`#FFB871` que se evaporan. El phonk se vuelve agresivo y húmedo, **100–120 BPM**.
+
+**Nuevo: LANZADOR.** 30 px. Forma primero, ahora mismo: **hombros anchísimos, un
+brazo derecho exagerado y una silueta triangular invertida** —toda la masa arriba y
+un solo brazo colgando hasta el suelo—. ARCO/TRIÁNGULO: ya sé que no va a embestir,
+porque esa forma no empuja, escupe. Relleno `#000000`, con la boca en `#FF2D6F` —el
+punto de peligro—. Es el **enemigo a distancia**. La boca se abre y se queda
+**2 frames**, luego escupe un proyectil: **círculo `#FF2D6F` con estela `#FFB871`**.
+Dispara a paradas, así que leo el ritmo y uso las repisas. Las i-frames de mi dash lo
+esquivan limpio. Su voz 300→900 Hz con formante en 2100.
+
+Cabina igual: `VIDA 100`, `2/3 CARGAS`, `WAVE 04/06`, `BAJAS 0/32`.
+
+**Umbral — cuello de botella.** El pasillo se estrecha a propósito. Una cinta
+transportadora inmóvil con la compra de alguien a medias. Puerta cerrada, recuento
+**32**, cinco a ocho a la vez: lanzadores en fila y Dobles sueltos, y la forma me
+ordena el caos antes de que me toque. **RACHA 20**: el cuarto golpe trae flash +
+**frame invertido** (1 frame, colores en negativo) y **time-scale 0.40x por 0.12 s**.
+El contador late grande en pantalla.
+
+**Reliquia de nivel.**
+
+```
+[ESTELA RESIDUAL]   El dash deja una estela que daña
+[PRECISIÓN FRÍA]    Tras 3 s sin atacar, golpe crítico
+[RUPTURA RECARGADA] Matar me devuelve una carga
+```
+
+Dasho a **[ESTELA RESIDUAL]**. Ahora mi dash deja tras de sí una cinta `#F2DCC0`
+que muerde a quien la cruza —el gesto se queda donde pasé—. El bucle se cierra del
+todo: **atravesar es dejar una trampa y salir entera**.
+
+**Subjefe — EL LANZADOR.** Rellano dentro del caos: un catálogo de supermercado con
+huecos vacíos y precios a lápiz. Fluorescente parpadeante, sombras alternas. Entra
+uno grande: 40 px, los mismos hombros anchísimos y el brazo exagerado, pero con **tres
+bocas** que se abren a destiempo.
+
+> Telegrafía triple: tres conos `#FF2D6F` en abanico, cada uno con su aviso. Si me
+> quedo en el centro, me cruza; si salgo, tengo **1 s** para castigar.
+
+Los mato a base de dash-atravesar, cada cruce me devuelve carga. *«Ruta despejada.»*
+El recuento se completa (`BAJAS 32/32`, flash) y la puerta abre.
+
+**Ascenso alto.** Pasarela de mantenimiento sobre los puestos: veo el nivel entero
+desde arriba. Ruta alta expuesta, sin suelo, con recompensa —cargas y oro de Ruptura
+`#FFC400`—. Dos dashes en diagonal y cruzo.
+
+**Jefe — LOS GEMELOS.** Sala de almacén sellada. Cajas hasta el techo, solo un
+pasillo central. La luz se corta: solo queda la salida de emergencia, apagada. Los
+dos gemelos perfilados por esa luz —**dos espejos** recortados en fila, iguales y
+enfrentados, sin relleno propio, sincronizados—.
+
+> **JA:** `「二重登録を確認。矯正開始。」`
+> **ES:** *«Registro duplicado detectado. Iniciando corrección.»*
+
+Embisten hacia lados opuestos y **el cruce dibuja un cono doble `#FF2D6F` que cubre
+el centro**. Si mato a uno, el otro acelera pero se vuelve vulnerable. Los mato en
+espejo con dash-atravesar: cada cruce me devuelve carga, y la estela residual que
+dejo corta el pasillo por la mitad. **RACHA 35+**: aparecen líneas de velocidad de
+2–3 frames y un **flash frame de silueta blanca** —mis dos contornos se vuelven huecos
+de luz—. Muere el segundo:
+
+> **JA:** `「…やっと、休める。」`
+> **ES:** *«...Por fin puedo descansar.»*
+
+Ceniza en espejo hacia arriba. Puerta. **Reveal: la Refinería desde abajo** —brasa
+`#FFB871` respirando, vapor entre tuberías, la luz cálida viniendo de abajo contra el
+negro de la estructura—.
+
+```
+[PISO.03 — REFINERÍA]
+[精錬所]
+```
+
+---
+
+## PISO 3 — REFINERÍA — `40`
+
+**Subo.** Galería de tuberías sobre vacío profundo: tubería verdosa, válvulas
+cerradas a mano, vapor que sube. Todo en contornos planos negros contra el atardecer;
+adentro no hay nada que leer. `高圧注意`, `燃料`, `立入禁止`. Phonk industrial caliente
+**120–130 BPM**, metal expandiéndose.
+
+**Nuevo: AGRESOR.** 24 px. Forma primero, ahora mismo: **corcovado, con garras curvas
+y muslos potentes** —todo el cuerpo inclinado hacia delante, como si ya estuviera
+corriendo parado—. Es el **más rápido del juego**: la corcova me avisa antes que
+cualquier color. Relleno `#000000`, con las garras `#FF2D6F`. Se lanza en recto, sin
+más, y su grito sube de 400 a 260 Hz. **Telegrafía visual + audio** antes de saltar:
+se agacha 3 frames y la garra destella. Aquí la silueta es lo único que me sobra:
+corcova = embestida.
+
+**Charcos.** Círculos `#FFB871` en el suelo con **1 s de aviso** antes de activarse;
+después, dañan —peligro pintado sobre el contorno del suelo—. No suben a las repisas
+altas: el piso me obliga a vertical.
+
+**Umbral.** Recuento **40**, Agresores y Lanzadores mezclados, seis a nueve a la vez,
+pasarelas angostas. **RACHA 40**: 5 frames de hitstop, **time-scale 0.25x por
+0.18 s**, flash + speedlines. Rika vive el piso en el perímetro, cadenas de 4 en las
+ventanas entre embestidas.
+
+**Reliquia de nivel.**
+
+```
+[ESTELA RESIDUAL]   El dash deja una estela que daña
+[PRECISIÓN FRÍA]    Tras 3 s sin atacar, golpe crítico
+[RUPTURA RECARGADA] Matar me devuelve una carga
+```
+
+Dasho a **[RUPTURA RECARGADA]**. Ya no dependo solo de atravesar para cargar: matar
+también me devuelve una carga, y la Ruptura deja de ser un lujo. El recurso y la
+agresividad vuelven a ser lo mismo.
+
+**Subjefe — EL AGRESOR.** Depósito pequeño y cuadrado, respiraderos incandescentes
+`#FFB871`. Emerge el Agresor de élite: 36 px, más corcovado aún, con **cuatro
+garras** en abanico. Zonas de daño en el suelo y **un aro expansivo `#FFB871`**. Sin
+contacto: quien se acerca, muere. Rika pelea en el perímetro, cadenas en las ventanas
+quietas, dash-atravesándolo para curarme con TRAVESÍA VITAL. *«Válvula asegurada.»*
+
+**Ascenso alto.** Escalerillas de gato, climbing de depósitos. Vapor en la ruta alta:
+veo menos, leo peor —la silueta se me come el fondo—. Está expuesta a propósito.
+
+**Jefe — LA CALDERA.** Depósito central que ocupa el fondo entero, brasa `#FFB871`
+visible. Una sola boca de ventilación como salida. Su forma manda: **un círculo
+perfecto de 44 px** saliendo de un bloque —la Caldera es redonda por dentro de la
+estructura, y el contorno lo dice antes que el relleno—, **sin una sola línea recta
+en todo el borde**.
+
+> **JA:** `「過圧警告。自動制御解除。」`
+> **ES:** *«Alerta de sobrepresión. Control automático liberado.»*
+
+**Fase 1 (100–50%).** Charcos donde acabo de estar + aro radial `#FFB871`. Solo
+suelo y aro. **Fase 2 (50–0%).** Los charcos **se quedan**. El suelo se llena de
+naranja. Mi trabajo: dash-atravesar el perímetro, cadenas en ventanitas, con hitstops
+profundos. La sala saturada de peligro y una silueta clara moviéndose entre los
+huecos. Muere:
+
+> **JA:** `「火は、まだ消えてねぇぞ。」`
+> **ES:** *«El fuego aún no se ha apagado.»*
+
+La esfera se enfría de fuera adentro. Puerta. **Reveal: el Archivo** —filas de
+Blindados, quietos, mirándome—. No se mueven. Son bloques macizos alineados y es el
+peor spoiler posible.
+
+```
+[PISO.04 — ARCHIVO]
+[記録庫]
+```
+
+---
+
+## PISO 4 — ARCHIVO — `48`
+
+**Subo.** Pasillo entre estanterías que no dejan ver tres metros. Suben más allá de
+la luz. Cajas abiertas, papel amarillento, polvo. `保管`, `機密`, `持出禁止`. Goteo
+rítmico. Phonk tenso y claustrofóbico **95–115 BPM**. Las estanterías son puro
+contorno: barras verticales apretadas, sin fondo detrás.
+
+**Nuevo: BLINDADO.** 32×20 px. Forma primero, ahora mismo: **un cubo macizo con
+hombreras rectangulares, sin piernas** —BLOQUE PESADO; se mueve pegado al suelo y la
+placa es todo lo que me enseña—. Relleno `#000000`, hueco en la placa. Tiene
+**guardia**: si le golpeo de frente, la placa parpadea `#F2DCC0` 1 frame y suena metal
+—"no ha sido suficiente", sin ningún texto—. **La guardia se rompe con 3 golpes (1 de
+daño + aturdimiento) o con un solo dash que lo atraviesa, que la rompe entera.**
+Rodeable solo por detrás. Su voz es square, 900→300 Hz, con capa metálica. Rika lo
+resuelve con dash-atravesar, y la guardia se va de un solo gesto.
+
+**Umbral — encrucijada.** Dos caminos que convergen antes del subjefe. Ruta baja con
+horda, ruta alta expuesta con recompensa. Recuento **48**, ocho a once simultáneos,
+Blindados mezclados con Lanzadores y Agresores. Cada rodeo es un dash vertical que
+gasta círculo que las bajas recargan.
+
+**Reliquia de nivel.**
+
+```
+[PRECISIÓN FRÍA]    Tras 3 s sin atacar, golpe crítico
+[RUPTURA RECARGADA] Matar me devuelve una carga
+[TRAVESÍA VITAL]    Atravesar enemigos me cura
+```
+
+Dasho a **[PRECISIÓN FRÍA]**. Cinco segundos quieta y el siguiente golpe es crítico.
+La sala me obliga a esperar el hueco; ahora la espera es un cuchillo.
+
+**Subjefe — EL BLINDADO.** Sala de lectura: mesas, atriles, máquina de escribir. El
+único sitio ordenado —el más inquietante—. Entra el Blindado de élite: 44 px, cúbico
+macizo, hombreras rectangulares enormes. **Guardia reforzada**: aguanta 3 golpes y la
+placa late `#F2DCC0` en cada impacto, hasta que un dash-atravesar se la lleva entera.
+*«Entrada sellada.»*
+
+**Ascenso alto.** Tubería de ventilación por el techo, pasillo técnico, ruta alta
+expuesta. Veo el Archivo como una celda de barras negras.
+
+**Jefe — EL ESCRIBANO.** Archivo central sellado. Cuatro filas, un hueco estrecho. Al
+fondo, una silueta alta y encorvada con **un brazo-bellota larguísimo** que usa de
+pluma, y alrededor **archivos que copian mi forma** —hojas de papel que se levantan
+como mímesis de mí misma—. Picado lento: la estantería enmarca como barras de celda.
+
+> **JA:** `「ファイル照合。矛盾を検出。」`
+> **ES:** *«Comparando archivos. Contradicción detectada.»*
+
+**Fase 1:** barridos de pluma con arcos `#F2DCC0` y proyectiles a distancia.
+**Fase 2 (50%):** los archivos copiados repiten mis propios tajos con timings
+distintos. A mitad de la fase 2 lanzo Ruptura: cut-in de 12 fps con líneas de
+velocidad de fondo (**racha 50+**), la cruz, y la voz:
+
+> **JA:** `「一閃…切る！」`
+> **ES:** *«¡Un destello... lo corto!»*
+
+> **JA:** `「書き直せ…お前なら。」`
+> **ES:** *«Reescríbela... tú puedes.»*
+
+Se disuelve en tinta que se borra hacia arriba —la silueta negra se deshace como
+líquido—. Puerta. **Reveal: la Clínica** —los Resucitados en pie, quietos, con grietas
+de rim `#F2DCC0` brillando detrás—. Silencio de cuerpos inmóviles.
+
+```
+[PISO.05 — CLÍNICA]
+[診療所]
+```
+
+---
+
+## PISO 5 — CLÍNICA — `56`
+
+**Subo.** Pasillo de consultas: camillas con sábanas, cortinas, un monitor que se
+apaga al pasar. Blanco sucio, acero médico, todo desaturado y recortado. Fluorescentes
+zumbando, goteo irregular. `外来`, `隔離`, `薬品`. Phonk de horror administrativo
+**110–125 BPM**.
+
+**Nuevo: RESUCITADO.** 28×14 px. Forma primero, ahora mismo: un torso **asimétrico**,
+con el **brazo izquierdo colgando** y una **pierna rígida torcida** —torcido, roto,
+y a 24 px leo la torsión antes que nada—. Relleno `#000000`, con **grietas de luz de
+contorno `#F2DCC0`**. La regla duele: **se levanta una vez si no muere dentro de la
+oleada**. Las grietas **brillan 2 frames antes** —esa es mi ventana para acabarlo, y
+el rim solo aparece aquí porque aquí es lo único que importa—. Su voz es la más grave
+del juego, 150→68 Hz. Aprendo lo que este piso castiga: si limpio rápido y dejo
+cuerpos, las grietas se encienden y se levantan.
+
+**Umbral — quirófano.** Puertas metálicas, instrumentos, luces quirúrgicas apagadas.
+Recuento **56**, nueve a trece, **18 s**. Estrecho. Resucitados que caen, brillan,
+vuelven —torsos rotos levantándose—. **RACHA 65**: time-scale 0.25x, líneas de
+velocidad, flash frame. Blanco sucio, peligro `#FF2D6F` por todos lados, y **rim
+`#F2DCC0` solo en las grietas**.
+
+**Reliquia de nivel.**
+
+```
+[RUPTURA RECARGADA] Matar me devuelve una carga
+[TRAVESÍA VITAL]    Atravesar enemigos me cura
+[ESTELA RESIDUAL]   El dash deja una estela que daña
+```
+
+Dasho a **[RUPTURA RECARGADA]**. Mi red de seguridad para el Núcleo: cada baja me
+devuelve una carga, y con las grietas brillando no puedo permitirme quedarme seca.
+
+**Subjefe — EL RESUCITADO.** Sala de reanimación: camillas en fila, respirador, un
+monitor que late sin paciente. Entra el Resucitado de élite: 36 px, más torcido aún,
+con las grietas `#F2DCC0` recorriéndole todo el torso.
+
+> Telegrafía: **las grietas se encienden en rim `#F2DCC0` 2 frames antes** de que se
+> levante o embista; el rim es la única luz clara y me avisa sin ensuciar la silueta.
+> Aviso de 1 frame en sus zarpazos.
+
+Es el ensayo del piso. *«Espécimen reanimado... contenido.»*
+
+**Ascenso alto.** Tubería de oxígeno por el techo, pasillo técnico, ruta alta
+expuesta.
+
+**Jefe — LA CIRUJANA.** Sala de operaciones sellada. Una lámpara quirúrgica única
+encendida —**blanca limpia, no color**—. Flota bajo ella: más pálida, **sin piernas**,
+sobre un charco —un contorno suspendido, cortado en seco por abajo, como recorte
+flotando—. Vendas `#000000`, bisturí `#F2DCC0`, y el bisturí traza un arco lento como
+un metrónomo.
+
+> **JA:** `「未登録検体。隔離手続き開始。」`
+> **ES:** *«Muestra no registrada. Iniciando aislamiento.»*
+
+**Fase 1 (100–40%):** agujas en abanico con avisos de 1 frame.
+**Fase 2 (40–0%):** cada 8 s aparece **la barrera de agujas** —un arco horizontal
+`#F2DCC0` que cruza la pantalla entera, con **1 s completo de aviso**—. Y lo peor:
+**cancela la invulnerabilidad del dash**. Durante la barrera, mi dash no me salva.
+Espero el pulso radial y encadeno sin dash en la ventana. Si fallo el ritmo, como
+agujas. Muere bajo la lámpara:
+
+> **JA:** `「ありがとう…もう眠らせて。」`
+> **ES:** *«Gracias... déjame dormir.»*
+
+La lámpara se apaga sobre ella. Medio segundo a oscuras, y cuando vuelve la luz solo
+queda el charco. Puerta. **Reveal: el Núcleo. SIN MÚSICA.** Vacío vertical, fragmentos
+flotando, capas de tiempo suspendidas —sillas, fluorescentes, una puerta cerrada,
+todos recortados en negro—. **Silencio total 2 s** antes de que entre el phonk.
+
+```
+[PISO.06 — NÚCLEO]
+[核]
+```
+
+---
+
+## PISO 6 — NÚCLEO — `70`
+
+**Subo.** La arquitectura desaparece. Fragmentos de estructura flotando en el
+atardecer —pedazos de contorno sueltos, sin pared detrás—. El tiempo va en capas:
+franjas horizontales con momentos congelados distintos, y **cada dash atraviesa un
+momento distinto**. Estática, lluvia ácida distorsionada, reverberación. Phonk
+progresivo y apocalíptico **130–140 BPM**.
+
+**Nuevo: MIMÉTICO.** Forma primero, ahora mismo: un **humanoide base de héroe pero con
+las articulaciones alargadas** —el mismo contorno esbelto, los brazos de más, como un
+dibujo tirado de los huesos—. Relleno `#000000`. Y la regla: **copia mis ataques**.
+Si yo tajo en arco, él tajo en arco; si yo dasho, él intenta dashar. Es el espejo
+móvil del piso, mudo por ahora.
+
+Todo junto: los arquetipos rotan —el torso partido y de dos cabezas, los hombros
+anchísimos y el brazo exagerado, la corcova con garras, el cubo macizo con hombreras
+rectangulares, el torso asimétrico con el brazo colgando— máximo 3 activos,
+**12–16 simultáneos**, 15 s entre oleadas, y el Mimético copiando por encima. Recuento
+**70**. Aquí la forma es lo único que me sobra: de lejos ya sé quién me embiste, quién
+escupe, quién tiene guardia y quién se levanta. Rika vive dentro de la horda —
+dash-atravesar, cadena de 4, poción de reliquia, crítico de racha—. La run entera se
+cobra aquí.
+
+**Subjefe — EL MIMÉTICO.** Suelo repetido en espejo, escalera infinita desfasada.
+Aparece en **tres destellos superpuestos**, como el mismo frame con retraso: tres
+copias de la misma silueta articulada apiladas. 26 px, delgado, rápido, distorsionado.
+Telegrafía: **la grieta luminosa del contorno `#F2DCC0` 2 frames antes** de que
+replique mi último ataque. Su muerte se repite **tres veces en destello** —el mismo
+frame de caída, tres veces, con retraso—. Mudo hasta el final.
+
+**Jefe — EL NÚCLEO.** **Un ojo vertical con patas debajo.** 56 px: una barra alta que
+se abre como ojo, lo más estrecho y lo más grande del juego a la vez. El ojo `#FF2D6F`
+se abre de arriba abajo como un obturador —peligro sobre negro—. Las manos, quietas.
+En el iris, un reflejo `#FFC400` —el único color de recompensa dentro de un enemigo, y
+es un engaño.
+
+> **JA:** `「ループ・サブユニット起動。」`
+> **ES:** *«Unidad sub-bucle activada.»*
+
+**Fase 1 (100–70%):** aro + conos. **RACHA 70+**: hitstops de 6 frames, **time-scale
+0.15x por 0.25 s**. Lanzo la Definitiva `E` en el clímax —**SOBRECARGA ND: SINFONÍA DE
+SANGRE**, 7 cortes cruzados, hitstop de 70 ms / 14 frames—: cut-in completo, siete
+cruces de katana, la onda, y el Núcleo pierde un tramo serio.
+**Fase 2 (70–35%):** invoca **2 Agresores**. Si no los mato, siguen. La sala se llena
+y las telegrafías se superponen: conos del jefe y la corcova de los Agresores,
+legibles por forma.
+**Fase 3 (35–0%):** todo más rápido. El suelo en **charcos de daño permanentes**,
+como en la Caldera. Yo entre charcos, dashes que atraviesan, cadenas de 4, racha que
+se rompe y se reconstruye. Aquí suelto la Ruptura **IAIDO RELÁMPAGO** —12 frames de
+invuln, atraviesa defensas— y la Definitiva encadenada. Silueta en cruz, katana
+horizontal, estela `#F2DCC0`, líneas radiales.
+
+**Cae.** Flash blanco de la sala entera. **Screen shake** pesado `shakeHeavy` de
+0.38 s que decae.
+
+> **JA:** `「裂け目を…閉じろ。」`
+> **ES:** *«Cierra... la grieta.»*
+
+La grieta se cierra de arriba abajo en un fundido lento —la única animación lenta del
+juego—. Las capas colapsan: sillas, fluorescentes, la puerta —todo entra en la línea—.
+No es saltable la primera vez.
+
+**Epílogo (20–30 s).** Rika de pie en el borde, el haori quieto **por primera vez**
+—sin viento, ya no hay fractura: la silueta deja de ondear y se queda fija, una lengua
+de tela caída—. Una rendija de luz limpia atraviesa el cielo. Su perfil, la cicatriz
+como muesca del contorno, los ojos cerrados, respira. Plano invertido: silueta contra
+la rendija, katana horizontal en la cadera, haori iluminado por luz limpia `#F2DCC0`.
+Al fondo, la torre entera desde fuera, **sin grieta**, bajo el atardecer. Vuelve el
+tema atmosférico del menú. Un texto breve que se va solo:
+
+> *39 años. 40.000 personas. Catorce minutos.*
+
+Fundido a negro. Resumen:
+
+```
+[NÚCLEO EN CALMA]  TIEMPO 17:42  BAJAS 274  RACHA MÁX 63  NIVEL 7
+```
+
+## Animación de cierre y créditos
+
+**La animación de cierre** arranca justo donde acaba el epílogo, sin corte, y dura
+45–60 s. Es una sola pieza, la única cámara lenta que queda (ya sin peligro):
+
+- **Plano 1 (0–8 s).** Rika de espaldas sobre el borde, quieta. La cámara retrocede
+  muy despacio y la grieta, abierta 39 años, **se cierra del todo** con un último
+  hilo de luz `#F2DCC0` de abajo arriba. Silencio. Solo dos contornos: ella y el
+  borde.
+- **Plano 2 (8–20 s).** La torre desde fuera, por primera vez **sin ningún piso
+  encendido**. La lluvia ácida para. El atardecer se abre un grado, más `#F0A65A` y
+  menos negro. Las siluetas de los atrapados al pie de la torre —figuras planas
+  repitiendo el mismo gesto— **dejan de repetirlo**: se detienen, miran arriba y se
+  disuelven en luz suave, una a una.
+- **Plano 3 (20–35 s).** Fundido al **Núcleo vacío y en calma**: sin fragmentos ni
+  estática, solo vacío sereno y una línea de luz donde estaba la grieta. **Este fondo
+  se queda fijo durante todos los créditos.**
+- **Plano 4 (35–45 s).** La marca de Rika —**la vela**— dibujada en rim `#F2DCC0`,
+  unos segundos, se disuelve. Texto: *39 años. 40.000 personas. Catorce minutos.*
+  Fundido, y empiezan los créditos.
+
+**Lo que suena:** el fondo del Núcleo con la versión **más suave y sutil** del tema —
+sin percusión ni golpes, solo pads largos, bajo estático, lluvia lejana y un eco
+tenue—. Nada sube ni acelera: es la respiración después del combate.
+
+**El roll de créditos** sube sobre el Núcleo en calma, texto monoespaciado en rim
+`#F2DCC0`, centrado, con fade de 0.5 s al entrar y al salir. Tamaño en pantalla
+(1080p): cuerpo del roll **30 px**, `ND` **64 px**, nombre **48 px**, epíteto **26 px**.
+Velocidad: **22 px/s** en los roles, **13 px/s** en la historia, **8 px/s** en el dato
+final, **5 px/s** en el nombre. Duración total ~2 min.
+
+```
+                            ND
+                    NIPPON DESTRUCTION
+
+                       DIRECCIÓN
+            SERGIO GRABIEL BORBOLLA VERDECIA
+
+                 DISEÑO DE JUEGO Y COMBATE
+            SERGIO GRABIEL BORBOLLA VERDECIA
+
+                  LOS CUATRO HÉROES
+               RIKA · GORO · REN · YUI
+            SERGIO GRABIEL BORBOLLA VERDECIA
+
+                    ARTE Y SILUETA
+            SERGIO GRABIEL BORBOLLA VERDECIA
+
+                ANIMACIÓN Y CUT-INS
+            SERGIO GRABIEL BORBOLLA VERDECIA
+
+                   MÚSICA Y SONIDO
+            SERGIO GRABIEL BORBOLLA VERDECIA
+
+                     PROGRAMACIÓN
+            SERGIO GRABIEL BORBOLLA VERDECIA
+
+                   DISEÑO DE NIVELES
+            SERGIO GRABIEL BORBOLLA VERDECIA
+
+                 PRUEBAS Y EQUILIBRIO
+            SERGIO GRABIEL BORBOLLA VERDECIA
+
+                     LOCALIZACIÓN
+                 JAPONÉS · ESPAÑOL · INGLÉS
+            SERGIO GRABIEL BORBOLLA VERDECIA
+```
+
+Y en medio del roll, la historia:
+
+> Al principio nadie le creyó. Decían que un solo cuerpo no puede subir una torre
+> entera. Que la grieta llevaba abierta treinta y nueve años y que treinta y nueve
+> años no se cierran con dos manos y una noche.
+>
+> **RIKA TSUKIMI** subió igual.
+>
+> Pasó por el Vestíbulo y por el Market roto. Cruzó la Refinería, el Archivo, la
+> Clínica, y no paró donde todos los demás se habían parado. No subió por gloria:
+> subió porque había cuarenta mil nombres atrapados en el mismo minuto y alguien
+> tenía que ir a buscarlos.
+>
+> Peleó contra todo lo que la ciudad tenía guardado para que nadie llegara arriba. Y
+> cuando ya no le quedaba nada salvo el gesto de seguir levantándose, **RIKA TSUKIMI**
+> hizo lo que nadie había hecho nunca: rompió el bucle.
+>
+> Cerró la grieta. Le devolvió al mundo su tiempo. Los que repetían el mismo paso
+> desde hacía casi cuatro décadas pudieron, por fin, dejar de repetirlo. Los que
+> estaban congelados, caminar. Los que no recordaban, recordar.
+>
+> No hubo multitudes. No hubo un monumento. Solo una torre apagada y un atardecer un
+> poco menos rojo. Pero desde ese día, cuando alguien pregunta quién salvó al mundo,
+> la respuesta es siempre la misma:
+>
+> **—RIKA TSUKIMI.**
+>
+> Y el mundo, que llevaba treinta y nueve años esperando a alguien, por fin pudo
+> seguir.
+
+Después del último párrafo, unos segundos en el Núcleo en calma, la música baja hasta
+casi el silencio, aparece la **vela** en el centro y funde a negro. Fin de la run.
+
+---
+
+
+# RUN 2 — GORO. EL YUNQUE (EN SILUETA)
+
+> Empiezo otra run. Ahora mismo todo se me lee como contorno: la embestida de
+> Goro es una sola carga, la más larga del elenco, y empuja a todo lo que toca.
+> Su escudo es una joroba cuadrada a la espalda que me deja comerme contactos que
+> a los otros los matan. Sobre el atardecer de cuatro tonos todo es tinta
+> `#000000` pura, sin relleno, con un borde de luz `#F2DCC0` recortándolo, y la
+> lluvia ácida cae en diagonal por delante del contraluz. Juego el juego
+> **entero otra vez**, desde que se abre, los seis pisos, hasta los créditos, y
+> en cada piso miro primero la forma: qué es y qué va a hacer.
+
+## Abro el juego
+
+Cierro la partida de Rika y **vuelvo a abrir el juego desde el arranque**.
+**Enciendo**: el mismo **atardecer permanente de cuatro tonos**
+(`#150E2B → #4A2247 → #A84A38 → #F0A65A`) subiendo por el cielo como una herida
+que ya no cierra, la misma lluvia ácida fina, los mismos relámpagos espaciados
+que por un frame lo pintan todo de rim `#F2DCC0`. El mismo logo `ND` en rim
+`#F2DCC0` y debajo `NIPPON DESTRUCTION`, ya puro contorno, sin relleno. **Se
+abre el fondo**: la torre en ruinas bajo la lluvia recortada en masa maciza
+`#000000`, las capas de parallax a `.10 / .26 / .48` deslizándose a distinta
+velocidad, el piso que resplandece como una ranura de luz, y entra el mismo tema
+de menú de **70–90 BPM** con lluvia, viento y una estática baja por debajo.
+
+**El menú** son **tarjetas de cristal** flotando sobre el atardecer, cada una con
+su lectura en rim: `INICIAR JUEGO`, `SELECCIONAR PERSONAJE`, `MODO DE JUEGO`,
+`OPCIONES`, `SALIR`, con mi corchete rim `#F2DCC0` parpadeando a 2 Hz y el click
+de servo en cada movimiento. Cada tarjeta muestra sus **métricas** como barras
+finas —masa, velocidad, alcance, defensa— para que lea la forma antes que el
+nombre. No toco opciones. Entro a `SELECCIONAR PERSONAJE`.
+
+**Selección.** Las cuatro siluetas otra vez sobre la línea de suelo, contornos
+`#000000` sólidos contra el atardecer. **Goro** es la masa ancha y baja, casco
+sin visor, escudo como joroba cuadrada a la espalda — y solo cuando importa al
+combate asoma el relleno: el filo de la maza latiendo en rim `#F2DCC0`, el único
+brillo del elenco. Su panel marca `●` de carga y el epíteto *El Yunque*, y las
+métricas lo dicen antes de que lo diga yo: masa casi llena, velocidad casi vacía,
+defensa llena, alcance medio. Me poso, lo miro un segundo: la forma sola me dice
+que es un tanque. Click de servo. Confirmo.
+
+> Antes de moverme, lo repaso: **TAJO** en `Espacio` o `J`, **DASH** en `Shift`
+> o `K`, **Arriba** en `W`, **RUPTURA** en `Q`, **DEFINITIVA** en `E`. Buffer de
+> **5 frames**; si pulso dos cosas a la vez gana, por orden, **RUPTURA > ESQUIVA >
+> ATAQUE**. Si pierdo el foco, el juego se pausa.
+
+## Prólogo de GORO — «Puerta cerrada» (5–8 s)
+
+**Plano general (2 s).** Interior, puerta de servicio, la última franja de
+atardecer entrando por una rendija. Goro de frente: una silueta ancha y baja
+recortada contra el muro, enorme, casco sin visor, escudo industrial atado a la
+espalda. El rim `#F2DCC0` le dibuja solo el borde; la lluvia ácida repica al
+otro lado de la chapa.
+
+**Plano medio (2 s).** La mano grande, un bloque sólido, sobre el mecanismo de
+la puerta. El borde caliente del atardecer le enciende apenas la mandíbula. No la
+abre. La toca.
+
+> **JA:** `俺がこの扉を作った。最後に、俺が閉める。`
+> **ES:** *«Yo construí esta puerta. Al final, yo la cierro.»*
+
+**Plano general (2 s).** Se da la vuelta. Camina hacia cámara, un paso cada
+4 frames, pesado, el escudo balanceándose como una joroba. Corte a negro con el
+peso del paso: queda el contorno un frame más en mi retina.
+
+> *Su dash es una embestida: una carga, la más larga del elenco. Empuja a los enemigos que toca. Su escudo absorbe el 90% del daño frontal.* Es su pasiva, **BASTIÓN DE TITANIO**: lo que llega de frente lo come la coraza.
+
+---
+
+## PISO 1 — VESTÍBULO — `24`
+
+**Entrada de piso (cinemática 2–4 s).** La misma del atrio sin HUD: mostrador
+con huecos, torniquetes bloqueados, fluorescentes muertos, un tubo que zumba cada
+4 s, señalética `受領` / `入場証` / `閉鎖` / `立入禁止`. Todo es contorno: los
+torniquetes son barras verticales, el mostrador un bloque a ras, la señalética
+parches oscuros sin letra legible a 24 px. Por el techo roto cae lluvia ácida
+iluminada de través, y el atardecer tiñe de naranja el borde de cada forma. El
+panéo lento hacia arriba me enseña la altura del techo. Lluvia lejana, eco, buzz.
+
+```
+[PISO.01 — VESTÍBULO]
+[エントランスホール]
+```
+
+**Aparece la cabina.** Goro abajo a la izquierda: masa ancha, casco sin visor,
+escudo a la espalda — **20 px de silueta extra** que ningún otro lleva. Leo los
+cuatro cuadrantes:
+
+```
+[ VIDA 100 · 2/3 CARGAS ]        [ WAVE 01/06 ]
+[ AVANZAR ] [ RETROCESO ]        [ TAJO ] [ RUPTURA ND ] [ DASH ] [ DEFINITIVA ]
+```
+
+**Una sola carga.** Ese `●` es todo mi movimiento, toda mi vida y todo mi
+espectáculo a la vez. `RUPTURA ND` se tiñe `#FF2D6F` cuando la tengo; `DEFINITIVA`
+se tiñe `#FFC400` solo a carga completa.
+
+### Ascenso (0:00–0:40)
+
+Muevo con `W` y noto lo primero: **Goro no corre, camina.** Un paso cada 4
+frames, el escudo balanceándose. Es lento a propósito; el peso es su identidad,
+y a 24 px la forma sola me lo dice: no es una figura esbelta, es un bloque que
+avanza. Los **DOBLES** que salen no me imponen: **N1 — EL DOBLE**, torso partido
+vertical, **dos cabezas desplazadas**, simétrico. Su contacto de **8–10** lo come
+el escudo sin obligarme a dashear: el **90% frontal** que absorbe el Bastión de
+Titanio hace que un golpe de frente valga casi nada. Mi barra apenas baja.
+
+**Cadena de maza.** Golpe descendente con **carga visible**, 3 frames de
+anticipación, **arco enorme**. El arco es la única curva que dibujo en todo el
+encuadre. Impacto: **thud pesado + metal**, más bajo y con más peso que el tajo
+de Rika. Knockback mayor, hitstop de 2 frames — los Dobles salen volando del
+encuadre, sus dos cabezas girando fuera de cuadro. Mi primer `BAJAS 1/24`, la
+RACHA aparece en `1`, y la carga única se rellena un 15% de golpe.
+
+**Paso de Carga.** Aquí entiendo a Goro: el dash **no es un dash, es una
+embestida**. Se agarra al suelo y arrastra. **La más larga del elenco.** Cruzo una
+repisa entera de un movimiento y **empujo a los enemigos que toco**: un Doble
+completo sale volando del pasillo, sus dos cabezas separándose en el aire. El
+arquetipo se parte vertical y yo lo parto otra vez. Subir es trivial — una
+embestida vertical cruza el tramo que a Rika le costaba dos cargas. El coste:
+**solo tengo una**. La recargo con bajas; es mi oxígeno. RACHA `4`.
+
+### Umbral (0:40–1:05)
+
+Puertas de seguridad — clank pesado detrás. Aviso rojo `#FF2D6F` sobre el
+contorno del peligro: **`BAJAS NECESARIAS: 18/24`**. El combate sigue mientras
+subo. Embisto por el pasillo estrecho empujando hordas como un buldócer: Dobles
+que se abren a los lados, cada uno partido por la mitad. Cuatro a seis a la vez.
+
+**Reliquia de tramo 2 (sin modal).** Anillo de **3 tarjetas de cristal** en el
+mundo, 2.5 s, se elige con dash. Cada tarjeta es un rectángulo de vidrio
+`#2C2543` con su título recortado y su métrica; la elegida se tiñe de recompensa
+`#FFC400`:
+
+```
+[ESTELA RESIDUAL]   El dash deja una estela que daña
+[PRECISIÓN FRÍA]    Tras 3 s sin atacar, el golpe es crítico
+[RUPTURA RECARGADA] Matar recupera una carga
+```
+
+Dasho a **[RUPTURA RECARGADA]**. La tarjeta se enciende `#FFC400` y entra: cada
+baja me devuelve carga. Para alguien con una sola carga es transformador — la
+embestida deja de ser un recurso que guardo y pasa a ser un movimiento que uso.
+La recarga deja de ser mi miedo. RACHA `8`, el número late.
+
+### Subjefe — EL DOBLE (1:05–1:25)
+
+Rellano amplio: lo más grande del piso. Reloj de pared parado, mapa de
+evacuación — dos placas oscuras sin detalle interno. La música baja a pad
+sostenido. Entra por arriba y la cámara se fija 1 s — yo ya puedo moverme, él no
+me toca.
+
+Es **el primero de ellos**, pero más alto y con las **dos cabezas separadas del
+todo**: un Doble que no cae de un golpe. 40 px, simétrico, cada mitad golpeando
+por su lado.
+
+> **JA:** `「重複個体。一方は不要。」`
+> **ES:** *«Individuo duplicado. Uno sobra.»*
+
+Se parte en dos mitades que atacan en espejo. Se inclina 4 frames y **las dos
+cabezas embisten a la vez en dos líneas**. Los demás esquivan; **yo lo aguanto**.
+El Bastión me deja comerme el impacto frontal. Lo cruzo con Paso de Carga y
+**empujo la mitad izquierda contra la derecha**. Cuatro mazazos cargados con
+cuatro flashes y cuatro hitstops. Llega la Ruptura:
+
+**Cut-in de Ruptura (hitstop 92 ms / 24 frames).** Gasto la carga. La pantalla se
+llena con el fotograma de Goro: maza levantada, **MAZAZO DE RUPTURA SÍSMICA**,
+impacto contra el suelo, **onda expansiva con empuje** en rim `#F2DCC0`. Todo
+contorno grueso sobre negro. **No me bloquea el input.** Rompe líneas de enemigos
+enteras: los Dobles caen partidos de lado. Cae:
+
+> **JA:** `「片割れは、もう要らん。」`
+> **ES:** *«Ya no necesito la otra mitad.»*
+
+Dos Dobles sueltos más, `BAJAS 24/24` con flash, puerta abierta.
+
+### Ascenso alto (1:25–2:05)
+
+Tramo de servicio: pasarelas técnicas, escalera de caracol, estrecho. Cada repisa
+me cuesta mi única carga, pero con la embestida cruzo tramos enteros y
+[RUPTURA RECARGADA] me la devuelve con cada baja. Barra llena = subida limpia;
+barra seca = caminante lento sin i-frames.
+
+### Jefe — EL PORTERO (2:05–2:35)
+
+Sala sellada. Muro de contención con emblema, panel de contadores congelado en
+`40.000`, sin ventanas. **La música corta a silencio medio segundo**, y entra el
+tema de jefe.
+
+**Intro de jefe (3–4 s).** El Portero se materializa del panel: 52 px, **una
+puerta con piernas**, cuerpo `#000000` recortado con rim `#F2DCC0`, **ojo
+`#FF2D6F` que se enciende en el último frame**. **Yo ya me puedo mover.**
+
+> **JA:** `「受付業務…対象を排除する。」`
+> **ES:** *«Procedimiento de recepción... eliminando objetivo.»*
+
+**Fase 1 (100–66%).** Embestida en línea con cono de aviso, pisotón (círculo
+`#FF2D6F` que crece y detona). Tras cada ataque, **1.2 s quieto**. Goro distinto:
+**no huyo de los conos, los cruzo.** La embestida del jefe me da de lleno y la
+como con el escudo — la vida baja, pero no me derriban. Cada ventana la lleno con
+maza cargada. **Fase 2 (66–33%).** Barrido de 180°, dos conos cruzados; las
+piernas de la puerta se doblan antes de girar. **Fase 3 (33–0%).** Dobla la
+velocidad de las embestidas; el ojo `#FF2D6F` late. Ruptura con ondas en rim
+`#F2DCC0`. Cadena final: knockback, caída, flash.
+
+**Outro + transición (8–10 s, una pieza).**
+
+> **JA:** `「行け。ここは、もう俺の番じゃない。」`
+> **ES:** *«Ve. Aquí ya no es mi turno.»*
+
+Se deshace en ceniza hacia arriba: la puerta con piernas perdiendo relleno hasta
+ser solo aire. Goro camina solo a la puerta y la toca. **Reveal del piso
+siguiente:** el Market Roto desde abajo, sin enemigos, solo la silueta de los
+puestos recortada contra la lluvia ácida. Título:
+
+```
+[PISO.02 — MARKET ROTO]
+[壊れた市場]
+```
+
+---
+
+## PISO 2 — MARKET ROTO — `32`
+
+### Ascenso
+
+Pasillo central entre puestos volcados. Mostradores reventados, cajas apiladas,
+lonas que se mueven con la corriente: todo bloques oscuros a ras de suelo, sin
+detalle interno. El atardecer se cuela por los toldos rotos y pinta de `#A84A38`
+los charcos; el rim `#F2DCC0` recorta el borde de cada lona. `営業停止`,
+`食料品`, `半額`. Lluvia en los toldos. Tema agresivo y húmedo **100–120 BPM**.
+
+**Nuevo: EL LANZADOR.** **N2** — hombros anchísimos, **brazo derecho
+exagerado**, triangular invertida. Su forma sola ya dice que ataca de lejos. La
+boca del brazo se abre y se queda **2 frames**; luego escupe un **círculo
+`#FF2D6F` con estela en rim**. Dispara a paradas: falla siempre contra alguien que
+no se para. Avanzo en línea, embisto, aplasto. Su voz sube de `300→900 Hz` con
+formante `2100`.
+
+**Charcos ácidos.** Círculos con **1 s de aviso** que emiten en `#FFB871`. Las
+repisas y el vacío vertical son mi terreno favorito: una embestida vertical sube
+un tramo entero, y la embestida es más larga que el diámetro de medio charco, así
+que los cruzo a toda velocidad sin que me importen.
+
+### Umbral — cuello de botella
+
+El pasillo se estrecha a propósito. Cinta transportadora inmóvil, una banda
+plana sin relleno. Recuento `32`, cinco a ocho simultáneos: triángulos invertidos
+y bloques apretados. **Es mi sala:** estrecho, lleno, sin salida, y lo
+**atravieso**. Paso de Carga por el cuello: empujo 4 enemigos de golpe, la horda
+se abre como agua contra un rompeolas. RACHA `20`: flash + frame invertido, la
+RACHA grande y pulsante.
+
+**Reliquia de tramo 3.**
+
+```
+[TRAVESÍA VITAL]    Atravesar con el dash te cura
+[ESTELA RESIDUAL]   El dash deja una estela que daña
+[PRECISIÓN FRÍA]    Tras 3 s sin atacar, el golpe es crítico
+```
+
+Dasho a **[TRAVESÍA VITAL]**: cruzar enemigos con la embestida me sana. Ahora mi
+única carga también es mi vendaje; puedo plantarme más y aguantar más.
+
+### Subjefe — EL LANZADOR
+
+Rellano dentro del caos: catálogo con huecos vacíos, precios a lápiz. Fluorescente
+parpadeante. Entra **uno solo pero enorme**: el brazo derecho le llega al suelo,
+los hombros le tapan media pantalla.
+
+> **JA:** `「射程内。発射。」`
+> **ES:** *«En rango. Disparando.»*
+
+Dispara en ráfaga de tres con aviso de 2 frames por brazo. No puedo perseguirlo a
+pie; lo que hago es **controlar el centro** con la embestida larga: cada vez que
+recarga, ya estoy encima o lo estoy cruzando con i-frames. El Bastión me come los
+proyectiles frontales; los que llegan de lado me obligan a dashear. Lo lleno de
+maza cargada entre ráfaga y ráfaga.
+
+> **JA:** `「弾切れ。再装填。」`
+> **ES:** *«Sin munición. Recargando.»*
+
+Una maza cargada en la ventana de recarga lo remata.
+
+### Ascenso alto
+
+Pasarela de mantenimiento sobre los puestos. Ruta alta expuesta, sin suelo, con
+recompensa: cargas y oro de Ruptura. Una embestida vertical y estoy arriba.
+
+### Jefe — LOS GEMELOS (3 fases)
+
+Sala de almacén sellada. Cajas hasta el techo, solo pasillo central. El atardecer
+se corta: solo queda la salida de emergencia al fondo, un rectángulo teñido de
+`#F0A65A`.
+
+> **JA:** `「二重登録を確認。矯正開始。」`
+> **ES:** *«Registro duplicado detectado. Iniciando corrección.»*
+
+**Fase 1 (100–66%).** Dos espejos exactos, misma silueta duplicada. Embesten a
+lados opuestos; el cruce **dibuja un cono doble que cubre el centro**. No puedo
+perseguirlos — son rápidos y yo lento. Lo que hago es **controlar el centro** con
+la embestida larga: cada vez que se cruzan, ya estoy en el borde o los cruzo con
+i-frames. **Fase 2 (66–33%).** Uno cae; el otro acelera y se vuelve vulnerable,
+con el contorno encendido en rim `#F2DCC0`. **Fase 3 (33–0%).** El que queda
+duplica sus ataques en espejo de sombra; lo tanqueo con el escudo y remato. El
+pasillo central es mi escenario: ahí no huyo, ahí aguanto. **RACHA 35+**: líneas
+de velocidad de 2–3 frames y flash frame de silueta blanca. Muere el segundo:
+
+> **JA:** `「…やっと、休める。」`
+> **ES:** *«...Por fin puedo descansar.»*
+
+**Outro + transición.** Ceniza en espejo hacia arriba: los dos contornos
+subiendo como uno solo. Puerta. **Reveal: la Refinería desde abajo** — brasa
+naranja respirando, vapor entre tuberías, todo recortado en franjas oscuras.
+
+```
+[PISO.03 — REFINERÍA]
+[精錬所]
+```
+
+---
+
+## PISO 3 — REFINERÍA — `40`
+
+### Ascenso
+
+Galería de tuberías sobre vacío profundo: tubería verdosa, válvulas cerradas a
+mano, vapor que sube y difumina el atardecer. `高圧注意`, `燃料`, `立入禁止`.
+Tema industrial y caliente **120–130 BPM**. Las tuberías son líneas oscuras sin
+costura; el vacío debajo es puro fondo de atardecer para que mi contorno recorte,
+y el rim `#F2DCC0` me dibuja el filo.
+
+**Nuevo: EL AGRESOR.** **N3** — corcovado, **garras curvas**, muslos potentes. El
+más rápido del juego. Su forma es una joroba baja que se lanza antes de que la
+veas. Se queda **2 frames agachado** y arranca en diagonal. Es la única cosa de la
+refinería que me obliga a leer la telegrafía en serio; su voz es un `400→260 Hz`.
+Como soy lento, no lo persigo: dejo que venga y lo recibo con la maza cargada, o
+lo cruzo con la embestida cuando ya está comprometido.
+
+**Vapor.** Columnas de vapor que ocultan telegrafías: veo menos, leo peor, es
+estar expuesto a propósito. El atardecer bajo el vapor se vuelve `#F0A65A` sucio.
+
+### Umbral — encrucijada
+
+Dos caminos que convergen antes del subjefe. Recuento `40`, ocho a once
+simultáneos, Agresores mezclados con triángulos. En el pasillo estrecho **soy el
+único que puede plantarse contra 10 a la vez**: el escudo aguanta, la maza
+empuja, la carga se recarga con las bajas. RACHA `26`.
+
+**Reliquia de tramo 4.**
+
+```
+[PRECISIÓN FRÍA]    Tras 3 s sin atacar, el golpe es crítico
+[RUPTURA RECARGADA] Matar recupera una carga
+[TRAVESÍA VITAL]    Atravesar con el dash te cura
+```
+
+Dasho a **[PRECISIÓN FRÍA]**. No soy rápido, pero cuando conecto, conecto
+fuerte: si aguanto la maza 3 s sin dispararla, el primer impacto es crítico. Es
+paciencia convertida en daño.
+
+### Subjefe — EL AGRESOR
+
+Pasadizo de válvulas: el único sitio sin salida lateral. Entra **un Agresor
+mayor**, corcovado hasta el suelo, garras que le llegan al antebrazo, y **más
+rápido que cualquier otro del piso**.
+
+> **JA:** `「登録より速く。」`
+> **ES:** *«Más rápido que el registro.»*
+
+Salta en zigzag: tres diagonales seguidas con medio segundo de aviso. El Bastión
+me come la frontal, pero las laterales me obligan a embestir. Lo que hago es no
+moverme hasta que se compromete, y entonces cruzo su salto con la embestida larga
+y lo dejo atrás. Cada vez que pasa de largo, maza cargada.
+
+> **JA:** `「速さは、届かぬ。」`
+> **ES:** *«La velocidad no alcanza.»*
+
+Cae entre vapor.
+
+### Ascenso alto
+
+Escalerillas de gato, climbing de depósitos. Vapor en la ruta alta: veo menos,
+leo peor, está expuesta a propósito.
+
+### Jefe — LA CALDERA (3 fases)
+
+Depósito central ocupando el fondo entero. Una sola boca de ventilación como
+salida. **Esfera perfecta de 44 px**, un círculo macizo `#000000` recortado
+contra el muro, con rim `#F2DCC0` encendiéndose por el calor.
+
+> **JA:** `「過圧警告。自動制御解除。」`
+> **ES:** *«Alerta de sobrepresión. Control automático liberado.»*
+
+**Fase 1 (100–66%).** Zonas de daño en el suelo + **aro expansivo `#FFB871`**.
+Sin contacto: quien se acerca, muere. Goro se planta donde el aro no llega,
+aguanta cargando y suelta maza en cada ventana. **Fase 2 (66–33%).** Los charcos
+**se quedan**. El suelo se llena de `#FFB871`. Me planto en el único hueco
+seguro, dejo que la Caldera se acerque y la lleno de maza en la ventana de 1.2 s.
+**Fase 3 (33–0%).** El aro y los charcos se solapan; embisto de hueco en hueco,
+que es más largo que el diámetro de cada zona. Ruptura con ondas en rim. Muere:
+
+> **JA:** `「火は、まだ消えてねぇぞ。」`
+> **ES:** *«El fuego aún no se ha apagado.»*
+
+**Outro + transición.** La esfera se enfría de fuera adentro: el contorno
+apagándose por capas. Puerta. **Reveal: el Archivo** — filas de Blindados,
+quietos, mirándome: bloques pesados en fila, sin piernas.
+
+```
+[PISO.04 — ARCHIVO]
+[記録庫]
+```
+
+---
+
+## PISO 4 — ARCHIVO — `48`
+
+### Ascenso
+
+Pasillo entre estanterías que no dejan ver tres metros: paredes de barras
+verticales oscuras, sin detalle. Cajas abiertas, papel amarillento, polvo. El
+atardecer apenas entra; el rim `#F2DCC0` recorta cada lomo de estante.
+`保管`, `機密`, `持出禁止`. Goteo rítmico. Tema tenso y claustrofóbico **95–115
+BPM**.
+
+**Nuevo: EL BLINDADO.** **N4** — cúbico macizo, **hombreras rectangulares**,
+sin piernas. Relleno placa `#37304F`, hueco `#1E1734`. De frente: la placa
+**parpadea a rim 1 frame** y suena metal — "no ha sido suficiente". Su regla es
+dura: **3 golpes la rompen (1 de daño + aturdimiento), o un dash que lo atraviesa
+la rompe entera.** Su voz es square `900→300` con metal. **Solo entra por detrás
+golpeándolo.**
+
+El Blindado es mi héroe particular: rodear obliga a subir, pero yo **no rodeo** —
+espero a que embista, esquivo con la embestida larga y lo golpeo **por detrás** en
+la ventana. La placa no sirve de nada si estoy detrás. Y si me canso, tengo el
+**MAZAZO DE RUPTURA SÍSMICA**: la Ruptura rompe la guardia del Blindado de un
+solo golpe, para eso está.
+
+### Umbral — encrucijada
+
+Dos caminos que convergen antes del subjefe. Recuento `48`, ocho a once
+simultáneos, Blindados mezclados: bloques pesados entre barras verticales. En el
+pasillo estrecho **soy el único que puede plantarse contra 10 a la vez**: el
+escudo aguanta, la maza empuja, la carga se recarga con las bajas.
+
+**Reliquia de tramo 5.**
+
+```
+[ESTELA RESIDUAL]   El dash deja una estela que daña
+[RUPTURA RECARGADA] Matar recupera una carga
+[TRAVESÍA VITAL]    Atravesar con el dash te cura
+```
+
+Dasho a **[ESTELA RESIDUAL]** para dejar daño a mi paso: con la embestida larga,
+la estela cubre más suelo que la de nadie.
+
+### Subjefe — EL BLINDADO
+
+Sala de lectura: mesas, atriles, máquina de escribir — planos oscuros sin relleno.
+El único sitio ordenado. Entra **un Blindado mayor** y **cierra la guardia**: la
+placa frontal se cierra con un clank y no se abre.
+
+> **JA:** `「前面装甲、無効化不能。」`
+> **ES:** *«Blindaje frontal, no anulable.»*
+
+Ahora la regla se vuelve un examen: tres golpes de frente rompen la guardia, o un
+dash que lo atraviesa. Lo golpeo dos veces de frente —parpadeo de rim, clank— y a
+la tercera la placa cede. Cuando la pierde, el hueco `#1E1734` queda expuesto y es
+todo daño. Si quiero terminar rápido, gasto la carga en la Ruptura:
+
+> **JA:** `「装甲…破断。」`
+> **ES:** *«Blindaje... quebrado.»*
+
+Una maza cargada contra la placa rota lo remata.
+
+### Ascenso alto
+
+Por encima de las estanterías. Ruta alta expuesta con recompensa.
+
+### Jefe — EL ESCRIBANO (3 fases)
+
+Archivo central sellado. Cuatro filas, un hueco estrecho. Al fondo, con **mi
+maza**: otra vez mi contorno, más alto, esperando.
+
+> **JA:** `「ファイル照合。矛盾を検出。」`
+> **ES:** *«Comparando archivos. Contradicción detectada.»*
+
+**Fase 1 (100–66%).** Réplica exacta de mi arma, timings distintos, **mismos
+i-frames que yo**. Aguanto sus golpes con el escudo y remato en las ventanas.
+**Fase 2 (66–33%).** Duplica los ataques en espejo: dos mazas, dos sombras. Me
+planto en el centro del archivo, tanqueo los espejos con el Bastión y remato con
+Ruptura — las ondas en rim `#F2DCC0` cubren las dos réplicas a la vez. **Fase 3
+(33–0%).** Las réplicas se multiplican en cuatro; la única forma es esperar la
+ventana real y descargar la Definitiva. Muere:
+
+> **JA:** `「書き直せ…お前なら。」`
+> **ES:** *«Reescríbela... tú puedes.»*
+
+**Outro + transición.** Tinta que se borra hacia arriba, el contorno disolviéndose
+en manchas. Puerta. **Reveal: la Clínica** — los Resucitados en pie, quietos, cada
+uno con un filo de rim `#F2DCC0` recorriéndole las grietas.
+
+```
+[PISO.05 — CLÍNICA]
+[診療所]
+```
+
+---
+
+## PISO 5 — CLÍNICA — `56`
+
+### Ascenso
+
+Pasillo de consultas: camillas con sábanas, cortinas, un monitor que se apaga al
+pasar. El atardecer entra por las ventanas rotas y tiñe de `#A84A38` las sábanas.
+`外来`, `隔離`, `薬品`. Tema de horror administrativo **110–125 BPM**. Las sábanas
+son rectángulos blandos, las cortinas planos colgados: todo contorno, sin textura
+hasta que la sangre la pinta. El rim `#F2DCC0` recorta cada pliegue.
+
+**Nuevo: EL RESUCITADO.** **N5** — **asimétrico**: brazo izquierdo colgando,
+pierna rígida torcida. La asimetría ya se lee a 24 px. Relleno `#221B38`, y **su
+tell no es cian, es el rim `#F2DCC0`**: antes de levantarse, el contorno entero
+**se enciende en rim 2 frames** y luego el cuerpo vuelve a subir. La regla del
+juego es dura conmigo: **revive una vez si no muere en la oleada**. Su voz es la
+más grave del juego, `150→68 Hz`. Y aquí la regla me castiga personalmente: yo
+limpio lento, dejo cuerpos, y los cuerpos se levantan.
+
+### Umbral — quirófano
+
+Puertas metálicas, instrumentos, luces apagadas. Recuento `56`, nueve a trece,
+**18 s**. Estrecho. Resucitados que caen, **encienden su rim `#F2DCC0`** y
+vuelven. **RACHA 65**: time-scale 0.25x, líneas de velocidad, flash frame. Rojo
+`#FF2D6F` por todos lados, rim cálido solo en las grietas que se levantan. Lo
+aprendo a medias: cadenas más cortas, maza sin cargar tanto, **acabar los cuerpos
+de verdad** antes de girarme. Es donde más me cuesta toda la run.
+
+**Reliquia de tramo 6.**
+
+```
+[RUPTURA RECARGADA] Matar recupera una carga
+[TRAVESÍA VITAL]    Atravesar con el dash te cura
+[PRECISIÓN FRÍA]    Tras 3 s sin atacar, el golpe es crítico
+```
+
+Dasho a **[TRAVESÍA VITAL]** como red de seguridad para el Núcleo.
+
+### Subjefe — EL RESUCITADO
+
+Sala de reanimación: camillas, respirador, monitor que late sin paciente. Entra
+**el Resucitado mayor**: brazo colgando hasta el suelo, pierna rígida, y **grita
+con la voz más grave del juego** cuando se levanta.
+
+> **JA:** `「削除対象、再起動。」`
+> **ES:** *«Objetivo eliminado, reiniciando.»*
+
+Cae, **enciende el rim `#F2DCC0` dos frames**, y se levanta con más furia la
+segunda vez. Es el examen del piso: si no lo mato del todo en la ventana, vuelve.
+Lo acabo con maza cargada y, si tengo la carga, con una Ruptura que lo deja
+partido.
+
+> **JA:** `「再起動、不能。」`
+> **ES:** *«Reinicio, imposible.»*
+
+### Ascenso alto
+
+Tubería de oxígeno por el techo. Pasillo técnico, ruta alta expuesta.
+
+### Jefe — LA CIRUJANA (3 fases)
+
+Sala de operaciones sellada. Una lámpara quirúrgica única encendida: un cono de
+rim `#F2DCC0`, no color. Flota bajo ella: **sin piernas**, sobre un charco — una
+silueta suspendida que no toca suelo. Vendas `#3C3554`, bisturí en rim, solo como
+bordes.
+
+> **JA:** `「未登録検体。隔離手続き開始。」`
+> **ES:** *«Muestra no registrada. Iniciando aislamiento.»*
+
+**Fase 1 (100–66%).** Agujas en abanico, avisos de 1 frame. **Fase 2 (66–33%).**
+Cada 8 s, **barrera de agujas**: arco horizontal que cruza la pantalla, 1 s de
+aviso. Y **cancela la invulnerabilidad del dash**. Para mí, que uso la embestida
+como forma de vida, es un terremoto: 8 segundos sin poder embestir, solo el
+escudo y las piernas. Aprendo a esquivar caminando. **Fase 3 (33–0%).** Las
+agujas y el arco a la vez, más rápidos; el cono de la lámpara se estrecha. Muere
+bajo la lámpara:
+
+> **JA:** `「ありがとう…もう眠らせて。」`
+> **ES:** *«Gracias... déjame dormir.»*
+
+La lámpara se apaga. **Outro + transición.** Puerta. **Reveal: el Núcleo. SIN
+MÚSICA.** Atardecer congelado, fragmentos, capas suspendidas. **Silencio total
+2 s.**
+
+```
+[PISO.06 — NÚCLEO]
+[核]
+```
+
+---
+
+## PISO 6 — NÚCLEO — `70`
+
+### Ascenso
+
+La arquitectura desaparece. Fragmentos flotando en el atardecer detenido: puros
+contornos sueltos, `#000000`, sobre la gradación de `#150E2B` a `#F0A65A`. El
+tiempo en capas: franjas con momentos congelados distintos; cada embestida
+atraviesa un momento distinto. Estática, reverberación. Tema progresivo y
+apocalíptico **130–140 BPM**.
+
+Todo junto: los seis arquetipos rotan, máx. 3 activos, **12–16 simultáneos**,
+15 s entre oleadas. Recuento `70`. Entre ellos, **EL MIMÉTICO**: **N6** —
+humanoide base de héroe, **articulaciones alargadas**, y **copia tus ataques**.
+Hago lo que mejor sé: plantarme. Embestida larga para abrir hueco, cadena cargada
+para rematar, escudo para lo que no puedo esquivar. [RUPTURA RECARGADA] me da
+movilidad casi infinita con recarga, siempre tengo al menos media carga.
+
+### Subjefe — EL MIMÉTICO
+
+Suelo repetido en espejo, una escalera infinita desfasada. Aparece en **tres
+destellos superpuestos**: 26 px, articulaciones demasiado largas, **mi forma
+diciéndome tres veces a la vez**. Está **mudo** — ese silencio es toda su
+telegrafía.
+
+> **JA:** `「模倣完了。」`
+> **ES:** *«Imitación completa.»*
+
+Copia mi cadena de maza, mi embestida y mi Ruptura, con timings ligeramente
+distintos. No puedo ganarle en su juego: espero su Ruptura falsa, la esquivo con
+i-frames y lo castigo en el aire. Su muerte se repite tres veces en destello.
+
+> **JA:** `「模倣、崩壊。」`
+> **ES:** *«Imitación, colapso.»*
+
+### Jefe — EL NÚCLEO (3 fases)
+
+**Un ojo vertical con manos debajo.** 56 px: una barra vertical ancha en el
+centro, patas colgando. El ojo `#FF2D6F` se abre como obturador. En el iris, un
+reflejo `#FFC400` — recompensa falsa.
+
+> **JA:** `「ループ・サブユニット起動。」`
+> **ES:** *«Unidad sub-bucle activada.»*
+
+**Fase 1 (100–70%).** Aro + conos. RACHA 70+: hitstops de 6 frames, time-scale
+0.15x por 0.25 s. Ruptura en el clímax con ondas en rim `#F2DCC0`. **Fase 2
+(70–35%).** Invoca **2 Blindados**. La sala se llena, telegrafías superpuestas:
+bloques macizos aparcados bajo el ojo, guardia al frente. Aquí es donde gasto la
+**DEFINITIVA**: **`E` — DEMOLICIÓN ND: COLAPSO TECTÓNICO**, una onda de pantalla
+completa que barre la sala, revienta las guardias y **rompe la arena en
+terrazas**. Hitstop **92 ms / 24 frames**, el golpe más pesado del juego. **Fase 3
+(35–0%).** Todo más rápido y el suelo en **charcos de daño permanentes**. Mi
+infierno particular: el suelo se llena y yo soy lento. La saco cruzando a
+embestida lo que queda de suelo seguro, Ruptura con ondas, y un último mazazo que
+conecta con racha 70+.
+
+**Cae.** Flash blanco de la sala entera. Screen shake de 4 px.
+
+> **JA:** `「裂け目を…閉じろ。」`
+> **ES:** *«Cierra... la grieta.»*
+
+La grieta se cierra de arriba abajo en fundido lento. El atardecer, por fin,
+termina de caer. No saltable la primera vez.
+
+### Epílogo (20–30 s)
+
+Goro de pie en el borde, de espaldas, el escudo todavía atado. Silueta ancha y
+baja contra el atardecer que se apaga, sin detalle interno. La última franja de
+luz limpia le da de lleno en los hombros. No se sienta. No respira hondo. Se
+queda quieto — como siempre. Texto que se va solo:
+
+> *Un atardecer de cuarenta años. Una puerta que nadie quería tocar. La cerré yo.*
+
+```
+[NÚCLEO EN CALMA]  TIEMPO 18:31  BAJAS 268  RACHA MÁX 58  WAVE 06/06
+```
+
+## Animación de cierre y créditos
+
+**La animación de cierre** arranca justo donde acaba el epílogo, sin corte, y dura 45–60 s. Es una sola pieza, la única cámara lenta que queda (ya sin peligro):
+
+- **Plano 1 (0–8 s).** Goro de espaldas sobre el borde, quieto: una masa ancha y baja recortada contra el atardecer que se apaga, escudo incluido, cero relleno. La cámara retrocede muy despacio y la grieta, abierta cuarenta años, **se cierra del todo** con un último hilo de rim `#F2DCC0` de abajo arriba. Silencio.
+- **Plano 2 (8–20 s).** La torre desde fuera, por primera vez **sin ningún piso encendido**: solo su contorno `#000000` macizo contra un cielo que se vacía de color. La lluvia ácida para. El cielo se abre un grado. Las siluetas de los atrapados al pie de la torre **dejan de repetir** su gesto: se detienen, miran arriba y se disuelven en luz suave, una a una — contornos que se apagan por orden.
+- **Plano 3 (20–35 s).** Fundido al **Núcleo vacío y en calma**: sin fragmentos ni estática, solo el atardecer ya sereno y una línea de rim donde estaba la grieta. **Este fondo se queda fijo durante todos los créditos.**
+- **Plano 4 (35–45 s).** La marca de Goro — **la puerta** — dibujada en rim `#F2DCC0`, unos segundos, se disuelve. Texto: *Un atardecer de cuarenta años. Una puerta. Yo.* Fundido, y empiezan los créditos.
+
+**Lo que suena:** el fondo del Núcleo con la versión **más suave y sutil** del tema — **sin percusión ni golpes**, solo pads largos, bajo estático, lluvia lejana y un eco tenue. Nada sube ni acelera: es la respiración después del combate.
+
+**El roll de créditos** sube sobre el Núcleo en calma, texto monoespaciado en rim `#F2DCC0`, centrado, con fade de 0.5 s al entrar y al salir. Tamaño en pantalla (1080p): cuerpo del roll **30 px**, `ND` **64 px**, nombre **48 px**, epíteto **26 px**. Velocidad: **22 px/s** en los roles, **13 px/s** en la historia, **8 px/s** en el dato final, **5 px/s** en el nombre. Duración total ~2 min.
+
+```
+                          ND
+                   NIPPON DESTRUCTION
+
+                  DIRECCIÓN
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+           DISEÑO DE JUEGO Y COMBATE
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+              LOS CUATRO HÉROES
+            RIKA · GORO · REN · YUI
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+               ARTE Y SILUETA
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+            ANIMACIÓN Y CUT-INS
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+              MÚSICA Y SONIDO
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+                PROGRAMACIÓN
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+             DISEÑO DE NIVELES
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+            PRUEBAS Y EQUILIBRIO
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+                LOCALIZACIÓN
+          JAPONÉS · ESPAÑOL · INGLÉS
+        SERGIO GRABIEL BORBOLLA VERDECIA
+```
+
+Y en medio del roll, la historia:
+
+> Al principio nadie le creyó. Decían que un solo cuerpo no puede cruzar un país en ruinas. Que el atardecer llevaba cuarenta años sin ponerse y que cuarenta años no se apagan con dos manos y una noche.
+>
+> **GORO** lo cruzó igual.
+>
+> Pasó por el Vestíbulo y por el Market roto. Cruzó la Refinería, el Archivo, la Clínica, y no paró donde todos los demás se habían parado. No subió por gloria: subió porque había nombres atrapados en el mismo minuto y alguien tenía que ir a buscarlos.
+>
+> Peleó contra todo lo que la ciudad tenía guardado para que nadie llegara al Núcleo. Y cuando ya no le quedaba nada salvo el gesto de seguir levantándose, **GORO** hizo lo que nadie había hecho nunca: rompió el bucle.
+>
+> Cerró la grieta. Le devolvió al mundo su tiempo. Los que repetían el mismo paso desde hacía cuatro décadas pudieron, por fin, dejar de repetirlo. Los que estaban congelados, caminar. Los que no recordaban, recordar.
+>
+> No hubo multitudes. No hubo un monumento. Solo una torre apagada y un atardecer que, por fin, terminó de caer. Pero desde ese día, cuando alguien pregunta quién cerró la puerta, la respuesta es siempre la misma:
+>
+> **—GORO.**
+>
+> Y el mundo, que llevaba cuarenta años esperando a alguien, por fin pudo seguir.
+
+Después del último párrafo, unos segundos en el Núcleo en calma, la música baja hasta casi el silencio, aparece la **puerta** en el centro y funde a negro. Fin de la run.
+
+
+---
+
+# RUN 3 — REN. EL RELÁMPAGO (EN SILUETA)
+
+> Tercera run. Juego a no tocar el suelo: tres cargas de dash que se recargan
+> solas, nunca me quedo sin dash. Su arma es la más débil, pero él es el más
+> difícil de tocar. El juego **entero otra vez**, desde que se abre hasta los
+> créditos. Y todo lo que viene lo veo recortado: primero la silueta negra
+> contra el atardecer, después el detalle.
+
+## Abro el juego
+
+**Vuelvo a abrir el juego desde el principio.** El mismo negro puro `#000000`
+de las siluetas contra el atardecer permanente de cuatro tonos que va de
+`#150E2B` a `#4A2247`, de ahí a `#A84A38` y por fin a `#F0A65A`, el sol con su
+glow, la misma torre en ruinas como masa vertical recortada contra el
+degradado, la misma **lluvia ácida** cayendo en diagonal, los mismos truenos y
+el mismo tema de menú atmosférico de 70–90 BPM. **El menú** vuelve a estar
+donde siempre: `[ INICIAR JUEGO ]`, `[ SELECCIONAR PERSONAJE ]`, `[ MODO DE
+JUEGO ]`, `[ OPCIONES ]`, `[ SALIR ]`, con el corchete en luz de contorno
+`#F2DCC0` parpadeando — nada de cian: aquí el único claro es el rim. Entro a
+`[SELECCIONAR PERSONAJE]`.
+
+**Selección.** Las cuatro siluetas negras, leídas por la forma sola a 24 px
+sobre tarjetas de cristal: la esbelta con el haori que ondea como lengua de
+tela y la katana horizontal a la cadera; la masa ancha y baja con el escudo
+como joroba cuadrada a la espalda; **Ren**, el más bajo del elenco, con cabeza
+desproporcionada y chaqueta oversize; y la más erguida, con moño alto y rifle
+en horizontal. Ninguna tiene relleno de color: son tinta pura `#000000` y todo
+lo que las separa es el rim `#F2DCC0` comiéndoles el borde. Ren no para
+quieto: tiembla de manos, ojos muy abiertos, y la cinta de su daga corta se le
+enreda en la muñeca. Su tarjeta marca `2/3 CARGAS` y el epíteto *El Relámpago*,
+con la métrica de velocidad al máximo y la de aguante al mínimo. Me poso y
+confirmo.
+
+**Controles.** TAJO `Espacio` o `J`; DASH `Shift` o `K`; Arriba `W`; Ruptura
+`Q`; Definitiva `E`. **Buffer de 5 frames**, con prioridad **RUPTURA > ESQUIVA >
+ATAQUE**. Si la ventana se pierde, la pausa me devuelve el foco intacto.
+
+## Prólogo de REN — «Interés propio» (5–8 s)
+
+**Plano general (2 s).** Interior con el tiempo congelado: sillas suspendidas
+en el aire, recortes negros sin detalle, un fluorescente parado a mitad de
+parpadeo. Ren en el centro: silueta sólida `#000000`, cabeza enorme, hombros
+anchos de la chaqueta; solo después distingo el rim `#F2DCC0` marcándole el
+perfil, los ojos muy abiertos, las vendas en las muñecas.
+
+**Plano medio (2 s).** Mira a cámara, sonrisa nerviosa, un hombro encogido. La
+forma ya lo dice: sé que está inseguro antes de verle una sola línea del
+rostro.
+
+> **JA:** `誰も行かねえなら…俺が行く。`
+> **ES:** *«Si nadie va... entonces voy yo.»*
+
+**Plano dinámico (2 s).** La silueta se parte en dash en zigzag hacia arriba,
+estela de rim `#F2DCC0` de 4 frames. Atraviesa una capa congelada y desaparece
+arriba. Corte a negro.
+
+> *Tres cargas de dash que se recargan solas. Nunca se queda sin dash. Su arma es la más débil; él es el más difícil de tocar.*
+
+---
+
+## PISO 1 — VESTÍBULO — `24`
+
+**Entrada de piso (cinemática 2–4 s).** Mismo atrio sin HUD, todo en silueta
+negra contra el atardecer: mostrador con huecos como bloques a ras, torniquetes
+bloqueados, fluorescentes, el tubo que zumba cada 4 s, `受領` / `入場証` / `閉鎖` /
+`立入禁止`. Panéo hacia arriba. Lluvia ácida, eco, buzz.
+
+```
+[PISO.01 — VESTÍBULO]
+[エントランスホール]
+```
+
+**Cabina.** Ren abajo a la izquierda: el más bajo, cabeza desproporcionada,
+chaqueta oversize. Cuando lo pierdo de vista entre la horda, busco primero la
+forma — y si la forma se me pierde, busco el rim `#F2DCC0` de la cinta de su
+daga. Leo el HUD de cuatro cuadrantes:
+
+```
+[ ▮▮▮▮▮▮▮▮▮▮ ▮▮▮ ]   2/3 CARGAS      [ WAVE 04/06 ]
+[ AVANZAR ] [ RETROCESO ]              [ TAJO · RUPTURA ND · DASH · DEFINITIVA ]
+```
+
+**Tres cargas.** Tres marcas que van a recargarse solas, más lento que un dash
+normal, pero que **nunca** me dejan sin salida.
+
+### Ascenso (0:00–0:40)
+
+Ciclo de correr de **10 frames**, no de 8: el más rápido del juego. Nunca
+quieto: idle con temblor de manos. Dash de **solo 4 frames**, estela de rim
+`#F2DCC0`. Y las tres cargas no se gastan de verdad — se recargan solas, más
+lento, pero **nunca me quedo sin dash**. Soy el único que puede subir el
+Vestíbulo entero encadenando dashes sin tocar suelo.
+
+**Nuevo: EL DOBLE.** Los **Dobles** ya se leen a 24 px sin esfuerzo: **torso
+partido vertical, dos cabezas desplazadas, simetría rota**, una a cada lado del
+corte. Se van a partir en dos ataques a la vez sin verles cara.
+
+**Cadena de dagas.** Dos pinchazos con 1 frame de separación, patada baja,
+remate giratorio. Stab múltiple rápido, seco, agudo, y el arco de la **Ruptura
+`Q`** ya insinúa el `#FFC400` en el aire. Daño por golpe menor que la katana o
+la maza, pero golpeo más veces y casi nunca recibo. En una sala de 6 Dobles **no
+toco el suelo**: dash, pinchazo, dash, dash, giratorio. RACHA `4`.
+
+### Umbral (0:40–1:05)
+
+Puertas automáticas. Aviso de peligro `#FF2D6F` **`BAJAS NECESARIAS: 18/24`**.
+Combate mientras subo. Cuatro a seis Dobles. Nunca paro.
+
+**Carta de nivel 2.**
+
+```
+[RÁFAGA]     +1 golpe en cadena  −20% daño por golpe
+[ANCLA]      Dash no gasta        Recarga 2× lenta
+[EXPLOSIVO]  Splash               −10% rango
+```
+
+Dasho a **[RÁFAGA]**: cadena de 5 golpes con dagas, cinco flashes casi
+continuos. El daño total sube aunque cada golpe pese menos. Para un arma que
+compensa con frecuencia, es mi carta natural. RACHA `9`, el número empieza a
+latir.
+
+### Subjefe — EL DOBLE (1:05–1:25)
+
+Rellano amplio. La música baja a pad sostenido. Entra por arriba, 40 px: un Doble
+**de élite**, torso partido vertical y dos cabezas desplazadas, simetría rota. Forma antes que relleno.
+
+> **JA:** `「重複個体。一方は不要。」`
+> **ES:** *«Individuo duplicado. Uno sobra.»*
+
+Se inclina 4 frames y **las dos cabezas embisten a la vez en dos líneas**, con
+**cono marcado en el suelo**. **No tanqueo — no puedo.** Mi escenario es el
+perímetro y el aire: dashes encadenados a su alrededor, pinchazos entre ventana y
+ventana. Su contacto no me llega nunca: estoy en el aire más tiempo que en el
+suelo. RACHA `12`. Cae:
+
+> **JA:** `「片割れは、もう要らん。」`
+> **ES:** *«Ya no necesito la otra mitad.»*
+
+### Ascenso alto (1:25–2:05)
+
+Tramo de servicio estrecho. Cada repisa cuesta una carga, pero tengo tres y se
+recargan solas. Subo encadenando dashes.
+
+### Jefe — EL PORTERO (2:05–2:35)
+
+Sala sellada. Panel de contadores congelado en `40.000`. **La música corta a
+silencio medio segundo** y entra el tema de jefe.
+
+**Intro de jefe (3–4 s).** Se materializa del panel: 52 px, **puerta con
+piernas**, cuerpo negro puro que solo se distingue por el rim `#F2DCC0`, y un
+**ojo `#FF2D6F` que se enciende en el último frame**. Yo ya me muevo.
+
+> **JA:** `「受付業務…対象を排除する。」`
+> **ES:** *«Procedimiento de recepción... eliminando objetivo.»*
+
+Embestida, pisotón, barrido de 180°; tras cada ataque, **1.2 s quieto**. Los
+esquivo a base de aire y entro en cada ventana.
+
+**Cut-in de Ruptura `Q` (1–2 s, 12 fps).** **DESTELLO ZIG-ZAG**: la forma se
+estira en una cadena de **5 blancos** unidos por arcos `#FFC400`, pose dinámica,
+hitstop de **55 ms / 8 frames**:
+
+> **JA:** `「突っ込むぞ…！　行くっ！」`
+> **ES:** *«¡Voy a romper...! ¡Allá voy!»*
+
+Dash-ataque múltiple en ráfagas: avanzo atravesando, barrido en zigzag con
+i-frames durante parte de la Ruptura. La **Definitiva `E`** — la **TORMENTA**,
+un giro de 360° que barre el rellano entero — remata. El Portero revienta.
+
+**Outro + transición.** *«Ve. Aquí ya no es mi turno.»* Puerta. **Reveal: el
+Market Roto** desde abajo. Título:
+
+```
+[PISO.02 — MARKET ROTO]
+[壊れた市場]
+```
+
+---
+
+## PISO 2 — MARKET ROTO — `32`
+
+### Ascenso
+
+Pasillo entre puestos volcados, todo masa negra recortada contra el atardecer:
+plástico, cartón, ocre encendido. `営業停止`, `食料品`, `半額`. Lluvia ácida en
+los toldos. Tema agresivo y húmedo 100–120 BPM.
+
+**Nuevo: EL LANZADOR.** 26×20 px: **hombros anchísimos, brazo derecho
+exagerado**, hombros en triangular invertida, todo el perfil inclinado hacia
+atrás como quien carga algo. Lanza proyectiles a distancia; el brazo se le
+ilumina 1 frame antes de soltar. Me da igual: no lo machaco de frente, lo
+**cruzo** con dash y lo pincho por la espalda.
+
+### Umbral — cuello de botella
+
+El pasillo se estrecha. Recuento `32`, cinco a ocho simultáneos. El cuello con
+Lanzadores es mi reino: tres cargas que se recargan solas = inmortalidad si
+mantengo el ritmo. RACHA `20`: flash + frame invertido, time-scale 0.40x.
+
+**Carta nivel 3.**
+
+```
+[SED DE SANGRE] Bajas curan      —
+[REBOTE II]     2 enemigos más   −25% daño
+[ANCLA]         Dash gratis      Recarga 2× lenta
+```
+
+Dasho a **[ANCLA]**: con 3 cargas que se recargan solas, Ancla las hace
+infinitas con recarga ×2 lenta. **Literalmente no toco el suelo en todo el
+Market Roto.** El coste: si me alcanzan, no recupero la barra rápido. Hasta que
+me acuerdo de que las bajas dan carga. Sigo sin tocar suelo.
+
+### Subjefe — EL LANZADOR
+
+Catálogo con huecos vacíos, fluorescente parpadeante. Entra uno grande: 40 px,
+**hombros anchísimos, brazo derecho exagerado**, triangular invertida, toda la masa arriba.
+
+> **JA:** `「射程内。発射。」`
+> **ES:** *«En rango. Disparando.»*
+
+Lanza en ráfaga con aviso de dos frames. Yo estoy arriba, en la ruta alta: no lo
+machaco de frente, lo **cruzo** con dash y lo pincho por la espalda. Cada recarga
+es una ventana.
+
+> **JA:** `「弾切れ。再装填。」`
+> **ES:** *«Sin munición. Recargando.»*
+
+### Ascenso alto
+
+Pasarela de mantenimiento sobre los puestos. Ruta alta expuesta con recompensa
+`#FFC400` marcando el borde.
+
+### Jefe — LOS GEMELOS (3 fases)
+
+Sala de almacén sellada, cajas hasta el techo como cubos negros apilados,
+pasillo central, luz apagada.
+
+> **JA:** `「二重登録を確認。矯正開始。」`
+> **ES:** *«Registro duplicado detectado. Iniciando corrección.»*
+
+Mato al primero en 4 segundos de dashes encadenados — el segundo acelera, se
+vuelve vulnerable, y la **TORMENTA** de la Definitiva `E` lo remata.
+
+> **JA:** `「…やっと、休める。」`
+> **ES:** *«...Por fin puedo descansar.»*
+
+**Outro + transición.** Refinería desde abajo: brasa, vapor.
+
+```
+[PISO.03 — REFINERÍA]
+[精錬所]
+```
+
+---
+
+## PISO 3 — REFINERÍA — `40`
+
+### Ascenso
+
+Galería de tuberías sobre vacío: líneas negras colgando de un degradado
+encendido. `高圧注意`, `燃料`, `立入禁止`. Tema industrial y caliente 120–130
+BPM. Vacío vertical + charcos + Agresores: el piso más hostil para alguien que
+vive en el aire. Los charcos no suben a las repisas; **yo vivo en las
+repisas**. Los Agresores atacan a bocajarro; yo no me paro.
+
+**Nuevo: EL AGRESOR.** corcovado, **garras curvas, muslos potentes**. El más
+rápido del juego; se lee por la inclinación hacia adelante y las pantorrillas
+hinchadas. Cierra la distancia en dos zancadas: si me pilla plano, me come.
+
+### Subjefe — EL AGRESOR
+
+Depósito cuadrado con respiraderos incandescentes. Emerge uno de élite: 36 px,
+**más corcovado aún, garras curvas, muslos potentes**, inclinado hacia adelante.
+
+> **JA:** `「登録より速く。」`
+> **ES:** *«Más rápido que el registro.»*
+
+Zancadas en zigzag con aviso de dos frames. **Yo vivo en el aire**: no lo espero,
+lo cruzo con dash antes de que se comprometa y lo pincho por la espalda.
+
+> **JA:** `「速さは、届かぬ。」`
+> **ES:** *«La velocidad no alcanza.»*
+
+### Ascenso alto
+
+Climbing de depósitos, vapor en la ruta alta.
+
+**Carta nivel 4.**
+
+```
+[RUPTURA II]      Ruptura en aire   Consume 2 cargas
+[CRÍTICO RACHA]   A 10, crítico     —
+[SED DE SANGRE II] Bajas curan ×2   Vida no regenera nunca
+```
+
+Dasho a **[RUPTURA II]**: con Ancla mis cargas son infinitas, así que consumir
+2 duele menos. La Ruptura `Q` en el aire, con los arcos `#FFC400` cayendo desde
+arriba, es mi imagen de la run.
+
+### Jefe — LA CALDERA (3 fases)
+
+Depósito central ocupando el fondo entero, una sola boca como salida: el
+**círculo perfecto** a pantalla completa, negro contra el fuego del atardecer.
+
+> **JA:** `「過圧警告。自動制御解除。」`
+> **ES:** *«Alerta de sobrepresión. Control automático liberado.»*
+
+**Fase 2:** charcos permanentes. **Yo no bajo.** La Caldera no tiene daño
+cuerpo a cuerpo: solo suelo y aro. Estoy en el techo. El aro crece, subo con
+dash, bajo con dash-ataque, subo. Treinta segundos son una danza.
+
+> **JA:** `「火は、まだ消えてねぇぞ。」`
+> **ES:** *«El fuego aún no se ha apagado.»*
+
+**Outro + transición.** **Reveal: el Archivo**, Blindados quietos mirándome.
+
+```
+[PISO.04 — ARCHIVO]
+[記録庫]
+```
+
+---
+
+## PISO 4 — ARCHIVO — `48`
+
+### Ascenso
+
+Pasillo entre estanterías: repisas como barras horizontales negras, papel
+amarillento, polvo. `保管`, `机密`, `持出禁止`. Goteo rítmico. Tema tenso y
+claustrofóbico 95–115 BPM.
+
+**Nuevo: EL BLINDADO.** 32×22 px: **cúbico macizo con hombreras
+rectangulares, sin piernas**. De frente, el borde **parpadea a rim `#F2DCC0`
+1 frame** y suena metal. **Guardia: 3 golpes la rompen (1 de daño +
+aturdimiento), o un dash que lo atraviesa la rompe entera.** Solo entra por
+detrás. Me frena de verdad: por detrás, con dagas débiles, tardo. Por delante
+no me hace nada — la placa bloquea y yo no tengo por qué golpear por delante.
+Rodeo con dashes, pincho por la espalda, o lo cruzo de un dash y le tiro la
+guardia al suelo.
+
+### Umbral — encrucijada
+
+Dos caminos, recuento `48`, ocho a once simultáneos. El umbral, denso y
+estrecho, es donde mi arma más débil más se nota: 11 a la vez y dagas que no
+empujan. Lo resuelvo no tocando el suelo.
+
+**Carta nivel 5.**
+
+```
+[REBOTE II]         2 enemigos más por arco     −25% daño
+[RUPTURA II]        Ruptura en el aire          Consume 2 cargas
+[CRÍTICO DE RACHA]  A 10 de racha, crítico      Sin bono >10
+```
+
+Dasho a **[CRÍTICO DE RACHA]**.
+
+### Subjefe — EL BLINDADO
+
+Sala de lectura. Entra de frente: 30 px, **cúbico macizo con hombreras
+rectangulares, sin piernas**. La placa **parpadea a rim `#F2DCC0` 1 frame** y suena metal.
+
+> **JA:** `「前面装甲、無効化不能。」`
+> **ES:** *«Blindaje frontal, no anulable.»*
+
+**Guardia: 3 golpes la rompen (1 de daño + aturdimiento), o un dash que lo
+atraviesa la rompe entera.** Rodeo con dashes, pincho por la espalda, o lo cruzo
+de un dash y le tiro la guardia al suelo.
+
+> **JA:** `「装甲…破断。」`
+> **ES:** *«Blindaje... quebrado.»*
+
+### Ascenso alto
+
+Por encima de las estanterías, ruta alta expuesta con recompensa.
+
+### Jefe — EL ESCRIBANO (3 fases)
+
+Archivo central sellado, cuatro filas, un hueco estrecho.
+
+> **JA:** `「ファイル照合。矛盾を検出。」`
+> **ES:** *«Comparando archivos. Contradicción detectada.»*
+
+**Fase 2** duplica los ataques en espejo. El Escribano tiene los mismos
+i-frames que yo: no se le puede golpear durante sus dashes. Nos cruzamos una y
+otra vez sin conectarnos, como dos relámpagos en la misma tormenta — dos
+siluetas idénticas negándose el paso. El crítico de racha a 10 rompe el empate
+y la fase 2 cae.
+
+> **JA:** `「書き直せ…お前なら。」`
+> **ES:** *«Reescríbela... tú puedes.»*
+
+**Outro + transición.** **Reveal: la Clínica** — Resucitados quietos, cuyas
+grietas de rim `#F2DCC0` se encienden y se apagan.
+
+```
+[PISO.05 — CLÍNICA]
+[診療所]
+```
+
+---
+
+## PISO 5 — CLÍNICA — `56`
+
+### Ascenso
+
+Pasillo de consultas, blanco sucio, acero médico. `外来`, `隔離`, `薬品`. Tema
+de horror administrativo 110–125 BPM.
+
+**Nuevo: EL RESUCITADO.** 28×16 px: **asimétrico, un brazo izquierdo colgando,
+una pierna rígida torcida**. Se distingue del resto por la deformidad, no por
+el color. **Revive una vez si no muere en la oleada**; su tell **brilla con el
+rim `#F2DCC0` 2 frames antes** — nunca cian, nunca un color nuevo: el mismo
+borde claro del resto del juego. Yo limpio tan rápido que los dejo todos a
+medias — exactamente lo que el piso castiga.
+
+### Umbral — quirófano
+
+Recuento `56`, nueve a trece, **18 s**. Estrecho. RACHA `65`: time-scale 0.25x,
+líneas de velocidad, flash frame. Aprendo: pinchar dos veces, mirar, dash. La
+horda me rodea y vivo entre ellas, siempre en el aire, siempre a un frame del
+contacto.
+
+**Carta de nivel 6.**
+
+```
+[REBOTE III]     3 enemigos más           −35% daño
+[ANCLA II]       Dash gratis, recarga ×3  —
+[PASO EN BLANCO] Al morir, revives con 25 de vida y barra llena. Una vez por run.
+```
+
+Dasho a **[PASO EN BLANCO]**.
+
+### Subjefe — EL RESUCITADO
+
+Sala de reanimación. Se levanta: 32 px, **asimétrico, un brazo izquierdo
+colgando, una pierna rígida torcida**. La deformidad lo delata sin color.
+
+> **JA:** `「削除対象、再起動。」`
+> **ES:** *«Objetivo eliminado, reiniciando.»*
+
+Cae y **su contorno parpadea con el rim `#F2DCC0` 2 frames antes** de volver a alzarse.
+
+> **JA:** `「再起動、不能。」`
+> **ES:** *«Reinicio, imposible.»*
+
+### Ascenso alto
+
+Tubería de oxígeno por el techo, ruta alta expuesta.
+
+### Jefe — LA CIRUJANA (3 fases)
+
+Sala de operaciones sellada, una lámpara quirúrgica encendida como un sol
+blanco.
+
+> **JA:** `「未登録検体。隔離手続き開始。」`
+> **ES:** *«Muestra no registrada. Iniciando aislamiento.»*
+
+**Fase 2:** cada 8 s, **barrera de agujas** que cruza la pantalla y **cancela
+el dash**. Para mí, que **no tengo otra cosa**, es el fin del mundo durante 8
+segundos. Me paro por primera vez en toda la run. Camino. Esquivo a pie. Noto
+la ausencia en las manos: el dedo en Shift y nada. Cuando la barrera se acaba,
+la venganza es total: tres cargas, Ruptura `Q` en el aire, zigzag `#FFC400`.
+
+> **JA:** `「ありがとう…もう眠らせて。」`
+> **ES:** *«Gracias... déjame dormir.»*
+
+**Outro + transición.** **Reveal: el Núcleo. SIN MÚSICA.** Silencio total 2 s.
+
+```
+[PISO.06 — NÚCLEO]
+[核]
+```
+
+---
+
+## PISO 6 — NÚCLEO — `70`
+
+### Ascenso
+
+Fragmentos flotando en vacío, capas de tiempo, cada dash atraviesa un momento
+distinto. Estática, reverberación. Tema progresivo y apocalíptico 130–140 BPM.
+
+Todo junto: los cinco arquetipos rotan — el torso partido en dos cabezas, el
+triangular de brazo exagerado, el corcovado de garras, el cúbico de hombreras,
+la figura torcida que revive —, máx. 3 activos, **12–16 simultáneos**, 15 s
+entre oleadas. Recuento `70`. **No toco el suelo en los tres primeros
+minutos.**
+
+**Nuevo: EL MIMÉTICO.** humanoide base de héroe, **articulaciones alargadas**,
+mudo, **copia tus ataques**. Aprende mi cadena de dagas y me la devuelve. La
+única forma de ganarle es cambiar el ritmo: Ruptura `Q`, Definitiva `E`,
+tormenta de 360°, y volver a empezar.
+
+### Subjefe — EL MIMÉTICO
+
+Suelo repetido en espejo. Se alza **con mi propia silueta base**: humanoide de
+héroe, **articulaciones alargadas**, mudo, y **copia mis ataques**.
+
+> **JA:** `「模倣完了。」`
+> **ES:** *«Imitación completa.»*
+
+Aprende mi cadena de dagas y me la devuelve en espejo. La única forma de ganarle
+es cambiar el ritmo: Ruptura `Q`, Definitiva `E`, y volver a empezar.
+
+> **JA:** `「模倣、崩壊。」`
+> **ES:** *«Imitación, colapso.»*
+
+### Jefe — EL NÚCLEO (3 fases)
+
+**Ojo vertical con patas**, 56 px. El ojo `#FF2D6F` se abre como obturador.
+Reflejo `#FFC400` en el iris — recompensa falsa.
+
+> **JA:** `「ループ・サブユニット起動。」`
+> **ES:** *«Unidad sub-bucle activada.»*
+
+**Fase 1 (100–70%):** aro + conos. RACHA 70+: hitstops de 6 frames, time-scale
+0.15x. **Fase 2 (70–35%):** invoca **2 Blindados** — la sala se llena y soy el
+único de los cuatro que puede vivir dentro de ese caos sin bajar: 3 cargas
+solas, zigzag, pinchazos. **Fase 3 (35–0%):** charcos permanentes; encadeno
+dashes entre los huecos, Ruptura `Q` en el aire, tormenta de dagas. El Núcleo
+cae con racha 75.
+
+**Cae.** Flash blanco de la sala entera. Screen shake de 4 px.
+
+> **JA:** `「裂け目を…閉じろ。」`
+> **ES:** *«Cierra... la grieta.»*
+
+La grieta se cierra de arriba abajo.
+
+### Epílogo (20–30 s)
+
+Ren de pie en el borde, de frente a la cámara esta vez, sonrisa nerviosa, las
+manos por fin quietas: silueta negra primero, rim `#F2DCC0` después. La rendija
+de atardecer le da de lleno en la cara.
+
+> *39 años. 40.000 personas. Catorce minutos.*
+
+Tenía 16 el día que el tiempo se rompió. Salió con 19. No recuerda esos tres
+años.
+
+```
+[NUCLEO CERRADO]  TIEMPO 16:58  BAJAS 291  RACHA MÁX 75  NIVEL 8
+```
+
+## Animación de cierre y créditos
+
+**La animación de cierre** arranca justo donde acaba el epílogo, sin corte, y
+dura 45–60 s. Es una sola pieza, la única cámara lenta que queda (ya sin
+peligro):
+
+- **Plano 1 (0–8 s).** Ren de espaldas sobre el borde, quieto: una masa negra
+  inmóvil contra el atardecer. La cámara retrocede muy despacio y la grieta,
+  abierta 39 años, **se cierra del todo** con un último hilo de rim `#F2DCC0` de
+  abajo arriba. Silencio.
+- **Plano 2 (8–20 s).** La torre desde fuera, por primera vez **sin ningún piso
+  encendido**: un solo diente negro recortado contra el cielo. La lluvia ácida
+  para. El cielo se abre un grado. Las siluetas de los atrapados al pie de la
+  torre **dejan de repetir** su gesto: se detienen, miran arriba y se disuelven
+  en luz suave, una a una.
+- **Plano 3 (20–35 s).** Fundido al **Núcleo vacío y en calma**: sin fragmentos
+  ni estática, solo vacío sereno y una línea de rim `#F2DCC0` donde estaba la
+  grieta. **Este fondo se queda fijo durante todos los créditos.**
+- **Plano 4 (35–45 s).** La marca de Ren — **el cohete** — dibujada en hueso,
+  unos segundos, se disuelve. Texto: *39 años. 40.000 personas. Catorce
+  minutos.* Fundido, y empiezan los créditos.
+
+**Lo que suena:** el fondo del Núcleo con la versión **más suave y sutil** del
+tema — sin percusión ni golpes, solo pads largos, bajo estático, lluvia lejana
+y un eco tenue. Nada sube ni acelera: es la respiración después del combate.
+
+**El roll de créditos** sube sobre el Núcleo en calma, texto monoespaciado en
+hueso claro `#F2DCC0`, centrado, con fade de 0.5 s al entrar y al salir. Tamaño
+en pantalla (1080p): cuerpo del roll **30 px**, `ND` **64 px**, nombre **48
+px**, epíteto **26 px**. Velocidad: **22 px/s** en los roles, **13 px/s** en
+la historia, **8 px/s** en el dato final, **5 px/s** en el nombre. Duración
+total ~2 min.
+
+```
+                          ND
+                  NIPPON DESTRUCTION
+
+                 DIRECCIÓN
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+           DISEÑO DE JUEGO Y COMBATE
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+               LOS CUATRO HÉROES
+            RIKA · GORO · REN · YUI
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+              ARTE Y SILUETA
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+            ANIMACIÓN Y CUT-INS
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+           MÚSICA Y DISEÑO DE SONIDO
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+                PROGRAMACIÓN
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+             DISEÑO DE NIVELES
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+            PRUEBAS Y EQUILIBRIO
+        SERGIO GRABIEL BORBOLLA VERDECIA
+
+                LOCALIZACIÓN
+         JAPONÉS · ESPAÑOL · INGLÉS
+        SERGIO GRABIEL BORBOLLA VERDECIA
+```
+
+Y en medio del roll, la historia:
+
+> Al principio nadie le creyó. Decían que un solo cuerpo no puede subir una
+> torre entera. Que la grieta llevaba abierta treinta y nueve años y que
+> treinta y nueve años no se cierran con dos manos y una noche.
+>
+> **REN HAYASHI** subió igual.
+>
+> Pasó por el Vestíbulo y por el Market roto. Cruzó la Refinería, el Archivo,
+> la Clínica, y no paró donde todos los demás se habían parado. No subió por
+> gloria: subió porque había cuarenta mil nombres atrapados en el mismo minuto
+> y alguien tenía que ir a buscarlos.
+>
+> Peleó contra todo lo que la ciudad tenía guardado para que nadie llegara
+> arriba. Y cuando ya no le quedaba nada salvo el gesto de seguir levantándose,
+> **REN HAYASHI** hizo lo que nadie había hecho nunca: rompió el bucle.
+>
+> Cerró la grieta. Le devolvió al mundo su tiempo. Los que repetían el mismo
+> paso desde hacía casi cuatro décadas pudieron, por fin, dejar de repetirlo.
+> Los que estaban congelados, caminar. Los que no recordaban, recordar.
+>
+> No hubo multitudes. No hubo un monumento. Solo una torre apagada y un cielo
+> un poco menos encendido. Pero desde ese día, cuando alguien pregunta quién
+> salvó al mundo, la respuesta es siempre la misma:
+>
+> **—REN HAYASHI.**
+>
+> Y el mundo, que llevaba treinta y nueve años esperando a alguien, por fin
+> pudo seguir.
+
+Después del último párrafo, unos segundos en el Núcleo en calma, la música
+baja hasta casi el silencio, aparece el **cohete** en el centro y funde a
+negro. Fin de la run.
+
+---
+
+
+---
+
+
+# RUN 4 — YUI. EL ECO (EN SILUETA)
+
+> Cuarta run. Ahora mismo juego a quedarme fuera del alcance de todo: alcance + teletransporte.
+> Primero la forma, luego el relleno: **Yui es la silueta más erguida del elenco**, moño alto
+> recortado en el aire, rifle en horizontal a la cadera; su cuerpo es la tinta `#000000` más pura
+> del elenco a propósito y el contraste lo pone la **luz de contorno `#F2DCC0` y el trazador
+> `#F2DCC0` de su rifle**, no ella. El fondo va sobre el atardecer de cuatro tonos
+> (`#150E2B → #4A2247 → #A84A38 → #F0A65A`), con lluvia ácida y relámpagos, para que el negro
+> recorte. El juego **entero otra vez**, desde que se abre hasta los créditos.
+
+## Abro el juego
+
+**Vuelvo a abrir ND desde el arranque, ahora mismo.** Primero leo la silueta de la
+pantalla: siluetas `#000000` macizas sobre el atardecer de cuatro tonos, la franja CRT como un
+recorte, el logo `ND` y el subtítulo `NIPPON DESTRUCTION` en contorno `#F2DCC0` contra el cielo
+que va de `#150E2B` a `#F0A65A`, la torre como un diente oscuro bajo la lluvia ácida, mismos
+relámpagos, mismo phonk atmosférico. **El menú**, leído por su forma antes que por su texto:
+cinco tarjetas de cristal (`#100926`, `#1E1734`, `#221B38`, `#2C2543`, `#37304F`) con su métrica
+en la esquina, `[ INICIAR JUEGO ]`, `[ SELECCIONAR PERSONAJE ]`, `[ MODO DE JUEGO ]`,
+`[ OPCIONES ]`, `[ SALIR ]`, con el corchete `#F2DCC0` parpadeando y el click de servo. A 24 px
+la forma de cada tarjeta ya me dice qué va a hacer. Entro a `[SELECCIONAR PERSONAJE]`.
+
+**Selección.** Las cuatro siluetas, cuatro formas negras `#000000` recortadas contra el
+atardecer, sin detalle interno. **Yui** es la erguida del moño alto de 5 px: la más recta de las
+cuatro, el moño como un apéndice recortado sobre la cabeza y el rifle dibujado en horizontal a
+la cadera; su contorno solo ya dice quién es y qué va a hacer. El relleno llega después, cuando
+importa: la **luz de contorno `#F2DCC0`** recorre su silueta y el **trazador `#F2DCC0`** de su
+rifle late **una vez** al posarse, el único punto claro de la pantalla. Su panel marca
+`2/3 CARGAS` y el epíteto *El Eco*; debajo, el buffet de control: **TAJO** `Espacio`/`J`,
+**DASH** `Shift`/`K`, **Arriba / teletransporte** `W`, **Ruptura** `Q`, **Definitiva** `E`, con
+**buffer de 5 frames** y prioridad **RUPTURA > ESQUIVA > ATAQUE**. Me poso y confirmo.
+
+## Prólogo de YUI — «Los que repiten» (5–8 s)
+
+**Plano general (2 s).** Exterior del perímetro, atardecer permanente. Yui de perfil: una
+silueta maciza `#000000`, la más erguida, moño alto, rifle en horizontal, recortada contra el
+atardecer de cuatro tonos con la lluvia ácida cayendo en líneas finas; su contorno lo dibuja la
+**luz de contorno `#F2DCC0`**. El relleno aparece solo ahora, porque define la forma. El
+trazador `#F2DCC0` es lo único claro del fotograma — y ni siquiera es peligro: el peligro del
+juego es `#FF2D6F`.
+
+**Plano medio (2 s).** Al fondo, borrosas, siluetas de atrapados: barras verticales altas y
+estrechas, hombros mínimos, piernas largas, sin brazos, repitiendo el mismo gesto para siempre:
+tres pasos, alto, vuelta. A 24 px su forma sola ya dice lo que son y lo que van a hacer. Ella
+mira.
+
+> **JA:** `もう、誰かの残響にはなりたくない。`
+> **ES:** *«Ya no quiero ser el eco de nadie.»*
+
+**Plano dinámico (2 s).** Se gira hacia la torre. El trazador late una vez. Dos destellos —
+entrada y salida — y ya está en la base: la silueta se borra y vuelve a recortarse en otro
+sitio, sin cruzar el espacio. Corte a negro.
+
+> *Su teletransporte es corto y su dash tiene i-frames. Su rifle tiene alcance y una luz de trazador única `#F2DCC0`: si ves una línea clara cruzar la lluvia ácida, viene de ella. Y reparte ondas que ralentizan lo que ya está en el aire.*
+
+---
+
+## PISO 1 — VESTÍBULO — `24`
+
+**Entrada de piso (cinemática 2–4 s).** El mismo atrio sin HUD, leído por sus formas: el
+mostrador con huecos como un bloque a ras de suelo, los torniquetes como barras verticales
+bloqueadas, los fluorescentes como rectángulos ciegos, el tubo que zumba cada 4 s, `受領` /
+`入場証` / `閉鎖` / `立入禁止`. Todo `#000000` recortado contra el atardecer de cuatro tonos.
+Panéo hacia arriba. Lluvia ácida, eco, buzz.
+
+```
+[PISO.01 — VESTÍBULO]
+[エントランスホール]
+```
+
+**Cabina.** Yui abajo a la izquierda: la silueta más erguida, moño alto, rifle en horizontal;
+tinta `#000000` maciza y **rim `#F2DCC0`** por el contorno. Rígida: idle de 6 frames, el rifle no
+se mueve. Cuando corre, va con el rifle **horizontal**, no al hombro — a 24 px la forma sola dice
+que viene a disparar, no a acuchillar. Leo el HUD de 4 cuadrantes:
+
+```
+[ QUAD_01  VIDA · 2/3 CARGAS ]   [ QUAD_02  RACHA · WAVE 04/06 ]
+[ QUAD_03  AVANZAR / RETROCESO ] [ QUAD_04  TAJO · RUPTURA ND · DASH · DEFINITIVA ]
+```
+
+`RUPTURA ND` se tiñe `#FF2D6F` cuando hay carga; `DEFINITIVA` se tiñe `#FFC400` a carga completa.
+
+### Ascenso (0:00–0:40)
+
+**Disparo.** El rifle: 4 frames — 1 frame de fogonazo + retroceso del torso. Un proyectil con
+**trazador `#F2DCC0`** cruza la pantalla: una línea clara en un mundo de siluetas negras. Aquí
+está la excepción del juego: en un mundo donde el peligro es `#FF2D6F`, **mi luz no es peligro,
+es el rim**. Si veo una línea clara volando hacia mí, sé que viene de Yui y que lleva algo
+detrás. La telegrafía es mía.
+
+**Fase de Pocos Metros.** Su dash (`Shift`/`K`) es un desplazamiento corto con i-frames; su
+**Arriba (`W`)** es un **teletransporte** de 2–3 casillas: solo destello de entrada y de salida,
+sin desplazamiento visible, sin estela. La silueta se borra y aparece en otro sitio. El círculo
+de cargas del HUD se vacía y se llena al ritmo de mis bajas. Subo el Vestíbulo con dos
+teletransportes verticales — soy la única que **salta** la ruta larga de verdad.
+
+**Cadena de rifle.** No tengo cadena cuerpo a cuerpo: mi ataque es el disparo repetido con el
+autoavance del arma empujándome hacia delante. La telegrafía de Yui es el suelo que controlo.
+
+**Nuevo: EL DOBLE.** 30 px, torso partido en vertical, dos cabezas desplazadas, simétrico: a
+24 px la forma sola dice que ataca por los dos lados. Sus dos mitades golpean a la vez y yo las
+borro de un disparo antes de que se junten. RACHA `4`.
+
+### Umbral (0:40–1:05)
+
+Puertas automáticas. Aviso `#FF2D6F` **`BAJAS NECESARIAS: 18/24`**. Cuatro a seis Dobles que
+nunca me alcanzan: mueren en la mitad de la pantalla, todavía como dos formas enteras cuando
+caen.
+
+**Carta de nivel 2.**
+
+```
+[RÁFAGA]     +1 disparo en la ráfaga  −20% daño por disparo
+[EXPLOSIVO]  Splash en el proyectil   −10% rango
+[REBOTE]     El proyectil golpea a más −15% daño
+```
+
+Dasho a **[EXPLOSIVO]**: cada proyectil con trazador `#F2DCC0` deja un splash donde impacta. El
+suelo se convierte en mi territorio: líneas de rim que pongo yo. RACHA `9`.
+
+### Subjefe — EL DOBLE (1:05–1:25)
+
+Rellano amplio. La música baja a pad sostenido. Entra por arriba, 40 px: una puerta con
+piernas, `#000000` macizo, rim `#F2DCC0` por el borde, capucha recortada sobre el hueco del
+encuadre; a 24 px ya leo que abre y cierra.
+
+> **JA:** `「受付業務…対象を排除する。」`
+> **ES:** *«Procedimiento de recepción... eliminando objetivo.»*
+
+Se inclina y **embiste con cono `#FF2D6F`**. Yo estoy al otro lado de la sala: el cono no me
+llega. Lo castigo desde fuera en cada ventana de 1.2 s. Cae.
+
+### Ascenso alto (1:25–2:05)
+
+Tramo de servicio estrecho, dos barras verticales de pasarela contra el atardecer. Dos
+teletransportes verticales y salto la ruta larga casi sin tocar las pasarelas.
+
+### Jefe — EL PORTERO (2:05–2:35)
+
+Sala sellada. Panel congelado en `40.000`. **La música corta a silencio medio segundo** y
+entra el tema de jefe.
+
+**Intro de jefe (3–4 s).** 52 px: puerta con piernas, cuerpo `#000000` con rim `#F2DCC0`,
+**ojo `#FF2D6F` que se enciende en el último frame** — el primer color de peligro que lleva, y es
+peligro. Yo ya me muevo.
+
+Embestida (cono `#FF2D6F`), pisotón (círculo `#FF2D6F`), barrido de 180°. La sala sellada, la
+ventana de 1.2 s. **La lleno desde la esquina opuesta**: cuatro disparos con splash, trazadores
+`#F2DCC0` cruzando la sala. El cono del jefe no me alcanza nunca; el pisotón dibuja su círculo
+en el suelo y **yo ya no estoy ahí**.
+
+**Cut-in de Ruptura (1–2 s, 12 fps).** Silueta de Yui a tamaño de pantalla, pose abierta, el
+rifle de perfil, ondas concéntricas alrededor y ecos duplicados recortados detrás; el rim
+`#F2DCC0` dibuja su contorno entero:
+
+> **JA:** `もう、誰かの残響にはなりたくない。`
+> **ES:** *«Ya no quiero ser el eco de nadie.»*
+
+**VÓRTICE DE REVERBERACIÓN (`Q`):** aros concéntricos alrededor de Yui que **ralentizan los
+proyectiles un 80% durante 3.5 s** y empujan hacia fuera. Hitstop `85 ms / 18 f`.
+
+**Outro + transición.** `「行け。ここは、もう俺の番じゃない。」` / *«Ve. Aquí ya no es mi
+turno.»* Puerta. **Reveal: el Market Roto** desde abajo, bloque macizo `#000000` contra el
+atardecer. Título:
+
+```
+[PISO.02 — MARKET ROTO]
+[壊れた市場]
+```
+
+---
+
+## PISO 2 — MARKET ROTO — `32`
+
+### Ascenso
+
+Pasillo entre puestos volcados: bloques a ras de suelo, plástico, cartón, todo `#000000`
+recortado contra el atardecer de cuatro tonos. `営業停止`, `食料品`, `半額`. Lluvia ácida en los
+toldos. Phonk agresivo **100–120 BPM**.
+
+**Nuevo: EL LANZADOR.** 30 px, hombros anchísimos, brazo derecho exagerado, triángulo invertido:
+`#000000` con rim `#F2DCC0`, boca `#FF2D6F`. A 24 px ya leo que va a escupir. Es mi espejo — dos
+tiradores en el mismo piso, uno lee su ritmo, el otro no. Lo mato antes de que abra la boca:
+**2 frames de aviso** y mis disparos con splash ya están en el aire. Sus proyectiles
+`#FF2D6F` no me tocan: los detengo a media pantalla.
+
+### Umbral — cuello de botella
+
+El cuello de botella es mi peor escenario: estrecho, denso, sin ángulos. Aquí el
+teletransporte de 2–3 casillas no tiene dónde ir. Lo resuelvo a mi manera: **no entro al
+cuello**. Me quedo al otro lado y **disparo a través** — el splash de [Explosivo] convierte el
+pasillo estrecho en una trampa de mi propia luz. Recuento `32`, cinco a ocho. RACHA `20`:
+flash + frame invertido.
+
+**Carta nivel 3.**
+
+```
+[SED DE SANGRE]  Bajas curan     —
+[ANCLA]          Dash gratis     Recarga 2× lenta
+[CRÍTICO RACHA]  A 10, crítico   —
+```
+
+Dasho a **[ANCLA]**: mis teletransportes dejan de gastar carga. Recarga ×2 lenta, pero con dos
+cargas base que se recargan por bajas, me vuelvo intocable a distancia: teletransporto por
+reflejo.
+
+### Subjefe — EL LANZADOR
+
+Catálogo con huecos vacíos, fluorescente parpadeante. Entran dos, espejo exacto: dos siluetas
+`#000000` idénticas recortadas una frente a otra, la misma forma duplicada, ni un píxel de
+diferencia.
+
+> **JA:** `「二重登録を確認。矯正開始。」`
+> **ES:** *«Registro duplicado detectado. Iniciando corrección.»*
+
+El cruce **cubre el centro** — yo no estoy en el centro. Me planto fuera y disparo al cono
+desde lejos, sobre sus contornos negros.
+
+### Ascenso alto
+
+Pasarela sobre los puestos. Ruta alta con recompensa.
+
+### Jefe — LOS GEMELOS (3 fases)
+
+Sala de cajas, pasillo central. Me planto en el fondo y disparo.
+
+El cruce doble cubre el centro; **yo no estoy en el centro**. Splash en el suelo, trazadores
+`#F2DCC0`, teletransporte cuando el cono doble se acerca demasiado. Muere el segundo:
+
+> **JA:** `「…やっと、休める。」`
+> **ES:** *«...Por fin puedo descansar.»*
+
+**Outro + transición.** **Reveal: la Refinería** desde abajo, galería de tuberías como
+venas negras sobre el vacío.
+
+```
+[PISO.03 — REFINERÍA]
+[精錬所]
+```
+
+---
+
+## PISO 3 — REFINERÍA — `40`
+
+### Ascenso
+
+Galería de tuberías sobre vacío, todo contorno `#000000` contra el atardecer. `高圧注意`,
+`燃料`, `立入禁止`. Phonk industrial **120–130 BPM**. **El piso hecho para mí:** vacío vertical,
+repisas, alcance.
+
+**Nuevo: EL AGRESOR.** 24 px, corcovado, garras curvas, muslos potentes: la silueta más
+inclinada del piso, `#000000` con rim `#F2DCC0`. **El más rápido del juego.** A 24 px ya leo que
+va a saltar: se agacha 1 frame y sale. Los que vienen hacia mí mueren a mitad de camino,
+salpicados por su propia prisa. Los charcos `#FFB871` no me tocan: estoy arriba, en repisas que
+solo alcanzo con teletransporte vertical.
+
+### Subjefe — EL AGRESOR
+
+Depósito cuadrado con respiraderos incandescentes. Esfera de hierro 44×44: un círculo `#000000`
+perfecto con rim `#F2DCC0`, la forma más limpia y más obvia de todo el piso.
+
+> **JA:** `「過圧警告。自動制御解除。」`
+> **ES:** *«Alerta de sobrepresión. Control automático liberado.»*
+
+Zonas de daño + aro `#FF2D6F`. Sin contacto, y yo estoy lejos.
+
+### Ascenso alto
+
+Climbing de depósitos, vapor en la ruta alta.
+
+**Carta nivel 4.**
+
+```
+[RUPTURA II]       Ruptura en aire  Consume 2 cargas
+[REBOTE II]        Proyectil a 2 más −25% daño
+[SED DE SANGRE II] Bajas curan ×2   Vida no regenera
+```
+
+Dasho a **[REBOTE II]**: mis proyectiles con trazador rebotan a dos enemigos más. En salas
+abiertas con enemigos en fila — que es donde gano — es mi carta perfecta.
+
+### Jefe — LA CALDERA (3 fases)
+
+Depósito central ocupando el fondo entero: círculo perfecto `#000000` recortado contra la pared,
+sin detalle, solo la forma y el peligro.
+
+> **JA:** `「火は、まだ消えてねぇぞ。」`
+> **ES:** *«El fuego aún no se ha apagado.»*
+
+La sala entera de charcos `#FFB871`, la única sin daño cuerpo a cuerpo. **Yo arriba, lejos,
+disparando luz sobre calor.** El trazador `#F2DCC0` sobre los charcos `#FFB871` es la única sala
+del juego donde dos claridades conviven — y solo una es peligro: el suelo. La mía es el rim.
+
+> **JA:** `「…やっと、冷める。」`
+> **ES:** *«...Por fin se enfría.»*
+
+**Outro + transición.** **Reveal: el Archivo**, Blindados quietos mirándome: rectángulos
+`#000000` macizos con rim `#F2DCC0`, sin piernas, alineados como muros.
+
+```
+[PISO.04 — ARCHIVO]
+[記録庫]
+```
+
+---
+
+## PISO 4 — ARCHIVO — `48`
+
+### Ascenso
+
+Pasillo entre estanterías: paredes de bloques apilados, papel amarillento, polvo, todo contorno
+`#000000` sobre el atardecer. `保管`, `机密`, `持出禁止`. Goteo rítmico. Phonk tenso
+**95–115 BPM**.
+
+**Nuevo: EL BLINDADO.** 32×20 px, rectángulo cúbico macizo, hombreras rectangulares, sin
+piernas: a 24 px la forma sola dice que por delante no entra. **Guardia: 3 golpes la rompen
+(1 de daño + aturdimiento), o un dash que lo atraviesa la rompe entera.** No rodeo —
+**le disparo a la espalda desde donde estoy**. El pasillo estrecho que obliga a los demás a
+subir, yo lo resuelvo con alcance.
+
+### Umbral — encrucijada
+
+Dos caminos, recuento `48`, ocho a once simultáneos. Los atajos de repisa que otros toman, los
+**teletransporto** en dos saltos sin tocar suelo. La ruta alta me da recompensa sin riesgo: soy
+la única a la que el atajo no le cuesta exposición.
+
+**Carta nivel 5.**
+
+```
+[REBOTE II]         2 enemigos más por arco     −25% daño
+[RUPTURA II]        Ruptura en el aire          Consume 2 cargas
+[CRÍTICO DE RACHA]  A 10 de racha, crítico      Sin bono >10
+```
+
+Dasho a **[CRÍTICO DE RACHA]**.
+
+### Subjefe — EL BLINDADO
+
+Sala de lectura. Se levanta: 30 px, mi propia silueta `#000000` con rim `#F2DCC0` — moño alto,
+rifle en horizontal, contorno idéntico al mío, sin un píxel que la diferencie. **Ajusta su arma
+a la mía.**
+
+> **JA:** `「ファイル照合。矛盾を検出。」`
+> **ES:** *«Comparando archivos. Contradicción detectada.»*
+
+Réplica de mi rifle, **mismos i-frames que yo**.
+
+### Ascenso alto
+
+Por encima de las estanterías, ruta alta expuesta con recompensa.
+
+### Jefe — EL ESCRIBANO (3 fases)
+
+Archivo central sellado, cuatro filas, un hueco estrecho.
+
+> **JA:** `「書き直せ…お前なら。」`
+> **ES:** *«Reescríbela... tú puedes.»*
+
+**Fase 1:** réplica de mi rifle — **con trazador `#F2DCC0` idéntico al mío**. Por primera vez en
+la run, la luz en el aire no sé si es mía, y eso confunde la regla que me hace legible. Es el
+único momento donde mi trazador pierde significado, y es a propósito: el Escribano copia mi
+build, no mi cuerpo. **Fase 2:** dos trazadores `#F2DCC0` en espejo. Gano con [Rebote II]: mis
+proyectiles rebotan y golpean a las dos réplicas a la vez.
+
+**Outro + transición.** **Reveal: la Clínica**, Resucitados quietos: siluetas asimétricas con el
+brazo izquierdo colgando y la pierna rígida torcida, sus grietas encendidas en **rim `#F2DCC0`**
+sobre el contorno.
+
+```
+[PISO.05 — CLÍNICA]
+[診療所]
+```
+
+---
+
+## PISO 5 — CLÍNICA — `56`
+
+### Ascenso
+
+Pasillo de consultas, formas negras `#000000` contra el atardecer desaturado por la lluvia ácida.
+`外来`, `隔離`, `薬品`. Phonk distorsionado **110–125 BPM**.
+
+**Nuevo: EL RESUCITADO.** 28×14 px, asimétrico: brazo izquierdo colgando, pierna rígida
+torcida, forma quebrada con rim `#F2DCC0`. **Se levanta una vez si no muere en la oleada.** El
+tell es el rim: sus **grietas `#F2DCC0` brillan 2 frames antes** de reincorporarse — es lo único
+que se ilumina en su negro. Limpio a distancia tan rápido que a veces dejo cuerpos a un disparo
+de morir — la regla me castiga igual.
+
+### Umbral — quirófano
+
+Recuento `56`, nueve a trece, **18 s**. RACHA `65`: time-scale 0.25x, líneas de velocidad,
+flash frame. Aquí mi teletransporte corto tiene el valor real: los Resucitados que se levantan
+detrás de mí mueren de espaldas con un disparo.
+
+**Carta de nivel 6.**
+
+```
+[REBOTE III]     3 enemigos más           −35% daño
+[ANCLA II]       Dash gratis, recarga ×3  —
+[PASO EN BLANCO] Al morir, revives con 25 de vida y barra llena. Una vez por run.
+```
+
+Dasho a **[PASO EN BLANCO]**.
+
+### Subjefe — EL RESUCITADO
+
+Sala de reanimación. Flota: 32 px, sin piernas, sobre un charco, contorno `#000000` suspendido en
+el aire con rim `#F2DCC0` — la única forma que no toca el suelo. Bisturí `#FF2D6F`.
+
+> **JA:** `「未登録検体。隔離手続き開始。」`
+> **ES:** *«Muestra no registrada. Iniciando aislamiento.»*
+
+Agujas en abanico con aviso de 1 frame.
+
+### Ascenso alto
+
+Tubería de oxígeno por el techo, ruta alta expuesta.
+
+### Jefe — LA CIRUJANA (3 fases)
+
+Sala de operaciones sellada, una lámpara quirúrgica blanca encendida.
+
+> **JA:** `「延命は…もう、終わらせよう。」`
+> **ES:** *«Este prolongamiento... debe terminar.»*
+
+**Fase 2:** cada 8 s, **barrera de agujas** que cruza la pantalla y **cancela el dash y el
+teletransporte**. Para mí, que me teletransporto por reflejo, es un fantasma del pulgar: 8
+segundos sin aparecer en otro sitio. Las agujas en abanico me obligan a **caminar** por primera
+vez — la mecánica central del juego me es ajena y ahora me falta. Cuando vuelve, la Ruptura II
+en el aire limpia la fase 2 entera con ondas concéntricas.
+
+> **JA:** `「ありがとう…もう眠らせて。」`
+> **ES:** *«Gracias... déjame dormir.»*
+
+**Outro + transición.** **Reveal: el Núcleo. SIN MÚSICA.** Silencio total 2 s.
+
+```
+[PISO.06 — NÚCLEO]
+[核]
+```
+
+---
+
+## PISO 6 — NÚCLEO — `70`
+
+### Ascenso
+
+Fragmentos flotando en vacío, capas de tiempo: contornos `#000000` sueltos sin suelo, recortados
+sobre el atardecer. Estática, reverberación. Phonk progresivo **130–140 BPM**. La ausencia
+total de arquitectura es mi escenario y mi perdición: sin repisas, el teletransporte vertical no
+tiene destino fijo.
+
+**Nuevo: EL MIMÉTICO.** Humanoide base de héroe, articulaciones alargadas, `#000000` con rim
+`#F2DCC0`: **copia tus ataques**. Dispara cuando disparo, se teletransporta cuando me
+teletransporto. A 24 px es mi propia silueta devuelta.
+
+Todo junto: los seis arquetipos rotan — el torso partido, el triángulo invertido, el corcovado,
+el cúbico, el quebrado y el espejo —, máx. 3 activos, **12–16 simultáneos**, 15 s entre oleadas.
+Recuento `70`.
+
+### Subjefe — EL MIMÉTICO
+
+Suelo repetido en espejo, escalera infinita desfasada. Aparece en **tres destellos
+superpuestos**: mi propia forma multiplicada, la misma silueta `#000000` apilada tres veces,
+rim `#F2DCC0` en cada copia.
+
+Muere y su muerte se repite tres veces en destello.
+
+### Jefe — EL NÚCLEO (3 fases)
+
+Ojo vertical con patas. 56 px: contorno `#000000` macizo, un ojo vertical que **se abre como
+obturador** y cuatro patas recortadas debajo. El ojo `#FF2D6F` — peligro puro sobre negro.
+Reflejo `#FFC400` en el iris — recompensa falsa.
+
+> **JA:** `「ループ・サブユニット起動。」`
+> **ES:** *«Unidad sub-bucle activada.»*
+
+**Fase 1 (100–70%):** aro + conos. **Fase 2 (70–35%):** invoca **2 Agresores** — dos siluetas
+corcovadas cargando — y la sala se llena: me quedo fuera del círculo, disparando, los trazadores
+`#F2DCC0` cruzando los conos `#FF2D6F` y los círculos rojos del suelo. **Fase 3 (35–0%):** el
+suelo en **charcos permanentes `#FFB871`**; soy la única que puede **ignorar el suelo entero**,
+teletransportando entre huecos de aire. Los aros del Núcleo crecen desde el centro; los míos
+crecen desde mí. El último disparo con racha 72 conecta en slow-mo 0.15x.
+
+**Cae.** Flash blanco de la sala entera. Screen shake de 4 px.
+
+> **JA:** `「裂け目を…閉じろ。」`
+> **ES:** *«Cierra... la grieta.»*
+
+La grieta se cierra de arriba abajo.
+
+### Epílogo (20–30 s)
+
+Yui de pie en el borde, de perfil, rifle al hombro por primera vez — no horizontal, no rígida.
+La silueta más erguida recortada contra la rendija de cielo, el moño alto `#000000` sobre el
+único claro del atardecer. El trazador `#F2DCC0` del rifle se apaga: ya no queda luz de arma en
+pantalla.
+
+> *39 años. 40.000 personas. Catorce minutos.*
+
+Ella era la que decidía a quién se dejaba pasar. Nunca supo si tenía razón.
+
+```
+[NUCLEO CERRADO]  TIEMPO 18:12  BAJAS 263  RACHA MÁX 72  NIVEL 8
+```
+
+## Animación de cierre y créditos
+
+**La animación de cierre** arranca justo donde acaba el epílogo, sin corte, y dura 45–60 s. Es una sola pieza, la única cámara lenta que queda (ya sin peligro):
+
+- **Plano 1 (0–8 s).** Yui de espaldas sobre el borde, quieta: un contorno `#000000` quieto contra el atardecer. La cámara retrocede muy despacio y la grieta, abierta 39 años, **se cierra del todo** con un último hilo de luz `#F2DCC0` de abajo arriba. Silencio.
+- **Plano 2 (8–20 s).** La torre desde fuera, por primera vez **sin ningún piso encendido**: la silueta `#000000` más alta de la ciudad, enteramente apagada. La lluvia ácida para. El cielo se abre un grado hacia `#F0A65A`. Las siluetas de los atrapados al pie **dejan de repetir** su gesto: las barras se detienen, se vuelven, miran arriba y se disuelven en luz suave `#F2DCC0`, una a una.
+- **Plano 3 (20–35 s).** Fundido al **Núcleo vacío y en calma**: sin fragmentos ni estática, solo vacío sereno y una línea de luz `#F2DCC0` donde estaba la grieta. **Este fondo se queda fijo durante todos los créditos.**
+- **Plano 4 (35–45 s).** La marca de Yui — **la torre** — dibujada en rim `#F2DCC0`, unos segundos, se disuelve. Texto: *39 años. 40.000 personas. Catorce minutos.* Fundido, y empiezan los créditos.
+
+**Lo que suena:** el fondo del Núcleo con la versión **más suave y sutil** del tema — sin percusión ni golpes, solo pads largos, bajo estático, lluvia lejana y un eco tenue. Nada sube ni acelera: es la respiración después del combate.
+
+**El roll de créditos** sube sobre el Núcleo en calma, texto monoespaciado en `#F2DCC0`, centrado, con fade de 0.5 s al entrar y al salir. Tamaño en pantalla (1080p): cuerpo del roll **30 px**, `ND` **64 px**, nombre **48 px**, epíteto **26 px**. Velocidad: **22 px/s** en los roles, **13 px/s** en la historia, **8 px/s** en el dato final, **5 px/s** en el nombre. Duración total ~2 min.
+
+```
+                        ND
+                NIPPON DESTRUCTION
+
+                DIRECCIÓN
+       SERGIO GRABIEL BORBOLLA VERDECIA
+
+          DISEÑO DE JUEGO Y COMBATE
+       SERGIO GRABIEL BORBOLLA VERDECIA
+
+            LOS CUATRO HÉROES
+         RIKA · GORO · REN · YUI
+       SERGIO GRABIEL BORBOLLA VERDECIA
+
+              ARTE Y SILUETA
+       SERGIO GRABIEL BORBOLLA VERDECIA
+
+           ANIMACIÓN Y CUT-INS
+       SERGIO GRABIEL BORBOLLA VERDECIA
+
+            MÚSICA Y SONIDO
+       SERGIO GRABIEL BORBOLLA VERDECIA
+
+               PROGRAMACIÓN
+       SERGIO GRABIEL BORBOLLA VERDECIA
+
+            DISEÑO DE NIVELES
+       SERGIO GRABIEL BORBOLLA VERDECIA
+
+           PRUEBAS Y EQUILIBRIO
+       SERGIO GRABIEL BORBOLLA VERDECIA
+
+               LOCALIZACIÓN
+        JAPONÉS · ESPAÑOL · INGLÉS
+       SERGIO GRABIEL BORBOLLA VERDECIA
+```
+
+Y en medio del roll, la historia:
+
+> Al principio nadie le creyó. Decían que un solo cuerpo no puede subir una torre entera. Que la grieta llevaba abierta treinta y nueve años y que treinta y nueve años no se cierran con dos manos y una noche.
+>
+> **YUI NAKAMURA** subió igual.
+>
+> Pasó por el Vestíbulo y por el Market roto. Cruzó la Refinería, el Archivo, la Clínica, y no paró donde todos los demás se habían parado. No subió por gloria: subió porque había cuarenta mil nombres atrapados en el mismo minuto y alguien tenía que ir a buscarlos.
+>
+> Peleó contra todo lo que la ciudad tenía guardado para que nadie llegara arriba. Y cuando ya no le quedaba nada salvo el gesto de seguir levantándose, **YUI NAKAMURA** hizo lo que nadie había hecho nunca: rompió el bucle.
+>
+> Cerró la grieta. Le devolvió al mundo su tiempo. Los que repetían el mismo paso desde hacía casi cuatro décadas pudieron, por fin, dejar de repetirlo. Los que estaban congelados, caminar. Los que no recordaban, recordar.
+>
+> No hubo multitudes. No hubo un monumento. Solo una torre apagada y un cielo un poco menos gris. Pero desde ese día, cuando alguien pregunta quién salvó al mundo, la respuesta es siempre la misma:
+>
+> **—YUI NAKAMURA.**
+>
+> Y el mundo, que llevaba treinta y nueve años esperando a alguien, por fin pudo seguir.
+
+Después del último párrafo, unos segundos en el Núcleo en calma, la música baja hasta casi el silencio, aparece la **torre** en el centro — la forma más alta, dibujada `#000000` con rim `#F2DCC0` contra el gris — y funde a negro. Fin de la run.
+
+---
+
+
+# LO QUE YA SÉ DESPUÉS DE LAS CUATRO RUNS (EN SILUETA ND)
+
+**Es el mismo mapa cuatro veces, y las cuatro se juegan distintas porque cada héroe entra en la silueta de forma distinta. Nippon Destruction se ve igual de lejos: pura tinta negra recortada sobre un atardecer que no se apaga y una lluvia ácida que no deja de caer.**
+
+| Piso | Rika | Goro | Ren | Yui |
+|---|---|---|---|---|
+| **Vestíbulo** | Dash que atraviesa y daña: recupero carga con la horda | Embestida empujando: la horda es agua que aparto | Tres cargas autorrecargables: no toco suelo | Disparo desde fuera: la horda ni llega |
+| **Market Roto** | Atravieso a los que no caen en carrera | El cuello es mío: rompeolas de maza y escudo | Vivo en la ruta alta sin bajar | No entro: disparo a través del cuello |
+| **Refinería** | Perímetro, cadenas ardiendo en las ventanas | Cruzo los charcos a embestida | Zigzag por el techo: la Caldera no me toca | Arriba, lejos, con el trazador `#F2DCC0` |
+| **Archivo** | Atravieso Blindados de lado a lado | Les rompo la guardia a mazazos por detrás | Rodeo sin tocar el suelo | Los disparo a la espalda |
+| **Clínica** | Los Resucitados caen y vuelven a levantarse | Limpio lento, la reanimación me castiga | Limpio demasiado rápido, la reanimación me castiga | Limpio a distancia, la reanimación me castiga igual |
+| **Núcleo** | Dentro de la horda, mi hábitat | Plantado, tanqueo con BASTIÓN DE TITANIO, remato | Zigzag aéreo, fase 3 sin barrera imposible | Me teletransporto y ralentizo; ignoro el suelo entero |
+
+**Lo que no cambia nunca.**
+- El rojo `#FF2D6F` siempre es peligro. El amarillo `#FFC400` siempre es recompensa. El contorno `#F2DCC0` es la única luz clara: avisa de la reanimación, solo en la Clínica con el Resucitado.
+- Cada golpe: flash blanco de 1 frame, hitstop 2–6, knockback. Cada muerte: destello, la silueta se parte, fragmentos, partículas, disolución en la lluvia.
+- Las reliquias temporales se recogen en 0.15 s, sin modal, al pasar por encima; se pierden al cambiar de tramo. TRAVESÍA VITAL, ESTELA RESIDUAL, PRECISIÓN FRÍA y RUPTURA RECARGADA.
+- Las bajas alimentan el recurso: RUPTURA RECARGADA devuelve una carga al matar. La agresividad es la fuente; huir al rincón me deja seco.
+- La horda viene de abajo y es más rápida que caminar. Estarse quieto la alcanza.
+- El subjefe enseña, el jefe cobra. El Núcleo no tiene nada nuevo: tiene todo, más rápido, sin descanso.
+- **Un atardecer eterno. Seis pisos. Catorce minutos.**
+
+**Los seis arquetipos, uno por piso, y sus seis jefes.** El Doble (N1), el Lanzador (N2), el Agresor (N3), el Blindado (N4), el Resucitado (N5) y el Mimético (N6) — cada uno con una forma de silueta propia — y cada jefe cierra su piso con su frase:
+
+| Piso / Jefe | Arquetipo | Frase JA (intro / outro) |
+|---|---|---|
+| Vestíbulo / El Portero | El Doble | `「受付業務…対象を排除する。」` / `「行け。ここは、もう俺の番じゃない。」` |
+| Market Roto / Los Gemelos | El Lanzador | `「二重登録を確認。矯正開始。」` / `「…やっと、休める。」` |
+| Refinería / La Caldera | El Agresor | `「過圧警告。自動制御解除。」` / `「火は、まだ消えてねぇぞ。」` |
+| Archivo / El Escribano | El Blindado | `「ファイル照合。矛盾を検出。」` / `「書き直せ…お前なら。」` |
+| Clínica / La Cirujana | El Resucitado | `「未登録検体。隔離手続き開始。」` / `「ありがとう…もう眠らせて。」` |
+| Núcleo / El Núcleo | El Mimético | `「ループ・サブユニット起動。」` / `「裂け目を…閉じろ。」` |
+
+**Las Rupturas y las Definitivas.** Cada héroe ve las mismas cinemáticas, pero su cut-in de silueta —12–18 frames, invulnerable de principio a fin, con onda expansiva— es único, y cada uno paga su hitstop:
+
+| Héroe | Ruptura `Q` / Definitiva `E` | Qué veo (cut-in, hitstop) |
+|---|---|---|
+| Rika | IAIDO RELÁMPAGO / SOBRECARGA ND: SINFONÍA DE SANGRE | Silueta en cruz, katana horizontal, estela `#F2DCC0`, líneas radiales — 70 ms / 14 f |
+| Goro | MAZAZO DE RUPTURA SÍSMICA / DEMOLICIÓN ND: COLAPSO TECTÓNICO | Masa ancha alzando la maza, impacto en el suelo, ondas `#FFB871` — 92 ms / 24 f |
+| Ren | DESTELLO ZIG-ZAG / TORMENTA | Contorno bajo y borroso, arcos `#FFC400`, pose dinámica — 55 ms / 8 f |
+| Yui | VÓRTICE DE REVERBERACIÓN / COLAPSO ND: ANOMALÍA RECURSIVA | Figura erguida con el rifle en cruz, aros concéntricos, ecos duplicados `#F2DCC0` — 85 ms / 18 f |
+
+Y la muerte del Núcleo es la misma grieta cerrándose, vista por cuatro siluetas distintas: la vela, la puerta, el cohete, la torre.
+
+---
+
+# RECORDATORIO DE CABINA — TODO LO QUE VEO Y OIGO (EN SILUETA ND)
+
+**La cabina de ND.** Silueta negra `#000000` y luz de contorno `#F2DCC0`; atardecer permanente de 4 tonos `#150E2B → #4A2247 → #A84A38 → #F0A65A`; lluvia ácida, relámpagos, ciudad en ruinas; Canvas 2D a 960×540, suelo en y=468; parallax de 3 capas a .10 / .26 / .48; audio 100 % sintetizado con Web Audio y 28 voces japonesas. Logo `ND`, subtítulo `NIPPON DESTRUCTION`.
+
+**Controles de cabina.** TAJO, DASH (con i-frames), Arriba `W`, Ruptura `Q`, Definitiva `E`; buffer de 5 frames; prioridad RUPTURA > ESQUIVA > ATAQUE; pausa al perder el foco.
+
+**HUD de 4 cuadrantes.** Arriba-izq.: vida + medidor trifásico `2/3 CARGAS`. Arriba-der.: combo + tacómetro `WAVE 04/06`. Abajo-izq.: `AVANZAR` / `RETROCESO`. Abajo-der.: cluster en arco de 4 — `TAJO` (72 px), `RUPTURA ND`, `DASH`, `DEFINITIVA`. Etiquetas tintadas `#F2DCC0`, tracking amplio.
+
+| Elemento | Cómo se ve / dura | Dónde vive |
+|---|---|---|
+| Barra de vida | Muescas hueso; las bajas se tiñen `#FF2D6F`; las últimas 3 laten | Cabina, arriba-izq. |
+| Medidor de cargas | `2/3 CARGAS`; ámbar lleno, contorno gris vacío; se rellena como reloj | Cabina, bajo la vida |
+| Racha | Número grande que hace *pop*; late desde 10; rompe en seco al recibir daño; decae a los 2.5 s sin matar | Cabina, centro-arriba |
+| Combo / Oleada | `WAVE 04/06`; flash al completar | Cabina, arriba-der. |
+| Avisos | Título de piso, primer arquetipo, `BAJAS NECESARIAS` | Abajo-centro, sin pausar |
+| Flash blanco de impacto | 1 frame | En el golpe |
+| Hitstop | 2–6 frames (según racha) | Congela actores, no la cámara |
+| Knockback | Siempre | Marca dónde pegó sin UI |
+| Frame invertido | Racha 40+, 1 frame | En el golpe |
+| Líneas de velocidad | Racha 40+, 2–3 frames | Tras el golpe |
+| Cut-in completo (Ruptura / Definitiva) | 1–2 s, 12–18 frames | Al gastar una carga completa |
+| Slow-mo por racha | 0.55x → 0.15x según umbral | Global, breve |
+| Reliquia temporal | Se recoge en 0.15 s al pasar por encima, sin modal; se pierde al cambiar de tramo | Alrededor del héroe |
+| Círculo de daño en suelo | 1 s de aviso `#FF2D6F`; recompensa `#FFC400` | Bajo el peligro |
+| Cono de dirección | 1 s de aviso | Desde el enemigo |
+| Aro radial | Crecimiento desde un centro | En el jefe |
+| Contorno del Resucitado | 2 frames antes de revivir, `#F2DCC0` | Solo Clínica, arquetipo N5 |
+| Trazador `#F2DCC0` | Solo en el rifle de Yui | Excepción del rim |
+| Screen shake | `shakeLight` 0.22 s / `shakeHeavy` 0.38 s, decae | Pantalla completa |
+| Subtítulo | Máx. 2 líneas × 42 chars; solo intros/outros, Ruptura y habilidad nueva; nunca en combate | Panel inferior |
+| Intro de jefe | Nunca menos de 3 s | Sala del jefe |
+| Outro de jefe + transición | Una sola pieza, 8–10 s | Puerta entre pisos |
+| Epílogo | 20–30 s, no saltable en la 1ª run | Tras el Núcleo |
+| VO japonesa | Barks de ataque, daño, dash y Ruptura; 28 voces; máx. 2 a la vez; pitch sube con la racha | En combate |
+| Música | Generativa, un tema por piso: P1 70–90, P2 100–120, P3 120–130, P4 95–115, P5 110–125, P6 130–140; la energía sube con la racha; silencio marcado antes de jefes y en el Núcleo | Toda la run |

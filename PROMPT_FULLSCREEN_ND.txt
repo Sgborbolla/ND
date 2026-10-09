@@ -1,3 +1,281 @@
+PROMPT PARA IA — AJUSTAR "NIPPON DESTRUCTION" (ND) A PANTALLA COMPLETA
+=====================================================================
+Este archivo contiene el prompt completo y autocontenido (incluye el código
+actual íntegro de index.html y nd.js) para entregárselo a otra IA/desarrollador.
+No necesita leer los archivos: todo está pegado abajo.
+
+=====================================================================
+INICIO DEL PROMPT
+=====================================================================
+
+Actúa como desarrollador experto en JavaScript vanilla, Canvas 2D y responsive móvil (Android/Chrome).
+Debes AJUSTAR (no reescribir desde cero) el juego "Nippon Destruction" (ND) para que ocupe TODA la
+pantalla en horizontal sin barras negras, sin recortar al jugador, y para que el fullscreen funcione.
+Te doy TODO el contexto y el código actual; no necesitas leer archivos.
+
+------------------------------------------------------------------------
+1) UBICACIÓN / STACK
+------------------------------------------------------------------------
+- Carpeta: /storage/emulated/0/silueta/   (archivos: index.html y nd.js)
+- HTML + CSS + JS vanilla + Canvas 2D + Web Audio. SIN frameworks, SIN build, SIN dependencias,
+  SIN fetch ni ES modules. Debe funcionar abierto en local.
+- Prueba: python3 -m http.server 8000 --directory /storage/emulated/0/silueta  -> http://localhost:8000
+
+------------------------------------------------------------------------
+2) REGLAS DURAS (NO ROMPER)
+------------------------------------------------------------------------
+1. GROUND_Y = 420 (los pies NUNCA se cortan, también en 20:9).
+2. El countdown de hitstopTimer VA EN gameLoop, NUNCA dentro de update().
+3. Código completo, sin cortar, 100% procedural (sin imágenes).
+4. Mantener TODO: siluetas de RIKA/GORO/REN/YUI, rupturas con Q, enemigos ("El Doble"),
+   efectos (120 rayos, hitstop, shake, slow-motion), HUD wave/combo, botón MENU y selección de héroe.
+5. Canvas lógico 960x540. Paleta: cielo #150E2B->#4A2247->#A84A38->#F0A65A, peligro #FF2D6F,
+   recompensa #FFC400, acento #F2DCC0, tinta #000000.
+
+------------------------------------------------------------------------
+3) PROBLEMA A RESOLVER
+------------------------------------------------------------------------
+En pantallas 20:9 el juego 16:9 no llena la pantalla: con contain aparecen barras negras y con cover
+se recorta al jugador. El fullscreen no entra de forma fiable. Se quiere:
+- Llenar toda la pantalla en horizontal sin barras y sin recortar al jugador.
+- Poder gestionar fullscreen/letterbox de forma limpia en vertical.
+
+------------------------------------------------------------------------
+4) AJUSTES EXACTOS A IMPLEMENTAR
+------------------------------------------------------------------------
+A) Ancho de vista dinámico (llenar sin recortar). Declarar:
+   let VIEW_W = CANVAS_W, VIEW_H = CANVAS_H, viewOffsetX = 0;
+   Y en resizeCanvas():
+     const vw = window.innerWidth, vh = window.innerHeight, ar = vw / vh, base = CANVAS_W / CANVAS_H;
+     if (ar >= base) {                 // más ancho que 16:9 -> fijar alto y ampliar ancho
+       VIEW_H = CANVAS_H; VIEW_W = Math.round(CANVAS_H * ar);
+       canvas.width = VIEW_W; canvas.height = VIEW_H;
+       canvas.style.width = vw + 'px'; canvas.style.height = vh + 'px';
+     } else {                          // vertical o más estrecho -> letterbox con contain
+       VIEW_W = CANVAS_W; VIEW_H = CANVAS_H;
+       canvas.width = VIEW_W; canvas.height = VIEW_H;
+       const s = Math.min(vw / VIEW_W, vh / VIEW_H);
+       canvas.style.width = Math.round(VIEW_W * s) + 'px';
+       canvas.style.height = Math.round(VIEW_H * s) + 'px';
+     }
+     viewOffsetX = (VIEW_W - CANVAS_W) / 2;
+   Llamar en load, 'resize' y 'orientationchange'.
+
+B) Dibujo:
+   - Fondo (drawVectorBackground): usar VIEW_W en el gradiente, sol centrado en VIEW_W/2, suelo,
+     y AMPLIAR los bucles de edificios y lluvia para cubrir todo el ancho (i desde -1 hasta
+     Math.ceil(VIEW_W/200)+2). El destello de rayo -> fillRect(0,0,VIEW_W,VIEW_H).
+   - El mundo (drawEnemies, drawHeroSilhouette, drawAttackEffects, drawRuptureEffects, drawParticles)
+     se dibuja dentro de: ctx.save(); ctx.translate(viewOffsetX, 0); ... ctx.restore();
+     manteniendo coordenadas de mundo 0..960.
+   - Mantener shakeX/shakeY alrededor de todo el frame.
+   - drawEffects y HUD: usar VIEW_W/VIEW_H.
+
+C) Jugador y spawns: mantener coordenadas de mundo (clamp 0..960, spawn en 960+50). NO cambiar
+   GROUND_Y. Así el jugador nunca sale de pantalla.
+
+D) HUD y selección: centrar en VIEW_W/2; pegar wave/combo a VIEW_W-20. El mapeo de clicks de
+   selección debe usar VIEW_W: (clientX-rect.left)*(VIEW_W/rect.width).
+
+E) Fullscreen fiable:
+   - goFullscreen() en el primer pointerdown/keydown (con {once:true}).
+   - Bloquear 'landscape' DESPUÉS de entrar en fullscreen:
+     document.addEventListener('fullscreenchange', () => { if (document.fullscreenElement) lockLandscape(); });
+   - Usar prefijos (webkitRequestFullscreen) y try/catch con catch(()=>{}) para no romper.
+
+------------------------------------------------------------------------
+5) ENTREGABLE
+------------------------------------------------------------------------
+Devuelve index.html y nd.js COMPLETOS (sin fragmentos ni "..."), listos para pegar, respetando las
+REGLAS DURAS. Al final indica: node --check nd.js y cómo verificar en http://localhost:8000
+(móvil 20:9 horizontal: sin barras negras y con el jugador siempre visible).
+
+=====================================================================
+6) CÓDIGO ACTUAL — index.html (COMPLETO, 179 líneas)
+=====================================================================
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#000000">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Nippon Destruction (ND)</title>
+<style>
+  :root {
+    --danger: #FF2D6F;
+    --warning: #FFC400;
+    --cyan: #00FFFF;
+    --rim: #F2DCC0;
+    --ink: #000000;
+    --bg-panel: rgba(10, 15, 30, 0.75);
+  }
+  * { box-sizing: border-box; user-select: none; -webkit-user-select: none; touch-action: none; margin: 0; padding: 0; }
+  html, body { 
+    width: 100dvw; height: 100dvh;
+    background: #000; overflow: hidden;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    font-family: 'Arial Black', sans-serif;
+  }
+  #game-container { 
+    position: fixed; top: 0; left: 0;
+    width: 100dvw; height: 100dvh;
+    background: #000; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  canvas { 
+    display: block; image-rendering: pixelated;
+    background: #000;
+  }
+  .hud { 
+    position: fixed; top: 0; left: 0; 
+    width: 100dvw; height: 100dvh; 
+    pointer-events: none; 
+  }
+
+  /* BOTÓN MENU */
+  .btn-menu {
+    position: fixed;
+    top: 15px; right: 15px;
+    pointer-events: auto;
+    background: var(--bg-panel);
+    border: 2px solid var(--danger);
+    border-radius: 8px;
+    color: var(--danger);
+    font-size: 14px; font-weight: bold;
+    padding: 8px 12px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 45, 111, 0.4);
+    display: none;
+    letter-spacing: 1px;
+    z-index: 100;
+  }
+  .btn-menu:active { background: var(--danger); color: var(--ink); transform: scale(0.95); }
+  .btn-menu.visible { display: block; }
+
+  /* === JOYSTICK VIRTUAL HORIZONTAL (IZQUIERDA) === */
+  .joystick-zone {
+    position: fixed;
+    bottom: clamp(18px, 6vmin, 34px);
+    left: clamp(16px, 5vmin, 32px);
+    pointer-events: auto;
+    width: clamp(84px, 22vmin, 130px);
+    height: clamp(42px, 11vmin, 62px);
+    z-index: 50;
+  }
+  .joystick-base {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; height: 100%;
+    border-radius: 999px;
+    background: rgba(10, 15, 30, 0.5);
+    border: 2px solid var(--cyan);
+    box-shadow: 0 0 12px var(--cyan), inset 0 0 10px rgba(0, 255, 255, 0.3);
+  }
+  .joystick-stick {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(32px, 9vmin, 44px);
+    height: clamp(32px, 9vmin, 44px);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--cyan), #0088aa);
+    border: 2px solid var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+    transition: transform 0.05s;
+  }
+  .joystick-label {
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--cyan);
+    font-size: clamp(8px, 2vmin, 10px);
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px var(--cyan);
+  }
+
+  /* === PANEL DE ACCIONES (DERECHA) === */
+  .action-panel {
+    position: fixed;
+    bottom: clamp(18px, 6vmin, 34px);
+    right: clamp(16px, 5vmin, 32px);
+    pointer-events: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: clamp(6px, 2.4vmin, 14px);
+    width: clamp(120px, 33vmin, 168px);
+    height: clamp(120px, 33vmin, 168px);
+  }
+  .btn-action {
+    width: clamp(30px, 8vmin, 42px);
+    height: clamp(30px, 8vmin, 42px);
+    background: var(--bg-panel);
+    border: 2px solid;
+    border-radius: 50%;
+    font-size: clamp(8px, 2vmin, 11px);
+    font-weight: bold;
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer;
+    transition: all 0.1s;
+    justify-self: center; align-self: center;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 8px currentColor;
+  }
+  .btn-action:active { transform: scale(0.92); }
+
+  .btn-rupture { grid-column: 2; grid-row: 1; border-color: var(--cyan); color: var(--cyan); }
+  .btn-rupture:active { background: var(--cyan); color: var(--ink); }
+  .btn-dash { grid-column: 1; grid-row: 2; border-color: var(--warning); color: var(--warning); }
+  .btn-dash:active { background: var(--warning); color: var(--ink); }
+  .btn-skill { grid-column: 3; grid-row: 2; border-color: var(--rim); color: var(--rim); }
+  .btn-skill:active { background: var(--rim); color: var(--ink); }
+  .btn-attack {
+    grid-column: 2; grid-row: 3;
+    width: clamp(42px, 11vmin, 56px);
+    height: clamp(42px, 11vmin, 56px);
+    border-color: var(--danger); color: var(--danger);
+    font-size: clamp(10px, 2.6vmin, 13px);
+    background: rgba(255, 45, 111, 0.2);
+    box-shadow: 0 0 12px var(--danger);
+  }
+  .btn-attack:active { background: var(--danger); color: #fff; }
+</style>
+</head>
+<body>
+<div id="game-container">
+  <canvas id="gameCanvas" width="960" height="540"></canvas>
+  <div class="hud">
+    <div class="btn-menu" id="btn-menu">◄ MENU</div>
+    
+    <!-- JOYSTICK VIRTUAL HORIZONTAL -->
+    <div class="joystick-zone" id="joystick-zone">
+      <div class="joystick-base"></div>
+      <div class="joystick-stick" id="joystick-stick"></div>
+      <div class="joystick-label">◄ ►</div>
+    </div>
+    
+    <!-- PANEL DE ACCIONES -->
+    <div class="action-panel">
+      <div class="btn-action btn-rupture" id="btn-rupt">RUP</div>
+      <div class="btn-action btn-dash" id="btn-dash">DASH</div>
+      <div class="btn-action btn-skill" id="btn-def">SKL</div>
+      <div class="btn-action btn-attack" id="btn-tajo">ATK</div>
+    </div>
+  </div>
+</div>
+<script src="nd.js"></script>
+</body>
+</html>
+
+=====================================================================
+7) CÓDIGO ACTUAL — nd.js (COMPLETO, 763 líneas)
+=====================================================================
 (function() {
   'use strict';
 
@@ -14,69 +292,30 @@
   const ctx = canvas.getContext('2d', { alpha: false });
   const btnMenu = document.getElementById('btn-menu');
 
-  // === ANCHO DE VISTA DINÁMICO ===
-  let VIEW_W = CANVAS_W;
-  let VIEW_H = CANVAS_H;
-  let viewOffsetX = 0;
-
   function resizeCanvas() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    const aspectRatio = w / h;
-    const baseAspect = CANVAS_W / CANVAS_H;
-
-    if (aspectRatio > baseAspect) {
-      // Pantalla más ancha que 16:9 → expandir VIEW_W (sin barras)
-      VIEW_H = CANVAS_H;
-      VIEW_W = Math.round(CANVAS_H * aspectRatio);
-    } else {
-      // Pantalla más estrecha → mantener 16:9 y encajar (sin recortar)
-      VIEW_W = CANVAS_W;
-      VIEW_H = CANVAS_H;
-    }
-
-    canvas.width = VIEW_W;
-    canvas.height = VIEW_H;
-
-    const scaleX = w / VIEW_W;
-    const scaleY = h / VIEW_H;
-    const scale = (aspectRatio > baseAspect) ? Math.max(scaleX, scaleY) : Math.min(scaleX, scaleY);
-
-    canvas.style.width = Math.round(VIEW_W * scale) + 'px';
-    canvas.style.height = Math.round(VIEW_H * scale) + 'px';
-
-    viewOffsetX = (VIEW_W - CANVAS_W) / 2;
+    const vw = window.innerWidth || CANVAS_W;
+    const vh = window.innerHeight || CANVAS_H;
+    const scale = Math.min(vw / CANVAS_W, vh / CANVAS_H);
+    canvas.style.width = Math.round(CANVAS_W * scale) + 'px';
+    canvas.style.height = Math.round(CANVAS_H * scale) + 'px';
   }
-
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('orientationchange', resizeCanvas);
   resizeCanvas();
 
-  // === FULLSCREEN AUTOMÁTICO + BLOQUEO LANDSCAPE ===
   function goFullscreen() {
     const el = document.documentElement;
     const req = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
     if (req && !document.fullscreenElement) {
-      try {
-        const p = req.call(el);
-        if (p && p.catch) p.catch(() => {});
-      } catch (e) {}
+      try { const p = req.call(el); if (p && p.catch) p.catch(() => {}); } catch (e) {}
     }
-  }
-  function lockLandscape() {
     if (screen.orientation && screen.orientation.lock) {
-      try {
-        const l = screen.orientation.lock('landscape');
-        if (l && l.catch) l.catch(() => {});
-      } catch (e) {}
+      try { const l = screen.orientation.lock('landscape'); if (l && l.catch) l.catch(() => {}); } catch (e) {}
     }
   }
-  document.addEventListener('fullscreenchange', () => {
-    if (document.fullscreenElement) lockLandscape();
-  });
   window.addEventListener('pointerdown', goFullscreen, { once: true });
   window.addEventListener('keydown', goFullscreen, { once: true });
-
+  
   let lastTime = 0;
   let timeScale = 1.0;
   let shakeX = 0, shakeY = 0;
@@ -108,37 +347,64 @@
   const joystickZone = document.getElementById('joystick-zone');
   const joystickStick = document.getElementById('joystick-stick');
   let joystickActive = false;
-  let joystickVectorX = 0;
-  const JOYSTICK_MAX_RADIUS = 40;
-  const JOYSTICK_DEAD_ZONE = 8;
+  let joystickCenterX = 0;
+  let joystickVectorX = 0; // Solo eje X
+  const JOYSTICK_DEAD_ZONE = 10;
 
   function updateJoystickPosition(clientX, clientY) {
     const rect = joystickZone.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
+    const stickRadius = joystickStick.offsetWidth / 2 || 20;
+    const maxRadius = Math.max(20, rect.width / 2 - stickRadius - 4);
+
+    // SOLO eje horizontal
     let dx = clientX - centerX;
     const distance = Math.abs(dx);
-    if (distance > JOYSTICK_MAX_RADIUS) dx = Math.sign(dx) * JOYSTICK_MAX_RADIUS;
+
+    // Limitar al radio máximo horizontal
+    if (distance > maxRadius) {
+      dx = Math.sign(dx) * maxRadius;
+    }
+
+    // Mover el stick SOLO en horizontal
     joystickStick.style.transform = `translate(calc(-50% + ${dx}px), -50%)`;
-    joystickVectorX = dx / JOYSTICK_MAX_RADIUS;
-    if (Math.abs(joystickVectorX) < JOYSTICK_DEAD_ZONE / JOYSTICK_MAX_RADIUS) joystickVectorX = 0;
+
+    // Calcular vector normalizado (-1 a 1) SOLO en X
+    joystickVectorX = dx / maxRadius;
+
+    // Zona muerta
+    if (Math.abs(dx) < JOYSTICK_DEAD_ZONE) {
+      joystickVectorX = 0;
+    }
   }
+
   function resetJoystick() {
     joystickActive = false;
     joystickVectorX = 0;
     joystickStick.style.transform = 'translate(-50%, -50%)';
   }
+
   joystickZone.addEventListener('pointerdown', (e) => {
-    e.preventDefault(); joystickActive = true;
+    e.preventDefault();
+    joystickActive = true;
     joystickZone.setPointerCapture(e.pointerId);
     updateJoystickPosition(e.clientX, e.clientY);
   });
   joystickZone.addEventListener('pointermove', (e) => {
-    if (joystickActive) { e.preventDefault(); updateJoystickPosition(e.clientX, e.clientY); }
+    if (joystickActive) {
+      e.preventDefault();
+      updateJoystickPosition(e.clientX, e.clientY);
+    }
   });
-  joystickZone.addEventListener('pointerup', (e) => { e.preventDefault(); resetJoystick(); });
-  joystickZone.addEventListener('pointercancel', () => { resetJoystick(); });
+  joystickZone.addEventListener('pointerup', (e) => {
+    e.preventDefault();
+    resetJoystick();
+  });
+  joystickZone.addEventListener('pointercancel', () => {
+    resetJoystick();
+  });
 
-  // === ENEMIGOS MEJORADOS ===
+  // === ENEMIGOS ===
   const enemies = [];
   function spawnEnemy() {
     enemies.push({
@@ -160,6 +426,7 @@
         if (e.attackTimer <= 0 && Math.random() < 0.02) e.attackTimer = 0.5;
       }
       if (e.attackTimer > 0) e.attackTimer -= dt;
+
       if (player.state === 'attack' || player.isRupturing) {
         const attackRange = 80;
         const dx = player.x - e.x;
@@ -186,77 +453,23 @@
     ctx.save();
     ctx.translate(e.x, e.y);
     ctx.scale(e.facing, 1);
-    const t = e.animTimer;
-    const legSwing = e.state === 'walk' ? Math.sin(t * 8) * 10 : 0;
-
-    // Sombra
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.beginPath();
-    ctx.ellipse(0, 2, 18, 6, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Piernas con armadura
-    ctx.fillStyle = '#1a1a1a';
+    ctx.fillStyle = COLORS.ink;
     ctx.strokeStyle = '#444';
     ctx.lineWidth = 1.5;
+    const t = e.animTimer;
+    const legSwing = e.state === 'walk' ? Math.sin(t * 8) * 10 : 0;
     ctx.beginPath(); ctx.moveTo(-5, -20); ctx.lineTo(-8 - legSwing * 0.5, 0); ctx.lineTo(-4 - legSwing * 0.5, 0); ctx.lineTo(-2, -20); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(5, -20); ctx.lineTo(8 + legSwing * 0.5, 0); ctx.lineTo(4 + legSwing * 0.5, 0); ctx.lineTo(2, -20); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Grebas (armadura de piernas)
-    ctx.fillStyle = '#2a2a2a';
-    ctx.fillRect(-9 - legSwing * 0.5, -8, 6, 8);
-    ctx.fillRect(3 + legSwing * 0.5, -8, 6, 8);
-
-    // Torso con armadura samurái
-    ctx.fillStyle = '#1a1a1a';
     ctx.beginPath(); ctx.moveTo(-12, -65); ctx.lineTo(12, -65); ctx.lineTo(10, -20); ctx.lineTo(-10, -20); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Peto (armadura del pecho)
-    ctx.fillStyle = '#2a2a2a';
-    ctx.fillRect(-10, -60, 20, 35);
-    ctx.strokeStyle = '#555';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(-10, -60, 20, 35);
-
-    // Casco samurái
-    ctx.fillStyle = '#1a1a1a';
-    ctx.beginPath(); ctx.arc(0, -75, 10, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-    // Cuernos del casco
-    ctx.strokeStyle = '#666';
-    ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(-8, -78); ctx.lineTo(-14, -85); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(8, -78); ctx.lineTo(14, -85); ctx.stroke();
-
-    // Visor del casco
-    ctx.fillStyle = COLORS.danger;
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = COLORS.danger;
-    ctx.fillRect(-6, -76, 12, 3);
-    ctx.shadowBlur = 0;
-
-    // Hombros con hombreras
-    ctx.fillStyle = '#2a2a2a';
-    ctx.beginPath(); ctx.arc(-12, -62, 6, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    ctx.beginPath(); ctx.arc(12, -62, 6, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-    // Brazos
-    ctx.fillStyle = '#1a1a1a';
+    ctx.beginPath(); ctx.arc(0, -75, 9, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = COLORS.danger; ctx.shadowBlur = 10; ctx.shadowColor = COLORS.danger;
+    ctx.beginPath(); ctx.arc(3, -76, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.shadowBlur = 0; ctx.fillStyle = COLORS.ink;
     ctx.beginPath(); ctx.moveTo(-10, -60); ctx.lineTo(-15, -40); ctx.lineTo(-12, -30); ctx.lineTo(-8, -40); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(10, -60); ctx.lineTo(15, -40); ctx.lineTo(12, -30); ctx.lineTo(8, -40); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Espadas (dos katanas)
-    ctx.strokeStyle = '#888';
-    ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(-12, -30); ctx.lineTo(-12, -5); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(12, -30); ctx.lineTo(12, -5); ctx.stroke();
-
-    // Brillo de las espadas
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(-11, -28); ctx.lineTo(-11, -7); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(13, -28); ctx.lineTo(13, -7); ctx.stroke();
-
+    ctx.strokeStyle = '#666'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(-12, -30); ctx.lineTo(-12, -10); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(12, -30); ctx.lineTo(12, -10); ctx.stroke();
     ctx.restore();
   }
   function drawEnemies(ctx) { enemies.forEach(e => { if (e.type === 'DOBLE') drawDoble(ctx, e); }); }
@@ -272,7 +485,7 @@
     updateMenuButton();
   }
 
-  // === SILUETA DETALLADA DE RIKA (MEJORADA) ===
+  // === SILUETA DETALLADA DE RIKA ===
   function drawRika(ctx, p) {
     const t = p.animTimer;
     const breathe = Math.sin(t * 2) * 0.5;
@@ -280,82 +493,21 @@
     const armSwing = p.state === 'run' ? Math.sin(t * 8) * 8 : 0;
     const attackProgress = p.state === 'attack' ? Math.min(1, t / 0.18) : 0;
     const isAttacking = p.state === 'attack' || p.isRupturing;
-
-    // Sombra
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.beginPath();
-    ctx.ellipse(0, 2, 15, 5, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = COLORS.ink;
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-
-    // Piernas con hakama (pantalón samurái)
+    ctx.fillStyle = COLORS.ink; ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
     ctx.beginPath(); ctx.moveTo(-6, -25); ctx.lineTo(-10 - legSwing * 0.5, -10); ctx.lineTo(-8 - legSwing * 0.5, 0); ctx.lineTo(-4 - legSwing * 0.5, 0); ctx.lineTo(-4, -10); ctx.lineTo(-2, -25); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(6, -25); ctx.lineTo(10 + legSwing * 0.5, -10); ctx.lineTo(8 + legSwing * 0.5, 0); ctx.lineTo(4 + legSwing * 0.5, 0); ctx.lineTo(4, -10); ctx.lineTo(2, -25); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Torso con haori (chaqueta samurái)
     ctx.beginPath(); ctx.moveTo(-14, -70 + breathe); ctx.lineTo(14, -70 + breathe); ctx.lineTo(12, -50); ctx.lineTo(10, -25); ctx.lineTo(-10, -25); ctx.lineTo(-12, -50); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Cinturón obi
-    ctx.fillStyle = COLORS.rim;
-    ctx.fillRect(-11, -28, 22, 3);
-    ctx.fillStyle = COLORS.ink;
-
-    // Mangas del haori
+    ctx.fillStyle = COLORS.rim; ctx.fillRect(-11, -28, 22, 3); ctx.fillStyle = COLORS.ink;
     ctx.beginPath(); ctx.moveTo(-12, -65 + breathe); ctx.lineTo(-16 - armSwing, -45); ctx.lineTo(-14 - armSwing, -30); ctx.lineTo(-10 - armSwing, -30); ctx.lineTo(-10, -45); ctx.lineTo(-8, -65 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Cabeza
     ctx.beginPath(); ctx.arc(0, -78 + breathe, 9, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-    // Pelo largo en cola de caballo (más detallado)
-    ctx.beginPath();
-    ctx.moveTo(-2, -82 + breathe);
-    ctx.quadraticCurveTo(-8, -85 + breathe, -12, -82 + breathe);
-    ctx.quadraticCurveTo(-15, -78 + breathe, -14, -72 + breathe);
-    ctx.quadraticCurveTo(-18, -65 + breathe, -22, -55 + breathe);
-    ctx.quadraticCurveTo(-26, -45 + breathe, -28, -35 + breathe);
-    ctx.quadraticCurveTo(-30, -25 + breathe, -26, -20 + breathe);
-    ctx.quadraticCurveTo(-22, -18 + breathe, -20, -22 + breathe);
-    ctx.quadraticCurveTo(-18, -30 + breathe, -16, -40 + breathe);
-    ctx.quadraticCurveTo(-14, -50 + breathe, -12, -60 + breathe);
-    ctx.quadraticCurveTo(-10, -68 + breathe, -6, -75 + breathe);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    // Brazo delantero con katana
+    ctx.beginPath(); ctx.moveTo(-2, -82 + breathe); ctx.quadraticCurveTo(-8, -85 + breathe, -12, -82 + breathe); ctx.quadraticCurveTo(-15, -78 + breathe, -14, -72 + breathe); ctx.quadraticCurveTo(-18, -65 + breathe, -22, -55 + breathe); ctx.quadraticCurveTo(-26, -45 + breathe, -28, -35 + breathe); ctx.quadraticCurveTo(-30, -25 + breathe, -26, -20 + breathe); ctx.quadraticCurveTo(-22, -18 + breathe, -20, -22 + breathe); ctx.quadraticCurveTo(-18, -30 + breathe, -16, -40 + breathe); ctx.quadraticCurveTo(-14, -50 + breathe, -12, -60 + breathe); ctx.quadraticCurveTo(-10, -68 + breathe, -6, -75 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
     const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.9 : 0.2;
-    ctx.save();
-    ctx.translate(12, -65 + breathe);
-    ctx.rotate(armAngle);
-
-    // Manga
+    ctx.save(); ctx.translate(12, -65 + breathe); ctx.rotate(armAngle);
     ctx.beginPath(); ctx.moveTo(-4, 0); ctx.lineTo(4, 0); ctx.lineTo(5, 18); ctx.lineTo(3, 22); ctx.lineTo(-3, 22); ctx.lineTo(-5, 18); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Katana mejorada
-    ctx.strokeStyle = COLORS.ink;
-    ctx.lineWidth = 2.5;
-    ctx.beginPath(); ctx.moveTo(0, 20); ctx.lineTo(0, 65); ctx.stroke();
-
-    // Tsuba (guarda)
-    ctx.fillStyle = COLORS.ink;
-    ctx.fillRect(-4, 18, 8, 3);
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1;
-    ctx.strokeRect(-4, 18, 8, 3);
-
-    // Brillo del filo
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 0.8;
-    ctx.beginPath(); ctx.moveTo(1, 22); ctx.lineTo(1, 63); ctx.stroke();
-
+    ctx.strokeStyle = COLORS.ink; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(0, 20); ctx.lineTo(0, 65); ctx.stroke();
+    ctx.fillStyle = COLORS.ink; ctx.fillRect(-4, 18, 8, 3); ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1; ctx.strokeRect(-4, 18, 8, 3);
+    ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 0.8; ctx.beginPath(); ctx.moveTo(1, 22); ctx.lineTo(1, 63); ctx.stroke();
     ctx.restore();
-
-    // Efecto de tajo mejorado
     if (isAttacking && attackProgress < 1) {
       const prog = p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress;
       ctx.strokeStyle = p.isRupturing ? COLORS.white : COLORS.danger;
@@ -364,12 +516,11 @@
       ctx.shadowBlur = p.isRupturing ? 25 : 15;
       ctx.shadowColor = p.isRupturing ? COLORS.warning : COLORS.danger;
       ctx.beginPath(); ctx.arc(0, -40, p.isRupturing ? 100 : 50, -Math.PI / 3, Math.PI / 3 + prog * Math.PI); ctx.stroke();
-      ctx.globalAlpha = 1;
-      ctx.shadowBlur = 0;
+      ctx.globalAlpha = 1; ctx.shadowBlur = 0;
     }
   }
 
-  // === SILUETA DETALLADA DE GORO (MEJORADA) ===
+  // === SILUETA DETALLADA DE GORO ===
   function drawGoro(ctx, p) {
     const t = p.animTimer;
     const breathe = Math.sin(t * 2) * 0.5;
@@ -377,64 +528,22 @@
     const armSwing = p.state === 'run' ? Math.sin(t * 8) * 6 : 0;
     const attackProgress = p.state === 'attack' ? Math.min(1, t / 0.18) : 0;
     const isAttacking = p.state === 'attack' || p.isRupturing;
-
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.beginPath();
-    ctx.ellipse(0, 2, 20, 7, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = COLORS.ink;
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-
-    // Piernas musculosas
+    ctx.fillStyle = COLORS.ink; ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1.5;
     ctx.beginPath(); ctx.moveTo(-10, -25); ctx.lineTo(-14 - legSwing * 0.5, -10); ctx.lineTo(-12 - legSwing * 0.5, 0); ctx.lineTo(-6 - legSwing * 0.5, 0); ctx.lineTo(-6, -10); ctx.lineTo(-4, -25); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(10, -25); ctx.lineTo(14 + legSwing * 0.5, -10); ctx.lineTo(12 + legSwing * 0.5, 0); ctx.lineTo(6 + legSwing * 0.5, 0); ctx.lineTo(6, -10); ctx.lineTo(4, -25); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Torso musculoso
     ctx.beginPath(); ctx.moveTo(-22, -65 + breathe); ctx.lineTo(22, -65 + breathe); ctx.lineTo(20, -45); ctx.lineTo(18, -25); ctx.lineTo(-18, -25); ctx.lineTo(-20, -45); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Pectorales
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, -60 + breathe); ctx.lineTo(0, -40); ctx.stroke();
-
-    // Brazos musculosos
+    ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, -60 + breathe); ctx.lineTo(0, -40); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(-20, -60 + breathe); ctx.lineTo(-26 - armSwing, -40); ctx.lineTo(-22 - armSwing, -25); ctx.lineTo(-16 - armSwing, -25); ctx.lineTo(-16, -40); ctx.lineTo(-14, -60 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Cabeza calva
     ctx.beginPath(); ctx.arc(0, -75 + breathe, 11, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-    // Brazo delantero con maza
     const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.8 : 0.3;
-    ctx.save();
-    ctx.translate(20, -60 + breathe);
-    ctx.rotate(armAngle);
-
+    ctx.save(); ctx.translate(20, -60 + breathe); ctx.rotate(armAngle);
     ctx.beginPath(); ctx.moveTo(-6, 0); ctx.lineTo(6, 0); ctx.lineTo(7, 20); ctx.lineTo(4, 24); ctx.lineTo(-4, 24); ctx.lineTo(-7, 20); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Maza mejorada
-    ctx.strokeStyle = COLORS.ink;
-    ctx.lineWidth = 5;
-    ctx.beginPath(); ctx.moveTo(0, 22); ctx.lineTo(0, 40); ctx.stroke();
-
-    // Cabeza de la maza
-    ctx.fillStyle = COLORS.ink;
-    ctx.fillRect(-12, 38, 24, 16);
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-    ctx.strokeRect(-12, 38, 24, 16);
-
+    ctx.strokeStyle = COLORS.ink; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(0, 22); ctx.lineTo(0, 40); ctx.stroke();
+    ctx.fillStyle = COLORS.ink; ctx.fillRect(-12, 38, 24, 16); ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1.5; ctx.strokeRect(-12, 38, 24, 16);
     ctx.restore();
-
-    // Escudo a la espalda
-    ctx.fillStyle = COLORS.ink;
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 2;
+    ctx.fillStyle = COLORS.ink; ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.arc(-22, -45, 18, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.arc(-22, -45, 8, 0, Math.PI * 2); ctx.stroke();
-
-    // Efecto de impacto
     if (isAttacking && attackProgress < 1) {
       const prog = p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress;
       ctx.strokeStyle = p.isRupturing ? COLORS.danger : COLORS.warning;
@@ -443,12 +552,11 @@
       ctx.shadowBlur = p.isRupturing ? 35 : 20;
       ctx.shadowColor = p.isRupturing ? COLORS.danger : COLORS.warning;
       ctx.beginPath(); ctx.arc(0, 0, p.isRupturing ? 140 * prog : 70 * prog, 0, Math.PI * 2); ctx.stroke();
-      ctx.globalAlpha = 1;
-      ctx.shadowBlur = 0;
+      ctx.globalAlpha = 1; ctx.shadowBlur = 0;
     }
   }
 
-  // === SILUETA DETALLADA DE REN (MEJORADA) ===
+  // === SILUETA DETALLADA DE REN ===
   function drawRen(ctx, p) {
     const t = p.animTimer;
     const breathe = Math.sin(t * 2) * 0.5;
@@ -456,83 +564,23 @@
     const armSwing = p.state === 'run' ? Math.sin(t * 10) * 10 : 0;
     const attackProgress = p.state === 'attack' ? Math.min(1, t / 0.18) : 0;
     const isAttacking = p.state === 'attack' || p.isRupturing;
-
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.beginPath();
-    ctx.ellipse(0, 2, 12, 4, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = COLORS.ink;
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-
-    // Piernas con vendas
+    ctx.fillStyle = COLORS.ink; ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1.5;
     ctx.beginPath(); ctx.moveTo(-5, -22); ctx.lineTo(-8 - legSwing * 0.5, -10); ctx.lineTo(-6 - legSwing * 0.5, 0); ctx.lineTo(-3 - legSwing * 0.5, 0); ctx.lineTo(-3, -10); ctx.lineTo(-2, -22); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 0.8;
+    ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 0.8;
     for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(-5, -20 + i * 6); ctx.lineTo(-7, -18 + i * 6); ctx.stroke(); }
-
-    ctx.fillStyle = COLORS.ink;
-    ctx.beginPath(); ctx.moveTo(5, -22); ctx.lineTo(8 + legSwing * 0.5, -10); ctx.lineTo(6 + legSwing * 0.5, 0); ctx.lineTo(3 + legSwing * 0.5, 0); ctx.lineTo(3, -10); ctx.lineTo(2, -22); ctx.closePath(); ctx.fill();
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // Torso con chaqueta
-    ctx.fillStyle = COLORS.ink;
-    ctx.beginPath(); ctx.moveTo(-11, -65 + breathe); ctx.lineTo(11, -65 + breathe); ctx.lineTo(10, -45); ctx.lineTo(9, -22); ctx.lineTo(-9, -22); ctx.lineTo(-10, -45); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Brazos con vendas
+    ctx.fillStyle = COLORS.ink; ctx.beginPath(); ctx.moveTo(5, -22); ctx.lineTo(8 + legSwing * 0.5, -10); ctx.lineTo(6 + legSwing * 0.5, 0); ctx.lineTo(3 + legSwing * 0.5, 0); ctx.lineTo(3, -10); ctx.lineTo(2, -22); ctx.closePath(); ctx.fill(); ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.fillStyle = COLORS.ink; ctx.beginPath(); ctx.moveTo(-11, -65 + breathe); ctx.lineTo(11, -65 + breathe); ctx.lineTo(10, -45); ctx.lineTo(9, -22); ctx.lineTo(-9, -22); ctx.lineTo(-10, -45); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(-9, -60 + breathe); ctx.lineTo(-13 - armSwing, -42); ctx.lineTo(-11 - armSwing, -28); ctx.lineTo(-7 - armSwing, -28); ctx.lineTo(-7, -42); ctx.lineTo(-5, -60 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 0.8;
+    ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 0.8;
     for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(-10, -55 + breathe + i * 8); ctx.lineTo(-12, -53 + breathe + i * 8); ctx.stroke(); }
-
-    // Cabeza
-    ctx.fillStyle = COLORS.ink;
-    ctx.beginPath(); ctx.arc(0, -75 + breathe, 8, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // Pelo puntiagudo
-    ctx.beginPath();
-    ctx.moveTo(-7, -78 + breathe);
-    ctx.lineTo(-10, -85 + breathe);
-    ctx.lineTo(-6, -82 + breathe);
-    ctx.lineTo(-3, -88 + breathe);
-    ctx.lineTo(0, -84 + breathe);
-    ctx.lineTo(3, -89 + breathe);
-    ctx.lineTo(6, -83 + breathe);
-    ctx.lineTo(9, -86 + breathe);
-    ctx.lineTo(7, -78 + breathe);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    // Brazo delantero con daga
+    ctx.fillStyle = COLORS.ink; ctx.beginPath(); ctx.arc(0, -75 + breathe, 8, 0, Math.PI * 2); ctx.fill(); ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-7, -78 + breathe); ctx.lineTo(-10, -85 + breathe); ctx.lineTo(-6, -82 + breathe); ctx.lineTo(-3, -88 + breathe); ctx.lineTo(0, -84 + breathe); ctx.lineTo(3, -89 + breathe); ctx.lineTo(6, -83 + breathe); ctx.lineTo(9, -86 + breathe); ctx.lineTo(7, -78 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
     const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.9 : 0.3;
-    ctx.save();
-    ctx.translate(9, -60 + breathe);
-    ctx.rotate(armAngle);
-
-    ctx.fillStyle = COLORS.ink;
-    ctx.beginPath(); ctx.moveTo(-3, 0); ctx.lineTo(3, 0); ctx.lineTo(4, 16); ctx.lineTo(2, 19); ctx.lineTo(-2, 19); ctx.lineTo(-4, 16); ctx.closePath(); ctx.fill();
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // Daga
-    ctx.strokeStyle = COLORS.ink;
-    ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(0, 17); ctx.lineTo(0, 28); ctx.stroke();
-    ctx.strokeStyle = COLORS.warning;
-    ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(1, 18); ctx.lineTo(1, 27); ctx.stroke();
-
+    ctx.save(); ctx.translate(9, -60 + breathe); ctx.rotate(armAngle);
+    ctx.fillStyle = COLORS.ink; ctx.beginPath(); ctx.moveTo(-3, 0); ctx.lineTo(3, 0); ctx.lineTo(4, 16); ctx.lineTo(2, 19); ctx.lineTo(-2, 19); ctx.lineTo(-4, 16); ctx.closePath(); ctx.fill(); ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.strokeStyle = COLORS.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 17); ctx.lineTo(0, 28); ctx.stroke();
+    ctx.strokeStyle = COLORS.warning; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(1, 18); ctx.lineTo(1, 27); ctx.stroke();
     ctx.restore();
-
-    // Efecto de arcos dorados
     if (isAttacking && attackProgress < 1) {
       const prog = p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress;
       ctx.strokeStyle = COLORS.warning;
@@ -542,12 +590,11 @@
       ctx.shadowColor = COLORS.warning;
       ctx.beginPath(); ctx.arc(0, -30, p.isRupturing ? 70 : 45, -Math.PI / 2 + prog * Math.PI * 2, Math.PI / 2 + prog * Math.PI * 2); ctx.stroke();
       if (p.isRupturing) { ctx.beginPath(); ctx.arc(0, -30, 50, -Math.PI / 2 - prog * Math.PI * 2, Math.PI / 2 - prog * Math.PI * 2); ctx.stroke(); }
-      ctx.globalAlpha = 1;
-      ctx.shadowBlur = 0;
+      ctx.globalAlpha = 1; ctx.shadowBlur = 0;
     }
   }
 
-  // === SILUETA DETALLADA DE YUI (MEJORADA) ===
+  // === SILUETA DETALLADA DE YUI ===
   function drawYui(ctx, p) {
     const t = p.animTimer;
     const breathe = Math.sin(t * 2) * 0.5;
@@ -555,80 +602,22 @@
     const armSwing = p.state === 'run' ? Math.sin(t * 8) * 7 : 0;
     const attackProgress = p.state === 'attack' ? Math.min(1, t / 0.18) : 0;
     const isAttacking = p.state === 'attack' || p.isRupturing;
-
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.beginPath();
-    ctx.ellipse(0, 2, 13, 5, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = COLORS.ink;
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1.5;
-
-    // Piernas
+    ctx.fillStyle = COLORS.ink; ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1.5;
     ctx.beginPath(); ctx.moveTo(-5, -24); ctx.lineTo(-8 - legSwing * 0.5, -10); ctx.lineTo(-6 - legSwing * 0.5, 0); ctx.lineTo(-3 - legSwing * 0.5, 0); ctx.lineTo(-3, -10); ctx.lineTo(-2, -24); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(5, -24); ctx.lineTo(8 + legSwing * 0.5, -10); ctx.lineTo(6 + legSwing * 0.5, 0); ctx.lineTo(3 + legSwing * 0.5, 0); ctx.lineTo(3, -10); ctx.lineTo(2, -24); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Torso con ropa táctica
     ctx.beginPath(); ctx.moveTo(-12, -68 + breathe); ctx.lineTo(12, -68 + breathe); ctx.lineTo(11, -48); ctx.lineTo(10, -24); ctx.lineTo(-10, -24); ctx.lineTo(-11, -48); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Brazos
     ctx.beginPath(); ctx.moveTo(-10, -63 + breathe); ctx.lineTo(-14 - armSwing, -45); ctx.lineTo(-12 - armSwing, -30); ctx.lineTo(-8 - armSwing, -30); ctx.lineTo(-8, -45); ctx.lineTo(-6, -63 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Cabeza
     ctx.beginPath(); ctx.arc(0, -76 + breathe, 8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-    // Pelo corto
-    ctx.beginPath();
-    ctx.moveTo(-7, -79 + breathe);
-    ctx.quadraticCurveTo(-9, -83 + breathe, -5, -84 + breathe);
-    ctx.quadraticCurveTo(0, -85 + breathe, 5, -84 + breathe);
-    ctx.quadraticCurveTo(9, -83 + breathe, 7, -79 + breathe);
-    ctx.quadraticCurveTo(8, -74 + breathe, 6, -72 + breathe);
-    ctx.lineTo(-6, -72 + breathe);
-    ctx.quadraticCurveTo(-8, -74 + breathe, -7, -79 + breathe);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    // Brazo delantero con rifle
+    ctx.beginPath(); ctx.moveTo(-7, -79 + breathe); ctx.quadraticCurveTo(-9, -83 + breathe, -5, -84 + breathe); ctx.quadraticCurveTo(0, -85 + breathe, 5, -84 + breathe); ctx.quadraticCurveTo(9, -83 + breathe, 7, -79 + breathe); ctx.quadraticCurveTo(8, -74 + breathe, 6, -72 + breathe); ctx.lineTo(-6, -72 + breathe); ctx.quadraticCurveTo(-8, -74 + breathe, -7, -79 + breathe); ctx.closePath(); ctx.fill(); ctx.stroke();
     const armAngle = isAttacking ? -Math.PI / 2 + Math.sin((p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress) * Math.PI) * Math.PI * 0.7 : 0.2;
-    ctx.save();
-    ctx.translate(10, -63 + breathe);
-    ctx.rotate(armAngle);
-
+    ctx.save(); ctx.translate(10, -63 + breathe); ctx.rotate(armAngle);
     ctx.beginPath(); ctx.moveTo(-4, 0); ctx.lineTo(4, 0); ctx.lineTo(5, 18); ctx.lineTo(3, 21); ctx.lineTo(-3, 21); ctx.lineTo(-5, 18); ctx.closePath(); ctx.fill(); ctx.stroke();
-
-    // Rifle detallado
-    ctx.strokeStyle = COLORS.ink;
-    ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(-2, 19); ctx.lineTo(-2, 50); ctx.stroke();
-
-    // Cuerpo del rifle
-    ctx.fillStyle = COLORS.ink;
-    ctx.fillRect(-4, 17, 8, 6);
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1;
-    ctx.strokeRect(-4, 17, 8, 6);
-
-    // Mira telescópica
-    ctx.fillStyle = COLORS.ink;
-    ctx.fillRect(-2, 14, 4, 4);
-    ctx.strokeRect(-2, 14, 4, 4);
-
-    // Cañón
-    ctx.strokeStyle = COLORS.ink;
-    ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(-1, 48); ctx.lineTo(-1, 55); ctx.stroke();
-
-    // Trazador
-    ctx.strokeStyle = COLORS.rim;
-    ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, 20); ctx.lineTo(0, 48); ctx.stroke();
-
+    ctx.strokeStyle = COLORS.ink; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(-2, 19); ctx.lineTo(-2, 50); ctx.stroke();
+    ctx.fillStyle = COLORS.ink; ctx.fillRect(-4, 17, 8, 6); ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1; ctx.strokeRect(-4, 17, 8, 6);
+    ctx.fillStyle = COLORS.ink; ctx.fillRect(-2, 14, 4, 4); ctx.strokeRect(-2, 14, 4, 4);
+    ctx.strokeStyle = COLORS.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(-1, 48); ctx.lineTo(-1, 55); ctx.stroke();
+    ctx.strokeStyle = COLORS.rim; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, 20); ctx.lineTo(0, 48); ctx.stroke();
     ctx.restore();
-
-    // Efecto de disparo
     if (isAttacking && attackProgress < 1) {
       const prog = p.isRupturing ? Math.min(1, p.rupturaTimer / 0.6) : attackProgress;
       ctx.strokeStyle = p.isRupturing ? COLORS.warning : COLORS.danger;
@@ -637,11 +626,8 @@
       ctx.shadowBlur = p.isRupturing ? 25 : 12;
       ctx.shadowColor = p.isRupturing ? COLORS.warning : COLORS.danger;
       ctx.beginPath(); ctx.moveTo(0, -40); ctx.lineTo(p.isRupturing ? 250 : 80, -40); ctx.stroke();
-      ctx.strokeStyle = COLORS.white;
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-      ctx.shadowBlur = 0;
+      ctx.strokeStyle = COLORS.white; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.globalAlpha = 1; ctx.shadowBlur = 0;
     }
   }
 
@@ -656,7 +642,7 @@
     ctx.restore();
   }
 
-  // === LÓGICA DEL JUGADOR ===
+  // === LÓGICA DEL JUGADOR (CON JOYSTICK SOLO HORIZONTAL) ===
   function updatePlayer(dt) {
     player.animTimer += dt;
     player.cargaTimer += dt;
@@ -665,6 +651,7 @@
       player.cargaTimer = 0;
     }
 
+    // MOVIMIENTO: Joystick SOLO HORIZONTAL o teclado
     let moveDir = 0;
     if (joystickActive && Math.abs(joystickVectorX) > 0.1) {
       moveDir = joystickVectorX > 0 ? 1 : -1;
@@ -693,7 +680,7 @@
     }
 
     player.x += player.vx * dt;
-    const safeMargin = CANVAS_W * 0.25;
+    const safeMargin = CANVAS_W * 0.2;
     if (player.x < safeMargin) player.x = safeMargin;
     if (player.x > CANVAS_W - safeMargin) player.x = CANVAS_W - safeMargin;
 
@@ -884,148 +871,78 @@
     if (combo > 0) { comboDecayTimer -= dt; if (comboDecayTimer <= 0) combo = 0; }
   }
   function drawEffects(ctx) {
-    if (flashAlpha > 0) { ctx.fillStyle = `rgba(255, 255, 255, ${flashAlpha})`; ctx.fillRect(0, 0, VIEW_W, VIEW_H); }
+    if (flashAlpha > 0) { ctx.fillStyle = `rgba(255, 255, 255, ${flashAlpha})`; ctx.fillRect(0, 0, CANVAS_W, CANVAS_H); }
   }
 
-  // === FONDO MEJORADO (PRIMER NIVEL: VESTÍBULO) ===
+  // === FONDO ===
   function drawVectorBackground(ctx, scrollX, time) {
-    // Cielo degradado de 4 tonos
-    const grad = ctx.createLinearGradient(0, 0, 0, VIEW_H);
-    grad.addColorStop(0, COLORS.skyTop);
-    grad.addColorStop(0.33, COLORS.skyMid);
-    grad.addColorStop(0.66, COLORS.skyBot);
-    grad.addColorStop(1, COLORS.skyHor);
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, VIEW_W, VIEW_H);
-
-    // Sol con glow intenso
-    ctx.save();
-    ctx.shadowBlur = 80;
-    ctx.shadowColor = COLORS.skyHor;
-    ctx.fillStyle = COLORS.warning;
-    ctx.beginPath();
-    ctx.arc(VIEW_W / 2, GROUND_Y - 60, 60, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-
-    // Capa lejana de edificios (parallax lento)
-    ctx.fillStyle = '#0a0a0a';
+    const grad = ctx.createLinearGradient(0, 0, 0, CANVAS_H);
+    grad.addColorStop(0, COLORS.skyTop); grad.addColorStop(0.33, COLORS.skyMid); grad.addColorStop(0.66, COLORS.skyBot); grad.addColorStop(1, COLORS.skyHor);
+    ctx.fillStyle = grad; ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+    ctx.save(); ctx.shadowBlur = 60; ctx.shadowColor = COLORS.skyHor; ctx.fillStyle = COLORS.warning;
+    ctx.beginPath(); ctx.arc(CANVAS_W / 2, GROUND_Y - 40, 50, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+    ctx.fillStyle = COLORS.ink;
     const offset1 = (scrollX * 0.10) % 200;
-    for (let i = -1; i < 7; i++) {
-      const x = i * 200 - offset1;
-      // Edificio principal
-      ctx.fillRect(x, GROUND_Y - 140, 160, 140);
-      // Torre
-      ctx.fillRect(x + 60, GROUND_Y - 180, 40, 40);
-      // Ventanas iluminadas
-      ctx.fillStyle = 'rgba(255, 200, 100, 0.3)';
-      for (let wy = 0; wy < 5; wy++) {
-        for (let wx = 0; wx < 4; wx++) {
-          if (Math.random() > 0.3) {
-            ctx.fillRect(x + 20 + wx * 30, GROUND_Y - 120 + wy * 25, 15, 18);
-          }
-        }
-      }
-      ctx.fillStyle = '#0a0a0a';
-    }
-
-    // Capa media de edificios
+    for (let i = -1; i < 6; i++) { ctx.fillRect(i * 200 - offset1, GROUND_Y - 120, 180, 120); ctx.fillRect(i * 200 - offset1 + 40, GROUND_Y - 160, 60, 40); }
     const offset2 = (scrollX * 0.26) % 300;
-    for (let i = -1; i < 5; i++) {
-      const x = i * 300 - offset2;
-      ctx.fillRect(x, GROUND_Y - 200, 140, 200);
-      ctx.fillRect(x + 160, GROUND_Y - 160, 120, 160);
-      // Neones
-      ctx.fillStyle = 'rgba(0, 255, 255, 0.4)';
-      ctx.fillRect(x + 20, GROUND_Y - 180, 30, 5);
-      ctx.fillStyle = 'rgba(255, 45, 111, 0.4)';
-      ctx.fillRect(x + 180, GROUND_Y - 140, 40, 5);
-      ctx.fillStyle = '#0a0a0a';
-    }
-
-    // Capa cercana de edificios
+    for (let i = -1; i < 5; i++) { ctx.fillRect(i * 300 - offset2, GROUND_Y - 180, 120, 180); ctx.fillRect(i * 300 - offset2 + 150, GROUND_Y - 100, 100, 100); }
     const offset3 = (scrollX * 0.48) % 400;
-    for (let i = -1; i < 4; i++) {
-      const x = i * 400 - offset3;
-      ctx.fillRect(x, GROUND_Y - 260, 180, 260);
-      ctx.fillRect(x + 220, GROUND_Y - 200, 160, 200);
-      // Detalles arquitectónicos
-      ctx.fillStyle = '#1a1a1a';
-      ctx.fillRect(x + 40, GROUND_Y - 240, 100, 20);
-      ctx.fillRect(x + 260, GROUND_Y - 180, 80, 20);
-      ctx.fillStyle = '#0a0a0a';
-    }
-
-    // Suelo
-    ctx.fillRect(0, GROUND_Y, VIEW_W, VIEW_H - GROUND_Y);
-
-    // Lluvia ácida
-    ctx.strokeStyle = 'rgba(242, 220, 192, 0.4)';
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    for (let i = 0; i < 60; i++) {
-      let rx = (Math.sin(i * 132.1) * 0.5 + 0.5) * VIEW_W;
-      let ry = ((time * 400 + i * 73) % VIEW_H);
-      ctx.moveTo(rx, ry);
-      ctx.lineTo(rx - 12, ry + 25);
+    for (let i = -1; i < 4; i++) { ctx.fillRect(i * 400 - offset3, GROUND_Y - 240, 150, 240); ctx.fillRect(i * 400 - offset3 + 200, GROUND_Y - 140, 180, 140); }
+    ctx.fillRect(0, GROUND_Y, CANVAS_W, CANVAS_H - GROUND_Y);
+    ctx.strokeStyle = 'rgba(242, 220, 192, 0.3)'; ctx.lineWidth = 1; ctx.beginPath();
+    for (let i = 0; i < 50; i++) {
+      let rx = (Math.sin(i * 132.1) * 0.5 + 0.5) * CANVAS_W;
+      let ry = ((time * 300 + i * 73) % CANVAS_H);
+      ctx.moveTo(rx, ry); ctx.lineTo(rx - 10, ry + 20);
     }
     ctx.stroke();
-
-    // Relámpago ocasional
-    if (Math.random() < 0.008) {
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-      ctx.fillRect(0, 0, VIEW_W, VIEW_H);
-    }
+    if (Math.random() < 0.005) { ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'; ctx.fillRect(0, 0, CANVAS_W, CANVAS_H); }
   }
 
   // === UI / SELECCIÓN / HUD ===
   function drawUI(ctx) {
     if (gameState === 'select') {
       drawVectorBackground(ctx, 0, time);
-      ctx.fillStyle = COLORS.rim; ctx.font = 'bold 36px Arial Black'; ctx.textAlign = 'center';
-      ctx.fillText('NIPPON DESTRUCTION', VIEW_W / 2, 60);
-      ctx.font = 'bold 22px Arial Black'; ctx.fillText('SELECT YOUR HERO', VIEW_W / 2, 90);
-      const cardWidth = 140, cardHeight = 220, cardGap = 20;
-      const totalWidth = cardWidth * 4 + cardGap * 3;
-      const startX = (VIEW_W - totalWidth) / 2;
-      const cardY = 120;
+      ctx.fillStyle = COLORS.rim; ctx.font = 'bold 48px Arial Black'; ctx.textAlign = 'center';
+      ctx.fillText('NIPPON DESTRUCTION', CANVAS_W / 2, 80);
+      ctx.font = 'bold 32px Arial Black'; ctx.fillText('SELECT YOUR HERO', CANVAS_W / 2, 120);
+      const cardWidth = 128, cardHeight = 196, cardGap = 22;
+      const startX = (CANVAS_W - (cardWidth * 4 + cardGap * 3)) / 2;
       ['RIKA', 'GORO', 'REN', 'YUI'].forEach((hero, index) => {
         const x = startX + index * (cardWidth + cardGap);
         const data = HERO_DATA[hero];
         ctx.fillStyle = 'rgba(10, 15, 30, 0.85)'; ctx.strokeStyle = data.color; ctx.lineWidth = 2;
-        ctx.fillRect(x, cardY, cardWidth, cardHeight); ctx.strokeRect(x, cardY, cardWidth, cardHeight);
-        const preview = { type: hero, x: x + cardWidth / 2, y: cardY + cardHeight - 15, facing: 1, state: 'idle', animTimer: time };
+        ctx.fillRect(x, 170, cardWidth, cardHeight); ctx.strokeRect(x, 170, cardWidth, cardHeight);
+        const preview = { type: hero, x: x + cardWidth / 2, y: 170 + cardHeight - 16, facing: 1, state: 'idle', animTimer: time };
         drawHeroSilhouette(ctx, preview);
-        ctx.fillStyle = data.color; ctx.font = 'bold 20px Arial Black'; ctx.fillText(data.kanji, x + cardWidth / 2, cardY + cardHeight + 22);
-        ctx.font = 'bold 13px Arial Black'; ctx.fillText(data.name, x + cardWidth / 2, cardY + cardHeight + 38);
-        ctx.font = '11px Arial Black'; ctx.fillText(data.title, x + cardWidth / 2, cardY + cardHeight + 52);
-        ctx.fillStyle = '#999'; ctx.font = '10px Arial Black'; ctx.fillText(data.role, x + cardWidth / 2, cardY + cardHeight + 66);
+        ctx.fillStyle = data.color; ctx.font = 'bold 18px Arial Black'; ctx.fillText(data.kanji, x + cardWidth / 2, 170 + cardHeight + 24);
+        ctx.font = 'bold 13px Arial Black'; ctx.fillText(data.name, x + cardWidth / 2, 170 + cardHeight + 42);
+        ctx.font = '11px Arial Black'; ctx.fillText(data.title, x + cardWidth / 2, 170 + cardHeight + 58);
+        ctx.fillStyle = '#999'; ctx.font = '10px Arial Black'; ctx.fillText(data.role, x + cardWidth / 2, 170 + cardHeight + 74);
       });
-      ctx.fillStyle = COLORS.rim; ctx.font = 'bold 16px Arial Black';
-      ctx.fillText('PRESS 1-4 OR TAP A CARD', VIEW_W / 2, VIEW_H - 20);
+      ctx.fillStyle = COLORS.rim; ctx.font = 'bold 20px Arial Black';
+      ctx.fillText('PRESS 1-4 OR TAP A CARD', CANVAS_W / 2, CANVAS_H - 30);
     } else {
-      ctx.fillStyle = COLORS.rim; ctx.font = 'bold 18px Arial Black'; ctx.textAlign = 'left';
-      ctx.fillText(`CARGAS: ${'■'.repeat(player.cargas)}${'□'.repeat(player.maxCargas - player.cargas)}`, 15, 30);
+      ctx.fillStyle = COLORS.rim; ctx.font = 'bold 20px Arial Black'; ctx.textAlign = 'left';
+      ctx.fillText(`CARGAS: ${'■'.repeat(player.cargas)}${'□'.repeat(player.maxCargas - player.cargas)}`, 20, 40);
       ctx.textAlign = 'right';
-      ctx.fillStyle = COLORS.rim; ctx.font = 'bold 14px Arial Black';
-      ctx.fillText(`WAVE ${String(wave).padStart(2, '0')}/06`, VIEW_W - 15, 25);
+      ctx.fillStyle = COLORS.rim; ctx.font = 'bold 16px Arial Black';
+      ctx.fillText(`WAVE ${String(wave).padStart(2, '0')}/06`, CANVAS_W - 20, 30);
       if (combo > 0) {
-        ctx.fillStyle = COLORS.danger; ctx.font = 'bold 36px Arial Black';
-        ctx.fillText(`${combo}`, VIEW_W - 15, 65);
-        ctx.font = 'bold 12px Arial Black'; ctx.fillStyle = COLORS.rim;
-        ctx.fillText('HITS', VIEW_W - 15, 80);
+        ctx.fillStyle = COLORS.danger; ctx.font = 'bold 42px Arial Black';
+        ctx.fillText(`${combo}`, CANVAS_W - 20, 75);
+        ctx.font = 'bold 14px Arial Black'; ctx.fillStyle = COLORS.rim;
+        ctx.fillText('HITS', CANVAS_W - 20, 95);
       }
     }
   }
 
   function handleHeroSelect(x, y) {
-    const cardWidth = 140, cardHeight = 220, cardGap = 20;
-    const totalWidth = cardWidth * 4 + cardGap * 3;
-    const startX = (VIEW_W - totalWidth) / 2;
-    const cardY = 120;
+    const cardWidth = 128, cardHeight = 196, cardGap = 22;
+    const startX = (CANVAS_W - (cardWidth * 4 + cardGap * 3)) / 2;
     ['RIKA', 'GORO', 'REN', 'YUI'].forEach((hero, index) => {
       const cardX = startX + index * (cardWidth + cardGap);
-      if (x >= cardX && x <= cardX + cardWidth && y >= cardY && y <= cardY + cardHeight) {
+      if (x >= cardX && x <= cardX + cardWidth && y >= 170 && y <= 170 + cardHeight) {
         player.type = hero; player.x = 200; player.y = GROUND_Y; player.facing = 1;
         player.state = 'idle'; player.animTimer = 0; player.cargas = 3; player.cargaTimer = 0;
         player.isRupturing = false; player.rupturaTimer = 0;
@@ -1052,7 +969,7 @@
   canvas.addEventListener('click', (e) => {
     if (gameState === 'select') {
       const rect = canvas.getBoundingClientRect();
-      handleHeroSelect((e.clientX - rect.left) * (VIEW_W / rect.width), (e.clientY - rect.top) * (VIEW_H / rect.height));
+      handleHeroSelect((e.clientX - rect.left) * (CANVAS_W / rect.width), (e.clientY - rect.top) * (CANVAS_H / rect.height));
     }
   });
 
@@ -1090,27 +1007,23 @@
         }
       }
     }
-
+    
     ctx.save();
     ctx.translate(shakeX, shakeY);
     if (gameState === 'select') {
       drawUI(ctx);
     } else {
       drawVectorBackground(ctx, scrollX, time);
-      // Mundo del juego con offset para mantener coords 0..960
-      ctx.save();
-      ctx.translate(viewOffsetX, 0);
       drawEnemies(ctx);
       drawHeroSilhouette(ctx, player);
       drawAttackEffects(ctx);
       drawRuptureEffects(ctx);
       drawParticles(ctx);
-      ctx.restore();
       drawEffects(ctx);
       drawUI(ctx);
     }
     ctx.restore();
-
+    
     requestAnimationFrame(gameLoop);
   }
 
@@ -1123,6 +1036,10 @@
     updateEffects(dt);
   }
 
-  console.log('Nippon Destruction Engine - Gráficos mejorados');
+  console.log('Nippon Destruction Engine - Joystick Horizontal');
   requestAnimationFrame(gameLoop);
 })();
+
+=====================================================================
+FIN DEL PROMPT
+=====================================================================

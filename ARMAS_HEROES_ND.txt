@@ -1,0 +1,65 @@
+ARMAS Y HEROES DE NIPPON DESTRUCTION (ND) - ESTILO SILUETA
+Fuente: NPAD_Prototype/docs/personajes.md (mismos cuatro personajes)
+Proyecto: silueta / ND
+================================================================
+
+4.1 HECHO POR PERSONAJE
+----------------------------------------------------------------
+
+Cada heroe con stats de movimiento y poder propios, adaptados de NPAD al
+Canvas. Los 4 comparten silo() plano (rig pendiente, seccion 5.6).
+
+| Heroe              | Arma                                              | Poder en ND                                    | Campos                |
+|--------------------|---------------------------------------------------|------------------------------------------------|-----------------------|
+| RIKA - LA HOJA     | katana (30px) - spr `blade`                       | dash atraviesa, dana y recupera carga          | thru:1, dsh:12        |
+| GORO - EL YUNQUE   | maza (26px) + escudo a la espalda (14x20) - spr `anvil` | carga larga, embestida y empuje en P.fc   | push:1, dsh:26        |
+| REN - EL RELAMPAGO | daga corta (14px) con cinta (6px) - spr `bolt`    | 3 cargas autorrecargables, zigzag              | ch:3, cm:26, zz:1     |
+| YUI - EL ECO       | rifle (34px) con trazador #F2DCC0 - spr `echo`    | rifle a distancia, teletransporte, onda de ralentizacion | rng:1, tp:150 |
+
+> Armas y marcas de silueta tomadas de NPAD_Prototype/docs/personajes.md
+> secciones 0 y 6 (mismos cuatro personajes). Yui es "La Distancia" en NPAD y
+> "El Eco" en ND; su trazador canonico en ND es #F2DCC0, no el magenta de NPAD.
+
+
+4.2 ARMAS EN ESTILO SILUETA (ADAPTACION GRAFICA)
+----------------------------------------------------------------
+
+Las armas de personajes.md se reinterpretan como geometria negra pura dentro
+de silo(): un solo fillStyle = #000000, sin degradados ni texturas, con
+contorno de luz #F2DCC0. La silueta del arma debe leerse SIN COLOR, a 24 px, y
+ser la marca unica de cada heroe (seccion 0 de personajes.md).
+
+Regla dura de silueta: cada arma es UNA SOLA MANCHA NEGRA unida al cuerpo (no
+piezas separadas), con la punta/hoja orientada a la derecha (3/4 lateral).
+
+| Heroe | Spr     | Primitiva de arma                                              | Lectura a 24 px                 |
+|-------|---------|---------------------------------------------------------------|---------------------------------|
+| RIKA  | blade   | rect largo fino diagonal en la cadera + tsuba corta perpendicular | katana (linea que corta el aire) |
+| GORO  | anvil   | barra ancha sobre los hombros + rect vertical pegado a la espalda | maza + escudo (puerta)          |
+| REN   | bolt    | rect corto fino hacia delante + cinta/guarda pequena           | daga (brillo breve)             |
+| YUI   | echo    | dos rect horizontales largos en el brazo delantero             | rifle (linea recta, alcance)    |
+
+```
+RIKA        GORO        REN         YUI
+  o           o        __o__         o
+ /|\katana   [|]       |  \dagger   /|\____rifle
+ / \        escudo[m]  / \          / \
+```
+
+Detalles de silueta:
+
+- Katana (Rika): hoja larga y muy fina; la tsuba es un pixel-cruz que la separa
+  del cuerpo. Es la unica linea larga y curva del elenco -> se lee como
+  "vela/hoja".
+- Maza + escudo (Goro): la barra de la maza va horizontal y ancha sobre el
+  hombro; el escudo es el rect vertical que sobresale por detras. Su bloque
+  genera la lectura "puerta" y refuerza su peso visual.
+- Daga (Ren): arma corta, casi un destello; nunca debe confundirse con la
+  katana de Rika por longitud. La cinta del mango se funde en la mancha.
+- Rifle (Yui): dos rectangulos horizontales (cuerpo + canon) sobre el brazo; el
+  trazador #F2DCC0 se pinta fuera de la silueta (efecto, no cuerpo).
+
+> Estas armas son DESCRIPCION DE SILUETA, no sprites externos: siguen la regla
+> de oro de ND (#000000 puro, cero imagenes). El render actual en silo() ya usa
+> blade / anvil / bolt / echo; esta seccion fija como deben leerse al refinar
+> el rig (seccion 5.6).

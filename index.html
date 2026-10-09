@@ -1,63 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>Nippon Destruction — ND</title>
-<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#000000">
+<title>Nippon Destruction (ND)</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:none;user-select:none}
-html,body{width:100%;height:100%;overflow:hidden;background:#080510;font-family:system-ui,sans-serif}
-#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
-#c{display:block}
-#hud{position:fixed;top:0;left:0;right:0;padding:9px 13px;z-index:4;pointer-events:none;
-color:#F2DCC0;font:800 11px system-ui;display:none;justify-content:space-between;
-letter-spacing:1.5px;text-shadow:0 2px 9px rgba(0,0,0,.95)}
-#pad{position:fixed;inset:0;pointer-events:none;z-index:5;display:none}
-.btn{position:absolute;pointer-events:auto;display:flex;align-items:center;justify-content:center;
-width:80px;height:80px;border-radius:50%;font:900 22px system-ui;color:#F2DCC0;
-border:2px solid rgba(242,220,192,.34);
-background:radial-gradient(circle,rgba(18,10,22,.66),rgba(8,5,16,.44));
-backdrop-filter:blur(3px);box-shadow:0 4px 20px rgba(0,0,0,.55);transition:transform .05s}
-.btn.on{transform:scale(.9);background:radial-gradient(circle,rgba(242,220,192,.38),rgba(18,10,22,.6))}
-#l{left:14px;bottom:18px}#r{left:100px;bottom:18px}
-#a{right:116px;bottom:18px;font-size:11px;letter-spacing:2px}
-#d{right:14px;bottom:18px;font-size:11px;letter-spacing:2px}
-#ui{position:fixed;inset:0;z-index:6;display:flex;flex-direction:column;
-align-items:center;justify-content:flex-end;padding-bottom:9vh;background:transparent}
-#play{padding:14px 40px;border:none;border-radius:9px;cursor:pointer;pointer-events:auto;
-background:linear-gradient(180deg,#F2DCC0,#C9A886);color:#140A16;
-font:900 13px system-ui;letter-spacing:7px;box-shadow:0 6px 30px rgba(255,150,70,.35)}
-#play:active{transform:scale(.94)}
-#tips{margin-top:12px;color:rgba(242,220,192,.4);font:600 9px system-ui;letter-spacing:2.5px;text-align:center}
-#over{position:fixed;inset:0;z-index:7;display:none;flex-direction:column;align-items:center;
-justify-content:center;gap:14px;background:rgba(8,5,16,.9)}
-#ores{color:#F2DCC0;font:900 38px system-ui;letter-spacing:10px}
-#ost{color:rgba(242,220,192,.6);font:700 11px system-ui;letter-spacing:3px}
-#re{padding:13px 34px;border:none;border-radius:8px;cursor:pointer;
-background:linear-gradient(180deg,#F2DCC0,#C9A886);color:#140A16;
-font:900 12px system-ui;letter-spacing:6px}
+  :root {
+    --danger: #FF2D6F;
+    --warning: #FFC400;
+    --cyan: #00FFFF;
+    --rim: #F2DCC0;
+    --ink: #000000;
+    --bg-panel: rgba(10, 15, 30, 0.75);
+  }
+  * { box-sizing: border-box; user-select: none; -webkit-user-select: none; touch-action: none; margin: 0; padding: 0; }
+  html, body {
+    width: 100dvw; height: 100dvh;
+    background: #000; overflow: hidden;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    font-family: 'Arial Black', sans-serif;
+  }
+  #game-container {
+    position: fixed; top: 0; left: 0;
+    width: 100dvw; height: 100dvh;
+    background: #000; overflow: hidden;
+  }
+  canvas {
+    display: block; width: 100%; height: 100%;
+    object-fit: cover; image-rendering: pixelated;
+  }
+  .hud {
+    position: fixed; top: 0; left: 0;
+    width: 100dvw; height: 100dvh;
+    pointer-events: none;
+  }
+  .btn-menu {
+    position: fixed; top: 10px; right: 10px;
+    pointer-events: auto;
+    background: var(--bg-panel);
+    border: 1.5px solid var(--danger);
+    border-radius: 6px;
+    color: var(--danger);
+    font-size: 11px; font-weight: bold;
+    padding: 5px 8px;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(255, 45, 111, 0.4);
+    display: none;
+    letter-spacing: 0.5px;
+    z-index: 100;
+  }
+  .btn-menu:active { background: var(--danger); color: var(--ink); transform: scale(0.95); }
+  .btn-menu.visible { display: block; }
+  .joystick-zone {
+    position: fixed; bottom: 15px; left: 15px;
+    pointer-events: auto;
+    width: clamp(90px, 18vw, 110px);
+    height: clamp(45px, 9vw, 55px);
+    z-index: 50;
+  }
+  .joystick-base {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; height: 100%;
+    border-radius: 25px;
+    background: rgba(10, 15, 30, 0.5);
+    border: 2px solid var(--cyan);
+    box-shadow: 0 0 12px var(--cyan), inset 0 0 8px rgba(0, 255, 255, 0.3);
+  }
+  .joystick-stick {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--cyan), #0088aa);
+    border: 1.5px solid var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+    transition: transform 0.05s;
+  }
+  .joystick-label {
+    position: absolute; bottom: -14px; left: 50%;
+    transform: translateX(-50%);
+    color: var(--cyan);
+    font-size: 9px; font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 4px var(--cyan);
+  }
+  .action-panel {
+    position: fixed; bottom: 15px; right: 15px;
+    pointer-events: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 6px;
+    width: clamp(110px, 22vw, 140px);
+    height: clamp(110px, 22vw, 140px);
+  }
+  .btn-action {
+    width: clamp(32px, 7vw, 42px);
+    height: clamp(32px, 7vw, 42px);
+    background: var(--bg-panel);
+    border: 1.5px solid;
+    border-radius: 50%;
+    font-size: clamp(8px, 1.8vw, 11px);
+    font-weight: bold;
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer;
+    transition: all 0.1s;
+    justify-self: center; align-self: center;
+    letter-spacing: 0.3px;
+    box-shadow: 0 0 6px currentColor;
+  }
+  .btn-action:active { transform: scale(0.92); }
+  .btn-rupture { grid-column: 2; grid-row: 1; border-color: var(--cyan); color: var(--cyan); }
+  .btn-rupture:active { background: var(--cyan); color: var(--ink); }
+  .btn-dash { grid-column: 1; grid-row: 2; border-color: var(--warning); color: var(--warning); }
+  .btn-dash:active { background: var(--warning); color: var(--ink); }
+  .btn-skill { grid-column: 3; grid-row: 2; border-color: var(--rim); color: var(--rim); }
+  .btn-skill:active { background: var(--rim); color: var(--ink); }
+  .btn-attack {
+    grid-column: 2; grid-row: 3;
+    width: clamp(42px, 9vw, 55px);
+    height: clamp(42px, 9vw, 55px);
+    border-color: var(--danger); color: var(--danger);
+    font-size: clamp(10px, 2.2vw, 13px);
+    background: rgba(255, 45, 111, 0.2);
+    box-shadow: 0 0 12px var(--danger);
+  }
+  .btn-attack:active { background: var(--danger); color: #fff; }
 </style>
 </head>
 <body>
-<div id="wrap"><canvas id="c"></canvas></div>
-<div id="hud"><span id="hp"></span><span id="stat"></span></div>
-<div id="pad">
-<div class="btn" id="l">◀</div>
-<div class="btn" id="r">▶</div>
-<div class="btn" id="a">GOLPE</div>
-<div class="btn" id="d">DASH</div>
-</div>
-<div id="ui">
-<button id="play">ENTRAR</button>
-<div id="tips">◀ ▶ MOVER &nbsp;·&nbsp; GOLPE &nbsp;·&nbsp; DASH<br>SILUETAS NEGRAS · ATARDECER CON CONTRALUZ</div>
-</div>
-<div id="over">
-<div id="ores"></div>
-<div id="ost"></div>
-<button id="re">REINTENTAR</button>
+<div id="game-container">
+  <canvas id="gameCanvas" width="960" height="540"></canvas>
+  <div class="hud">
+    <div class="btn-menu" id="btn-menu">◄ MENU</div>
+    <div class="joystick-zone" id="joystick-zone">
+      <div class="joystick-base"></div>
+      <div class="joystick-stick" id="joystick-stick"></div>
+      <div class="joystick-label">◄ ►</div>
+    </div>
+    <div class="action-panel">
+      <div class="btn-action btn-rupture" id="btn-rupt">RUP</div>
+      <div class="btn-action btn-dash" id="btn-dash">DASH</div>
+      <div class="btn-action btn-skill" id="btn-def">SKL</div>
+      <div class="btn-action btn-attack" id="btn-tajo">ATK</div>
+    </div>
+  </div>
 </div>
 <script src="nd.js"></script>
 </body>
